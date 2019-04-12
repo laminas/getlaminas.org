@@ -1,0 +1,183 @@
+<?php $this->layout('layout::default', ['title' => 'Home']) ?>
+
+<div class="jumbotron jumbotron-fluid text-center">
+    <img src="/images/logo/laminas-foundation-white.svg" alt="Laminas Project" class="w-100">
+
+    <h1>Coming Soon!</h1>
+
+    <h2>
+        A community-supported, open source continuation of Zend Framework.
+    </h2>
+</div>
+
+<div class="container-fluid">
+    <div class="row align-items-start">
+        <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
+            <p>
+                Since its inception, <a href="https://www.zend.com">Zend Technologies</a>, and later
+                <a href="https://www.roguewave.com">Rogue Wave Software</a>, has
+                been single-handedly leading and sponsoring the Zend Framework
+                project. Over the years, Zend Framework has seen wide adoption
+                across the PHP ecosystem, with an emphasis on the Enterprise
+                market. It has formed the basis of numerous business
+                applications and services including eCommerce platforms,
+                content management, healthcare systems, entertainment platforms
+                and portals, messaging services, APIs, and many others.
+            </p>
+
+            <blockquote class="blockquote">
+                To take it to the next step of adoption and innovation, we are happy to announce
+                that we have reached an agreement to transition Zend Framework and all its
+                subprojects to a new Open Source foundation under the
+                <a href="https://www.linuxfoundation.org">Linux Foundation</a>.  
+            </blockquote>
+
+            <p>
+                The Linux Foundation is host to a range of widely successful open source
+                projects, and has led many similar transitions in the past. We believe that by
+                moving Zend Framework to this proven governance model, it will enjoy both growth
+                in adoption and contributors, and it will continue to focus on delivering best
+                of breed innovative code, using the highest standards of security, transparency,
+                and quality. 
+            </p>
+
+            <blockquote class="blockquote">
+                Transition is already underway, but we are still working on
+                corporate investment before fully opening our doors. If your
+                company is interested in helping promote the project and expand its
+                ecosystem, <a href="<?= $this->url('about.join') ?>">please
+                consider corporate sponsorship</a>!
+            </blockquote>
+        </div>
+
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2 card bg-primary text-white">
+            <h2 class="card-header">Want to help?</h2>
+            <div class="card-body">
+                <p class="card-text">
+                    In order to fulfill our goals of supporting and expanding the
+                    ecosystem, we are looking for corporate sponsors. Is that you?
+                </p>
+
+                <p class="card-text text-center">
+                    <a class="btn btn-light" href="<?= $this->url('about.join') ?>">Sponsor</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid text-center bg-expressive mt-4">
+    <h1>FAQ</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h2>About Laminas and its governance</h2>
+            
+            <p>
+                In spinning the project into its own foundation, we need to differentiate the
+                Open Source project from the commercial Zend brand, which means a new name!
+            </p>
+
+            <p>
+                <strong>Laminas</strong> is the plural of <strong>lamina</strong>,
+                meaning <em>a thin layer</em>. We feel it succinctly summarizes the goals of
+                the project in many ways:
+            </p>
+
+            <ul>
+                <li>Components you can compose or <em>layer</em> into any application.</li>
+                <li>Middleware architectures are often termed <em>layered</em>.</li>
+            </ul>
+
+            <p>
+                The project will encompass each of the following:
+            </p>
+
+            <ul>
+                <li>The various standalone components.</li>
+                <li>The MVC framework.</li>
+                <li>The Apigility subproject.</li>
+                <li>The Expressive subproject.</li>
+            </ul>
+
+            <h2>Governance</h2>
+
+            <p>
+                The foundation will have two governing bodies: its <strong>Technical Steering Committee</strong>
+                (TSC) and its <strong>Governing Board</strong>.
+            </p>
+
+            <p>
+                The Technical Steering Committee will initially be composed by current members
+                of the Zend Framework Community Review Team, along with other folks who are
+                helping us during the transition. Its role will be to make decisions about what
+                we maintain, what milestones to work on, who has commit access to specific
+                repositories, and the general technical direction of the project.
+
+            <p>
+                The Governing Board will be made up of <em>corporate sponsors</em>, as well as one or
+                more TSC members, and will be tasked with the promotion of the project within
+                the PHP, web application, and API ecosystems. This will include deciding what
+                conferences and user group events to sponsor, sending speakers to events, and
+                promoting the project in journals and publications. The Board will also work
+                with the TSC to provide grants to developers working on long-term projects.
+            </p>
+
+            <p>
+                The foundation will also eventually include a small team of
+                developers to help lead the day-to-day maintenance, manage
+                automation, keep the web presence online, and other tasks
+                necessary to keeping the project going. This team will help
+                provide project continuity, allowing contributors to focus on the
+                contributions they care about most.
+            </p>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <h2>What will happen to the code?</h2>
+
+            <p>
+                Components and the MVC code will move to a new Laminas organization under
+                GitHub. Apigility packages will move from the zfcampus organization to the
+                Apigility organization. Expressive packages will move to a new Expressive
+                organization.
+            </p>
+
+            <p>
+                The existing code will all be archived. This means it will remain available on
+                GitHub, but will be read-only; this will allow existing installations to
+                continue working without interruption, but clearly signal that development has
+                moved to the new project. The related package entries on Packagist will each be
+                marked as deprecated, and point to the relevant new Laminas package as an
+                alternative.
+            </p>
+
+            <p>
+                All packages published by the project will be marked as <em>replacements</em> of the
+                existing Zend Framework packages, and will include tools to alias legacy classes
+                to the new package classes. This will allow for seamless integration in existing
+                projects, including when using third-party libraries that leverage ZF code.
+            </p>
+
+            <p>
+                Finally, we will be providing tools both to update your own code to use the new
+                classes provided by Laminas packages, as well as to help you update your
+                dependencies to use the new Laminas packages instead of the Zend Framework
+                versions. This latter will likely be accomplished via a
+                <a href="https://getcomposer.org">Composer</a> plugin to help automate the transition.
+            </p>
+
+            <h2>Timeline</h2>
+
+            <p>
+                Much of the transition is well under way at this point with domains secured,
+                GitHub organizations created, initial sponsorship commitments in place, and
+                migration tooling being tested. Our hope is to be operational within Q2 or Q3 of
+                this year (2019); the timeline will be based on how quickly we can secure
+                sponsorship commitments for the foundation.
+            </p>
+        </div>
+    </div>
+</div>

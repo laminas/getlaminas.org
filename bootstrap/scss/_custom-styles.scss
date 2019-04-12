@@ -1,0 +1,54 @@
+// Add additional styles here. For example, overwrite certain styles or add new components.
+// Tip: You can use bootstrap's powerful mixins here!
+
+
+//.alert-myalert {
+//  @include alert-variant(#60667d, #1d1d1d, #f4fdff);
+//}
+
+//@each $color, $value in $theme-colors {
+//  .alert-#{$color} {
+//    box-shadow: 3px 3px theme-color-level($color, -3);
+//  }
+//}
+
+body {
+    padding-top: 98px;
+}
+
+main {
+    color:            $black;
+    background-color: $white;
+}
+
+footer {
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    a {
+        color: $white;
+        text-decoration: underline;
+    }
+
+    a:visited, a:hover {
+        color: $gray-300;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: $gray-200;
+        text-decoration: none;
+    }
+
+    .social {
+        a {
+            font-size: 2em;
+        }
+    }
+}
+
+.blockquote {
+    border-left: 2px solid $primary;
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+}
