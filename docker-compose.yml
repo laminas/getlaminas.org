@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+      - ./.docker/php/getlaminas.ini:/usr/local/etc/php/conf.d/999-getlaminas.ini
+      - ./.docker/bin/php-entrypoint:/usr/local/bin/entrypoint

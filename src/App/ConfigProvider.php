@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App;
 
+use Psr\Log\LoggerInterface;
+use Zend\Stratigility\Middleware\ErrorHandler;
+
 /**
  * The configuration provider for the App module
  *
@@ -32,9 +35,15 @@ class ConfigProvider
     public function getDependencies() : array
     {
         return [
+            'delegators' => [
+                ErrorHandler::class => [
+                    LoggingErrorListenerDelegator::class,
+                ],
+            ],
             'factories'  => [
                 Handler\AboutJoinHandler::class => Handler\AboutJoinHandlerFactory::class,
-                Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
+                Handler\HomePageHandler::class  => Handler\HomePageHandlerFactory::class,
+                LoggerInterface::class          => AccessLoggerFactory::class,
             ],
         ];
     }

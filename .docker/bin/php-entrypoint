@@ -1,0 +1,5 @@
+#!/bin/sh
+# Entrypoint script for php container.
+
+# Start application; run in foreground, as that's what Docker prefers
+/usr/bin/env php vendor/bin/zend-expressive-swoole start
