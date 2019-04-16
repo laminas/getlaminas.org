@@ -41,9 +41,10 @@ class ConfigProvider
                 ],
             ],
             'factories'  => [
-                Handler\AboutJoinHandler::class => Handler\AboutJoinHandlerFactory::class,
-                Handler\HomePageHandler::class  => Handler\HomePageHandlerFactory::class,
-                LoggerInterface::class          => AccessLoggerFactory::class,
+                Handler\AboutJoinHandler::class         => Handler\AboutJoinHandlerFactory::class,
+                Handler\AboutJoinThankYouHandler::class => Handler\AboutJoinThankYouHandlerFactory::class,
+                Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
+                LoggerInterface::class                  => AccessLoggerFactory::class,
             ],
         ];
     }
