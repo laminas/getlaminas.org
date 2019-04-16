@@ -33,9 +33,40 @@
         </div></div>
     </div></div>
 
-    <div class="row justify-content-center mt-5">
-        <div class="col card"><div class="card-body"><div class="card-text">
-            <h2>Form goes here</h2>
-        </div></div></div>
-    </div>
+    <div class="row justify-content-center mt-5 mb-5"><div class="col-sm-8 col-xs-12 card-deck">
+        <div class="card"><div class="card-body">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input class="form-control" id="first_name" maxlength="40" name="first_name" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input class="form-control" id="last_name" maxlength="80" name="last_name" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" maxlength="80" name="email" type="email" />
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input class="form-control" id="company" maxlength="40" name="company" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control" id="title" maxlength="40" name="title" type="text" />
+                </div>
+
+                <button class="btn btn-primary float-right" type="submit" name="submit">Submit</button>
+
+                <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7012M000001iJaa">
+                <input type=hidden name="oid" value="00D41000000cNi0">
+                <input type=hidden name="retURL" value="http://">
+            </form>
+        </div></div>
+    </div></div>
 </div>
