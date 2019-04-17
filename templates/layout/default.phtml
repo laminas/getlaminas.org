@@ -14,7 +14,7 @@
     <?= $this->section('stylesheets') ?>
 </head>
 <body class="h-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top shadow" role="navigation">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top shadow" role="navigation"><div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="/">
             <img src="/images/logo/laminas-foundation-white.svg" alt="Laminas Project" />
@@ -33,14 +33,14 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </div></nav>
 
     <main class="flex-grow-1">
         <?= $this->section('content') ?>
     </main>
 
     <footer class="mt-4">
-        <div class="container-fluid"><div class="row align-items-center justify-content-between">
+        <div class="container"><div class="row align-items-center justify-content-between">
             <div class="col-sm-4 col-xs-12 order-2 order-sm-1 text-left">
                 &copy; 2019 The Laminas Project. All rights reserved.
                 <br />
