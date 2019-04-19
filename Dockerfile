@@ -47,7 +47,7 @@ COPY data /var/www/data
 
 # Reset "local"/development config files
 RUN rm -f /var/www/config/development.config.php && \
-  rm /var/www/config/autoload/*.local.php && \
+  rm -f /var/www/config/autoload/*.local.php && \
   mv /var/www/config/autoload/local.php.dist /var/www/config/autoload/local.php
 
 # Build project
