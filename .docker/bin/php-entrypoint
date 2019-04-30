@@ -1,5 +1,10 @@
 #!/bin/sh
 # Entrypoint script for php container.
 
+# Copy CSS assets in public
+cp -r /assets/css /var/www/public
+# Run composer install
+composer install --quiet --no-ansi --no-dev --no-interaction --no-progress --no-scripts --no-plugins --optimize-autoloader
+
 # Start application; run in foreground, as that's what Docker prefers
 /usr/bin/env php vendor/bin/zend-expressive-swoole start
