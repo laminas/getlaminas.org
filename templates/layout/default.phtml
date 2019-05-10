@@ -10,14 +10,15 @@
     <title><?= $this->e($title) ?> - Laminas Project</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="/css/laminas.min.css">
     <?= $this->section('stylesheets') ?>
 </head>
 <body class="h-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top shadow" role="navigation"><div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow" role="navigation"><div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="/">
-            <img src="/images/logo/laminas-foundation-white.svg" alt="Laminas Project" />
+            <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project" />
         </a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +27,9 @@
 
         <!-- Links -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="<?= $this->url('about.join') ?>" class="nav-link">Join</a>
+                <a class="" href="<?= $this->url('about.join') ?>">Join</a>
                     </li>
                 </li>
             </ul>
@@ -39,16 +40,16 @@
         <?= $this->section('content') ?>
     </main>
 
-    <footer class="mt-4">
+    <footer class="bg-primary mt-4 text-white">
         <div class="container"><div class="row align-items-center justify-content-between">
             <div class="col-sm-4 col-xs-12 order-2 order-sm-1 text-left">
                 &copy; 2019 The Laminas Project. All rights reserved.
                 <br />
-                Logo design by <a href="https://www.blackpoints.ch">Blackpoints AG</a>
+                Design by <a href="https://www.blackpoints.ch">Blackpoints AG</a>
             </div>
             
-            <div class="col-sm-4 col-xs-12 order-1 order-sm-2 text-right social">
-                <a class="btn btn-social btn-outline" title="Twitter" href="https://twitter.com/getlaminas"><i class="fab fa-twitter-square"></i></a>
+            <div class="col-sm-4 col-xs-12 order-1 order-sm-2 text-right social text-white">
+                <a class="btn btn-social btn-outline" title="Twitter" href="https://twitter.com/getlaminas"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-social btn-outline" title="Slack" href="https://zendframework-slack.herokuapp.com"><i class="fab fa-slack"></i></a>
                 <a class="btn btn-social btn-outline" title="Forums" href="https://discourse.zendframework.com"><i class="far fa-comments"></i></a>
             </div>
