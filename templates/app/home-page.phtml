@@ -1,13 +1,13 @@
 <?php $this->layout('layout::default', ['title' => 'Home']) ?>
 
-<div class="jumbotron text-center">
-    <img src="/images/logo/laminas-foundation-white.svg" alt="Laminas Project" class="w-50">
+<div class="jumbotron jumbotron-home-page text-center">
 
-    <h1>Coming Soon!</h1>
-
-    <h2>
-        A community-supported, open source continuation of Zend Framework.
-    </h2>
+    <div class="lead-box">
+        <h1 class="text-primary">Coming Soon!</h1>
+        <h2 class="text-primary">
+            A community-supported, open source continuation of Zend&nbsp;Framework.
+        </h2>
+    </div>
 </div>
 
 <div class="container">
@@ -29,7 +29,7 @@
                 To take it to the next step of adoption and innovation, we are happy to announce
                 that we are transitioning Zend Framework and all its
                 subprojects to an open source project hosted at the
-                <a href="https://www.linuxfoundation.org">Linux Foundation</a>.  
+                <a href="https://www.linuxfoundation.org">Linux Foundation</a>.
             </blockquote>
 
             <p>
@@ -38,15 +38,15 @@
                 moving Zend Framework to this proven governance model, it will enjoy both growth
                 in adoption and contributors, and it will continue to focus on delivering best
                 of breed innovative code, using the highest standards of security, transparency,
-                and quality. 
+                and quality.
             </p>
 
             <blockquote class="blockquote">
                 The transition is already underway, and we are working to
                 finalize the list of founding members.
                 <a href="<?= $this->url('about.join') ?>">Contact us to learn
-                more about membership benefits and how your company can help
-                guide the project roadmap</a>.
+                    more about membership benefits and how your company can help
+                    guide the project roadmap</a>.
             </blockquote>
         </div>
 
@@ -56,26 +56,26 @@
                 <p class="card-text">
                     The Laminas project is funded through membership dues and
                     contributed engineering resources. Join us now to become a
-                    founding member. 
+                    founding member.
                 </p>
 
                 <p class="card-text text-center">
-                    <a class="btn btn-light" href="<?= $this->url('about.join') ?>">Join</a>
+                    <a class="btn btn-success" href="<?= $this->url('about.join') ?>">Join</a>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="jumbotron text-center bg-expressive mt-4">
-    <h1>FAQ</h1>
+<div class="jumbotron text-center mt-4">
+    <h1 class="text-primary">FAQ</h1>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <h2>About Laminas and its governance</h2>
-            
+            <h2 class="text-primary">About Laminas and its governance</h2>
+
             <p>
                 In spinning the project into its own foundation, we need to differentiate the
                 Open Source project from the commercial Zend brand, which means a new name!
@@ -103,7 +103,7 @@
                 <li>The Expressive subproject.</li>
             </ul>
 
-            <h2>Governance</h2>
+            <h2 class="text-primary">Governance</h2>
 
             <p>
                 The project will be led by a Governing Board, responsible for
@@ -118,28 +118,28 @@
                 we maintain, what milestones to work on, who has commit access to specific
                 repositories, and the general technical direction of the project.
 
-            <p>
-                The Governing Board will consist of representatives from member
-                companies, as well as one or more TSC members. The Board will
-                be responsible for establishing the governance structure and
-                general project oversight including business decisions,
-                budgets, organizing events and working groups, providing
-                marketing support to the project, and handling IP or legal
-                issues as they arise. 
-            </p>
+                <p>
+                    The Governing Board will consist of representatives from member
+                    companies, as well as one or more TSC members. The Board will
+                    be responsible for establishing the governance structure and
+                    general project oversight including business decisions,
+                    budgets, organizing events and working groups, providing
+                    marketing support to the project, and handling IP or legal
+                    issues as they arise.
+                </p>
 
-            <p>
-                The project will also eventually include a small team of
-                developers to help lead the day-to-day maintenance, manage
-                automation, keep the web presence online, and other tasks
-                necessary to keeping the project going. This team will help
-                provide project continuity, allowing contributors to focus on the
-                contributions they care about most.
-            </p>
+                <p>
+                    The project will also eventually include a small team of
+                    developers to help lead the day-to-day maintenance, manage
+                    automation, keep the web presence online, and other tasks
+                    necessary to keeping the project going. This team will help
+                    provide project continuity, allowing contributors to focus on the
+                    contributions they care about most.
+                </p>
         </div>
 
         <div class="col-md-6 col-sm-12">
-            <h2>What will happen to the code?</h2>
+            <h2 class="text-primary">What will happen to the code?</h2>
 
             <p>
                 Components and the MVC code will move to a new Laminas organization under
@@ -172,7 +172,7 @@
                 <a href="https://getcomposer.org">Composer</a> plugin to help automate the transition.
             </p>
 
-            <h2>Timeline</h2>
+            <h2 class="text-primary">Timeline</h2>
 
             <p>
                 Much of the transition is well under way at this point with domains secured,
