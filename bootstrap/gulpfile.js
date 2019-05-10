@@ -29,8 +29,11 @@ gulp.task('sass', function () {
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('css/'))
 });
-
-gulp.task('default', gulp.series('sass', function () {
+gulp.task('copy-css',function(){
+    return gulp.src('css/*')
+    .pipe(gulp.dest('../public/css'));
+});
+gulp.task('default', gulp.series('sass','copy-css',function () {
     var watcher = gulp.watch('scss/*.scss');
     watcher.on('all', function (event, path, stats) {
         sass();
