@@ -1,7 +1,5 @@
 <?php $this->layout('layout::default', ['title' => 'Become a Member']) ?>
-
 <div class="jumbotron jumbotron-join text-center">
-
     <div class="lead-box">
         <h1 class="text-primary">
             Become a Member
@@ -15,7 +13,6 @@
     <div class="row align-items-start">
         <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
             <h2 class="card-title text-primary">Why Become a Member?</h2>
-
             <p>
                 Over the years, Zend Framework has seen wide adoption across the
                 PHP ecosystem, with an emphasis on the Enterprise market. How much
@@ -26,62 +23,59 @@
                 content management, healthcare systems, entertainment platforms and
                 portals, messaging services, APIs, and many others.
             </p>
-
             <p>
                 The Laminas Project aims to continue that mission. We want to ensure that
                 the code is continuously maintained and improved for the lifetime of your
                 applications.
             </p>
-
             <p>
                 If you are interested in learning more about the benefits of
                 becoming a member, please fill out the form.
             </p>
         </div>
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2">
+            <div class="card bg-primary text-white">
+                <br>
+                <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input class="form-control" id="first_name" maxlength="40" name="first_name" type="text" />
+                    </div>
 
-        <div class="col-md-4 col-sm-12 order-1 order-sm-2 card bg-primary text-white">
-            <br>
-            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-                <div class="form-group">
-                    <label for="first_name">First Name</label>
-                    <input class="form-control" id="first_name" maxlength="40" name="first_name" type="text" />
-                </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input class="form-control" id="last_name" maxlength="80" name="last_name" type="text" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="last_name">Last Name</label>
-                    <input class="form-control" id="last_name" maxlength="80" name="last_name" type="text" />
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" id="email" maxlength="80" name="email" type="email" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control" id="email" maxlength="80" name="email" type="email" />
-                </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input class="form-control" id="company" maxlength="40" name="company" type="text" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="company">Company</label>
-                    <input class="form-control" id="company" maxlength="40" name="company" type="text" />
-                </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" id="title" maxlength="40" name="title" type="text" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input class="form-control" id="title" maxlength="40" name="title" type="text" />
-                </div>
+                    <button class="btn btn-success float-right" type="submit" name="submit">Submit</button>
 
-                <button class="btn btn-success float-right" type="submit" name="submit">Submit</button>
+                    <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7012M000001iJaa">
+                    <input type="hidden" name="oid" value="00D41000000cNi0">
+                    <input type="hidden" name="retURL" value="https://getlaminas.org/about/join/thank-you">
+                    <input type="hidden" name="member_status" value="Responded">
 
-                <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7012M000001iJaa">
-                <input type="hidden" name="oid" value="00D41000000cNi0">
-                <input type="hidden" name="retURL" value="https://getlaminas.org/about/join/thank-you">
-                <input type="hidden" name="member_status" value="Responded">
-
-                <?php /* the following are for debug purposes only
+                    <?php /* the following are for debug purposes only
                 <input type="hidden" name="debug" value="1">
                 <input type="hidden" name="debugEmail" value="<email goes here>">
                  */ ?>
-            </form>
-            <br>
+                </form>
+                <br>
+            </div>
         </div>
-
-
     </div>
 </div>
