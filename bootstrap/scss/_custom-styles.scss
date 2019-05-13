@@ -91,6 +91,7 @@ footer {
     border-bottom-right-radius: 2rem;
     border-bottom-left-radius: 2rem;
     border: none;
+    padding: 0 15px;
 }
 
 .card-header { 
@@ -127,3 +128,18 @@ footer a:visited {
 footer a:hover { 
     color: #ffffff;
 }
+
+/* fix footer for ie11 */
+
+html body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 1 */
+  }
+  nav,
+  footer {
+    flex-shrink: 0; /* 2 */
+  }
+  main {
+    flex: 1 0 auto; /* 2 */
+  }
