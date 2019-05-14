@@ -4,5 +4,6 @@ composer.phar
 clover.xml
 coveralls-upload.json
 phpunit.xml
-
+public/css/*
+node_modules/
 vendor/
