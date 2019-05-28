@@ -1,21 +1,21 @@
 <?php $this->layout('layout::default', ['title' => 'Home']) ?>
 
-<div class="jumbotron text-center">
-    <img src="/images/logo/laminas-foundation-white.svg" alt="Laminas Project" class="w-50">
+<div class="jumbotron jumbotron-home-page text-center">
+    <div class="lead-box">
+        <h1 class="text-primary">Coming Soon!</h1>
 
-    <h1>Coming Soon!</h1>
-
-    <h2>
-        A community-supported, open source continuation of Zend Framework.
-    </h2>
+        <h2 class="text-primary">
+            A community-supported, open source continuation of Zend Framework.
+        </h2>
+    </div>
 </div>
 
 <div class="container">
     <div class="row align-items-start">
         <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
             <p>
-                Since its inception, <a href="https://www.zend.com">Zend Technologies</a>, and later
-                <a href="https://www.roguewave.com">Rogue Wave Software</a>, has
+                Since its inception, <a href="https://www.zend.com" target="_blank">Zend Technologies</a>, and later
+                <a href="https://www.roguewave.com" target="_blank">Rogue Wave Software</a>, has
                 been single-handedly leading and sponsoring the Zend Framework
                 project. Over the years, Zend Framework has seen wide adoption
                 across the PHP ecosystem, with an emphasis on the Enterprise
@@ -29,7 +29,7 @@
                 To take it to the next step of adoption and innovation, we are happy to announce
                 that we are transitioning Zend Framework and all its
                 subprojects to an open source project hosted at the
-                <a href="https://www.linuxfoundation.org">Linux Foundation</a>.  
+                <a href="https://www.linuxfoundation.org" target="_blank">Linux Foundation</a>.
             </blockquote>
 
             <p>
@@ -50,31 +50,31 @@
             </blockquote>
         </div>
 
-        <div class="col-md-4 col-sm-12 order-1 order-sm-2 card bg-primary text-white">
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="card bg-primary text-white">
             <h2 class="card-header">Become a Founding Member</h2>
             <div class="card-body">
                 <p class="card-text">
                     The Laminas project is funded through membership dues and
                     contributed engineering resources. Join us now to become a
-                    founding member. 
+                    founding member.
                 </p>
 
                 <p class="card-text text-center">
-                    <a class="btn btn-light" href="<?= $this->url('about.join') ?>">Join</a>
+                    <a class="btn btn-success" href="<?= $this->url('about.join') ?>">Join</a>
                 </p>
             </div>
-        </div>
+        </div></div>
     </div>
 </div>
 
-<div class="jumbotron text-center bg-expressive mt-4">
-    <h1>FAQ</h1>
+<div class="jumbotron text-center mt-4">
+    <h1 class="text-primary">FAQ</h1>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <h2>About Laminas and its governance</h2>
+            <h2 class="text-primary">About Laminas and its governance</h2>
             
             <p>
                 In spinning the project into its own foundation, we need to differentiate the
@@ -103,7 +103,7 @@
                 <li>The Expressive subproject.</li>
             </ul>
 
-            <h2>Governance</h2>
+            <h2 class="text-primary">Governance</h2>
 
             <p>
                 The project will be led by a Governing Board, responsible for
@@ -117,6 +117,7 @@
                 helping us during the transition. Its role will be to make decisions about what
                 we maintain, what milestones to work on, who has commit access to specific
                 repositories, and the general technical direction of the project.
+            </p>
 
             <p>
                 The Governing Board will consist of representatives from member
@@ -139,7 +140,7 @@
         </div>
 
         <div class="col-md-6 col-sm-12">
-            <h2>What will happen to the code?</h2>
+            <h2 class="text-primary">What will happen to the code?</h2>
 
             <p>
                 Components and the MVC code will move to a new Laminas organization under
