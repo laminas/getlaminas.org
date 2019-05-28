@@ -5,6 +5,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    entrypoint: ./.docker/bin/compose-entrypoint
     ports:
       - "9000:9000"
     volumes:
