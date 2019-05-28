@@ -32,6 +32,9 @@ RUN apk update && \
 # PHP configuration
 COPY .docker/php/getlaminas.ini /usr/local/etc/php/conf.d/999-getlaminas.ini
 
+# Add Prestissimo plugin
+RUN composer global require hirak/prestissimo
+
 # Overwrite entrypoint
 COPY .docker/bin/php-entrypoint /usr/local/bin/entrypoint
 
