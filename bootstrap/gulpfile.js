@@ -30,7 +30,13 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('css/'))
 });
 
-gulp.task('default', gulp.series('sass', function () {
+/* Primary build task
+ * Add items to this series that need to occur when building the final
+ * production image.
+ */
+gulp.task('deploy', gulp.series('sass'));
+
+gulp.task('default', gulp.series('deploy', function () {
     var watcher = gulp.watch('scss/*.scss');
     watcher.on('all', function (event, path, stats) {
         sass();
