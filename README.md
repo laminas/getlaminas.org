@@ -20,6 +20,9 @@ during that time, you will need to have node, npm, and gulp installed on your
 host machine. Once they are:
 
 ```bash
+# Because files are copied from the container, we need to make them writable:
+$ sudo chmod a+rw data/assets.json public/css/*.css
+# Now we can install dependencies and start watching for changes:
 $ cd bootstrap
 $ npm i
 $ gulp

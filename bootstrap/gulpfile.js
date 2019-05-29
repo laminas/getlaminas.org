@@ -55,9 +55,12 @@ gulp.task('copy-rev', function () {
  */
 gulp.task('deploy', gulp.series('sass', 'rev-css'));
 
-gulp.task('default', gulp.series('deploy', 'copy-css', 'copy-rev', function () {
-    var watcher = gulp.watch('scss/*.scss');
-    watcher.on('all', function (event, path, stats) {
-        sass();
-    });
+/* Development build task
+ * Add items to this series that need to occur when building assets during
+ * development.
+ */
+gulp.task('develop', gulp.series('deploy', 'copy-css', 'copy-rev')); 
+
+gulp.task('default', gulp.series('develop', function () {
+    gulp.watch('scss/*.scss', gulp.series('develop'));
 }));
