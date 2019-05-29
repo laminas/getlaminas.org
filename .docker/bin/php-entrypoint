@@ -4,5 +4,8 @@
 # Copy CSS assets in public
 cp -r /assets/css /var/www/public
 
+# Add assets revision config to application
+cp /assets/assets.json /var/www/data/
+
 # Start application; run in foreground, as that's what Docker prefers
 /usr/bin/env php vendor/bin/zend-expressive-swoole start

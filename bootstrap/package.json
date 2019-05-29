@@ -24,6 +24,7 @@
     "gulp-clean-css": "^4.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
+    "gulp-rev": "^9.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-scss-lint": "^1.0.0",
     "gulp-sourcemaps": "^2.6.4"

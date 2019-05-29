@@ -9,7 +9,7 @@ COPY bootstrap /work/
 WORKDIR /work
 RUN npm install && npm rebuild node-sass && gulp deploy
 # Created assets need to be in an unmapped folder to persist
-RUN mkdir -p /assets && mv /work/css /assets
+RUN mkdir -p /assets && mv /work/build/* /assets
 
 
 # Build the PHP container
@@ -39,8 +39,8 @@ RUN composer global require hirak/prestissimo
 COPY .docker/bin/php-entrypoint /usr/local/bin/entrypoint
 
 # Copy assets
-RUN mkdir -p /assets/css
-COPY --from=assets /assets/css/*.css /assets/css/
+COPY --from=assets /assets/assets.json /assets/assets.json
+COPY --from=assets /assets/css /assets/css/
 
 # Project files
 COPY bin /var/www/bin

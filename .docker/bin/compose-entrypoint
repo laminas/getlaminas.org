@@ -4,6 +4,9 @@
 # Copy CSS assets in public
 cp -r /assets/css /var/www/public
 
+# Add assets revision config to application
+cp /assets/assets.json /var/www/data/
+
 # Install application dependencies
 composer install --no-interaction
 

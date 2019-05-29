@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App;
 
+use League\Plates\Engine as PlatesEngine;
 use Psr\Log\LoggerInterface;
+use Zend\Expressive\Plates\PlatesEngineFactory;
 use Zend\Stratigility\Middleware\ErrorHandler;
 
 /**
@@ -24,8 +26,9 @@ class ConfigProvider
     public function __invoke() : array
     {
         return [
-            'dependencies' => $this->getDependencies(),
-            'templates'    => $this->getTemplates(),
+            'asset-revisions' => [],
+            'dependencies'    => $this->getDependencies(),
+            'templates'       => $this->getTemplates(),
         ];
     }
 
@@ -39,12 +42,16 @@ class ConfigProvider
                 ErrorHandler::class => [
                     LoggingErrorListenerDelegator::class,
                 ],
+                PlatesEngine::class => [
+                    Template\InjectAssetRevisionsDelegator::class,
+                ],
             ],
             'factories'  => [
                 Handler\AboutJoinHandler::class         => Handler\AboutJoinHandlerFactory::class,
                 Handler\AboutJoinThankYouHandler::class => Handler\AboutJoinThankYouHandlerFactory::class,
                 Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
                 LoggerInterface::class                  => AccessLoggerFactory::class,
+                PlatesEngine::class                     => PlatesEngineFactory::class,
             ],
         ];
     }
