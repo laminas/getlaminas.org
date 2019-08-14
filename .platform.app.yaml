@@ -1,0 +1,53 @@
+name: getlaminas_org
+
+type: php:7.2
+
+size: S
+
+disk: 256
+
+build:
+  flavor: none
+
+dependencies:
+  php:
+    "hirak/prestissimo": "^0.3.9"
+  nodejs:
+    gulp-cli: '~2.1.0'
+
+mounts:
+  'data/cache':
+    source: local
+    source_path: data/cache
+
+hooks:
+  build: |
+    set -e
+    echo "- Installing asset dependencies"
+    (cd bootstrap ; npm install)
+    echo "- Building assets"
+    (cd bootstrap ; gulp deploy)
+    mv bootstrap/build/assets.json data/
+    mv bootstrap/build/css public/
+    echo "- Setting up configuration"
+    rm -f config/development.config.php config/autoload/*.local.php
+    mv config/autoload/local.php.dist config/autoload/local.php
+    echo "- Installing application dependencies"
+    composer install --no-ansi --no-dev --no-interaction --no-scripts --no-plugins --optimize-autoloader
+  deploy: |
+    rm -f data/cache/config-cache.php
+
+web:
+  locations:
+    '/':
+      root: 'public'
+      passthru: '/index.php'
+      index:
+        - index.php
+      expires: -1
+      scripts: true
+      allow: false
+      rules:
+        \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|cast|mp4|json|html|ico|svg)$:
+          allow: true
+          expires: 300s
