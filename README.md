@@ -31,16 +31,9 @@ $ gulp
 From there, any changes to CSS will be propagated to the application, and
 reloading the page in the browser will show the changes.
 
-## Building images
-
-To build the image:
-
-```bash
-$ make image # or just "make"
-```
-
-To push the image to the Docker Hub:
+Alternately, you can use the following command to rebuild the base docker
+container:
 
 ```bash
-$ make hub
+$ docker-compose build php
 ```

@@ -1,5 +1,6 @@
 #!/bin/sh
 # Entrypoint script for php container.
+set -e
 
 # Copy CSS assets in public
 cp -r /assets/css /var/www/public
@@ -7,8 +8,11 @@ cp -r /assets/css /var/www/public
 # Add assets revision config to application
 cp /assets/assets.json /var/www/data/
 
-# Install application dependencies
-composer install --no-interaction
-
 # Start application; run in foreground, as that's what Docker prefers
-/usr/bin/env php vendor/bin/zend-expressive-swoole start
+# Following is from the official docker-php-entrypoint
+if [ "${1#-}" != "$1" ]; then
+    set -- php-fpm "$@"
+fi
+
+echo "Running php container using '$@'"
+exec "$@"

@@ -4,11 +4,19 @@ services:
   php:
     build: 
       context: .
-      dockerfile: Dockerfile
-    entrypoint: ./.docker/bin/compose-entrypoint
-    ports:
-      - "9000:9000"
+      dockerfile: .docker/php/Dockerfile
     volumes:
       - .:/var/www
       - ./.docker/php/getlaminas.ini:/usr/local/etc/php/conf.d/999-getlaminas.ini
-      - ./.docker/bin/php-entrypoint:/usr/local/bin/entrypoint
+      - ./.docker/php/php-entrypoint:/usr/local/bin/php-entrypoint
+  
+  nginx:
+    build: .docker/nginx/
+    depends_on:
+      - php
+    ports:
+      - "8080:80"
+    links:
+      - php
+    volumes:
+      - .:/var/www
