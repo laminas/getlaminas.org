@@ -23,6 +23,8 @@ mounts:
 hooks:
   build: |
     set -e
+    echo "Installing platform.sh CLI"
+    curl -sS https://platform.sh/cli/installer | php
     echo "- Installing asset dependencies"
     (cd bootstrap ; npm install)
     echo "- Building assets"
