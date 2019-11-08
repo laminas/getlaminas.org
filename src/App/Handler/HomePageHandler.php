@@ -8,34 +8,22 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Router;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
 class HomePageHandler implements RequestHandlerInterface
 {
-    /** @var string */
-    private $containerName;
+    /** @var TemplateRendererInterface */
+    private $renderer;
 
-    /** @var Router\RouterInterface */
-    private $router;
-
-    /** @var null|TemplateRendererInterface */
-    private $template;
-
-    public function __construct(
-        string $containerName,
-        Router\RouterInterface $router,
-        ?TemplateRendererInterface $template = null
-    ) {
-        $this->containerName = $containerName;
-        $this->router        = $router;
-        $this->template      = $template;
+    public function __construct(TemplateRendererInterface $renderer)
+    {
+        $this->renderer = $renderer;
     }
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         return new HtmlResponse(
-            $this->template->render('app::home-page')
+            $this->renderer->render('app::home-page')
         );
     }
 }
