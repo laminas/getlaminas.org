@@ -1,0 +1,34 @@
+<?php
+$this->layout('layout::default', [
+    'title' => $this->escapeHtml($post->title),
+]);
+
+$this->start('styles');
+$this->insert('blog::styles');
+$this->stop();
+
+$this->push('scripts');
+$this->insert('blog::scripts');
+$this->end();
+
+?>
+<div class="single-entry h-entry container col offset-md-2"><div class="row">
+    <aside class="col-md-2 d-none d-sm-block sidebar blog">
+        <p>
+            Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
+            <?php if ($post->updated) : ?>
+            <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
+            <?php endif ?>
+        </p>
+    </aside>
+
+    <article class="col-md-6 blog">
+        <h2 class="p-name"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h2>
+
+        <div class="e-content">
+        <?= $post->body ?>
+
+        <?= $post->extended ?>
+        </div>
+    </article>
+</div></div>

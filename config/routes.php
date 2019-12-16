@@ -37,4 +37,7 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     $app->get('/about/join', App\Handler\AboutJoinHandler::class, 'about.join');
     $app->get('/about/join/thank-you', App\Handler\AboutJoinThankYouHandler::class, 'about.join.thank-you');
     $app->post('/about/join/thank-you', App\Handler\AboutJoinThankYouHandler::class);
+
+    // Blog routes
+    (new GetLaminas\Blog\ConfigProvider())->registerRoutes($app, '/blog');
 };

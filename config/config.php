@@ -13,6 +13,8 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
+    \Zend\Paginator\ConfigProvider::class,
+    \Phly\EventDispatcher\ConfigProvider::class,
     \Zend\HttpHandlerRunner\ConfigProvider::class,
     \Zend\Expressive\Plates\ConfigProvider::class,
     \Zend\Expressive\Router\FastRouteRouter\ConfigProvider::class,
@@ -24,11 +26,14 @@ $aggregator = new ConfigAggregator([
     \Zend\Expressive\Router\ConfigProvider::class,
 
     // Swoole config to overwrite some services (if installed)
+    // phpcs:disable
     class_exists(\Zend\Expressive\Swoole\ConfigProvider::class)
         ? \Zend\Expressive\Swoole\ConfigProvider::class
-        : function(){ return[]; },
+        : function() { return []; },
+    // phpcs:enable
 
     // Default App module config
+    GetLaminas\Blog\ConfigProvider::class,
     App\ConfigProvider::class,
 
     // Load application config in a pre-defined order in such a way that local settings

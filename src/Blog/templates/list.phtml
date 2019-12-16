@@ -1,0 +1,49 @@
+<?php
+$this->layout('layout::default', [
+    'title' => $this->escapeHtml($title),
+]);
+
+$this->push('styles');
+echo $this->fetch('blog::styles');
+$this->end();
+
+$this->push('scripts');
+echo $this->fetch('blog::scripts');
+$this->end();
+?>
+<section class="blog container offset-md-2 col">
+    <div class="row">
+        <div class="col">
+        <h1><?= $this->escapeHtml($title) ?></h1>
+        </div>
+    </div>
+
+    <?php if (empty($posts)) : ?>
+    <div class="row"><p class="col text-center">No posts found.</p></div>
+
+    <?php else : ?>
+    <?php foreach ($posts as $post) : ?>
+    <div class="row h-entry">
+        <aside class="col-md-2 d-none d-sm-block alpha sidebar blog">
+            <p>
+                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
+            <?php if ($post->updated) : ?>
+                <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
+            <?php endif ?>
+            </p>
+        </aside>
+
+        <section class="col-md-6 omega post-list">
+            <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
+
+            <div class="entry body p-summary"><?= $post->body ?></div>
+
+            <p><a href="<?= $this->postUrl($post) ?>">Continue reading...</a></p>
+        </section>
+    </div>
+    <?php endforeach ?>
+
+    <?php $this->insert('app::pagination', ['pagination' => $pagination]) ?>
+
+    <?php endif ?>
+</section>

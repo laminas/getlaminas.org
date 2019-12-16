@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App;
 
 use League\Plates\Engine as PlatesEngine;
+use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\Log\LoggerInterface;
 use Zend\Expressive\Plates\PlatesEngineFactory;
 use Zend\Stratigility\Middleware\ErrorHandler;
@@ -38,6 +41,9 @@ class ConfigProvider
     public function getDependencies() : array
     {
         return [
+            'aliases' => [
+                ListenerProviderInterface::class => AttachableListenerProvider::class,
+            ],
             'delegators' => [
                 ErrorHandler::class => [
                     LoggingErrorListenerDelegator::class,
@@ -47,6 +53,7 @@ class ConfigProvider
                 ],
             ],
             'factories'  => [
+                EventDispatcherInterface::class         => EventDispatcherFactory::class,
                 Handler\AboutJoinHandler::class         => Handler\AboutJoinHandlerFactory::class,
                 Handler\AboutJoinThankYouHandler::class => Handler\AboutJoinThankYouHandlerFactory::class,
                 Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
