@@ -1,0 +1,13 @@
+<?php $this->layout('layout::default', ['title' => 'Security Advisories']) ?>
+
+<h2>Security Advisory: <?= $advisory ?></h2>
+
+<?= $body ?>
+
+<div class="spacing"></div>
+<div class="hline"></div>
+
+<p>Released <?= date('Y-m-d', $date) ?></p>
+<p><a href="/security/advisories"><i class="fa fa-chevron-left"></i> Back to advisories</a></p>
+
+<?php $this->insert('security::menu') ?>

@@ -34,6 +34,7 @@ $aggregator = new ConfigAggregator([
 
     // Default App module config
     GetLaminas\Blog\ConfigProvider::class,
+    GetLaminas\Security\ConfigProvider::class,
     App\ConfigProvider::class,
 
     // Load application config in a pre-defined order in such a way that local settings

@@ -40,4 +40,7 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
 
     // Blog routes
     (new GetLaminas\Blog\ConfigProvider())->registerRoutes($app, '/blog');
+
+    // Security advisory routes
+    (new GetLaminas\Security\ConfigProvider())->registerRoutes($app, '/security');
 };

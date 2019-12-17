@@ -1,0 +1,31 @@
+<?php
+$links = [
+    '/security'            => 'Overview',
+    '/security/advisories' => 'Advisories',
+    '/security/feed'       => 'Feed',
+];
+$path = parse_url($this->serverurl(), PHP_URL_PATH);
+?>
+
+<ul class="nav nav-pills nav-stacked">
+<?php foreach ($links as $url => $title) : ?>
+    <li<?= ($path === $url) ? ' class="active"' : '' ?>>
+        <a href="<?= $url ?>">
+        <?php if ('/security/feed' === $url) : ?>
+            <i class="fa fa-rss-square"></i>
+        <?php else : ?>
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        <?php endif ?>
+            <?= $title ?>
+        </a>
+    </li>
+<?php endforeach ?>
+</ul>
+
+<div class="spacing"></div>
+
+<div>
+    <p><i class="fa fa-bug fa-2x"></i> Have you identified a security vulnerability?</p>
+
+    <p>Please report it to us at <a href="mailto:security@getlaminas.org">security@getlaminas.org</a></p>
+</div>

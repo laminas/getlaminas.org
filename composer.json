@@ -47,6 +47,7 @@
         "phly/phly-expressive-configfactory": "^1.1",
         "symfony/console": "^4.0",
         "symfony/yaml": "^4.0",
+        "webuni/commonmark-table-extension": "^1.0",
         "zendframework/zend-component-installer": "^2.1.1",
         "zendframework/zend-config-aggregator": "^1.0",
         "zendframework/zend-diactoros": "^1.7.1 || ^2.0",
@@ -70,7 +71,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App/",
-            "GetLaminas\\Blog\\": "src/Blog/"
+            "GetLaminas\\Blog\\": "src/Blog/",
+            "GetLaminas\\Security\\": "src/Security/"
         }
     },
     "autoload-dev": {
@@ -79,6 +81,15 @@
         }
     },
     "scripts": {
+        "build": [
+            "@build-blog",
+            "./bin/console security:build"
+        ],
+        "build-blog": [
+            "./bin/console blog:seed-db",
+            "./bin/console blog:feed-generator",
+            "./bin/console blog:generate-search-data"
+        ],
         "post-create-project-cmd": [
             "@development-enable"
         ],
