@@ -36,6 +36,7 @@ hooks:
     mv config/autoload/local.php.dist config/autoload/local.php
     echo "- Installing application dependencies"
     composer install --no-ansi --no-dev --no-interaction --no-scripts --no-plugins --optimize-autoloader
+    mkdir -p var/blog/feeds
     composer build
   deploy: |
     rm -f data/cache/config-cache.php
