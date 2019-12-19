@@ -81,6 +81,7 @@ class ConfigProvider
     {
         $basePath = rtrim($basePath, '/') . '/';
         $app->get($basePath, Handler\StaticPageHandler::class, 'app.home-page');
+        $app->get($basePath . 'about/foundation', Handler\StaticPageHandler::class, 'about.foundation');
         $app->get($basePath . 'about/join', Handler\StaticPageHandler::class, 'about.join');
         $app->get($basePath . 'about/join/thank-you', Handler\StaticPageHandler::class, 'about.join-thank-you');
         $app->post($basePath . 'about/join/thank-you', Handler\StaticPageHandler::class, 'about.join-process');

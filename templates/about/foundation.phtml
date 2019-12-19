@@ -1,0 +1,190 @@
+<?php $this->layout('layout::default', ['title' => 'Home']) ?>
+
+<div class="jumbotron jumbotron-home-page text-center">
+    <div class="lead-box">
+        <h1 class="text-primary">The Laminas Project</h1>
+
+        <h2 class="text-primary">
+            A community-supported, open source continuation of Zend Framework.
+        </h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
+            <p>
+                Since its inception, <a href="https://www.zend.com" target="_blank">Zend Technologies</a>, and later
+                <a href="https://www.roguewave.com" target="_blank">Rogue Wave Software</a>, 
+                single-handedly led and sponsored the Zend Framework
+                project. Over the years, Zend Framework has seen wide adoption
+                across the PHP ecosystem, with an emphasis on the Enterprise
+                market. It has formed the basis of numerous business
+                applications and services including eCommerce platforms,
+                content management, healthcare systems, entertainment platforms
+                and portals, messaging services, APIs, and many others.
+            </p>
+
+            <blockquote class="blockquote">
+                To take it to the next step of adoption and innovation, we are 
+                transitioning Zend Framework and all its subprojects to the
+                <a href="https://www.linuxfoundation.org" target="_blank">Linux Foundation</a>
+                as the <strong>Laminas Project</strong>.
+            </blockquote>
+
+            <p>
+                The Linux Foundation is host to a range of widely successful open source
+                projects, and has led many similar transitions in the past. We believe
+                transitioning to this proven governance model will help us both grow
+                in adoption and contributors, and allow us to focus on delivering best
+                of breed innovative code, using the highest standards of security, transparency,
+                and quality. 
+            </p>
+
+            <p>
+                We are currently finalizing our Technical Charter. We are also working
+                towards a funding model, which will entail an additional Governing Board
+                to manage marketing the project, funding development, and more.
+            </p>
+            <blockquote class="blockquote">
+                The transition is already underway, and we are working to
+                finalize the list of founding members.
+                <a href="<?= $this->url('about.join') ?>">Contact us to learn
+                more about membership benefits and how your company can help
+                guide the project roadmap</a>.
+            </blockquote>
+        </div>
+
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="card bg-primary text-white">
+            <h2 class="card-header">Become a Founding Member</h2>
+            <div class="card-body">
+                <p class="card-text">
+                    As noted, we are working towards a funding model to help
+                    grow the ecosystem through marketing efforts, monetarily
+                    sponsoring targeted development projects, and providing
+                    maintainer stipends. These efforts would be funded through
+                    membership dues and contributed engineering resources. Contact
+                    us if you are interested in becoming a founding member.
+                </p>
+
+                <p class="card-text text-center">
+                    <a class="btn btn-success" href="<?= $this->url('about.join') ?>">Join</a>
+                </p>
+            </div>
+        </div></div>
+    </div>
+</div>
+
+<div class="jumbotron text-center mt-4">
+    <h1 class="text-primary">FAQ</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h2 class="text-primary">About Laminas and its governance</h2>
+            
+            <p>
+                In spinning the project into its own foundation, we needed to differentiate the
+                Open Source project from the commercial Zend brand, which has meant new names!
+            </p>
+
+            <p>
+                <strong>Laminas</strong> is the plural of <strong>lamina</strong>,
+                meaning <em>a thin layer</em>. We feel it succinctly summarizes the goals of
+                the project in many ways:
+            </p>
+
+            <ul>
+                <li>Components you can compose or <em>layer</em> into any application.</li>
+                <li>Middleware architectures are often termed <em>layered</em>.</li>
+            </ul>
+
+            <p>
+                The project will encompass each of the following:
+            </p>
+
+            <ul>
+                <li>The various standalone components.</li>
+                <li>The MVC framework.</li>
+                <li>The Apigility subproject, which becomes <strong>Laminas API Tools</strong>.</li>
+                <li>The Expressive subproject, which becomes <strong>Mezzio</strong>.</li>
+            </ul>
+
+            <h2 class="text-primary">Governance</h2>
+
+            <p>
+                The project will be led by a Governing Board, responsible for
+                the business decisions, and a Technical Steering Committee
+                (TSC), responsible for the technical decisions.
+            </p>
+
+            <p>
+                The Technical Steering Committee will initially be composed by current members
+                of the Zend Framework Community Review Team, along with other folks who are
+                helping us during the transition. Its role will be to make decisions about what
+                we maintain, what milestones to work on, who has commit access to specific
+                repositories, and the general technical direction of the project.
+            </p>
+
+            <p>
+                The Governing Board will consist of representatives from member
+                companies, as well as one or more TSC members. The Board will
+                be responsible for establishing the governance structure and
+                general project oversight including business decisions,
+                budgets, organizing events and working groups, providing
+                marketing support to the project, and handling IP or legal
+                issues as they arise. 
+            </p>
+
+            <p>
+                The project will also eventually include a small team of
+                developers to help lead the day-to-day maintenance, manage
+                automation, keep the web presence online, and other tasks
+                necessary to keeping the project going. This team will help
+                provide project continuity, allowing contributors to focus on the
+                contributions they care about most.
+            </p>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <h2 class="text-primary">What has happened to Zend Framework?</h2>
+
+            <p>
+                All Zend Framework components, including the MVC runtime, has
+                moved to a new <a href="https://github.com/laminas">Laminas organization under
+                GitHub</a>. Apigility packages have moved from the zfcampus organization to the
+                <a href="https://github.com/laminas-api-tools">Laminas API Tools organization</a>.
+                Expressive packages have moved to the <a href="https://github.com/mezzio">Mezzio
+                organization</a>.
+            </p>
+
+            <p>
+                The existing repositories have all been archived. This means it will remain available on
+                GitHub, but will be read-only; this allows existing installations to
+                continue working without interruption, while clearly signal that development has
+                moved to the new projects. The related package entries on Packagist have been
+                marked as deprecated, and point to the relevant new packages as
+                alternatives.
+            </p>
+
+            <p>
+                All new packages published by the Laminas Project have been marked as <em>replacements</em> of the
+                existing Zend Framework packages, and includes tools for aliasing legacy classes
+                to the new package classes. This allows for seamless integration in existing
+                projects, including when using third-party libraries that leveraged ZF code.
+            </p>
+
+            <p>
+                Finally, we have provided tools both to update your own code to use the new
+                classes provided by Laminas packages, as well as to help you update your
+                dependencies to use the new Laminas packages instead of the Zend Framework
+                versions. These are provided as a combination of a 
+                <a href="https://getcomposer.org">Composer</a> plugin,
+                configuration post-processors for MVC and Mezzio applications, and the <a
+                href="https://github.com/laminas/laminas-migration">laminas-migration</a> tool.
+            </p>
+        </div>
+    </div>
+</div>
+
