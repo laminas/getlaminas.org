@@ -86,9 +86,9 @@
             "./bin/console security:build"
         ],
         "build-blog": [
-            "./bin/console blog:seed-db",
-            "./bin/console blog:feed-generator",
-            "./bin/console blog:generate-search-data"
+            "./bin/console blog:seed-db -p $(pwd)",
+            "./bin/console blog:feed-generator -o $(pwd)/var/blog/feeds",
+            "./bin/console blog:generate-search-data -p $(pwd)"
         ],
         "post-create-project-cmd": [
             "@development-enable"
