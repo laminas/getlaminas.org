@@ -1,64 +1,72 @@
 <?php $this->layout('layout::default', ['title' => 'Security']) ?>
 
-<h2>The Laminas Project takes security seriously</h2>
-<h3>Reporting Potential Security Issues</h3>
+<div class="container">
+    <div class="row align-items-start mt-5">
+        <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
+            <h2>The Laminas Project takes security seriously</h2>
+            <h3>Reporting Potential Security Issues</h3>
 
-<p>
-    If you have encountered a potential security vulnerability in the
-    Laminas Project, please report it to us at <a href="mailto:security@getlaminas.org">security@getlaminas.org</a>. We will
-    work with you to verify the vulnerability and patch it.
-</p>
+            <p>
+                If you have encountered a potential security vulnerability in the
+                Laminas Project, please report it to us at <a href="mailto:security@getlaminas.org">security@getlaminas.org</a>. We will
+                work with you to verify the vulnerability and patch it.
+            </p>
 
-<p>
-    When reporting issues, please provide the following information:
-</p>
+            <p>
+                When reporting issues, please provide the following information:
+            </p>
 
-<ul>
-    <li>Component(s) affected</li>
-    <li>A description indicating how to reproduce the issue</li>
-    <li>A summary of the security vulnerability and impact</li>
-</ul>
+            <ul>
+                <li>Component(s) affected</li>
+                <li>A description indicating how to reproduce the issue</li>
+                <li>A summary of the security vulnerability and impact</li>
+            </ul>
 
-<p>
-    We request that you contact us via the email address above and give the
-    project contributors a chance to resolve the vulnerability and issue a new
-    release prior to any public exposure; this helps protect Laminas Project
-    users and provides them with a chance to upgrade and/or update in order to
-    protect their applications.
-</p>
+            <p>
+                We request that you contact us via the email address above and give the
+                project contributors a chance to resolve the vulnerability and issue a new
+                release prior to any public exposure; this helps protect Laminas Project
+                users and provides them with a chance to upgrade and/or update in order to
+                protect their applications.
+            </p>
 
-<p>
-    For sensitive email communications, please use <a href="/asset/laminas-security.asc">our PGP key</a>.
-</p>
+            <p>
+                For sensitive email communications, please use <a href="/asset/laminas-security.asc">our PGP key</a>.
+            </p>
 
-<h2>Policy</h2>
+            <h2>Policy</h2>
 
-<p>
-    The Laminas Project takes security seriously. If we verify a reported
-    security vulnerability, our policy is:
-</p>
+            <p>
+                The Laminas Project takes security seriously. If we verify a reported
+                security vulnerability, our policy is:
+            </p>
 
-<ul>
-    <li>
-        We will patch the current release branch, as well as the
-        immediate prior minor release branch.
-    </li>
+            <ul>
+                <li>
+                    We will patch the current release branch, as well as the
+                    immediate prior minor release branch.
+                </li>
 
-    <li>
-        After patching the release branches, we will immediately
-        issue new security fix releases for each patched release
-        branch.
-    </li>
+                <li>
+                    After patching the release branches, we will immediately
+                    issue new security fix releases for each patched release
+                    branch.
+                </li>
 
-    <li>
-        A security advisory will be released on the Laminas Project
-        site detailing the vulnerability, as well as
-        recommendations for end-users to protect themselves.
-        Security advisories will be listed at <a href="/security/advisories/">https://getlaminas.org/security/advisories</a>,
-        as well as via a <a href="/security/feed">feed</a> (which
-        is also present in the website head for easy feed
-        discovery)
-    </li>
-</ul>
+                <li>
+                    A security advisory will be released on the Laminas Project
+                    site detailing the vulnerability, as well as
+                    recommendations for end-users to protect themselves.
+                    Security advisories will be listed at <a href="/security/advisories/">https://getlaminas.org/security/advisories</a>,
+                    as well as via a <a href="/security/feed">feed</a> (which
+                    is also present in the website head for easy feed
+                    discovery)
+                </li>
+            </ul>
+        </div>
 
-<?php $this->insert('security::menu') ?>
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2">
+        <?php $this->insert('security::menu') ?>
+        </div>
+    </div>
+</div>
