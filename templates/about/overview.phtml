@@ -1,0 +1,31 @@
+<?php $this->layout('layout::default', ['title' => 'About the Laminas Project']) ?>
+
+<div class="container">
+    <div class="row align-items-start mt-5">
+        <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
+            <p>
+                The Laminas Project is an open-source continuation of
+                <a href="https://framework.zend.com">Zend Framework</a>,
+                a PHP framework and component library targeting enterprise
+                applications.
+            </p>
+
+            <p>
+                It encompases the following projects:
+            </p>
+
+            <ul>
+                <li><a href="https://docs.laminas.dev">Laminas Components and MVC</a></li>
+                <li><a href="https://docs.mezzio.dev">Mezzio</a>, a PHP middleware runtime, and various components and extensions to the runtime.</li>
+                <li><a href="https://api-tools.getlaminas.org">Laminas API Tools</a>, an API builder and engine, built on top of the Laminas MVC runtime.</li>
+        </div>
+
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2">
+            <div class="teardrop card bg-primary text-white">
+                <ul class="nav flex-column card-body">
+                    <li class="nav-item"><a href="<?= $this->url('about.foundation') ?>">About the Foundation</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
