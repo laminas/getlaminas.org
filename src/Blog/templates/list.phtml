@@ -11,19 +11,20 @@ $this->push('scripts');
 echo $this->fetch('blog::scripts');
 $this->end();
 ?>
-<section class="blog container offset-md-2 col">
-    <div class="row">
+<section class="blog container">
+    <div class="row align-items-start mt-5">
         <div class="col">
-        <h1><?= $this->escapeHtml($title) ?></h1>
+            <h1><?= $this->escapeHtml($title) ?></h1>
         </div>
     </div>
 
     <?php if (empty($posts)) : ?>
-    <div class="row"><p class="col text-center">No posts found.</p></div>
+    <div class="row mt-4"><p class="col text-center">No posts found.</p></div>
 
     <?php else : ?>
     <?php foreach ($posts as $post) : ?>
     <div class="row h-entry">
+        <? /*
         <aside class="col-md-2 d-none d-sm-block alpha sidebar blog">
             <p>
                 Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
@@ -33,6 +34,7 @@ $this->end();
             </p>
         </aside>
 
+         */ ?>
         <section class="col-md-6 omega post-list">
             <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
 
