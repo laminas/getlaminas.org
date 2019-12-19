@@ -1,8 +1,8 @@
-<?php $this->layout('layout::default', ['title' => 'Home']) ?>
+<?php $this->layout('layout::default', ['title' => 'Laminas Project']) ?>
 
 <div class="jumbotron jumbotron-home-page text-center">
     <div class="lead-box">
-        <h1 class="text-primary">Coming Soon!</h1>
+        <h1 class="text-primary">It's Here!</h1>
 
         <h2 class="text-primary">
             A community-supported, open source continuation of Zend Framework.
@@ -11,207 +11,94 @@
 </div>
 
 <div class="container">
-    <div class="row align-items-start">
-        <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
-            <p>
-                Since its inception, <a href="https://www.zend.com" target="_blank">Zend Technologies</a>, and later
-                <a href="https://www.roguewave.com" target="_blank">Rogue Wave Software</a>, has
-                been single-handedly leading and sponsoring the Zend Framework
-                project. Over the years, Zend Framework has seen wide adoption
-                across the PHP ecosystem, with an emphasis on the Enterprise
-                market. It has formed the basis of numerous business
-                applications and services including eCommerce platforms,
-                content management, healthcare systems, entertainment platforms
-                and portals, messaging services, APIs, and many others.
-            </p>
-
-            <blockquote class="blockquote">
-                To take it to the next step of adoption and innovation, we are happy to announce
-                that we are transitioning Zend Framework and all its
-                subprojects to an open source project hosted at the
-                <a href="https://www.linuxfoundation.org" target="_blank">Linux Foundation</a>.
-            </blockquote>
-
-            <p>
-                The Linux Foundation is host to a range of widely successful open source
-                projects, and has led many similar transitions in the past. We believe that by
-                moving Zend Framework to this proven governance model, it will enjoy both growth
-                in adoption and contributors, and it will continue to focus on delivering best
-                of breed innovative code, using the highest standards of security, transparency,
-                and quality. 
-            </p>
-
-            <blockquote class="blockquote">
-                The transition is already underway, and we are working to
-                finalize the list of founding members.
-                <a href="<?= $this->url('about.join') ?>">Contact us to learn
-                more about membership benefits and how your company can help
-                guide the project roadmap</a>.
-            </blockquote>
-
-            <div class="card-deck">
-              <div class="card bg-primary text-white">
-                <h2 class="card-header">Find out more at an upcoming webinar!</h2>
-
-                <div class="card-body">
-                  <p class="card-text">
-                    The launch of the technical project is coming soon! Learn more from Matthew Weier O'Phinney and Maurice Kherlakian during a webinar on 21 Nov 2019!
-                  </p>
-
-                  <p class="card-text text-center">
-                      <a class="btn btn-success" href="https://resources.roguewave.com/webinar-whats-happening-with-laminas-overview.html">Register Today</a>
-                  </p>
-                </div>
-              </div>
-
-              <div class="card bg-primary text-white">
-                <h2 class="card-header">Help test migration tooling</h2>
-
-                <div class="card-body">
-                  <p class="card-text">
-                    We are finalizing our migration tooling, and invite anybody interested to test.
-                  </p>
-
-                  <p class="card-text text-center">
-                      <a class="btn btn-success" href="https://gist.github.com/weierophinney/df937d870b0d8bded4d1185ef510aaed">Learn More</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="card bg-primary text-white">
-            <h2 class="card-header">Become a Founding Member</h2>
+    <div class="row align-items-start mb-5">
+        <div class="col"><div class="teardrop card bg-primary text-white">
+            <h2 class="card-header">Transition Period</h2>
             <div class="card-body">
                 <p class="card-text">
-                    The Laminas project is funded through membership dues and
-                    contributed engineering resources. Join us now to become a
-                    founding member.
-                </p>
-
-                <p class="card-text text-center">
-                    <a class="btn btn-success" href="<?= $this->url('about.join') ?>">Join</a>
+                    We're in the process of finishing our migration and launch,
+                    and things will be changing rapidly. While the code migration
+                    is complete, there's still some work being done on websites,
+                    finalizing the technical charter, and more. Please have patience
+                    while we finalize the transition — and thank you for supporting
+                    Laminas!
                 </p>
             </div>
         </div></div>
     </div>
-</div>
 
-<div class="jumbotron text-center mt-4">
-    <h1 class="text-primary">FAQ</h1>
-</div>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4">
+            <div class="card h-100 border border-components rounded">
+                <div class="card-header bg-components text-white w-auto">
+                    Components and MVC
+                </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <h2 class="text-primary">About Laminas and its governance</h2>
-            
-            <p>
-                In spinning the project into its own foundation, we need to differentiate the
-                Open Source project from the commercial Zend brand, which means a new name!
-            </p>
+                <div class="card-body">
+                    <h5 class="card-title">Enterprise-ready PHP components and MVC framework</h5>
 
-            <p>
-                <strong>Laminas</strong> is the plural of <strong>lamina</strong>,
-                meaning <em>a thin layer</em>. We feel it succinctly summarizes the goals of
-                the project in many ways:
-            </p>
+                    <p class="card-text">
+                        Components for any PHP application, including dependency injection,
+                        event dispatchers, input validation and filtering, pagination and
+                        navigation, feed generation and parsing, and much much more.
+                    </p>
 
-            <ul>
-                <li>Components you can compose or <em>layer</em> into any application.</li>
-                <li>Middleware architectures are often termed <em>layered</em>.</li>
-            </ul>
+                    <p class="card-text">
+                        A standards-based, event-driven MVC framework with a flexible workflow.
+                    </p>
 
-            <p>
-                The project will encompass each of the following:
-            </p>
-
-            <ul>
-                <li>The various standalone components.</li>
-                <li>The MVC framework.</li>
-                <li>The Apigility subproject.</li>
-                <li>The Expressive subproject.</li>
-            </ul>
-
-            <h2 class="text-primary">Governance</h2>
-
-            <p>
-                The project will be led by a Governing Board, responsible for
-                the business decisions, and a Technical Steering Committee
-                (TSC), responsible for the technical decisions.
-            </p>
-
-            <p>
-                The Technical Steering Committee will initially be composed by current members
-                of the Zend Framework Community Review Team, along with other folks who are
-                helping us during the transition. Its role will be to make decisions about what
-                we maintain, what milestones to work on, who has commit access to specific
-                repositories, and the general technical direction of the project.
-            </p>
-
-            <p>
-                The Governing Board will consist of representatives from member
-                companies, as well as one or more TSC members. The Board will
-                be responsible for establishing the governance structure and
-                general project oversight including business decisions,
-                budgets, organizing events and working groups, providing
-                marketing support to the project, and handling IP or legal
-                issues as they arise. 
-            </p>
-
-            <p>
-                The project will also eventually include a small team of
-                developers to help lead the day-to-day maintenance, manage
-                automation, keep the web presence online, and other tasks
-                necessary to keeping the project going. This team will help
-                provide project continuity, allowing contributors to focus on the
-                contributions they care about most.
-            </p>
+                    <a class="btn btn-components" href="https://docs.laminas.dev">
+                        Learn more
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-6 col-sm-12">
-            <h2 class="text-primary">What will happen to the code?</h2>
+        <div class="col mb-4">
+            <div class="card h-100 border border-expressive rounded">
+                <div class="card-header bg-expressive text-white">
+                    Mezzio
+                </div>
 
-            <p>
-                Components and the MVC code will move to a new Laminas organization under
-                GitHub. Apigility packages will move from the zfcampus organization to the
-                Apigility organization. Expressive packages will move to a new Expressive
-                organization.
-            </p>
+                <div class="card-body">
+                    <h5 class="card-title">PHP Middleware in Minutes</h5>
 
-            <p>
-                The existing code will all be archived. This means it will remain available on
-                GitHub, but will be read-only; this will allow existing installations to
-                continue working without interruption, but clearly signal that development has
-                moved to the new project. The related package entries on Packagist will each be
-                marked as deprecated, and point to the relevant new Laminas package as an
-                alternative.
-            </p>
+                    <p class="card-text">
+                        Build PHP middleware applications, using the
+                        PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
+                        specifications, using a variety of routing and
+                        templating options, and the dependency injection
+                        container you prefer.
+                    </p>
 
-            <p>
-                All packages published by the project will be marked as <em>replacements</em> of the
-                existing Zend Framework packages, and will include tools to alias legacy classes
-                to the new package classes. This will allow for seamless integration in existing
-                projects, including when using third-party libraries that leverage ZF code.
-            </p>
+                    <a class="btn btn-expressive" href="https://docs.mezzio.dev">
+                        Learn more
+                    </a>
+                </div>
+            </div>
+        </div>
 
-            <p>
-                Finally, we will be providing tools both to update your own code to use the new
-                classes provided by Laminas packages, as well as to help you update your
-                dependencies to use the new Laminas packages instead of the Zend Framework
-                versions. The latter will likely be accomplished via a
-                <a href="https://getcomposer.org">Composer</a> plugin to help automate the transition.
-            </p>
+        <div class="col mb-4">
+            <div class="card h-100 border border-apigility rounded">
+                <div class="card-header bg-apigility text-white">
+                    API Tools
+                </div>
 
-            <h2>Timeline</h2>
+                <div class="card-body">
+                    <h5 class="card-title">Build Beautiful RESTful APIs</h5>
 
-            <p>
-                Much of the transition is well under way at this point with domains secured,
-                GitHub organizations created, initial sponsorship commitments in place, and
-                migration tooling being tested. Our hope is to be operational within Q2 or Q3 of
-                this year (2019); the timeline will be based on how quickly we can secure
-                sponsorship commitments for the foundation.
-            </p>
+                    <p class="card-text">
+                        Build RESTful APIs using standards such as Hypertext
+                        Application Language and Problem Details for HTTP APIs,
+                        and provide validation, authentication, authorization,
+                        and versioning right out of the box!
+                    </p>
+
+                    <a class="btn btn-apigility" href="https://api-tools.getlaminas.org">
+                        Learn more
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

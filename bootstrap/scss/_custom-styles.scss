@@ -85,7 +85,7 @@ footer {
     opacity: 0.7;
 } 
 
-.card { 
+.teardrop.card { 
     border-top-left-radius: 0;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
@@ -94,7 +94,7 @@ footer {
     padding: 0 15px;
 }
 
-.card-header { 
+.teardrop .card-header { 
     border-bottom: none;
     padding-top: 2rem; 
 }
