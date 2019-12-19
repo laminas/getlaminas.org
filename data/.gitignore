@@ -1,6 +1,1 @@
-*
-!cache
-!cache/.gitkeep
-!.gitignore
-!advisories/*
-!blog/*
+assets.json
