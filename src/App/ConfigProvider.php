@@ -9,6 +9,7 @@ use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\Log\LoggerInterface;
+use Zend\Expressive\Application;
 use Zend\Expressive\Plates\PlatesEngineFactory;
 use Zend\Stratigility\Middleware\ErrorHandler;
 
@@ -53,12 +54,10 @@ class ConfigProvider
                 ],
             ],
             'factories'  => [
-                EventDispatcherInterface::class         => EventDispatcherFactory::class,
-                Handler\AboutJoinHandler::class         => Handler\AboutJoinHandlerFactory::class,
-                Handler\AboutJoinThankYouHandler::class => Handler\AboutJoinThankYouHandlerFactory::class,
-                Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
-                LoggerInterface::class                  => AccessLoggerFactory::class,
-                PlatesEngine::class                     => PlatesEngineFactory::class,
+                EventDispatcherInterface::class  => EventDispatcherFactory::class,
+                Handler\StaticPageHandler::class => Handler\StaticPageHandlerFactory::class,
+                LoggerInterface::class           => AccessLoggerFactory::class,
+                PlatesEngine::class              => PlatesEngineFactory::class,
             ],
         ];
     }
@@ -76,5 +75,14 @@ class ConfigProvider
                 'layout' => ['templates/layout'],
             ],
         ];
+    }
+
+    public function registerRoutes(Application $app, string $basePath = '/') : void
+    {
+        $basePath = rtrim($basePath, '/') . '/';
+        $app->get($basePath, Handler\StaticPageHandler::class, 'app.home-page');
+        $app->get($basePath . 'about/join', Handler\StaticPageHandler::class, 'about.join');
+        $app->get($basePath . 'about/join/thank-you', Handler\StaticPageHandler::class, 'about.join-thank-you');
+        $app->post($basePath . 'about/join/thank-you', Handler\StaticPageHandler::class, 'about.join-process');
     }
 }

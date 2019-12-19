@@ -33,10 +33,9 @@ use Zend\Expressive\MiddlewareFactory;
  * );
  */
 return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
-    $app->get('/', App\Handler\HomePageHandler::class, 'home');
-    $app->get('/about/join', App\Handler\AboutJoinHandler::class, 'about.join');
-    $app->get('/about/join/thank-you', App\Handler\AboutJoinThankYouHandler::class, 'about.join.thank-you');
-    $app->post('/about/join/thank-you', App\Handler\AboutJoinThankYouHandler::class);
+
+    // Application routes
+    (new App\ConfigProvider())->registerRoutes($app, '/');
 
     // Blog routes
     (new GetLaminas\Blog\ConfigProvider())->registerRoutes($app, '/blog');
