@@ -98,7 +98,7 @@ class FeedGenerator extends Command
         $baseUri   = $input->getOption('base-uri');
 
         $io->title('Generating blog feeds');
-        $io->text('<info>Generating base feeds</>');
+        $io->text('<info>Generating base feeds</info>');
         $io->progressStart();
 
         $this->generateFeeds(
