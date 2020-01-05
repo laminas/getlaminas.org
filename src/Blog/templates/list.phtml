@@ -13,7 +13,9 @@ $this->end();
 ?>
 <section class="blog container">
     <div class="row align-items-start mt-5">
-        <h1><?= $this->escapeHtml($title) ?></h1>
+        <div class="col">
+            <h1><?= $this->escapeHtml($title) ?></h1>
+        </div>
     </div>
 
     <?php if (empty($posts)) : ?>
