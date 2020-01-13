@@ -5,7 +5,7 @@ title: 'A new project for a new year'
 draft: false
 public: true
 created: '2019-12-31T17:30:00-05:00'
-updated: '2019-12-31T17:30:00-05:00'
+updated: '2020-01-13T13:30:00-05:00'
 tags:
     - laminas
 ---
@@ -26,15 +26,18 @@ can find the code in the following locations:
 
 We still have a few things to iron out:
 
-- The Packagist API, while it claimed to work and did not return errors, did not
-  always abandon the old packages; we'll be auditing those later this week.
+- <del>The Packagist API, while it claimed to work and did not return errors, did not
+  always abandon the old packages; we'll be auditing those later this
+  week.</del>
 
-- We will be renaming our Slack workspace later this week to reflect the change.
+- <del>We will be renaming our Slack workspace later this week to reflect the
+  change.</del>
 
-- Likewise, we'll be renaming our Discourse and re-pointing it.
+- <del>Likewise, we'll be renaming our Discourse and re-pointing it.</del>
 
 - Our bot will need some changes to work with the new repos, and we will likely
-  be moving tasks such as building documentation to GitHub Actions.
+  be moving tasks such as building documentation to GitHub Actions. (Update:
+  documentation is now built via GitHub Actions.)
 
 - We need to rebuild the former Apigility site to reflect the name change, and
   plan to eventually push it to https://api-tools.getlaminas.org.
@@ -227,10 +230,13 @@ dependencies:
 $ composer install
 ```
 
-From there, run tests, and report any issues to the [Zend Framework
-slack](https://zendframework-slack.herokuapp.com) in the #laminas-issues
+From there, run tests, and report any issues to the [Laminas
+slack](https://laminas.dev/chat) in the #laminas-issues
 channel, or report directly in the appropriate issue trackers, based on the
 components in which you see problems.
+
+(These instructions are now [on the documentation
+site](https://docs.laminas.dev/migration/)
 
 ## What's next?
 
@@ -248,4 +254,3 @@ Additionally:
 
 Stay tuned for more announcements, and Happy New Year! Let's build great things
 this next year and decade!
-

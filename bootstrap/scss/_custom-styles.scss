@@ -146,3 +146,9 @@ nav, footer {
 main {
     flex: 1 0 auto; /* 2 */
 }
+
+.blog.sidebar p {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #cccccc;
+}
