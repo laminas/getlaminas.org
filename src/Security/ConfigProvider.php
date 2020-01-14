@@ -2,8 +2,8 @@
 
 namespace GetLaminas\Security;
 
-use Zend\Expressive\Application;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Mezzio\Application;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
 {

@@ -4,7 +4,7 @@ namespace GetLaminas\Security\Handler;
 
 use GetLaminas\Security\Advisory;
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Template\TemplateRendererInterface;
+use Mezzio\Template\TemplateRendererInterface;
 
 class SecurityHandlerFactory
 {

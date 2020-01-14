@@ -17,11 +17,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Parser as YamlParser;
 use Traversable;
-use Zend\Diactoros\Uri;
-use Zend\Expressive\Helper\ServerUrlHelper;
-use Zend\Expressive\Router\RouterInterface;
-use Zend\Expressive\Template\TemplateRendererInterface;
-use Zend\Feed\Writer\Feed as FeedWriter;
+use Laminas\Diactoros\Uri;
+use Mezzio\Helper\ServerUrlHelper;
+use Mezzio\Router\RouterInterface;
+use Mezzio\Template\TemplateRendererInterface;
+use Laminas\Feed\Writer\Feed as FeedWriter;
 
 use function file_exists;
 use function file_put_contents;

@@ -13,7 +13,7 @@ use GetLaminas\Blog\CreateBlogPostFromDataArray;
 use PDO;
 use PDOStatement;
 use RuntimeException;
-use Zend\Paginator\Adapter\AdapterInterface;
+use Laminas\Paginator\Adapter\AdapterInterface;
 
 use function array_map;
 use function array_merge;

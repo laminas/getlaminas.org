@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Application;
-use Zend\Expressive\MiddlewareFactory;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
 
 /**
  * Setup routes with a single request method:
@@ -28,7 +28,7 @@ use Zend\Expressive\MiddlewareFactory;
  * $app->route(
  *     '/contact',
  *     App\Handler\ContactHandler::class,
- *     Zend\Expressive\Router\Route::HTTP_METHOD_ANY,
+ *     Mezzio\Router\Route::HTTP_METHOD_ANY,
  *     'contact'
  * );
  */

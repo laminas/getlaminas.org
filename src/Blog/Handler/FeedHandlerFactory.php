@@ -7,7 +7,7 @@
 namespace GetLaminas\Blog\Handler;
 
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Handler\NotFoundHandler;
+use Mezzio\Handler\NotFoundHandler;
 
 class FeedHandlerFactory
 {

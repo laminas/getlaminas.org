@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace GetLaminas\Blog\Mapper;
 
 use GetLaminas\Blog\BlogPost;
-use Zend\Paginator\Paginator;
-use Zend\Tag\Cloud;
+use Laminas\Paginator\Paginator;
+use Laminas\Tag\Cloud;
 
 interface MapperInterface
 {

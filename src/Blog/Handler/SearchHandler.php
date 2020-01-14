@@ -12,8 +12,8 @@ use GetLaminas\Blog\Mapper\MapperInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response\JsonResponse;
-use Zend\Expressive\Helper\UrlHelper;
+use Laminas\Diactoros\Response\JsonResponse;
+use Mezzio\Helper\UrlHelper;
 
 class SearchHandler implements RequestHandlerInterface
 {

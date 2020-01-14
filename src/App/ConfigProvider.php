@@ -9,9 +9,9 @@ use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\Log\LoggerInterface;
-use Zend\Expressive\Application;
-use Zend\Expressive\Plates\PlatesEngineFactory;
-use Zend\Stratigility\Middleware\ErrorHandler;
+use Mezzio\Application;
+use Mezzio\Plates\PlatesEngineFactory;
+use Laminas\Stratigility\Middleware\ErrorHandler;
 
 /**
  * The configuration provider for the App module

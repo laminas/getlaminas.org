@@ -6,7 +6,7 @@ namespace GetLaminas\Blog\Handler;
 
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Helper\UrlHelper;
+use Mezzio\Helper\UrlHelper;
 
 class SearchHandlerFactory
 {

@@ -12,8 +12,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Expressive\Router\Route;
-use Zend\Expressive\Router\RouterInterface;
+use Mezzio\Router\Route;
+use Mezzio\Router\RouterInterface;
 
 trait RoutesTrait
 {

@@ -8,8 +8,8 @@ namespace GetLaminas\Blog\Handler;
 
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use Zend\Expressive\Handler\NotFoundHandler;
-use Zend\Expressive\Template\TemplateRendererInterface;
+use Mezzio\Handler\NotFoundHandler;
+use Mezzio\Template\TemplateRendererInterface;
 
 class DisplayPostHandlerFactory
 {

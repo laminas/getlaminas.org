@@ -6,10 +6,10 @@ use GetLaminas\Security\Advisory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\TextResponse;
-use Zend\Expressive\Template;
-use Zend\Feed\Writer\Feed;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\TextResponse;
+use Mezzio\Template;
+use Laminas\Feed\Writer\Feed;
 
 class SecurityHandler implements RequestHandlerInterface
 {

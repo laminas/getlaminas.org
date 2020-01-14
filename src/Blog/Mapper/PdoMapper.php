@@ -11,7 +11,7 @@ namespace GetLaminas\Blog\Mapper;
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
 use PDO;
-use Zend\Paginator\Paginator;
+use Laminas\Paginator\Paginator;
 
 use function array_map;
 use function array_reduce;

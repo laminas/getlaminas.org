@@ -6,8 +6,8 @@ use GetLaminas\Security\Advisory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Template;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Mezzio\Template;
 
 class AdvisoryHandler implements RequestHandlerInterface
 {
