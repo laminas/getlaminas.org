@@ -13,6 +13,7 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
+    \Mezzio\ProblemDetails\ConfigProvider::class,
     \Laminas\Paginator\ConfigProvider::class,
     \Phly\EventDispatcher\ConfigProvider::class,
     \Laminas\HttpHandlerRunner\ConfigProvider::class,
@@ -34,6 +35,7 @@ $aggregator = new ConfigAggregator([
 
     // Default App module config
     GetLaminas\Blog\ConfigProvider::class,
+    GetLaminas\ReleaseFeed\ConfigProvider::class,
     GetLaminas\Security\ConfigProvider::class,
     App\ConfigProvider::class,
 

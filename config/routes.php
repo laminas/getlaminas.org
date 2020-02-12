@@ -42,4 +42,7 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
 
     // Security advisory routes
     (new GetLaminas\Security\ConfigProvider())->registerRoutes($app, '/security');
+
+    // Release API
+    (new GetLaminas\ReleaseFeed\ConfigProvider())->registerRoutes($app);
 };

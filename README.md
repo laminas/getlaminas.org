@@ -4,8 +4,14 @@ Source code for the getlaminas.org website.
 
 ## Testing
 
-To test the application, use the provided [docker-compose
-configuration](docker-compose.yml):
+First, create a `.env` file in the root directory with contents similar to the
+following:
+
+```env
+RELEASE_FEED_TOKEN=aaaabbbbccccddddeeeeffffgggg0000
+```
+
+Next, use the provided [docker-compose configuration](docker-compose.yml):
 
 ```bash
 $ docker-compose build

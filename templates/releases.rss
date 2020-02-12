@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
+  <channel>
+    <title>Laminas Project Releases</title>
+    <description>Laminas Project releases, including components, MVC, API Tools, and Mezzio</description>
+    <pubDate>Tue, 31 Dec 2019 19:45:22 +0000</pubDate>
+    <lastBuildDate>Tue, 31 Dec 2019 19:45:22 +0000</lastBuildDate>
+    <generator>Laminas_Feed_Writer 2 (https://getlaminas.org)</generator>
+    <link>https://getlaminas.org/releases/rss.xml</link>
+    <author>Laminas Project</author>
+    <dc:creator>Laminas Project</dc:creator>
+    <atom:link rel="self" type="application/rss+xml" href="https://getlaminas.org/releases/rss.xml"/>
+  </channel>
+</rss>

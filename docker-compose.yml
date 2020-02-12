@@ -5,6 +5,8 @@ services:
     build: 
       context: .
       dockerfile: .docker/php/Dockerfile
+    env_file:
+      - ./.env
     volumes:
       - .:/var/www
       - ./.docker/php/getlaminas.ini:/usr/local/etc/php/conf.d/999-getlaminas.ini

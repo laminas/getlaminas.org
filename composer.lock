@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30ca305a29247e4ea0aad4327cb56604",
+    "content-hash": "ae6446248eb8a91e1aee1c85f5bcf97b",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1347,6 +1347,68 @@
             "time": "2019-12-31T15:45:32+00:00"
         },
         {
+            "name": "mezzio/mezzio-problem-details",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mezzio/mezzio-problem-details.git",
+                "reference": "ae63964cdf9b6d6cacadf377bb5a8e40fa1a9910"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/ae63964cdf9b6d6cacadf377bb5a8e40fa1a9910",
+                "reference": "ae63964cdf9b6d6cacadf377bb5a8e40fa1a9910",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "fig/http-message-util": "^1.1.2",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.1",
+                "psr/container": "^1.0",
+                "psr/http-message": "^1.0",
+                "psr/http-server-middleware": "^1.0",
+                "spatie/array-to-xml": "^2.3",
+                "willdurand/negotiation": "^2.3"
+            },
+            "replace": {
+                "zendframework/zend-problem-details": "self.version"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "phpunit/phpunit": "^7.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev",
+                    "dev-develop": "1.2.x-dev"
+                },
+                "laminas": {
+                    "config-provider": "Mezzio\\ProblemDetails\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mezzio\\ProblemDetails\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Problem Details for PSR-7 HTTP APIs",
+            "homepage": "https://mezzio.dev",
+            "keywords": [
+                "api",
+                "laminas",
+                "mezzio",
+                "problem-details",
+                "rest"
+            ],
+            "time": "2019-12-31T15:45:41+00:00"
+        },
+        {
             "name": "mezzio/mezzio-router",
             "version": "3.1.1",
             "source": {
@@ -1734,6 +1796,7 @@
                 "config",
                 "expressive"
             ],
+            "abandoned": "phly/phly-configfactory",
             "time": "2019-02-07T14:46:47+00:00"
         },
         {
@@ -2085,6 +2148,56 @@
                 "psr-3"
             ],
             "time": "2019-11-01T11:05:21+00:00"
+        },
+        {
+            "name": "spatie/array-to-xml",
+            "version": "2.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/array-to-xml.git",
+                "reference": "bdb5bc735b0639f6f438e935b13f7ac216239679"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/bdb5bc735b0639f6f438e935b13f7ac216239679",
+                "reference": "bdb5bc735b0639f6f438e935b13f7ac216239679",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.0",
+                "spatie/phpunit-snapshot-assertions": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ArrayToXml\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convert an array to xml",
+            "homepage": "https://github.com/spatie/array-to-xml",
+            "keywords": [
+                "array",
+                "convert",
+                "xml"
+            ],
+            "time": "2019-08-21T06:32:31+00:00"
         },
         {
             "name": "symfony/console",
@@ -2513,6 +2626,58 @@
             ],
             "abandoned": "league/commonmark-ext-table",
             "time": "2019-07-09T13:34:17+00:00"
+        },
+        {
+            "name": "willdurand/negotiation",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willdurand/Negotiation.git",
+                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/03436ededa67c6e83b9b12defac15384cb399dc9",
+                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Negotiation\\": "src/Negotiation"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "will+git@drnd.me"
+                }
+            ],
+            "description": "Content Negotiation tools for PHP provided as a standalone library.",
+            "homepage": "http://williamdurand.fr/Negotiation/",
+            "keywords": [
+                "accept",
+                "content",
+                "format",
+                "header",
+                "negotiation"
+            ],
+            "time": "2017-05-14T17:21:12+00:00"
         }
     ],
     "packages-dev": [

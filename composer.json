@@ -40,26 +40,27 @@
     "require": {
         "php": "~7.2",
         "dflydev/fig-cookies": "^2.0",
+        "laminas/laminas-component-installer": "^2.1.1",
+        "laminas/laminas-config-aggregator": "^1.0",
+        "laminas/laminas-dependency-plugin": "^1.0",
+        "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
+        "laminas/laminas-feed": "^2.12",
+        "laminas/laminas-paginator": "^2.8",
+        "laminas/laminas-servicemanager": "^3.3",
+        "laminas/laminas-stdlib": "^3.1",
         "league/commonmark": "^1.1",
+        "mezzio/mezzio": "^3.0.1",
+        "mezzio/mezzio-fastroute": "^3.0",
+        "mezzio/mezzio-helpers": "^5.0",
+        "mezzio/mezzio-platesrenderer": "^2.0",
+        "mezzio/mezzio-problem-details": "^1.1",
         "mnapoli/front-yaml": "^1.6",
         "monolog/monolog": "^1.24",
         "phly/phly-event-dispatcher": "^1.0",
         "phly/phly-expressive-configfactory": "^1.1",
         "symfony/console": "^4.0",
         "symfony/yaml": "^4.0",
-        "webuni/commonmark-table-extension": "^1.0",
-        "laminas/laminas-component-installer": "^2.1.1",
-        "laminas/laminas-config-aggregator": "^1.0",
-        "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
-        "mezzio/mezzio": "^3.0.1",
-        "mezzio/mezzio-fastroute": "^3.0",
-        "mezzio/mezzio-helpers": "^5.0",
-        "mezzio/mezzio-platesrenderer": "^2.0",
-        "laminas/laminas-feed": "^2.12",
-        "laminas/laminas-paginator": "^2.8",
-        "laminas/laminas-servicemanager": "^3.3",
-        "laminas/laminas-stdlib": "^3.1",
-        "laminas/laminas-dependency-plugin": "^1.0"
+        "webuni/commonmark-table-extension": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0.1",
@@ -73,6 +74,7 @@
         "psr-4": {
             "App\\": "src/App/",
             "GetLaminas\\Blog\\": "src/Blog/",
+            "GetLaminas\\ReleaseFeed\\": "src/ReleaseFeed/",
             "GetLaminas\\Security\\": "src/Security/"
         }
     },
