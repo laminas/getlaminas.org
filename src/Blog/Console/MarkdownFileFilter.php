@@ -40,7 +40,10 @@ class MarkdownFileFilter extends FilterIterator
     {
         if (is_string($dirOrIterator)) {
             if (! is_dir($dirOrIterator)) {
-                throw new InvalidArgumentException(sprintf('Expected a valid directory name; received "%s"', $dirOrIterator));
+                throw new InvalidArgumentException(sprintf(
+                    'Expected a valid directory name; received "%s"',
+                    $dirOrIterator
+                ));
             }
 
             $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
