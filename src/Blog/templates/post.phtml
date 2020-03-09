@@ -32,7 +32,7 @@ $this->end();
 
         <aside class="col-md-4 d-none d-sm-block sidebar blog">
             <p>
-                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
+                Written by <?= $post->author ?> on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
                 <?php if ($post->updated) : ?>
                 <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
                 <?php endif ?>
