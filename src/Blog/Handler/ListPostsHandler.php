@@ -113,7 +113,6 @@ class ListPostsHandler implements RequestHandlerInterface
         }
 
         return array_merge($view, [
-            'title'      => $tag ? 'Tag: ' . $tag : 'Blog Posts',
             'posts'      => $entries,
             'pagination' => $pagination,
         ]);
