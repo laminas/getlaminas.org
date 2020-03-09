@@ -761,7 +761,7 @@ to get security updates. Please see our [migration guide](https://docs.laminas.d
 
 ## Life after life. What next?
 
-We'e had our [first Technical Steering Committee meeting](https://github.com/laminas/technical-steering-committee/blob/master/meetings/minutes/2020-03-02-TSC-Minutes.md),
+We'e had our [first Technical Steering Committee meeting](https://getlaminas.org/blog/2020-03-05-tsc-inaugural-meeting.html),
 and started planning how we want to maintain and expand the project.
 
 Please [follow us on Twitter](https://twitter.com/getlaminas) to not miss any updates,
