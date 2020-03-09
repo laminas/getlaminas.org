@@ -13,9 +13,13 @@ use DateTimezone;
 use Mni\FrontYAML\Bridge\CommonMark\CommonMarkParser;
 use Mni\FrontYAML\Parser;
 use RuntimeException;
+use Symfony\Component\Yaml\Yaml;
 
 trait CreateBlogPostFromDataArray
 {
+    /** @var string */
+    private $authorDataRootPath = 'data/blog/authors';
+
     /** @var Parser */
     private $parser;
 
@@ -25,6 +29,11 @@ trait CreateBlogPostFromDataArray
      * @var string
      */
     private $postDelimiter = '<!--- EXTENDED -->';
+
+    public function setAuthorDataRootPath(string $path) : void
+    {
+        $this->authorDataRootPath = $path;
+    }
 
     private function getParser() : Parser
     {
@@ -56,7 +65,7 @@ trait CreateBlogPostFromDataArray
         return new BlogPost(
             $post['id'],
             $post['title'],
-            $post['author'],
+            $this->createAuthorFromAuthorName($post['author']),
             $created,
             $updated,
             is_array($post['tags'])
@@ -74,5 +83,21 @@ trait CreateBlogPostFromDataArray
         return is_numeric($dateString)
             ? new DateTime('@' . $dateString, new DateTimezone('America/Chicago'))
             : new DateTime($dateString);
+    }
+    
+    private function createAuthorFromAuthorName(string $authorName): BlogAuthor
+    {
+        $filename = sprintf('%s/%s.yml', $this->authorDataRootPath, $authorName);
+        if (! file_exists($filename)) {
+            return new BlogAuthor($authorName, '', '', '');
+        }
+
+        $metadata = Yaml::parseFile($filename);
+        return new BlogAuthor(
+            $authorName,
+            $metadata['name'] ?? 'no-reply@getlaminas.org',
+            $metadata['email'] ?? '',
+            $metadata['uri'] ?? ''
+        );
     }
 }

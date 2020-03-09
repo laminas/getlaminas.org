@@ -12,7 +12,7 @@ use DateTimeInterface;
 
 class BlogPost
 {
-    /** @var string */
+    /** @var BlogAuthor */
     public $author;
 
     /** @var string */
@@ -45,7 +45,7 @@ class BlogPost
     public function __construct(
         string $id,
         string $title,
-        string $author,
+        BlogAuthor $author,
         DateTimeInterface $created,
         ?DateTimeInterface $updated,
         array $tags,

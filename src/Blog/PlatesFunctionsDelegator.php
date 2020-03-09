@@ -11,8 +11,6 @@ class PlatesFunctionsDelegator implements ExtensionInterface
 {
     public $template;
 
-    private $engine;
-
     public function __invoke(ContainerInterface $container, $name, callable $factory)
     {
         $engine = $factory();
@@ -24,6 +22,7 @@ class PlatesFunctionsDelegator implements ExtensionInterface
     {
         $engine->registerFunction('formatDate', [$this, 'formatDate']);
         $engine->registerFunction('formatDateRfc', [$this, 'formatDateRfc']);
+        $engine->registerFunction('postAuthor', [$this, 'postAuthor']);
         $engine->registerFunction('postUrl', [$this, 'postUrl']);
     }
 
@@ -35,6 +34,16 @@ class PlatesFunctionsDelegator implements ExtensionInterface
     public function formatDateRfc(DateTimeInterface $date) : string
     {
         return $this->formatDate($date, 'c');
+    }
+
+    public function postAuthor(BlogPost $post) : string
+    {
+        $author = $post->author;
+        if ($author->url === '') {
+            return $author->fullname ?: $author->username;
+        }
+
+        return sprintf('<a href="%s" target="_blank">%s</a>', $author->url, $author->fullname ?: $author->username);
     }
 
     public function postUrl(BlogPost $post) : string

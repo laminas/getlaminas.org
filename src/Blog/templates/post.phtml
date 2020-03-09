@@ -30,9 +30,10 @@ $this->end();
             </div>
         </article>
 
-        <aside class="col-md-4 d-none d-sm-block sidebar blog">
+        <aside class="col-md-4 d-sm-block sidebar blog">
             <p>
-                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
+                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time><?= $post->author ? sprintf(' by %s', $this->postAuthor($post)) : '' ?>.
+
                 <?php if ($post->updated) : ?>
                 <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
                 <?php endif ?>

@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
 
+use GetLaminas\Blog\BlogAuthor;
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Symfony\Component\Console\Command\Command;
@@ -32,8 +33,6 @@ use function str_replace;
 class FeedGenerator extends Command
 {
     use RoutesTrait;
-
-    private $authors = [];
 
     private $authorsPath;
 
@@ -62,6 +61,10 @@ class FeedGenerator extends Command
         $this->router      = $this->seedRoutes($router);
         $this->renderer    = $renderer;
         $this->authorsPath = $authorsPath;
+
+        if (method_exists($mapper, 'setAuthorDataRootPath')) {
+            $mapper->setAuthorDataRootPath($authorsPath);
+        }
 
         $serverUrlHelper->setUri(new Uri('https://getlaminas.org'));
 
@@ -191,23 +194,15 @@ class FeedGenerator extends Command
     /**
      * Retrieve author metadata.
      *
-     * @param string $author
      * @return string[]
      */
-    private function getAuthor(string $author) : array
+    private function getAuthor(BlogAuthor $author) : array
     {
-        if (isset($this->authors[$author])) {
-            return $this->authors[$author];
-        }
-
-        $path = sprintf('%s/%s.yml', $this->authorsPath, $author);
-        if (! file_exists($path)) {
-            $this->authors[$author] = $this->defaultAuthor;
-            return $this->authors[$author];
-        }
-
-        $this->authors[$author] = (new YamlParser())->parse(file_get_contents($path));
-        return $this->authors[$author];
+        return [
+            'name'  => $author->fullname ?: $author->username,
+            'email' => $author->email,
+            'uri'   => $author->url,
+        ];
     }
 
     /**

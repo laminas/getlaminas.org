@@ -159,11 +159,11 @@ class SeedBlogDatabase extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $io          = new SymfonyStyle($input, $output);
-        $basePath    = $input->getOption('path');
-        $postsPath   = $input->getOption('posts-path');
-        $authorsPath = $input->getOption('authors-path');
-        $dbPath      = $input->getOption('db-path');
+        $io                       = new SymfonyStyle($input, $output);
+        $basePath                 = $input->getOption('path');
+        $postsPath                = $input->getOption('posts-path');
+        $this->authorDataRootPath = $input->getOption('authors-path');
+        $dbPath                   = $input->getOption('db-path');
 
         $io->title('Generating blog post database');
 
@@ -176,7 +176,6 @@ class SeedBlogDatabase extends Command
         foreach (new MarkdownFileFilter($path) as $fileInfo) {
             $path     = $fileInfo->getPathname();
             $post     = $this->createBlogPostFromDataArray(['path' => $path]);
-            $author   = $this->getAuthor($post->author, $authorsPath);
             $template = empty($statements) ? $this->initial : $this->item;
 
             $statements[] = sprintf(
@@ -186,7 +185,7 @@ class SeedBlogDatabase extends Command
                 $post->created->getTimestamp(),
                 $post->updated->getTimestamp(),
                 $pdo->quote($post->title),
-                $pdo->quote($author['id']),
+                $pdo->quote($post->author->username),
                 $post->isDraft ? 1 : 0,
                 $post->isPublic ? 1 : 0,
                 $pdo->quote($post->body),
@@ -224,28 +223,5 @@ class SeedBlogDatabase extends Command
         $pdo->commit();
 
         return $pdo;
-    }
-
-    /**
-     * Retrieve author metadata.
-     *
-     * @param string $author
-     * @param string $authorsPath
-     * @return string[]
-     */
-    private function getAuthor(string $author, string $authorsPath) : array
-    {
-        if (isset($this->authors[$author])) {
-            return $this->authors[$author];
-        }
-
-        $path = sprintf('%s/%s.yml', $authorsPath, $author);
-        if (! file_exists($path)) {
-            $this->authors[$author] = ['id' => $author, 'name' => $author, 'email' => '', 'uri' => ''];
-            return $this->authors[$author];
-        }
-
-        $this->authors[$author] = (new YamlParser())->parse(file_get_contents($path));
-        return $this->authors[$author];
     }
 }
