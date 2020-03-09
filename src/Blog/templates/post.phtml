@@ -21,7 +21,7 @@ $this->end();
 
     <div class="row align-items-start mt-5">
         <article class="col-md-8 blog">
-            <h2 class="p-name"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h2>
+            <h2 class="p-name"><?= $this->escapeHtml($post->title) ?></h2>
 
             <div class="e-content">
             <?= $post->body ?>
