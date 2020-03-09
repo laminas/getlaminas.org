@@ -30,9 +30,6 @@ class SeedBlogDatabase extends Command
 {
     use CreateBlogPostFromDataArray;
 
-    /** @var array<string, array<string, string>> */
-    private $authors = [];
-
     /** @var string[] */
     private $indices = [
         'CREATE INDEX visible ON posts ( created, draft, public )',
