@@ -1,4 +1,9 @@
 <?php
+/**
+ * @var League\Plates\Template\Template|GetLaminas\Blog\PlatesFunctionsDelegator $this
+ * @var GetLaminas\Blog\BlogPost $post
+ */
+
 $this->layout('layout::default', [
     'title' => $this->escapeHtml($post->title),
 ]);
