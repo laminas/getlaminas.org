@@ -32,6 +32,8 @@ use [`replace` in `composer.json`](https://getcomposer.org/doc/04-schema.md#repl
 
 We needed a tool capable of much more than just "rewriting namespaces".
 
+<!--- EXTENDED -->
+
 ## Lifetime decisions
 
 ### Rewrite whole history or just tags?
