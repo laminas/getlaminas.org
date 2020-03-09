@@ -12,8 +12,6 @@ tags:
     - zend-framework
 ---
 
-# Transferring Zend Framework to Laminas: A Retrospective.
-
 Back in October 2018, Rogue Wave Software
 [announced reorganization of its Zend portfolio, including Zend Framework](https://mwop.net/blog/2018-10-17-long-live-zf.html).
 The Zend Framework community was understandably shaken, and many were concerned
