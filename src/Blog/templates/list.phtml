@@ -1,6 +1,6 @@
 <?php
 $this->layout('layout::default', [
-    'title' => $this->escapeHtml($title),
+    'title' => 'Blog',
 ]);
 
 $this->push('styles');
@@ -14,7 +14,12 @@ $this->end();
 <section class="blog container">
     <div class="row align-items-start mt-5">
         <div class="col">
-            <h1><?= $this->escapeHtml($title) ?></h1>
+            <h1>
+                Blog
+                <?php if (isset($tag)) : ?>
+                    <small>Tag: <?= $this->escapeHtml($tag) ?></small>
+                <?php endif ?>
+            </h1>
         </div>
     </div>
 
