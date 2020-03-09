@@ -4,17 +4,17 @@ author: michal-bundyra
 title: 'Transferring Zend Framework to Laminas: A Retrospective.'
 draft: false
 public: true
-created: '2020-03-09T13:00:00+00:00'
-updated: '2020-03-09T13:00:00+00:00'
+created: '2020-03-09T11:05:00-05:00'
+updated: '2020-03-09T11:05:00-05:00'
 tags:
     - laminas
     - transfer
-    - zend framework
+    - zend-framework
 ---
 
 # Transferring Zend Framework to Laminas: A Retrospective.
 
-Back in October 2018, Rogue Wave
+Back in October 2018, Rogue Wave Software
 [announced reorganization of its Zend portfolio, including Zend Framework](https://mwop.net/blog/2018-10-17-long-live-zf.html).
 The Zend Framework community was understandably shaken, and many were concerned
 about the future of the framework.
@@ -23,14 +23,14 @@ transferring the project](https://framework.zend.com/blog/2019-04-17-announcing-
 to the [Linux Foundation](https://www.linuxfoundation.org/) as the Laminas
 Project.
 
-A couple months before the official announcement about transformation, in
-February 2019, [we started working](https://github.com/michalbundyra/laminas-transfer/commit/3e253840eafee73af20768567ae7f8bdd7ec4d7d)
-on a [tool for transferring the project repositories to their new homes](https://github.com/michalbundyra/laminas-transfer). At
-the beginning, everyone would think the tool should be relatively simple,
-as we "just" need to change namespaces. But our goal was much greater: we
-wanted to provide packages fully compatible with legacy Zend Framework
-components. We wanted that our new components to replace legacy components
-(yes, we wanted to use [`replace` in `composer.json`](https://getcomposer.org/doc/04-schema.md#replace)).
+A couple months before this announcement, in February 2019,
+[we started working](https://github.com/michalbundyra/laminas-transfer/commit/3e253840eafee73af20768567ae7f8bdd7ec4d7d)
+on a [tool for transferring the project repositories to their new homes](https://github.com/michalbundyra/laminas-transfer).
+At the beginning, everyone thought the tool should be relatively simple, as
+we "just" needed to change namespaces. But our goal was much greater: we wanted to
+provide packages fully compatible with legacy Zend Framework components. We
+wanted our new components to **replace** legacy components (yes, we wanted to
+use [`replace` in `composer.json`](https://getcomposer.org/doc/04-schema.md#replace)).
 
 We needed a tool capable of much more than just "rewriting namespaces".
 
@@ -39,8 +39,8 @@ We needed a tool capable of much more than just "rewriting namespaces".
 ### Rewrite whole history or just tags?
 
 We had over 150 components to move, many of them huge components with 8 years of
-history and thousands of commits. Some were much smaller - particularly the
-Expressive components - with only a few years of history and a few hundred
+history and thousands of commits. Some were much smaller — particularly the
+Expressive components — with only a few years of history and a few hundred
 commits.
 
 The first plan was to rewrite the whole history, every commit by using the [`git
@@ -63,9 +63,10 @@ code.
 
 ### Splitting projects
 
-Apigility was a separate project under a separate organization. But Expressive
-was bundled under the same organization as the MVC and general components. We
-decided it should have its own organization, just like Apigility already did.
+Apigility had always been a separate project under a separate organization. But
+Expressive was bundled under the same organization as the MVC and general
+components. We decided it should have its own organization, just like Apigility
+already did.
 
 Additionally, we felt the organization names for these subprojects should match
 their new names: Laminas API Tools and Mezzio.
@@ -83,7 +84,7 @@ This makes it simpler to find code related specifically to each subproject.
 
 ### Unification
 
-With the new project we wanted to keep consistent namespaces for all components.
+With the new project, we wanted to keep consistent namespaces for all components.
 
 As an example, here are some of the previous namespaces represented in Zend
 Framework packages:
@@ -123,7 +124,8 @@ include:
 
 We simply did not have resources to update them to the latest changes of their
 respective APIs. We would be happy to bring them back to the Laminas Project
-if we find people who want to maintain them.
+if we find people who want to maintain them (though any such effort would have
+to provide features beyond what the official SDK libraries provide).
 
 Additionally, we decided to deprecate some other minor packages, not used by our
 other components. These include:
@@ -147,7 +149,7 @@ Our goal was that switching to Laminas should not require a BC break in
 third-party libraries. There were a couple challenges:
 
 1. Loading the appropriate Laminas class if the requested Zend Framework class
-   does not exist. This was pretty easy - we achieved it by creating
+   does not exist. This was pretty easy: we achieved it by creating
    [an autoloader](https://github.com/laminas/laminas-zendframework-bridge/blob/master/src/Autoloader.php#L111-L155)
    that changes the namespace on the fly, and simultaneously creates
    an alias for the legacy class using [`class_alias`](https://www.php.net/manual/en/function.class-alias.php).
@@ -234,8 +236,8 @@ or:
 $container->get(ClassName::class);
 ```
 
-Interestingly, the `::class` notation does not trigger autoloading; even
-worse - the class before `::class` does not even need to exist! PHP expands the
+Interestingly, the `::class` notation does not trigger autoloading; even worse -
+the class name before `::class` does not even need to exist! PHP expands the
 string according to the current namespace and imports, without validating it
 exists.
 
@@ -272,8 +274,9 @@ rewritten.
 
 > #### Delegator Factories
 >
-> Unfortunately we were not able to do the same for [delegator factories](https://docs.laminas.dev/laminas-servicemanager/delegators/).
-> Delegators must be defined on the original class, not on an alias.
+> Unfortunately we were not able to do the same for [delegator factory](https://docs.laminas.dev/laminas-servicemanager/delegators/)
+> configuration. Delegators must be defined on the original class, not on an
+> alias.
 >
 > If a library provides a delegator for `\Zend\ClassName` but you are using
 > `\Laminas\ClassName`, the legacy delegator will not be triggered. You will need
@@ -305,7 +308,7 @@ For an example, you can inspect the additional aliases in the
 
 ### Factories
 
-The next challenge we had with [factory classes](https://docs.laminas.dev/laminas-servicemanager/configuring-the-service-manager/#factories).
+The next challenge posed was with [factory classes](https://docs.laminas.dev/laminas-servicemanager/configuring-the-service-manager/#factories).
 Many components provide factories for services for use with the service
 manager. Often these factories are using other services configured in the DI
 Container, as well as the configuration service itself. Consider the
@@ -500,11 +503,16 @@ consider the following routing middleware:
 ```php
 class RouteMiddleware implements MiddlewareInterface
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
-    {
+    public function process(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ) : ResponseInterface {
         $result = $this->router->match($request);
 
-        $request = $request->withAttribute(\Zend\Expressive\Router\RouteResult::class, $result);
+        $request = $request->withAttribute(
+            \Zend\Expressive\Router\RouteResult::class,
+            $result
+        );
 
         return $handler->handle($request);
     }
@@ -522,8 +530,10 @@ both the current class name, and one under the legacy class name:
 ```php
 class RouteMiddleware implements MiddlewareInterface
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
-    {
+    public function process(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ) : ResponseInterface {
         $result = $this->router->match($request);
 
         $request = $request
@@ -601,15 +611,16 @@ and/or services (e.g., mongodb, database, swoole, ...).
 
 > See the transfer tool code: [LocalTestCommand](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Command/LocalTestCommand.php).
 
-### Satis repository
+### Composer repository
 
 The next thing we did was to rewrite all tags of all components we planned to
 migrate, and use these to create a proper Composer repository using
 [Satis](https://github.com/composer/satis) that we could expose publicly. This
-would allow us to test any project or library against any version available.
+would allow us to test any project or library against any version available by
+adding the repository to the package configuration.
 
 At this point, we opened testing to the public, and asked the community to help.
-We released [very first version of Laminas Migration Tool](https://github.com/laminas/laminas-migration/releases/tag/0.1.0)
+We released the [very first version of Laminas Migration Tool](https://github.com/laminas/laminas-migration/releases/tag/0.1.0)
 and started testing ZF-based projects.
 
 During this phase, we identified and resolved a number of edge cases we would
@@ -623,19 +634,19 @@ As a final effort, we decided to do full continuous integration on each
 component.
 
 (You would probably think that we should have started from that, but you'd be
-wrong! We couldn't take this step until we had a public Satis repository.)
+wrong! We couldn't take this step until we had a public Composer repository.)
 
 To do this, we created test organisations for each of our projects,
 pushed all components to these organisations, and enabled [Travis CI](https://travis-ci.com)
 on each.
 
-We modified the configuration to also run the php linter on the source
-code, as our rewrite tool was heavily using regular expressions.
-This helped identify some edge cases with rewriting, but also reported a lot
-of false-positives. As one example, we have a number of classes that are enabled
-only under specific PHP versions. We also have classes named after PHP keywords that
-were later reserved; in those cases, we have replacements, but the linter would
-flag the legacy classes as invalid.
+We modified the configuration to also run the php linter on the source code, as
+our rewrite tool was heavily using regular expressions.  This helped identify
+some edge cases with rewriting, but also reported a lot of false-positives. As
+one example of a false positive, we have a number of classes that are enabled
+only under specific PHP versions. We also have classes named after PHP keywords
+that were later reserved; in those cases, we have replacements, but the linter
+would flag the legacy classes as invalid.
 
 We anticipated this phase would take quite some time, due to the fact that
 Travis CI for open source limits the number of parallel operations that can be
@@ -646,11 +657,11 @@ reality, this went much faster than expected, but nevertheless, we were often
 fixing issues during the day, and waiting for tests to run overnight.
 
 This approach allowed us to identify a ton of issues, and we ended up rebuilding
-repositories and our Satis instance multiple times during the process, until we
-were satisfied with the results. In the end, the remaining issues we had were
-cases of test expectations that needed to change due to renamed classes and/or
-configuration, and a few minor ones that we were unable to reproduce anywhere
-except on the Travis CI platform itself.
+repositories and our Composer repository multiple times during the process,
+until we were satisfied with the results. In the end, the remaining issues we
+had were cases of test expectations that needed to change due to renamed classes
+and/or configuration, and a few minor ones that we were unable to reproduce
+anywhere except on the Travis CI platform itself.
 
 ### Not everything was perfect
 
@@ -663,7 +674,7 @@ failing due to line lengths.
 
 We were not able to rewrite images. Regenerating all images just to keep
 references to new libraries was not possible at this time, so we decided to
-leave it as "post-migration" manual operation.
+leave them as "post-migration" manual operations.
 
 Nevertheless, we used the migration tooling as a chance to resolve a number of
 long-standing issues. To list a few:
@@ -674,14 +685,15 @@ long-standing issues. To list a few:
    on rewritten PHP files.
 
 2. In some old version of packages, we were using [grouped import statements](https://www.php.net/manual/en/language.namespaces.importing.php#language.namespaces.importing.group)
-   so we ran [another CS fix](https://github.com/squizlabs/PHP_CodeSniffer/blob/3.5.4/src/Standards/PSR2/Sniffs/Namespaces/UseDeclarationSniff.php) to split them.
+   so we ran [another CS fix](https://github.com/squizlabs/PHP_CodeSniffer/blob/3.5.4/src/Standards/PSR2/Sniffs/Namespaces/UseDeclarationSniff.php)
+   to split them.
 
 3. Copyright headers. We have completely changed copyright headers in all
-   of the files. Before, we kept the copyright year and it was
-   inconsistently updated (we had some rules when the year should be updated, but
-   very often we forgot to do it). Now we have a much simpler copyright
-   header with references to other files in the repository (`LICENSE.md` and
-   `COPYRIGHT.md`).
+   of the files. Before, we kept the copyright year as part of the header, and
+   it was inconsistently updated (we had some rules when the year should be
+   updated, but very often we forgot to do it). Now we have a much simpler
+   copyright header with references to other files in the repository
+   (`LICENSE.md` and `COPYRIGHT.md`).
 
 4. Updating spacing to follow [PSR-12](https://www.php-fig.org/psr/psr-12/). As
    the PSR-12 Coding Standard was already approved, we decided to add a blank
@@ -728,31 +740,33 @@ brand new organisations: [Laminas](https://github.com/laminas),
 
 Shortly after completing the migration, we received user reports of issues.
 
-The first the most serious issue was with [namespaced function](#custom-functions).
-We just missed "return" statement in legacy functions with the call to new functions.
+The first and most serious issue was with [namespaced function](#custom-functions).
+We somehow missed including a "return" statement in the legacy functions when
+calling then new variants.
 
-Because of that we had to issue patch version for: 
+Because of that we had to issue patch versions for: 
 
 - [laminas-diactoros](https://github.com/laminas/laminas-diactoros),
 - [laminas-stratigility](https://github.com/laminas/laminas-stratigility),
 
 We noticed also that some versions of [laminas-view](https://github.com/laminas/laminas-view)
-had not been transferred correctly: all tags between 2.2.4 and 2.5.3 and we
+had not been transferred correctly (all tags between 2.2.4 and 2.5.3) and we
 have also issued patch version for these.
 
-Also, [Laminas API Tool skeleton application](https://github.com/laminas-api-tools/api-tools-skeleton/)
-had wrong module registered (due to rename from `ZendDeveloperTools` to `Laminas\DeveloperTools`),
-and it had been patched.
+The [Laminas API Tool skeleton application](https://github.com/laminas-api-tools/api-tools-skeleton/)
+had an incorrect module registered (due to renaming from `ZendDeveloperTools` to
+`Laminas\DeveloperTools`), and it, too had to be patched.
 
 > Patched version
 >
-> In above repositories we released new tags with `p1` suffix,
-> as these took precedence during `composer update` operation.
+> In the above repositories we released new tags with the `p1` suffix, which
+> denotes a "patch" or "build" version. Composer will prefer these over the tag
+> they patch when performing a `composer update` operation.
 
-And thankfully that was everything. We've had no blocking issues reported
-since late January, while we continue to get reports of successful migrations.
+Thankfully that was everything. We've had no blocking issues reported since late
+January, while we continue to get reports of successful migrations.
 
-In last two months, we've also seen many third party repositories migrate to
+In the last two months, we've also seen many third party repositories migrate to
 Laminas.
 
 If you still have not updated your application or your company is still
@@ -764,7 +778,8 @@ to get security updates. Please see our [migration guide](https://docs.laminas.d
 We'e had our [first Technical Steering Committee meeting](https://getlaminas.org/blog/2020-03-05-tsc-inaugural-meeting.html),
 and started planning how we want to maintain and expand the project.
 
-Please [follow us on Twitter](https://twitter.com/getlaminas) to not miss any updates,
-[join our chat](http://dev.laminas.com/chat) and [visit our forum](https://discourse.laminas.dev) today!
+Please [follow us on Twitter](https://twitter.com/getlaminas),
+[join our chat](http://dev.laminas.com/chat), and
+[visit our forums](https://discourse.laminas.dev) today!
 
 Stay tuned!
