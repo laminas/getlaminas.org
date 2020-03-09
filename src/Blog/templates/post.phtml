@@ -20,16 +20,7 @@ $this->end();
     </div>
 
     <div class="row align-items-start mt-5">
-        <aside class="col-md-2 d-none d-sm-block sidebar blog">
-            <p>
-                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
-                <?php if ($post->updated) : ?>
-                <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
-                <?php endif ?>
-            </p>
-        </aside>
-
-        <article class="col-md-6 blog">
+        <article class="col-md-8 blog">
             <h2 class="p-name"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h2>
 
             <div class="e-content">
@@ -38,5 +29,14 @@ $this->end();
             <?= $post->extended ?>
             </div>
         </article>
+
+        <aside class="col-md-4 d-none d-sm-block sidebar blog">
+            <p>
+                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
+                <?php if ($post->updated) : ?>
+                <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
+                <?php endif ?>
+            </p>
+        </aside>
     </div>
 </div>
