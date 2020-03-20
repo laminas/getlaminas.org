@@ -84,13 +84,18 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
 
     private function createRelease(array $data) : Release
     {
+        // Ensure we have a fully qualified URL
+        $authorUrl = parse_url($data['author_url'], PHP_URL_PATH) === $data['author_url']
+            ? sprintf('https://github.com/%s', $data['author_url'])
+            : $data['author_url'];
+
         return new Release(
             $data['package'],
             $data['version'],
             $data['url'],
             $this->markdown->convertToHtml($data['changelog']),
             new DateTimeImmutable($data['publication_date']),
-            new Author($data['author_name'], $data['author_url'])
+            new Author($data['author_name'], $authorUrl)
         );
     }
 
@@ -104,8 +109,10 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
             $title = $entry->getTitle();
             list($package, $version) = explode(' ', $title);
 
-            $author = $entry->getAuthor();
-            $author = new Author($author['name'], $author['uri']);
+            $author     = $entry->getAuthor();
+            $authorName = $author['name'];
+            $authorUrl  = $author['uri'] ?? sprintf('https://github.com/%s', $authorName);
+            $author     = new Author($authorName, $authorUrl);
 
             $date = $entry->getDateCreated();
 
