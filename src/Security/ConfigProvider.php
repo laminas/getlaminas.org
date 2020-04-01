@@ -43,6 +43,6 @@ class ConfigProvider
     {
         $app->get($basePath . '[/]', Handler\SecurityHandler::class, 'security');
         $app->get($basePath . '/{action:feed|advisories}', Handler\SecurityHandler::class, 'security.pages');
-        $app->get($basePath . '/advisory/:advisory', Handler\AdvisoryHandler::class, 'security.advisory');
+        $app->get($basePath . '/advisory/{advisory:[^/]+}', Handler\AdvisoryHandler::class, 'security.advisory');
     }
 }

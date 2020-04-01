@@ -26,10 +26,15 @@ class AdvisoryHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         $advisory = $request->getAttribute('advisory', false);
-        $file = sprintf('data/advisories/%s.md', basename($advisory));
-        if (! $advisory || ! file_exists($file)) {
+        if (! $advisory) {
             return new HtmlResponse($this->template->render('error::404'));
         }
+
+        $file = sprintf('data/advisories/%s.md', basename($advisory));
+        if (! file_exists($file)) {
+            return new HtmlResponse($this->template->render('error::404'));
+        }
+
         $content = $this->advisory->getFromFile($file);
         $content['layout'] = 'layout::default';
         $content['advisory'] = $advisory;

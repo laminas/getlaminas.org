@@ -11,6 +11,9 @@ class Advisory extends AbstractCollection
 
     protected function order($a, $b)
     {
+        if ($b['date'] === $a['date']) {
+            return $b['title'] <=> $a['title'];
+        }
         return $b['date'] <=> $a['date']; // reverse order
     }
 }

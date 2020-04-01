@@ -3,15 +3,13 @@
 <div class="container">
     <div class="row align-items-start mt-5">
         <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
-            <h2>Security Advisory: <?= $advisory ?></h2>
-
             <?= $body ?>
 
             <div class="spacing"></div>
             <div class="hline"></div>
 
-            <p>Released <?= date('Y-m-d', $date) ?></p>
-            <p><a href="/security/advisories"><i class="fa fa-chevron-left"></i> Back to advisories</a></p>
+            <p>Released <?= (new DateTimeImmutable($date))->format('Y-m-d') ?></p>
+            <p><a href="<?= $this->url('security.pages', ['action' => 'advisories']) ?>"><i class="fa fa-chevron-left"></i> Back to advisories</a></p>
 
         </div>
 

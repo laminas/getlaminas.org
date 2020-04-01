@@ -47,6 +47,7 @@ class SecurityHandler implements RequestHandlerInterface
             if ((0 !== $totPages) && ($page > $totPages || $page < 1)) {
                 return new HtmlResponse($this->template->render('error::404'));
             }
+
             $nextPage = ($page === $totPages) ? 0 : $page + 1;
             $prevPage = ($page === 1) ? 0 : $page - 1;
 

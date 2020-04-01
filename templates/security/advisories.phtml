@@ -9,9 +9,9 @@
             <div class="list-group">
             <?php if ($tot > 0) : ?>
                 <?php foreach ($advisories as $key => $advisory) : ?>
-                    <a class="list-group-item" href="/security/advisory/<?= basename($key, '.md') ?>">
-                        <h4 class="list-group-item-heading"><i class="fa fa-bug"></i>&nbsp;<?= $advisory['title'] ?></h4>
-                        <p class="list-group-item-text">Published <?= date('Y-m-d', $advisory['date']) ?></p>
+                    <a class="list-group-item" href="<?= $this->url('security.advisory', ['advisory' => basename($key, '.md')]) ?>">
+                        <h4 class="list-group-item-heading"><?= $advisory['title'] ?></h4>
+                        <p class="list-group-item-text">Published <?= (new DateTimeImmutable($advisory['date']))->format('Y-m-d') ?></p>
                     </a>
                 <?php endforeach ?>
             <?php else : ?>
@@ -23,12 +23,14 @@
             <div class="hline"></div>
 
             <?php if ($tot > 0) : ?>
-            <ul class="pager">
-                <li class="previous<?= $prev ? '' : ' disabled' ?>"><a href="<?= $prev ? '?page=' . $prev : '#' ?>"><i class="fa fa-chevron-left"></i>&nbsp;Previous</a>
-                </li>
-                <li><strong class="text-info"><?php printf("Page %d/%d", $page, $tot) ?></strong></li>
-                <li class="next<?= $next ? '' : ' disabled' ?>"><a href="<?= $next ? '?page=' . $next : '#' ?>">Next&nbsp;<i class="fa fa-chevron-right"></i></a></li>
-            </ul>
+            <nav arial-label="Security advisory page navigation">
+                <ul class="pagination mt-4 justify-content-center">
+                    <li class="page-item previous<?= $prev ? '' : ' disabled' ?>"><a class="page-link" href="<?= $prev ? '?page=' . $prev : '#' ?>"><i class="fa fa-chevron-left"></i>&nbsp;Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">Page <?= $page ?> of <?= $tot ?></a></li>
+                    <li class="page-item next<?= $next ? '' : ' disabled' ?>"><a class="page-link" href="<?= $next ? '?page=' . $next : '#' ?>">Next&nbsp;<i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+            </nav>
             <?php endif ?>
         </div>
 
