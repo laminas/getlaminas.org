@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -13,7 +14,7 @@ use Psr\Container\ContainerInterface;
 
 class FetchBlogPostFromMapperListenerFactory
 {
-    public function __invoke(ContainerInterface $container) : FetchBlogPostFromMapperListener
+    public function __invoke(ContainerInterface $container): FetchBlogPostFromMapperListener
     {
         return new FetchBlogPostFromMapperListener(
             $container->get(MapperInterface::class)

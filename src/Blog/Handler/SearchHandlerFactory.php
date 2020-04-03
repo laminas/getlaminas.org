@@ -10,7 +10,7 @@ use Mezzio\Helper\UrlHelper;
 
 class SearchHandlerFactory
 {
-    public function __invoke(ContainerInterface $container) : SearchHandler
+    public function __invoke(ContainerInterface $container): SearchHandler
     {
         return new SearchHandler(
             $container->get(MapperInterface::class),

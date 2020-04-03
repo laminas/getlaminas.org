@@ -7,7 +7,7 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 
 class ConfigProvider
 {
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencies(),
@@ -15,7 +15,7 @@ class ConfigProvider
         ];
     }
 
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             'factories' => [
@@ -30,7 +30,7 @@ class ConfigProvider
     /**
      * Returns the templates configuration
      */
-    public function getTemplates() : array
+    public function getTemplates(): array
     {
         return [
             'paths' => [
@@ -39,7 +39,7 @@ class ConfigProvider
         ];
     }
 
-    public function registerRoutes(Application $app, string $basePath = '/security') : void
+    public function registerRoutes(Application $app, string $basePath = '/security'): void
     {
         $app->get($basePath . '[/]', Handler\SecurityHandler::class, 'security');
         $app->get($basePath . '/{action:feed|advisories}', Handler\SecurityHandler::class, 'security.pages');

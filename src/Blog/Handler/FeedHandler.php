@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -33,7 +34,7 @@ class FeedHandler implements RequestHandlerInterface
         $this->feedPath        = $feedPath;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tag  = $request->getAttribute('tag');
         $type = $request->getAttribute('type', 'rss');
@@ -50,7 +51,7 @@ class FeedHandler implements RequestHandlerInterface
             ->withBody(new Stream(fopen($path, 'r')));
     }
 
-    private function getTagFeedPath(string $tag, string $type) : string
+    private function getTagFeedPath(string $tag, string $type): string
     {
         return sprintf(
             '%s/%s.%s.xml',
@@ -60,7 +61,7 @@ class FeedHandler implements RequestHandlerInterface
         );
     }
 
-    private function getFeedPath(string $type) : string
+    private function getFeedPath(string $type): string
     {
         return sprintf('%s/%s.xml', $this->feedPath, $type);
     }

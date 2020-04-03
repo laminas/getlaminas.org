@@ -10,7 +10,7 @@ use Monolog\Processor\PsrLogMessageProcessor;
 
 class AccessLoggerFactory
 {
-    public function __invoke(ContainerInterface $container) : LoggerInterface
+    public function __invoke(ContainerInterface $container): LoggerInterface
     {
         $logger = new Logger('getlaminas');
         $logger->pushHandler(new StreamHandler(

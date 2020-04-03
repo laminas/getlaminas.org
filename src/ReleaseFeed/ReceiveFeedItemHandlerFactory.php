@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 
 class ReceiveFeedItemHandlerFactory
 {
-    public function __invoke(ContainerInterface $container) : ReceiveFeedItemHandler
+    public function __invoke(ContainerInterface $container): ReceiveFeedItemHandler
     {
         return new ReceiveFeedItemHandler(
             $container->get('config')['release-feed']['feed-file'],

@@ -6,8 +6,8 @@ use App\AbstractCollection;
 
 class Advisory extends AbstractCollection
 {
-    const FOLDER_COLLECTION = 'data/advisories';
-    const CACHE_FILE        = 'var/advisories.php';
+    protected const FOLDER_COLLECTION = 'data/advisories';
+    protected const CACHE_FILE        = 'var/advisories.php';
 
     protected function order($a, $b)
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -29,7 +30,7 @@ class GenerateSearchData extends Command
 {
     use CreateBlogPostFromDataArray;
 
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->setName('blog:generate-search-data');
         $this->setDescription('Generate site search data.');
@@ -45,7 +46,7 @@ class GenerateSearchData extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $basePath = $input->getOption('path');

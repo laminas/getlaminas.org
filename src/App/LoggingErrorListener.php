@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
@@ -10,10 +9,10 @@ use Throwable;
 
 class LoggingErrorListener
 {
-   /**
+    /**
      * Log message string with placeholders
      */
-    const LOG_STRING = '{status} [{method}] {uri}: {error}';
+    private const LOG_STRING = '{status} [{method}] {uri}: {error}';
 
     private $logger;
 

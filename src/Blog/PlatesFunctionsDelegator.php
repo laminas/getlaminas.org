@@ -18,7 +18,7 @@ class PlatesFunctionsDelegator implements ExtensionInterface
         return $engine;
     }
 
-    public function register(Engine $engine) : void
+    public function register(Engine $engine): void
     {
         $engine->registerFunction('formatDate', [$this, 'formatDate']);
         $engine->registerFunction('formatDateRfc', [$this, 'formatDateRfc']);
@@ -26,17 +26,17 @@ class PlatesFunctionsDelegator implements ExtensionInterface
         $engine->registerFunction('postUrl', [$this, 'postUrl']);
     }
 
-    public function formatDate(DateTimeInterface $date, string $format = 'j F Y') : string
+    public function formatDate(DateTimeInterface $date, string $format = 'j F Y'): string
     {
         return $date->format($format);
     }
 
-    public function formatDateRfc(DateTimeInterface $date) : string
+    public function formatDateRfc(DateTimeInterface $date): string
     {
         return $this->formatDate($date, 'c');
     }
 
-    public function postAuthor(BlogPost $post) : string
+    public function postAuthor(BlogPost $post): string
     {
         $author = $post->author;
         if ($author->url === '') {
@@ -46,7 +46,7 @@ class PlatesFunctionsDelegator implements ExtensionInterface
         return sprintf('<a href="%s" target="_blank">%s</a>', $author->url, $author->fullname ?: $author->username);
     }
 
-    public function postUrl(BlogPost $post) : string
+    public function postUrl(BlogPost $post): string
     {
         return $this->template->url('blog.post', ['id' => $post->id]);
     }

@@ -14,19 +14,19 @@
   "author": "Alexander Rechsteiner",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.4.0",
-    "popper.js": "^1.15.0"
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "autoprefixer": "^9.6.1",
-    "gulp": "^4.0.0",
-    "gulp-clean-css": "^4.0.0",
+    "autoprefixer": "^9.7.5",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
     "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.4.0",
+    "gulp-rename": "^2.0.0",
     "gulp-rev": "^9.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-scss-lint": "^1.0.0",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-sourcemaps": "^2.6.5"
   }
 }

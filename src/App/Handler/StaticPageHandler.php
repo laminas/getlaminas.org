@@ -32,7 +32,7 @@ class StaticPageHandler implements RequestHandlerInterface
         ));
     }
 
-    private function normalize(string $routeName) : string
+    private function normalize(string $routeName): string
     {
         return str_replace('.', '::', $routeName);
     }

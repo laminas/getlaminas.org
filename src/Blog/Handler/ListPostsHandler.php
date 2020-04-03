@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -40,7 +41,7 @@ class ListPostsHandler implements RequestHandlerInterface
         $this->router    = $router;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tag   = str_replace(['+', '%20'], ' ', $request->getAttribute('tag', ''));
         $path  = $request->getAttribute('originalRequest', $request)->getUri()->getPath();
@@ -66,7 +67,7 @@ class ListPostsHandler implements RequestHandlerInterface
         ));
     }
 
-    private function getPageFromRequest(ServerRequestInterface $request) : int
+    private function getPageFromRequest(ServerRequestInterface $request): int
     {
         $page = $request->getQueryParams()['page'] ?? 1;
         $page = (int) $page;
@@ -79,7 +80,7 @@ class ListPostsHandler implements RequestHandlerInterface
      * @var object $pagination
      * @return object $pagination
      */
-    private function preparePagination(string $path, int $page, stdClass $pagination) : stdClass
+    private function preparePagination(string $path, int $page, stdClass $pagination): stdClass
     {
         $pagination->base_path = $path;
         $pagination->is_first  = ($page === $pagination->first);
@@ -104,7 +105,7 @@ class ListPostsHandler implements RequestHandlerInterface
      * @param object $pagination
      * @return array
      */
-    private function prepareView(string $tag, array $entries, stdClass $pagination) : array
+    private function prepareView(string $tag, array $entries, stdClass $pagination): array
     {
         $view = $tag ? ['tag' => $tag] : [];
         if ($tag) {

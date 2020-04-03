@@ -7,8 +7,8 @@ use RuntimeException;
 
 abstract class AbstractCollection
 {
-    const FOLDER_COLLECTION = '';
-    const CACHE_FILE        = '';
+    protected const FOLDER_COLLECTION = '';
+    protected const CACHE_FILE        = '';
 
     protected $collection = [];
 

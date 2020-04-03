@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -71,7 +72,7 @@ class FeedGenerator extends Command
         parent::__construct();
     }
 
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->setName('blog:feed-generator');
         $this->setDescription('Generate blog feeds.');
@@ -94,7 +95,7 @@ class FeedGenerator extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io        = new SymfonyStyle($input, $output);
         $outputDir = $input->getOption('output-dir');
@@ -196,7 +197,7 @@ class FeedGenerator extends Command
      *
      * @return string[]
      */
-    private function getAuthor(BlogAuthor $author) : array
+    private function getAuthor(BlogAuthor $author): array
     {
         return [
             'name'  => $author->fullname ?: $author->username,
@@ -212,7 +213,7 @@ class FeedGenerator extends Command
      * @param array $options
      * @return string
      */
-    private function generateUri(string $route, array $options) : string
+    private function generateUri(string $route, array $options): string
     {
         $uri = $this->router->generateUri($route, $options);
         return str_replace('[/]', '', $uri);
@@ -221,7 +222,7 @@ class FeedGenerator extends Command
     /**
      * Modify this method to post-process content (e.g., to add an hcard)
      */
-    private function createContent(string $content, BlogPost $post) : string
+    private function createContent(string $content, BlogPost $post): string
     {
         return $content;
     }

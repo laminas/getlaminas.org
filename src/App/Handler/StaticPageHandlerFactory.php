@@ -9,7 +9,7 @@ use Mezzio\Template\TemplateRendererInterface;
 
 class StaticPageHandlerFactory
 {
-    public function __invoke(ContainerInterface $container) : StaticPageHandler
+    public function __invoke(ContainerInterface $container): StaticPageHandler
     {
         return new StaticPageHandler($container->get(TemplateRendererInterface::class));
     }

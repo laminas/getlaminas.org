@@ -69,7 +69,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
         return $this->responseFactory->createResponse(204);
     }
 
-    private function validateData(array $data) : bool
+    private function validateData(array $data): bool
     {
         return isset(
             $data['package'],
@@ -82,7 +82,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
         );
     }
 
-    private function createRelease(array $data) : Release
+    private function createRelease(array $data): Release
     {
         // Ensure we have a fully qualified URL
         $authorUrl = parse_url($data['author_url'], PHP_URL_PATH) === $data['author_url']
@@ -99,7 +99,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
         );
     }
 
-    private function getCurrentReleases() : Releases
+    private function getCurrentReleases(): Releases
     {
         $xml      = file_get_contents($this->feedFile);
         $feed     = Reader::importString($xml);

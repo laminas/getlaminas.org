@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -60,7 +61,7 @@ class MarkdownFileFilter extends FilterIterator
         $this->rewind();
     }
 
-    public function accept() : bool
+    public function accept(): bool
     {
         $current = $this->getInnerIterator()->current();
         if (! $current instanceof SplFileInfo) {

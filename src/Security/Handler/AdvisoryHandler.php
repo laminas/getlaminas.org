@@ -23,7 +23,7 @@ class AdvisoryHandler implements RequestHandlerInterface
         $this->template = $template;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $advisory = $request->getAttribute('advisory', false);
         if (! $advisory) {

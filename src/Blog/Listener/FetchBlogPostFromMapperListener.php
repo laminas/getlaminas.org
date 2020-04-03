@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -24,7 +25,7 @@ class FetchBlogPostFromMapperListener
         $this->mapper = $mapper;
     }
 
-    public function __invoke(FetchBlogPostEvent $event) : void
+    public function __invoke(FetchBlogPostEvent $event): void
     {
         $post = $this->mapper->fetch($event->id());
 
