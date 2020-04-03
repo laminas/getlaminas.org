@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -13,7 +14,7 @@ use Mezzio\Template\TemplateRendererInterface;
 
 class ListPostsHandlerFactory
 {
-    public function __invoke(ContainerInterface $container) : ListPostsHandler
+    public function __invoke(ContainerInterface $container): ListPostsHandler
     {
         return new ListPostsHandler(
             $container->get(MapperInterface::class),

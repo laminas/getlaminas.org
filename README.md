@@ -16,7 +16,7 @@ Next, use the provided [docker-compose configuration](docker-compose.yml):
 ```bash
 $ docker-compose build
 $ docker-compose up
-# browse to http://localhost:9000
+# browse to http://localhost:8080
 ```
 
 ## Testing CSS

@@ -1,6 +1,6 @@
 name: getlaminas_org
 
-type: php:7.2
+type: php:7.3
 
 size: S
 
@@ -11,9 +11,9 @@ build:
 
 dependencies:
   php:
-    "hirak/prestissimo": "^0.3.9"
+    "hirak/prestissimo": "^0.3.10"
   nodejs:
-    gulp-cli: '~2.1.0'
+    gulp-cli: '~2.2.0'
 
 mounts:
   'data/cache':

@@ -15,7 +15,7 @@ use Webuni\CommonMark\TableExtension\TableExtension;
 
 class BuildCommand extends Command
 {
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->setName('security:build');
         $this->setDescription('Build security advisories from markdown+yaml');
@@ -24,7 +24,7 @@ class BuildCommand extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title('Building Security Advisories');

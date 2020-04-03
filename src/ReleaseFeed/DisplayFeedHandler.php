@@ -31,7 +31,7 @@ class DisplayFeedHandler implements RequestHandlerInterface
         $this->feedFile        = $feedFile;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $body = $this->streamFactory->createStreamFromFile($this->feedFile, 'r');
         return $this->responseFactory->createResponse(200)

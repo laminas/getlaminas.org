@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -26,7 +27,7 @@ class FetchBlogPostEvent implements
         $this->id = $id;
     }
 
-    public function jsonSerialize() : array
+    public function jsonSerialize(): array
     {
         return [
             'id'   => $this->id,
@@ -34,22 +35,22 @@ class FetchBlogPostEvent implements
         ];
     }
 
-    public function isPropagationStopped() : bool
+    public function isPropagationStopped(): bool
     {
         return null !== $this->post;
     }
 
-    public function blogPost() : ?BlogPost
+    public function blogPost(): ?BlogPost
     {
         return $this->post;
     }
 
-    public function id() : string
+    public function id(): string
     {
         return $this->id;
     }
 
-    public function provideBlogPost(BlogPost $post) : void
+    public function provideBlogPost(BlogPost $post): void
     {
         $this->post = $post;
     }

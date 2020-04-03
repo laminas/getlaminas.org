@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -115,7 +116,7 @@ class SeedBlogDatabase extends Command
             tags VARCHAR(255)
         )';
 
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->setName('blog:seed-db');
         $this->setDescription('Generate and seed the blog post database.');
@@ -154,7 +155,7 @@ class SeedBlogDatabase extends Command
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io                       = new SymfonyStyle($input, $output);
         $basePath                 = $input->getOption('path');
@@ -197,7 +198,7 @@ class SeedBlogDatabase extends Command
         return 0;
     }
 
-    private function createDatabase(string $path) : PDO
+    private function createDatabase(string $path): PDO
     {
         if (file_exists($path)) {
             $path = realpath($path);

@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 
 class VerifyTokenMiddlewareFactory
 {
-    public function __invoke(ContainerInterface $container) : VerifyTokenMiddleware
+    public function __invoke(ContainerInterface $container): VerifyTokenMiddleware
     {
         return new VerifyTokenMiddleware(
             $container->get('config')['release-feed']['verification_token'],

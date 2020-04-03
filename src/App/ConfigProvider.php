@@ -16,7 +16,7 @@ use Laminas\Stratigility\Middleware\ErrorHandler;
 /**
  * The configuration provider for the App module
  *
- * @see https://docs.zendframework.com/zend-component-installer/
+ * @see https://docs.laminas.dev/laminas-component-installer/
  */
 class ConfigProvider
 {
@@ -27,7 +27,7 @@ class ConfigProvider
      * method which returns an array with its configuration.
      *
      */
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'asset-revisions' => [],
@@ -39,7 +39,7 @@ class ConfigProvider
     /**
      * Returns the container dependencies
      */
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             'aliases' => [
@@ -65,7 +65,7 @@ class ConfigProvider
     /**
      * Returns the templates configuration
      */
-    public function getTemplates() : array
+    public function getTemplates(): array
     {
         return [
             'paths' => [
@@ -78,7 +78,7 @@ class ConfigProvider
         ];
     }
 
-    public function registerRoutes(Application $app, string $basePath = '/') : void
+    public function registerRoutes(Application $app, string $basePath = '/'): void
     {
         $basePath = rtrim($basePath, '/') . '/';
         $app->get($basePath, Handler\StaticPageHandler::class, 'app.home-page');

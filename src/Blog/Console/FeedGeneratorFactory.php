@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -16,7 +17,7 @@ use Mezzio\Template\TemplateRendererInterface;
 
 class FeedGeneratorFactory
 {
-    public function __invoke(ContainerInterface $container) : FeedGenerator
+    public function __invoke(ContainerInterface $container): FeedGenerator
     {
         return new FeedGenerator(
             $container->get(MapperInterface::class),

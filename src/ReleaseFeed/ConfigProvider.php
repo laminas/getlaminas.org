@@ -12,7 +12,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class ConfigProvider
 {
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'dependencies' => $this->getDependencies(),
@@ -23,7 +23,7 @@ class ConfigProvider
         ];
     }
 
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             'aliases' => [
@@ -40,7 +40,7 @@ class ConfigProvider
         ];
     }
 
-    public function registerRoutes(Application $app) : void
+    public function registerRoutes(Application $app): void
     {
         $app->get('/releases/rss.xml', DisplayFeedHandler::class, 'releases.feed');
         $app->post('/api/release', [

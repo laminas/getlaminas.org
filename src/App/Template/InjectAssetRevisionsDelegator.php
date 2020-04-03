@@ -16,7 +16,7 @@ use function json_decode;
 
 class InjectAssetRevisionsDelegator
 {
-    public function __invoke(ContainerInterface $container, string $serviceName, callable $factory) : PlatesEngine
+    public function __invoke(ContainerInterface $container, string $serviceName, callable $factory): PlatesEngine
     {
         $engine    = $factory();
         $config    = $container->get('config');
@@ -24,14 +24,14 @@ class InjectAssetRevisionsDelegator
 
         isset($config['debug'])
             ? $this->injectAssets($engine, Closure::fromCallable([$this, 'getAssetMap']))
-            : $this->injectAssets($engine, function () use ($revisions) : array {
+            : $this->injectAssets($engine, function () use ($revisions): array {
                 return $revisions;
             });
 
         return $engine;
     }
 
-    private function injectAssets(PlatesEngine $engine, callable $getAssetMap) : void
+    private function injectAssets(PlatesEngine $engine, callable $getAssetMap): void
     {
         $engine->registerFunction('assets', function ($asset) use ($getAssetMap) {
             $assetMap = $getAssetMap();
@@ -39,7 +39,7 @@ class InjectAssetRevisionsDelegator
         });
     }
 
-    private function getAssetMap() : array
+    private function getAssetMap(): array
     {
         $assetRevisionsFile = getcwd() . '/data/assets.json';
         if (! file_exists($assetRevisionsFile)) {

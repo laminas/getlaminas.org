@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -43,7 +44,7 @@ class PdoPaginator implements AdapterInterface
      * @param int $itemCountPerPage
      * @return \GetLaminas\Blog\BlogPost[]
      */
-    public function getItems($offset, $itemCountPerPage) : array
+    public function getItems($offset, $itemCountPerPage): array
     {
         $params = array_merge($this->params, [
             ':offset' => $offset,
@@ -62,7 +63,7 @@ class PdoPaginator implements AdapterInterface
         );
     }
 
-    public function count() : int
+    public function count(): int
     {
         $result = $this->count->execute($this->params);
         if (! $result) {

@@ -12,7 +12,7 @@ class LoggingErrorListenerDelegator
         ContainerInterface $container,
         string $serviceName,
         callable $callback
-    ) : ErrorHandler {
+    ): ErrorHandler {
         $errorHandler = $callback();
         $errorHandler->attachListener(
             new LoggingErrorListener($container->get(LoggerInterface::class))

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -15,7 +16,7 @@ use Mezzio\Application;
 
 class ConfigProvider
 {
-    public function __invoke() : array
+    public function __invoke(): array
     {
         return [
             'blog'         => $this->getConfig(),
@@ -24,14 +25,14 @@ class ConfigProvider
         ];
     }
 
-    public function getConfig() : array
+    public function getConfig(): array
     {
         return [
             'db' => null,
         ];
     }
 
-    public function getDependencies() : array
+    public function getDependencies(): array
     {
         return [
             // @codingStandardsIgnoreStart
@@ -64,7 +65,7 @@ class ConfigProvider
         ];
     }
 
-    public function getTemplateConfig() : array
+    public function getTemplateConfig(): array
     {
         return [
             'paths' => [
@@ -73,7 +74,7 @@ class ConfigProvider
         ];
     }
 
-    public function registerRoutes(Application $app, string $basePath = '/blog') : void
+    public function registerRoutes(Application $app, string $basePath = '/blog'): void
     {
         $app->get($basePath . '[/]', Handler\ListPostsHandler::class, 'blog');
         $app->get($basePath . '/{id:[^/]+}.html', Handler\DisplayPostHandler::class, 'blog.post');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) Matthew Weier O'Phinney
@@ -30,12 +31,12 @@ trait CreateBlogPostFromDataArray
      */
     private $postDelimiter = '<!--- EXTENDED -->';
 
-    public function setAuthorDataRootPath(string $path) : void
+    public function setAuthorDataRootPath(string $path): void
     {
         $this->authorDataRootPath = $path;
     }
 
-    private function getParser() : Parser
+    private function getParser(): Parser
     {
         if (! $this->parser) {
             $this->parser = new Parser(null, new CommonMarkParser());
@@ -44,7 +45,7 @@ trait CreateBlogPostFromDataArray
         return $this->parser;
     }
 
-    private function createBlogPostFromDataArray(array $post) : BlogPost
+    private function createBlogPostFromDataArray(array $post): BlogPost
     {
         if (! isset($post['path'])) {
             throw new RuntimeException(sprintf(
@@ -78,13 +79,13 @@ trait CreateBlogPostFromDataArray
         );
     }
 
-    private function createDateTimeFromString(string $dateString) : DateTime
+    private function createDateTimeFromString(string $dateString): DateTime
     {
         return is_numeric($dateString)
             ? new DateTime('@' . $dateString, new DateTimezone('America/Chicago'))
             : new DateTime($dateString);
     }
-    
+
     private function createAuthorFromAuthorName(string $authorName): BlogAuthor
     {
         $filename = sprintf('%s/%s.yml', $this->authorDataRootPath, $authorName);

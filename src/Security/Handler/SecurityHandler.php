@@ -13,8 +13,8 @@ use Laminas\Feed\Writer\Feed;
 
 class SecurityHandler implements RequestHandlerInterface
 {
-    const ADVISORY_PER_PAGE = 10;
-    const ADVISORY_PER_FEED = 15;
+    private const ADVISORY_PER_PAGE = 10;
+    private const ADVISORY_PER_FEED = 15;
 
     /** @var Advisory */
     private $advisory;
@@ -28,7 +28,7 @@ class SecurityHandler implements RequestHandlerInterface
         $this->template = $template;
     }
 
-    public function handle(ServerRequestInterface $request) : ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $action = $request->getAttribute('action', 'security');
 

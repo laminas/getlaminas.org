@@ -10,7 +10,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class DisplayFeedHandlerFactory
 {
-    public function __invoke(ContainerInterface $container) : DisplayFeedHandler
+    public function __invoke(ContainerInterface $container): DisplayFeedHandler
     {
         return new DisplayFeedHandler(
             $container->get(StreamFactoryInterface::class),

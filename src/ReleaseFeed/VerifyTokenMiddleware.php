@@ -24,7 +24,7 @@ class VerifyTokenMiddleware implements MiddlewareInterface
         $this->problemFactory = $problemFactory;
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $header = $request->getHeaderLine('Authorization');
         if (! preg_match('/^token ' . $this->token . '/i', $header)) {
