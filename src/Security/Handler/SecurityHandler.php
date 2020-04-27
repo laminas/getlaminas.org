@@ -2,6 +2,7 @@
 
 namespace GetLaminas\Security\Handler;
 
+use DateTimeImmutable;
 use GetLaminas\Security\Advisory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -88,7 +89,7 @@ class SecurityHandler implements RequestHandlerInterface
 
         $advisories = array_slice($this->advisory->getAll(), 0, self::ADVISORY_PER_FEED);
         $first      = current($advisories);
-        $feed->setDateModified($first['date']);
+        $feed->setDateModified(new DateTimeImmutable($first['date']));
 
         foreach ($advisories as $id => $advisory) {
             $content = $this->advisory->getFromFile($id);
@@ -99,8 +100,8 @@ class SecurityHandler implements RequestHandlerInterface
                 'name'  => 'Laminas Project Security',
                 'email' => 'security@getlaminas.org',
             ]);
-            $entry->setDateCreated($content['date']);
-            $entry->setDateModified($content['date']);
+            $entry->setDateCreated(new DateTimeImmutable($content['date']));
+            $entry->setDateModified(new DateTimeImmutable($content['date']));
             $entry->setContent($content['body']);
             $feed->addEntry($entry);
         }
