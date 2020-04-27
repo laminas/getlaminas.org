@@ -43,6 +43,7 @@ class ConfigProvider
                 Console\TagCloud::class                         => Console\TagCloudFactory::class,
                 Handler\DisplayPostHandler::class               => Handler\DisplayPostHandlerFactory::class,
                 Handler\FeedHandler::class                      => Handler\FeedHandlerFactory::class,
+                Handler\FeedRedirectHandler::class              => Handler\FeedRedirectHandlerFactory::class,
                 Handler\ListPostsHandler::class                 => Handler\ListPostsHandlerFactory::class,
                 Handler\SearchHandler::class                    => Handler\SearchHandlerFactory::class,
                 Listener\FetchBlogPostFromMapperListener::class => Listener\FetchBlogPostFromMapperListenerFactory::class,
@@ -83,6 +84,7 @@ class ConfigProvider
         $app->get($basePath . '/tag/{tag:[^/]+}/{type:atom|rss}.xml', Handler\FeedHandler::class, 'blog.tag.feed');
         $app->get($basePath . '/tag/{tag:[^/]+}', Handler\ListPostsHandler::class, 'blog.tag');
         $app->get($basePath . '/{type:atom|rss}.xml', Handler\FeedHandler::class, 'blog.feed');
+        $app->get($basePath . '/feed-{type:atom|rss}.xml', Handler\FeedRedirectHandler::class, 'blog.feed-redirect');
         $app->get($basePath . '/search[/]', Handler\SearchHandler::class, 'blog.search');
     }
 }
