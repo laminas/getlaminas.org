@@ -5,13 +5,13 @@ namespace GetLaminas\Security\Console;
 use GetLaminas\Security\Advisory;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
+use League\CommonMark\Extension\Table\TableExtension;
 use Mni\FrontYAML\Bridge\CommonMark\CommonMarkParser;
 use Mni\FrontYAML\Parser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Webuni\CommonMark\TableExtension\TableExtension;
 
 class BuildCommand extends Command
 {

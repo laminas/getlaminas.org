@@ -13,12 +13,13 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
-    \Mezzio\ProblemDetails\ConfigProvider::class,
-    \Laminas\Paginator\ConfigProvider::class,
-    \Phly\EventDispatcher\ConfigProvider::class,
+    \Laminas\Diactoros\ConfigProvider::class,
     \Laminas\HttpHandlerRunner\ConfigProvider::class,
+    \Laminas\Paginator\ConfigProvider::class,
     \Mezzio\Plates\ConfigProvider::class,
+    \Mezzio\ProblemDetails\ConfigProvider::class,
     \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
+    \Phly\EventDispatcher\ConfigProvider::class,
     // Include cache configuration
     new ArrayProvider($cacheConfig),
 

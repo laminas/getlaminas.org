@@ -2,13 +2,8 @@
 
 namespace GetLaminas\ReleaseFeed;
 
-use Laminas\Diactoros\ResponseFactory;
-use Laminas\Diactoros\StreamFactory;
-use Laminas\ServiceManager\Factory\InvokableFactory;
 use Mezzio\Application;
 use Mezzio\Helper\BodyParams\BodyParamsMiddleware;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 
 class ConfigProvider
 {
@@ -26,15 +21,9 @@ class ConfigProvider
     public function getDependencies(): array
     {
         return [
-            'aliases' => [
-                ResponseFactoryInterface::class => ResponseFactory::class,
-                StreamFactoryInterface::class   => StreamFactory::class,
-            ],
             'factories' => [
                 DisplayFeedHandler::class     => DisplayFeedHandlerFactory::class,
                 ReceiveFeedItemHandler::class => ReceiveFeedItemHandlerFactory::class,
-                ResponseFactory::class        => InvokableFactory::class,
-                StreamFactory::class          => InvokableFactory::class,
                 VerifyTokenMiddleware::class  => VerifyTokenMiddlewareFactory::class,
             ],
         ];
