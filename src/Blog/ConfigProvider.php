@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace GetLaminas\Blog;
 
 use League\Plates\Engine;
+use Phly\ConfigFactory\ConfigFactory;
 use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
-use Phly\Expressive\ConfigFactory;
 use Mezzio\Application;
 
 class ConfigProvider
