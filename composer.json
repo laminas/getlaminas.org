@@ -11,7 +11,10 @@
         "zendframework"
     ],
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.3"
+        }
     },
     "support": {
         "issues": "https://github.com/laminas/getlaminas.org/issues",
