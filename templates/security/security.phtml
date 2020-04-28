@@ -57,7 +57,8 @@
                     A security advisory will be released on the Laminas Project
                     site detailing the vulnerability, as well as
                     recommendations for end-users to protect themselves.
-                    Security advisories will be listed at <a href="<?= $this->url('security.pages', ['action' => 'advisories']) ?>">https://getlaminas.org/security/advisories</a>,
+                    Security advisories will be listed at <a href="<?= $this->url('security.pages', ['action' => 'advisories']) ?>"><?= $this->serverurl($this->url('security.pages',
+                            ['action' => 'advisories'])) ?></a>,
                     as well as via a <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>">feed</a> (which
                     is also present in the website head for easy feed
                     discovery)
