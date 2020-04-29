@@ -31,6 +31,7 @@ hooks:
     (cd bootstrap ; gulp deploy)
     mv bootstrap/build/assets.json data/
     mv bootstrap/build/css public/
+    mv bootstrap/build/js public/
     echo "- Setting up configuration"
     rm -f config/development.config.php config/autoload/*.local.php
     mv config/autoload/local.php.dist config/autoload/local.php
