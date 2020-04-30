@@ -22,6 +22,7 @@
     },
     "require": {
         "php": "~7.3",
+        "ext-pdo": "*",
         "dflydev/fig-cookies": "^2.0.1",
         "laminas/laminas-component-installer": "^2.1.2",
         "laminas/laminas-config-aggregator": "^1.2.2",

@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->insert('layout::favicon') ?>
 
     <title><?= $this->e($title) ?> - Laminas Project</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
-    <link rel="stylesheet" href="/css/<?= $this->assets('laminas.min.css') ?>">
+    <link rel="stylesheet" href="/<?= $this->assets('css/laminas.css') ?>">
     <?= $this->section('stylesheets') ?>
 </head>
 <body class="h-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow" role="navigation"><div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow"><div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="/">
             <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project" />
@@ -97,10 +95,7 @@
         </div>
     </footer>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTYiQddPZoLUHHZ8=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/<?= $this->assets('js/laminas.js') ?>"></script>
     <?= $this->section('javascript') ?>
 </body>
 </html>
