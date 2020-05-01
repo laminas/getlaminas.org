@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phly\OpcachePreload;
+namespace GetLaminas;
 
 final class Preloader
 {
