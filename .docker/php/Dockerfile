@@ -39,6 +39,7 @@ COPY .docker/php/php-entrypoint /usr/local/bin/php-entrypoint
 # Copy assets
 COPY --from=assets /assets/assets.json /assets/assets.json
 COPY --from=assets /assets/css /assets/css/
+COPY --from=assets /assets/js /assets/js/
 
 # Build project
 WORKDIR /var/www

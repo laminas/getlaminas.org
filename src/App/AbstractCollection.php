@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Mni\FrontYAML\Parser;
+use App\FrontMatter\ParserInterface;
 use RuntimeException;
 
 abstract class AbstractCollection
@@ -12,14 +12,15 @@ abstract class AbstractCollection
 
     protected $collection = [];
 
-    protected $yamlParser;
+    /** @var ParserInterface */
+    protected $frontMatterParser;
 
-    public function __construct(Parser $yamlParser)
+    public function __construct(ParserInterface $frontMatterParser)
     {
         if (empty(static::CACHE_FILE)) {
             throw new RuntimeException('The cache file path is not defined!');
         }
-        $this->yamlParser = $yamlParser;
+        $this->frontMatterParser = $frontMatterParser;
         if (! file_exists(static::CACHE_FILE)) {
             $this->buildCache();
         } else {
@@ -36,9 +37,9 @@ abstract class AbstractCollection
     {
         $result = [];
         if (file_exists($file)) {
-            $doc            = $this->yamlParser->parse(file_get_contents($file));
+            $doc            = $this->frontMatterParser->parse($file);
             $result         = $doc->getYAML();
-            $result['body'] = $this->postProcessHtml($doc->getContent());
+            $result['body'] = $doc->getContent();
         }
         return $result;
     }
@@ -50,7 +51,7 @@ abstract class AbstractCollection
         }
 
         foreach (glob(static::FOLDER_COLLECTION . '/*.md') as $file) {
-            $doc = $this->yamlParser->parse(file_get_contents($file));
+            $doc = $this->frontMatterParser->parse($file);
             $fields = $doc->getYAML();
             $this->collection[$file] = $fields;
         }
@@ -61,20 +62,5 @@ abstract class AbstractCollection
     protected function order($a, $b)
     {
         return false;
-    }
-
-    /**
-     * Post-process HTML converted from markdown.
-     *
-     * @param string $html
-     * @return string
-     */
-    private function postProcessHtml($html)
-    {
-        if (strstr($html, '<table>')) {
-            $html = str_replace('<table>', '<table class="table table-striped table-bordered table-hover">', $html);
-        }
-
-        return $html;
     }
 }

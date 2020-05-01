@@ -1,17 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\Security;
 
-use Mni\FrontYAML\Bridge\CommonMark\CommonMarkParser;
-use Mni\FrontYAML\Parser;
-use Psr\Container\ContainerInterface;
+use App\FrontMatter\Parser;
 
 class AdvisoryFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(): Advisory
     {
-        return new Advisory(
-            new Parser(null, new CommonMarkParser())
-        );
+        return new Advisory(new Parser());
     }
 }

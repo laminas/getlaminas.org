@@ -4,6 +4,7 @@ set -e
 
 # Copy CSS assets in public
 cp -r /assets/css /var/www/public
+cp -r /assets/js /var/www/public
 
 # Add assets revision config to application
 cp /assets/assets.json /var/www/data/
