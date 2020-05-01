@@ -2,12 +2,8 @@
 
 namespace GetLaminas\Security\Console;
 
+use App\FrontMatter\Parser;
 use GetLaminas\Security\Advisory;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
-use League\CommonMark\Extension\Table\TableExtension;
-use Mni\FrontYAML\Bridge\CommonMark\CommonMarkParser;
-use Mni\FrontYAML\Parser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,13 +32,9 @@ class BuildCommand extends Command
         }
 
         $io->writeln('<info>Building advisory list</info>');
-        $env = Environment::createCommonMarkEnvironment();
-        $env->addExtension(new TableExtension());
 
         // Instantiating builds the cache file
-        $advisories = new Advisory(
-            new Parser(null, new CommonMarkParser(new CommonMarkConverter([], $env)))
-        );
+        new Advisory(new Parser());
 
         $io->success('DONE building security advisories');
 

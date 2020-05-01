@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog;
 
+use App\FrontMatter\Parser;
+use App\FrontMatter\ParserInterface;
 use DateTime;
 use DateTimezone;
-use Mni\FrontYAML\Bridge\CommonMark\CommonMarkParser;
-use Mni\FrontYAML\Parser;
 use RuntimeException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -21,8 +21,8 @@ trait CreateBlogPostFromDataArray
     /** @var string */
     private $authorDataRootPath = 'data/blog/authors';
 
-    /** @var Parser */
-    private $parser;
+    /** @var ParserInterface */
+    private $frontMatterParser;
 
     /**
      * Delimiter between post summary and extended body
@@ -36,13 +36,13 @@ trait CreateBlogPostFromDataArray
         $this->authorDataRootPath = $path;
     }
 
-    private function getParser(): Parser
+    private function getFrontMatterParser(): ParserInterface
     {
-        if (! $this->parser) {
-            $this->parser = new Parser(null, new CommonMarkParser());
+        if (! $this->frontMatterParser) {
+            $this->frontMatterParser = new Parser();
         }
 
-        return $this->parser;
+        return $this->frontMatterParser;
     }
 
     private function createBlogPostFromDataArray(array $post): BlogPost
@@ -54,8 +54,7 @@ trait CreateBlogPostFromDataArray
             ));
         }
 
-        $parser   = $this->getParser();
-        $document = $parser->parse(file_get_contents($post['path']));
+        $document = $this->getFrontMatterParser()->parse($post['path']);
         $post     = $document->getYAML();
         $parts    = explode($this->postDelimiter, $document->getContent(), 2);
         $created  = $this->createDateTimeFromString($post['created']);
