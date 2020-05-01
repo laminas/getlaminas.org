@@ -1,6 +1,6 @@
 name: getlaminas_org
 
-type: php:7.3
+type: php:7.4
 
 size: S
 
@@ -19,6 +19,10 @@ mounts:
   'data/cache':
     source: local
     source_path: data/cache
+
+variables:
+  php:
+    opcache.preload: preload.php
 
 hooks:
   build: |

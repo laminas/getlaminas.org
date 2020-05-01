@@ -13,6 +13,7 @@ $cacheConfig = [
 ];
 
 $aggregator = new ConfigAggregator([
+    \Phly\OpcachePreload\ConfigProvider::class,
     \Laminas\Diactoros\ConfigProvider::class,
     \Laminas\HttpHandlerRunner\ConfigProvider::class,
     \Laminas\Paginator\ConfigProvider::class,
