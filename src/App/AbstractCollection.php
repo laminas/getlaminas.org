@@ -39,7 +39,7 @@ abstract class AbstractCollection
         if (file_exists($file)) {
             $doc            = $this->frontMatterParser->parse($file);
             $result         = $doc->getYAML();
-            $result['body'] = $this->postProcessHtml($doc->getContent());
+            $result['body'] = $doc->getContent();
         }
         return $result;
     }
@@ -62,20 +62,5 @@ abstract class AbstractCollection
     protected function order($a, $b)
     {
         return false;
-    }
-
-    /**
-     * Post-process HTML converted from markdown.
-     *
-     * @param string $html
-     * @return string
-     */
-    private function postProcessHtml($html)
-    {
-        if (strstr($html, '<table>')) {
-            $html = str_replace('<table>', '<table class="table table-striped table-bordered table-hover">', $html);
-        }
-
-        return $html;
     }
 }
