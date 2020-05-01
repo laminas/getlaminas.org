@@ -27,7 +27,6 @@
         "php": "~7.4.5",
         "ext-pdo": "*",
         "dflydev/fig-cookies": "^2.0.1",
-        "laminas/laminas-cli": "dev-master as 0.1",
         "laminas/laminas-component-installer": "^2.1.2",
         "laminas/laminas-config-aggregator": "^1.2.2",
         "laminas/laminas-dependency-plugin": "^1.0.3",
@@ -45,7 +44,6 @@
         "monolog/monolog": "^1.25.3",
         "phly/phly-configfactory": "^1.0.1",
         "phly/phly-event-dispatcher": "^1.0",
-        "phly/phly-opcache-preload": "dev-master",
         "spatie/yaml-front-matter": "^2.0.5",
         "symfony/console": "^5.0.8",
         "symfony/yaml": "^5.0.8"
@@ -100,11 +98,5 @@
         "serve": "php -S 0.0.0.0:8080 -t public/",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
-    },
-    "repositories": {
-        "opcache": {
-            "type": "vcs",
-            "url": "https://github.com/phly/phly-opcache-preload.git"
-        }
     }
 }
