@@ -1,0 +1,17 @@
+.support-banner {
+    background-color: $support-color;
+    padding: map_get($spacers, 3);
+    color: $white;
+    text-align: center;
+
+    img {
+        margin: map_get($spacers, 2) map_get($spacers, 3);
+    }
+
+    a {
+        &:link,
+        &:visited {
+            color: $white;
+        }
+    }
+}

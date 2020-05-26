@@ -89,5 +89,6 @@ class ConfigProvider
         $app->post($basePath . 'about/join/thank-you', Handler\StaticPageHandler::class, 'about.join-process');
         $app->get($basePath . 'about/tsc', Handler\StaticPageHandler::class, 'about.tsc');
         $app->get($basePath . 'participate[/]', Handler\StaticPageHandler::class, 'community.participate');
+        $app->get($basePath . 'support[/]', Handler\StaticPageHandler::class, 'app.support');
     }
 }
