@@ -1,6 +1,5 @@
 .support-banner {
     background-color: $support-color;
-    padding: map_get($spacers, 3);
     color: $white;
     text-align: center;
 
@@ -9,6 +8,9 @@
     }
 
     a {
+        display: block;
+        padding: map_get($spacers, 3);
+
         &:link,
         &:visited {
             color: $white;
