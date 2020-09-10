@@ -83,6 +83,9 @@ footer {
     padding: 5rem; 
     background-color: #e9ecef;
     opacity: 0.7;
+    @include media-breakpoint-down(sm) {
+        padding: map_get($spacers, 3) * 1.25;
+    }
 } 
 
 .teardrop.card { 
