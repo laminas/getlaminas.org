@@ -46,6 +46,7 @@ footer {
     .social {
         a {
             font-size: 2em;
+            padding: map_get($spacers, 3) * 0.375;
         }
     }
 }
