@@ -96,6 +96,11 @@ footer {
     border-bottom-left-radius: 2rem;
     border: none;
     padding: 0 15px;
+    a {
+        &:hover {
+            color: #ffffff;
+        }
+    }
 }
 
 .teardrop .card-header { 
