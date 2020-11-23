@@ -9,6 +9,11 @@ disk: 256
 build:
   flavor: none
 
+variables:
+  env:
+    NVM_VERSION: v0.37.0
+    NODE_VERSION: v15.2.0
+
 dependencies:
   php:
     "hirak/prestissimo": "^0.3.10"
@@ -23,6 +28,11 @@ mounts:
 hooks:
   build: |
     set -e
+    echo "Setting up Node"
+    unset NPM_CONFIG_PREFIX
+    export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     echo "Installing platform.sh CLI"
     curl -sS https://platform.sh/cli/installer | php
     echo "- Installing asset dependencies"
