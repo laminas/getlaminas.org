@@ -87,12 +87,33 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container mb-4">
     <div class="card text-white text-center support-banner">
         <div class="card-body">
             <h1 class="card-title">Donate</h1>
             <p class="card-text">Support Laminas Developers Directly</p>
             <a href="<?= $this->url('app.support') ?>" class="btn btn-secondary">Support Laminas</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-body">
+            <h4 class="card-title">Commercial Vendors</h4>
+            <p class="card-text">
+                Laminas Projects are supported by these commercial vendors.
+            </p>
+            <div class="row pr-4">
+                <?php foreach($commercialVendors as $commercialVendor): ?>
+                    <div class="col-1">
+                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                    </div>
+                <?php endforeach ?>
+            </div>
+            <div class="mt-4">
+                <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="btn btn-secondary">Find out more!</a>
+            </div>
         </div>
     </div>
 </div>

@@ -28,7 +28,55 @@ class StaticPageHandler implements RequestHandlerInterface
 
         return new HtmlResponse($this->renderer->render(
             $this->normalize($routeResult->getMatchedRouteName()),
-            $request->getAttributes()
+            array_merge(
+                $request->getAttributes(),
+                [
+                    'commercialVendors' => [
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                        [
+                            'name' => 'Roave',
+                            'logo' => 'http://ocramius.github.io/zf2-dpc-tutorial-slides/images/Roave_Logo_-_720p.png', // @todo don't hotlink
+                            'url' => 'https://roave.com',
+                            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+                        ],
+                    ],
+                ]
+            )
         ));
     }
 
