@@ -1,28 +1,15 @@
 {
     "name": "laminas/getlaminas.org",
-    "description": "Laminas Project Website",
     "type": "project",
-    "homepage": "https://getlaminas.org",
-    "license": "BSD-3-Clause",
+    "description": "Laminas Project Website",
     "keywords": [
         "laminas",
         "mezzio",
         "zf",
         "zendframework"
     ],
-    "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "7.3.11"
-        }
-    },
-    "support": {
-        "issues": "https://github.com/laminas/getlaminas.org/issues",
-        "source": "https://github.com/laminas/getlaminas.org",
-        "rss": "https://github.com/laminas/getlaminas.org/releases.atom",
-        "slack": "https://laminas.dev/chat",
-        "forum": "https://discourse.laminas.dev"
-    },
+    "homepage": "https://getlaminas.org",
+    "license": "BSD-3-Clause",
     "require": {
         "php": "~7.3",
         "ext-pdo": "*",
@@ -48,6 +35,9 @@
         "symfony/console": "^5.0.8",
         "symfony/yaml": "^5.0.8"
     },
+    "replace": {
+        "laminas/laminas-zendframework-bridge": "*"
+    },
     "require-dev": {
         "filp/whoops": "^2.7.1",
         "laminas/laminas-development-mode": "^3.2",
@@ -56,8 +46,11 @@
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.5.5"
     },
-    "replace": {
-        "laminas/laminas-zendframework-bridge": "*"
+    "config": {
+        "platform": {
+            "php": "7.3.11"
+        },
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -68,10 +61,12 @@
         }
     },
     "autoload-dev": {
-        "psr-4": {
-        }
+        "psr-4": {}
     },
     "scripts": {
+        "post-create-project-cmd": [
+            "@development-enable"
+        ],
         "build": [
             "@build-blog",
             "./bin/console security:build"
@@ -81,13 +76,6 @@
             "./bin/console blog:feed-generator",
             "./bin/console blog:generate-search-data"
         ],
-        "post-create-project-cmd": [
-            "@development-enable"
-        ],
-        "development-disable": "laminas-development-mode disable",
-        "development-enable": "laminas-development-mode enable",
-        "development-status": "laminas-development-mode status",
-        "expressive": "expressive --ansi",
         "check": [
             "@cs-check",
             "@test"
@@ -95,8 +83,19 @@
         "clear-config-cache": "php bin/clear-config-cache.php",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
+        "development-disable": "laminas-development-mode disable",
+        "development-enable": "laminas-development-mode enable",
+        "development-status": "laminas-development-mode status",
+        "expressive": "expressive --ansi",
         "serve": "php -S 0.0.0.0:8080 -t public/",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    },
+    "support": {
+        "issues": "https://github.com/laminas/getlaminas.org/issues",
+        "forum": "https://discourse.laminas.dev",
+        "source": "https://github.com/laminas/getlaminas.org",
+        "rss": "https://github.com/laminas/getlaminas.org/releases.atom",
+        "slack": "https://laminas.dev/chat"
     }
 }
