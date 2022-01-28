@@ -11,7 +11,26 @@ following:
 RELEASE_FEED_TOKEN=aaaabbbbccccddddeeeeffffgggg0000
 ```
 
-Next, use the provided [docker-compose configuration](docker-compose.yml):
+Second, install dependencies:
+
+```bash
+$ composer install
+```
+
+Third, put the application in development mode:
+
+```
+$ ./vendor/bin/laminas-development-mode enable
+```
+
+Fourth, prepare the blog and security announcements:
+
+```bash
+$ mkdir -p var/blog/feeds
+$ composer build
+```
+
+Finally, use the provided [docker-compose configuration](docker-compose.yml):
 
 ```bash
 $ docker-compose build

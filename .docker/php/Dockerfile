@@ -13,22 +13,22 @@ RUN mkdir -p /assets && mv /work/build/* /assets
 
 
 # Build the PHP container
-FROM php:7.3-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 # System dependencies
 # RUN mkdir -p /etc/apk && echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
 RUN apk update && \
   apk add --no-cache \
     bash \
-    php7-bcmath \
-    php7-bz2 \
-    php7-dom \
-    php7-intl \
-    php7-opcache \
-    php7-pcntl \
-    php7-sockets \
-    php7-xsl \
-    php7-zip
+    php8-bcmath \
+    php8-bz2 \
+    php8-dom \
+    php8-intl \
+    php8-opcache \
+    php8-pcntl \
+    php8-sockets \
+    php8-xsl \
+    php8-zip
 
 # PHP configuration
 COPY .docker/php/getlaminas.ini /usr/local/etc/php/conf.d/999-getlaminas.ini
