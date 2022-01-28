@@ -1,6 +1,6 @@
 name: getlaminas_org
 
-type: php:7.3
+type: php:8.0
 
 size: S
 
@@ -16,7 +16,7 @@ variables:
 
 dependencies:
   php:
-    "hirak/prestissimo": "^0.3.10"
+    "composer/composer": "^2"
   nodejs:
     gulp-cli: '~2.2.0'
 
