@@ -30,9 +30,10 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
-            'asset-revisions' => [],
-            'dependencies'    => $this->getDependencies(),
-            'templates'       => $this->getTemplates(),
+            'asset-revisions'    => [],
+            'commercial-vendors' => [],
+            'dependencies'       => $this->getDependencies(),
+            'templates'          => $this->getTemplates(),
         ];
     }
 
@@ -54,10 +55,11 @@ class ConfigProvider
                 ],
             ],
             'factories'  => [
-                EventDispatcherInterface::class  => EventDispatcherFactory::class,
-                Handler\StaticPageHandler::class => Handler\StaticPageHandlerFactory::class,
-                LoggerInterface::class           => AccessLoggerFactory::class,
-                PlatesEngine::class              => PlatesEngineFactory::class,
+                EventDispatcherInterface::class         => EventDispatcherFactory::class,
+                Handler\CommercialVendorsHandler::class => Handler\CommercialVendorsHandlerFactory::class,
+                Handler\StaticPageHandler::class        => Handler\StaticPageHandlerFactory::class,
+                LoggerInterface::class                  => AccessLoggerFactory::class,
+                PlatesEngine::class                     => PlatesEngineFactory::class,
             ],
         ];
     }
@@ -90,6 +92,6 @@ class ConfigProvider
         $app->get($basePath . 'about/tsc', Handler\StaticPageHandler::class, 'about.tsc');
         $app->get($basePath . 'participate[/]', Handler\StaticPageHandler::class, 'community.participate');
         $app->get($basePath . 'support[/]', Handler\StaticPageHandler::class, 'app.support');
-        $app->get($basePath . 'commercial-vendor-program[/]', Handler\StaticPageHandler::class, 'app.commercial-vendor-program');
+        $app->get($basePath . 'commercial-vendor-program[/]', Handler\CommercialVendorsHandler::class, 'app.commercial-vendor-program');
     }
 }
