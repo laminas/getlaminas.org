@@ -57,6 +57,7 @@ class ConfigProvider
             'factories'  => [
                 EventDispatcherInterface::class         => EventDispatcherFactory::class,
                 Handler\CommercialVendorsHandler::class => Handler\CommercialVendorsHandlerFactory::class,
+                Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
                 Handler\StaticPageHandler::class        => Handler\StaticPageHandlerFactory::class,
                 LoggerInterface::class                  => AccessLoggerFactory::class,
                 PlatesEngine::class                     => PlatesEngineFactory::class,
@@ -83,7 +84,7 @@ class ConfigProvider
     public function registerRoutes(Application $app, string $basePath = '/'): void
     {
         $basePath = rtrim($basePath, '/') . '/';
-        $app->get($basePath, Handler\StaticPageHandler::class, 'app.home-page');
+        $app->get($basePath, Handler\HomePageHandler::class, 'app.home-page');
         $app->get($basePath . 'about[/]', Handler\StaticPageHandler::class, 'about.overview');
         $app->get($basePath . 'about/foundation', Handler\StaticPageHandler::class, 'about.foundation');
         $app->get($basePath . 'about/join', Handler\StaticPageHandler::class, 'about.join');

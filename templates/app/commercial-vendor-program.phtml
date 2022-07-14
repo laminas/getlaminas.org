@@ -13,17 +13,25 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
         <div class="col-12">
             <h2>Existing Members</h2>
         </div>
-        <?php foreach($commercialVendors as $commercialVendor): ?>
-        <div class="col-3">
-            <a href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>">
-                <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
-            </a>
-            <p class="small">
-                <?= $this->escapeHtmlAttr($commercialVendor['text']) ?>
-            </p>
-        </div>
-        <?php endforeach ?>
     </div>
+
+    <div class="row">
+        <div class="card-deck">
+        <?php foreach($commercialVendors as $commercialVendor): ?>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>"><?= $this->escapeHtml($commercialVendor['name']) ?></a></h5>
+                    <p class="card-text"><?= $this->escapeHtml($commercialVendor['text']) ?></p>
+                </div>
+                <img class="card-img-bottom px-2 pb-2" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                <div class="card-footer">
+                    <a class="card-link" target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>">Visit <?= $this->escapeHtml($commercialVendor['name']) ?></a>
+                </div>
+            </div>
+        <?php endforeach ?>
+        </div>
+    </div>
+
     <div class="row align-items-start mt-5">
         <div class="col-md-12">
             <h2>Benefits</h2>
@@ -51,8 +59,8 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
                 <li>
                     On application to join the Commercial Vendor Program, your entry will be considered and voted on
                     by the <a href="<?= $this->url('about.tsc') ?>">Technical Steering Committee</a> (TSC).
-                    Additionally, the TSC reserve the right to vote on whether a vendor should remain part of the
-                    program, for example if they have brought Laminas Projects into disrepute.
+                    Additionally, the TSC reserves the right to vote on whether a vendor should remain part of the
+                    program (for example, if they have brought Laminas Project into disrepute).
                 </li>
             </ul>
 

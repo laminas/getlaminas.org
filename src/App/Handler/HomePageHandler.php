@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CommercialVendorsHandler implements RequestHandlerInterface
+class HomePageHandler implements RequestHandlerInterface
 {
     private array $vendors;
     private TemplateRendererInterface $renderer;
@@ -24,7 +24,7 @@ class CommercialVendorsHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return new HtmlResponse($this->renderer->render(
-            'app::commercial-vendor-program',
+            'app::home-page',
             ['commercialVendors' => $this->vendors],
         ));
     }
