@@ -23,7 +23,7 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
                     <h5 class="card-title"><a target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>"><?= $this->escapeHtml($commercialVendor['name']) ?></a></h5>
                     <p class="card-text"><?= $this->escapeHtml($commercialVendor['text']) ?></p>
                 </div>
-                <img class="card-img-bottom px-2 pb-2" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                <img class="card-img-bottom px-5 pb-2" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
                 <div class="card-footer">
                     <a class="card-link" target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>">Visit <?= $this->escapeHtml($commercialVendor['name']) ?></a>
                 </div>
