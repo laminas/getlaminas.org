@@ -13,7 +13,7 @@ RUN mkdir -p /assets && mv /work/build/* /assets
 
 
 # Build the PHP container
-FROM php:8.0-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 # System dependencies
 # RUN mkdir -p /etc/apk && echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
