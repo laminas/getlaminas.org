@@ -902,16 +902,16 @@
         },
         {
             "name": "laminas/laminas-stratigility",
-            "version": "3.7.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-stratigility.git",
-                "reference": "29461a735eb81a5f86a67852c0bedaa02be24fb9"
+                "reference": "aa47a70ed02cff6109bf09aa7c3e85c574033d81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-stratigility/zipball/29461a735eb81a5f86a67852c0bedaa02be24fb9",
-                "reference": "29461a735eb81a5f86a67852c0bedaa02be24fb9",
+                "url": "https://api.github.com/repos/laminas/laminas-stratigility/zipball/aa47a70ed02cff6109bf09aa7c3e85c574033d81",
+                "reference": "aa47a70ed02cff6109bf09aa7c3e85c574033d81",
                 "shasum": ""
             },
             "require": {
@@ -978,7 +978,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-07-21T23:14:27+00:00"
+            "time": "2022-07-23T13:56:06+00:00"
         },
         {
             "name": "league/commonmark",
