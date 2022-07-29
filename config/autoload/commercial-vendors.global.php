@@ -8,7 +8,7 @@ return [
             'name' => 'Roave',
             'logo' => '/images/vendors/roave.png',
             'url' => 'https://roave.com',
-            'text' => 'Roave is a full-service web development firm, offering services such as consulting, training, software development, and more.',
+            'text' => 'Roave is a full-service web development firm, offering consulting, training, software development, and more.',
         ],
         [
             'name' => 'Zend by Perforce',
