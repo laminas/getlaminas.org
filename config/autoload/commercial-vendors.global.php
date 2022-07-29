@@ -14,7 +14,7 @@ return [
             'name' => 'Zend by Perforce',
             'logo' => '/images/vendors/zend.png',
             'url' => 'https://www.zend.com/products/laminas-enterprise-support',
-            'text' => 'Zend is the PHP company, and offers training, services, and production support for Laminas and other PHP applications.',
+            'text' => 'Zend is "The PHP Company", and offers training, services, and production support for Laminas and other PHP applications.',
         ],
     ],
 ];
