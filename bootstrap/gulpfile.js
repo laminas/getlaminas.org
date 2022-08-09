@@ -5,10 +5,9 @@ const concat = require('gulp-concat');
 const cleanCss = require('gulp-clean-css');
 const {series, src, dest, watch} = require('gulp');
 const postcss = require('gulp-postcss');
-const rev = require('gulp-rev');
-const revDel = require('rev-del');
+const rev = require('gulp-rev-all');
 const revCleaner = require('gulp-rev-dist-clean');
-const sass = require('gulp-sass');
+const sass = require('gulp-dart-sass');
 const terser = require('gulp-terser');
 
 const prism = [
@@ -81,13 +80,9 @@ function css() {
 
 function revGenerate() {
     return src(['build/css/laminas.css', 'build/js/laminas.js'], {base: 'build'})
-        .pipe(rev())
+        .pipe(rev.revision({ fileNameManifest: "build/assets.json" }))
         .pipe(dest('build/'))
-        .pipe(rev.manifest('build/assets.json'))
-        .pipe(revDel({
-            oldManifest: 'build/assets.json',
-            dest: 'build/'
-        }))
+        .pipe(rev.manifestFile())
         .pipe(dest('.'));
 }
 
