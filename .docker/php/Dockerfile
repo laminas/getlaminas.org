@@ -1,13 +1,13 @@
 # DOCKER-VERSION        1.3.2
 
 # Build UI assets
-FROM node:8-alpine as assets
+FROM node:18-alpine as assets
 RUN apk add git
-RUN npm install -g gulp-cli
+RUN npm install --location=global gulp-cli
 RUN mkdir -p /work
 COPY bootstrap /work/
 WORKDIR /work
-RUN npm install && npm rebuild node-sass && gulp deploy
+RUN npm install && gulp deploy
 # Created assets need to be in an unmapped folder to persist
 RUN mkdir -p /assets && mv /work/build/* /assets
 
