@@ -17,7 +17,6 @@ class ReceiveFeedItemHandlerFactory
 {
     public function __invoke(ContainerInterface $container): ReceiveFeedItemHandler
     {
-
         $env = new Environment();
         $env->addExtension(new CommonMarkCoreExtension());
         $env->addExtension(new GithubFlavoredMarkdownExtension());
