@@ -5,15 +5,15 @@
     bootstrap="vendor/autoload.php"
     convertDeprecationsToExceptions="true"
     colors="true">
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
+
     <testsuites>
-        <testsuite name="App\\Tests">
+        <testsuite name="getlaminas.org">
             <directory>./test</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
 </phpunit>
