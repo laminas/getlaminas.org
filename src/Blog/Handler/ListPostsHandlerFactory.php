@@ -13,10 +13,15 @@ class ListPostsHandlerFactory
 {
     public function __invoke(ContainerInterface $container): ListPostsHandler
     {
-        return new ListPostsHandler(
-            $container->get(MapperInterface::class),
-            $container->get(TemplateRendererInterface::class),
-            $container->get(RouterInterface::class)
-        );
+        $mapper = $container->get(MapperInterface::class);
+        assert($mapper instanceof MapperInterface);
+
+        $renderer = $container->get(TemplateRendererInterface::class);
+        assert($renderer instanceof TemplateRendererInterface);
+
+        $router = $container->get(RouterInterface::class);
+        assert($router instanceof RouterInterface);
+
+        return new ListPostsHandler($mapper, $renderer, $router);
     }
 }

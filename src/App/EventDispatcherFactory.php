@@ -13,8 +13,9 @@ class EventDispatcherFactory
 {
     public function __invoke(ContainerInterface $container): EventDispatcherInterface
     {
-        return new EventDispatcher(
-            $container->get(ListenerProviderInterface::class)
-        );
+        $provider = $container->get(ListenerProviderInterface::class);
+        assert($provider instanceof ListenerProviderInterface);
+
+        return new EventDispatcher($provider);
     }
 }

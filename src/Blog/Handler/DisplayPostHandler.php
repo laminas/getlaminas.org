@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
+use DateTimeInterface;
+use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\FetchBlogPostEvent;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mezzio\Template\TemplateRendererInterface;
@@ -14,23 +16,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class DisplayPostHandler implements RequestHandlerInterface
 {
-    /** @var EventDispatcherInterface */
-    private $dispatcher;
-
-    /** @var RequestHandlerInterface */
-    private $notFoundHandler;
-
-    /** @var TemplateRendererInterface */
-    private $template;
-
     public function __construct(
-        EventDispatcherInterface $dispatcher,
-        TemplateRendererInterface $template,
-        RequestHandlerInterface $notFoundHandler
+        private EventDispatcherInterface $dispatcher,
+        private TemplateRendererInterface $template,
+        private RequestHandlerInterface $notFoundHandler,
     ) {
-        $this->dispatcher      = $dispatcher;
-        $this->template        = $template;
-        $this->notFoundHandler = $notFoundHandler;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -41,17 +31,17 @@ class DisplayPostHandler implements RequestHandlerInterface
             return $this->notFoundHandler->handle($request);
         }
 
-        // @var \GetLaminas\Blog\FetchBlogPostEvent $event
+        /** @var FetchBlogPostEvent $event */
         $event = $this->dispatcher->dispatch(new FetchBlogPostEvent($id));
 
-        // @var null|\GetLaminas\Blog\BlogPost $post
+        /** @var ?BlogPost $post */
         $post = $event->blogPost();
 
         if (! $post) {
             return $this->notFoundHandler->handle($request);
         }
 
-        // @var \DateTimeInterface $lastModified
+        /** @var DateTimeInterface $lastModified */
         $lastModified = $post->updated ?: $post->created;
 
         return new HtmlResponse(

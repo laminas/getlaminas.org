@@ -19,19 +19,15 @@ class PdoPaginator implements AdapterInterface
 {
     use CreateBlogPostFromDataArray;
 
-    /** @var int */
-    protected $count;
-
     /** @var array<string, mixed> */
     protected $params;
 
-    /** @var PDOStatement */
-    protected $select;
-
-    public function __construct(PDOStatement $select, PDOStatement $count, array $params = [])
-    {
-        $this->select = $select;
-        $this->count  = $count;
+    /** @param array<string, mixed> $params */
+    public function __construct(
+        protected PDOStatement $select,
+        protected PDOStatement $count,
+        array $params = [],
+    ) {
         $this->params = $params;
     }
 

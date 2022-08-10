@@ -17,7 +17,10 @@ use const LOCK_EX;
 
 abstract class AbstractCollection
 {
+    /** @var string */
     protected const FOLDER_COLLECTION = '';
+
+    /** @var string */
     protected const CACHE_FILE        = '';
 
     protected array $collection = [];

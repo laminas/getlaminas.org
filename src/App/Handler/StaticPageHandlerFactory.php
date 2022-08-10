@@ -11,6 +11,9 @@ class StaticPageHandlerFactory
 {
     public function __invoke(ContainerInterface $container): StaticPageHandler
     {
-        return new StaticPageHandler($container->get(TemplateRendererInterface::class));
+        $renderer = $container->get(TemplateRendererInterface::class);
+        assert($renderer instanceof TemplateRendererInterface);
+
+        return new StaticPageHandler($renderer);
     }
 }

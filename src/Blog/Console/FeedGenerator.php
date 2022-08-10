@@ -143,6 +143,7 @@ class FeedGenerator extends Command
         }
 
         foreach ($posts as $post) {
+            /** @var BlogPost $post */
             $html   = $post->body . $post->extended;
             $author = $this->getAuthor($post->author);
 
@@ -164,7 +165,9 @@ class FeedGenerator extends Command
         }
 
         // Set feed date
-        $feed->setDateModified($latest->updated);
+        if ($latest instanceof BlogPost) {
+            $feed->setDateModified($latest->updated);
+        }
 
         // Write feed to file
         $file = sprintf('%s%s.xml', $fileBase, $type);

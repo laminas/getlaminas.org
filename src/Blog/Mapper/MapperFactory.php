@@ -11,9 +11,12 @@ class MapperFactory
 {
     public function __invoke(ContainerInterface $container): PdoMapper
     {
-        $config = $container->get('config-blog');
-        $pdo    = new PDO($config['db'] ?? '');
+        $config = $container->get('config-blog') ?? [];
+        assert(is_array($config));
+
+        $pdo = new PDO($config['db'] ?? '');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         return new PdoMapper($pdo);
     }
 }

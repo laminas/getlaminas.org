@@ -17,11 +17,23 @@ class FeedGeneratorFactory
 {
     public function __invoke(ContainerInterface $container): FeedGenerator
     {
+        $mapper = $container->get(MapperInterface::class);
+        assert($mapper instanceof MapperInterface);
+
+        $router = $container->get(RouterInterface::class);
+        assert($router instanceof RouterInterface);
+
+        $renderer = $container->get(TemplateRendererInterface::class);
+        assert($renderer instanceof TemplateRendererInterface);
+
+        $serverUrlHelper = $container->get(ServerUrlHelper::class);
+        assert($serverUrlHelper instanceof ServerUrlHelper);
+
         return new FeedGenerator(
-            $container->get(MapperInterface::class),
-            $container->get(RouterInterface::class),
-            $container->get(TemplateRendererInterface::class),
-            $container->get(ServerUrlHelper::class),
+            $mapper,
+            $router,
+            $renderer,
+            $serverUrlHelper,
             realpath(getcwd()) . '/data/blog/authors/'
         );
     }

@@ -12,9 +12,12 @@ class SearchHandlerFactory
 {
     public function __invoke(ContainerInterface $container): SearchHandler
     {
-        return new SearchHandler(
-            $container->get(MapperInterface::class),
-            $container->get(UrlHelper::class)
-        );
+        $mapper = $container->get(MapperInterface::class);
+        assert($mapper instanceof MapperInterface);
+
+        $urlHelper = $container->get(UrlHelper::class);
+        assert($urlHelper instanceof UrlHelper);
+
+        return new SearchHandler($mapper, $urlHelper);
     }
 }

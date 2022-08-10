@@ -15,30 +15,21 @@ use function array_map;
 
 class SearchHandler implements RequestHandlerInterface
 {
-    /** @var MapperInterface */
-    private $mapper;
-
-    /** @var UrlHelper */
-    private $urlHelper;
-
-    public function __construct(MapperInterface $mapper, UrlHelper $urlHelper)
-    {
-        $this->mapper    = $mapper;
-        $this->urlHelper = $urlHelper;
+    public function __construct(
+        private MapperInterface $mapper,
+        private UrlHelper $urlHelper,
+    ): void {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $toMatch = $request->getQueryParams()['q'] ?? '';
 
-        if ('' === $toMatch) {
+        if (! is_string($toMatch) || '' === $toMatch) {
             return new JsonResponse([]);
         }
 
-        $results = array_map(function ($row) {
+        $results = array_map(function (array $row): array {
             return [
                 'link'  => $this->urlHelper->generate('blog.post', ['id' => $row['id']]),
                 'title' => $row['title'],

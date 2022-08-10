@@ -10,9 +10,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
 trait RoutesTrait
 {
+    /** @var array<string, string> */
     private array $routes = [
         'blog'               => '/blog[/]',
         'blog.post'          => '/blog/{id:[^/]+}.html',
@@ -33,6 +35,7 @@ trait RoutesTrait
                 ServerRequestInterface $request,
                 RequestHandlerInterface $handler
             ): ResponseInterface {
+                throw RuntimeException('This should never be called');
             }
         };
 

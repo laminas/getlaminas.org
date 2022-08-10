@@ -19,8 +19,13 @@ class InjectAssetRevisionsDelegator
     public function __invoke(ContainerInterface $container, string $serviceName, callable $factory): PlatesEngine
     {
         $engine    = $factory();
-        $config    = $container->get('config');
+        assert($engine instanceof PlatesEngine);
+
+        $config = $container->get('config') ?? [];
+        assert(is_array($config));
+
         $revisions = $config['asset-revisions'] ?? [];
+        assert(is_array($revisions));
 
         isset($config['debug'])
             ? $this->injectAssets($engine, Closure::fromCallable([$this, 'getAssetMap']))
@@ -33,8 +38,10 @@ class InjectAssetRevisionsDelegator
 
     private function injectAssets(PlatesEngine $engine, callable $getAssetMap): void
     {
-        $engine->registerFunction('assets', function ($asset) use ($getAssetMap) {
+        $engine->registerFunction('assets', function (string $asset) use ($getAssetMap) {
             $assetMap = $getAssetMap();
+            assert(is_array($assetMap));
+
             return $assetMap[$asset] ?? $asset;
         });
     }

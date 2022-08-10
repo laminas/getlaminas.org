@@ -36,7 +36,6 @@ class ConfigProvider
             'factories' => [
                 'config-blog'                                   => ConfigFactory::class,
                 Console\FeedGenerator::class                    => Console\FeedGeneratorFactory::class,
-                Console\TagCloud::class                         => Console\TagCloudFactory::class,
                 Handler\DisplayPostHandler::class               => Handler\DisplayPostHandlerFactory::class,
                 Handler\FeedHandler::class                      => Handler\FeedHandlerFactory::class,
                 Handler\ListPostsHandler::class                 => Handler\ListPostsHandlerFactory::class,

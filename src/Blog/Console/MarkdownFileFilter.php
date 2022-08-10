@@ -35,25 +35,18 @@ class MarkdownFileFilter extends FilterIterator
 {
     public function __construct(string $dirOrIterator = '.')
     {
-        if (is_string($dirOrIterator)) {
-            if (! is_dir($dirOrIterator)) {
-                throw new InvalidArgumentException(sprintf(
-                    'Expected a valid directory name; received "%s"',
-                    $dirOrIterator
-                ));
-            }
-
-            $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
-        }
-        if (! $dirOrIterator instanceof DirectoryIterator) {
-            throw new InvalidArgumentException('Expected a DirectoryIterator');
+        if (! is_dir($dirOrIterator)) {
+            throw new InvalidArgumentException(sprintf(
+                'Expected a valid directory name; received "%s"',
+                $dirOrIterator
+            ));
         }
 
-        $iterator = $dirOrIterator instanceof RecursiveIterator
-            ? new RecursiveIteratorIterator($dirOrIterator)
-            : $dirOrIterator;
+        $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
+        $iterator      = new RecursiveIteratorIterator($dirOrIterator);
 
         parent::__construct($iterator);
+
         $this->rewind();
     }
 

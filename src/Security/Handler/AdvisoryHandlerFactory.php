@@ -13,7 +13,10 @@ class AdvisoryHandlerFactory
     public function __invoke(ContainerInterface $container): AdvisoryHandler
     {
         $advisory = $container->get(Advisory::class);
+        assert($advisory instanceof Advisory);
+
         $template = $container->get(TemplateRendererInterface::class);
+        assert($template instanceof TemplateRendererInterface);
 
         return new AdvisoryHandler($advisory, $template);
     }

@@ -15,8 +15,13 @@ class FetchBlogPostEventListenersDelegator
         string $serviceName,
         callable $factory
     ): AttachableListenerProvider {
+        /** @var AttachableListenerProvider $provider */
         $provider = $factory();
-        $provider->listen(FetchBlogPostEvent::class, $container->get(FetchBlogPostFromMapperListener::class));
+
+        $listener = $container->get(FetchBlogPostFromMapperListener::class);
+        assert($listener instanceof FetchBlogPostFromMapperListener);
+
+        $provider->listen(FetchBlogPostEvent::class, $listener);
         return $provider;
     }
 }

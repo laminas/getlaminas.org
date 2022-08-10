@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
+use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -81,7 +82,7 @@ class ListPostsHandler implements RequestHandlerInterface
         $pagination->is_last   = $page === $pagination->last;
 
         $pages = [];
-        for ($i = $pagination->firstPageInRange; $i <= $pagination->lastPageInRange; $i += 1) {
+        for ($i = (int) $pagination->firstPageInRange; $i <= (int) $pagination->lastPageInRange; $i += 1) {
             $pages[] = [
                 'base_path' => $path,
                 'number'    => $i,
@@ -93,7 +94,7 @@ class ListPostsHandler implements RequestHandlerInterface
         return $pagination;
     }
 
-    /** @param BlogPost[] $entries */
+    /** @param BlogPost[] entries */
     private function prepareView(string $tag, array $entries, stdClass $pagination): array
     {
         $view = $tag ? ['tag' => $tag] : [];
@@ -102,9 +103,9 @@ class ListPostsHandler implements RequestHandlerInterface
             $view['rss']  = $this->router->generateUri('blog.tag.feed', ['tag' => $tag, 'type' => 'rss']);
         }
 
-        return array_merge($view, [
+        return [...$view, ...[
             'posts'      => $entries,
             'pagination' => $pagination,
-        ]);
+        ]];
     }
 }

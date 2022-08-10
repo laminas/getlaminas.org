@@ -39,7 +39,7 @@ final class Document implements DocumentInterface
         $converter = new MarkdownConverter($env);
 
         return $this->postProcessHtml(
-            $converter->convertToHtml($this->document->body())->getContent()
+            $converter->convert($this->document->body())->getContent()
         );
     }
 
