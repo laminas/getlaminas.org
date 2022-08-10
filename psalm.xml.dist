@@ -13,12 +13,6 @@
         <directory name="templates"/>
         <directory name="test"/>
         <file name="public/index.php"/>
-        <ignoreFiles>
-            <directory name="bootstrap"/>
-            <directory name="data"/>
-            <directory name="var"/>
-            <directory name="vendor"/>
-        </ignoreFiles>
     </projectFiles>
 
     <issueHandlers>
