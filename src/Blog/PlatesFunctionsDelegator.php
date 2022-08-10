@@ -14,7 +14,7 @@ use function sprintf;
 
 class PlatesFunctionsDelegator implements ExtensionInterface
 {
-    public Template $template;
+    public ?Template $template = null;
 
     public function __invoke(ContainerInterface $container, string $name, callable $factory): Engine
     {
@@ -54,6 +54,10 @@ class PlatesFunctionsDelegator implements ExtensionInterface
 
     public function postUrl(BlogPost $post): string
     {
+        if (null === $this->template) {
+            return '';
+        }
+
         return $this->template->url('blog.post', ['id' => $post->id]);
     }
 }

@@ -7,13 +7,19 @@ namespace App\Handler;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+use function is_array;
+
 class HomePageHandlerFactory
 {
     public function __invoke(ContainerInterface $container): HomePageHandler
     {
-        return new HomePageHandler(
-            $container->get('config')['commercial-vendors'],
-            $container->get(TemplateRendererInterface::class)
-        );
+        $commercialVendors = $container->get('config')['commercial-vendors'] ?? [];
+        assert(is_array($commercialVendors));
+
+        $renderer = $container->get(TemplateRendererInterface::class);
+        assert($renderer instanceof TemplateRendererInterface);
+
+        return new HomePageHandler($commercialVendors, $renderer);
     }
 }

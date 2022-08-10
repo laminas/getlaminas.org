@@ -9,14 +9,21 @@ use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
+use function assert;
+
 class DisplayPostHandlerFactory
 {
     public function __invoke(ContainerInterface $container): DisplayPostHandler
     {
-        return new DisplayPostHandler(
-            $container->get(EventDispatcherInterface::class),
-            $container->get(TemplateRendererInterface::class),
-            $container->get(NotFoundHandler::class)
-        );
+        $dispatcher = $container->get(EventDispatcherInterface::class);
+        assert($dispatcher instanceof EventDispatcherInterface);
+
+        $renderer = $container->get(TemplateRendererInterface::class);
+        assert($renderer instanceof TemplateRendererInterface);
+
+        $notFoundHandler = $container->get(NotFoundHandler::class);
+        assert($notFoundHandler instanceof NotFoundHandler);
+
+        return new DisplayPostHandler($dispatcher, $renderer, $notFoundHandler);
     }
 }

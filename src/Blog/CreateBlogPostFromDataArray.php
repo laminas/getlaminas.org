@@ -21,18 +21,14 @@ use function trim;
 
 trait CreateBlogPostFromDataArray
 {
-    /** @var string */
-    private $authorDataRootPath = 'data/blog/authors';
+    private string $authorDataRootPath = 'data/blog/authors';
 
-    /** @var ParserInterface */
-    private $frontMatterParser;
+    private ?ParserInterface $frontMatterParser = null;
 
     /**
      * Delimiter between post summary and extended body
-     *
-     * @var string
      */
-    private $postDelimiter = '<!--- EXTENDED -->';
+    private string $postDelimiter = '<!--- EXTENDED -->';
 
     public function setAuthorDataRootPath(string $path): void
     {
@@ -41,7 +37,7 @@ trait CreateBlogPostFromDataArray
 
     private function getFrontMatterParser(): ParserInterface
     {
-        if (! $this->frontMatterParser) {
+        if (null === $this->frontMatterParser) {
             $this->frontMatterParser = new Parser();
         }
 

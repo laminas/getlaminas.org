@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
 
+use DateTimeImmutable;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
 use PDO;
+use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -27,14 +29,13 @@ class SeedBlogDatabase extends Command
     use CreateBlogPostFromDataArray;
 
     /** @var string[] */
-    private $indices = [
+    private array $indices = [
         'CREATE INDEX visible ON posts ( created, draft, public )',
         'CREATE INDEX visible_tags ON posts ( tags, created, draft, public )',
         'CREATE INDEX visible_author ON posts ( author, created, draft, public )',
     ];
 
-    /** @var string */
-    private $initial = 'INSERT INTO posts
+    private string $initial = 'INSERT INTO posts
         SELECT
             %s AS id,
             %s AS path,
@@ -47,8 +48,7 @@ class SeedBlogDatabase extends Command
             %s AS body,
             %s AS tags';
 
-    /** @var string */
-    private $item = 'UNION SELECT
+    private string $item = 'UNION SELECT
         %s,
         %s,
         %d,
@@ -62,13 +62,10 @@ class SeedBlogDatabase extends Command
 
     /**
      * Delimiter between post summary and extended body
-     *
-     * @var string
      */
-    private $postDelimiter = '<!--- EXTENDED -->';
+    private string $postDelimiter = '<!--- EXTENDED -->';
 
-    /** @var string */
-    private $searchTable = 'CREATE VIRTUAL TABLE search USING FTS4(
+    private string $searchTable = 'CREATE VIRTUAL TABLE search USING FTS4(
             id,
             created,
             title,
@@ -76,8 +73,7 @@ class SeedBlogDatabase extends Command
             tags
         )';
 
-    /** @var string */
-    private $searchTrigger = 'CREATE TRIGGER after_posts_insert
+    private string $searchTrigger = 'CREATE TRIGGER after_posts_insert
             AFTER INSERT ON posts
             BEGIN
                 INSERT INTO search (
@@ -97,8 +93,7 @@ class SeedBlogDatabase extends Command
             END
         ';
 
-    /** @var string */
-    private $table = 'CREATE TABLE "posts" (
+    private string $table = 'CREATE TABLE "posts" (
             id VARCHAR(255) NOT NULL PRIMARY KEY,
             path VARCHAR(255) NOT NULL,
             created UNSIGNED INTEGER NOT NULL,
@@ -167,6 +162,7 @@ class SeedBlogDatabase extends Command
 
         $statements = [];
         foreach (new MarkdownFileFilter($path) as $fileInfo) {
+            /** @var SplFileInfo $fileInfo */
             $path     = $fileInfo->getPathname();
             $post     = $this->createBlogPostFromDataArray(['path' => $path]);
             $template = empty($statements) ? $this->initial : $this->item;
@@ -175,8 +171,8 @@ class SeedBlogDatabase extends Command
                 $template,
                 $pdo->quote($post->id),
                 $pdo->quote(substr($path, $trim)),
-                $post->created->getTimestamp(),
-                $post->updated->getTimestamp(),
+                $post->created ? $post->created->getTimestamp() : (new DateTimeImmutable('now'))->getTimestamp(),
+                $post->updated ? $post->updated->getTimestamp() : (new DateTimeImmutable('now'))->getTimestamp(),
                 $pdo->quote($post->title),
                 $pdo->quote($post->author->username),
                 $post->isDraft ? 1 : 0,

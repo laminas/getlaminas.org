@@ -7,12 +7,15 @@ namespace GetLaminas\Blog\Listener;
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class FetchBlogPostFromMapperListenerFactory
 {
     public function __invoke(ContainerInterface $container): FetchBlogPostFromMapperListener
     {
-        return new FetchBlogPostFromMapperListener(
-            $container->get(MapperInterface::class)
-        );
+        $mapper = $container->get(MapperInterface::class);
+        assert($mapper instanceof MapperInterface);
+
+        return new FetchBlogPostFromMapperListener($mapper);
     }
 }

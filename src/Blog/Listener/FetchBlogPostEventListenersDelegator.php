@@ -8,6 +8,8 @@ use GetLaminas\Blog\FetchBlogPostEvent;
 use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class FetchBlogPostEventListenersDelegator
 {
     public function __invoke(
@@ -15,8 +17,13 @@ class FetchBlogPostEventListenersDelegator
         string $serviceName,
         callable $factory
     ): AttachableListenerProvider {
+        /** @var AttachableListenerProvider $provider */
         $provider = $factory();
-        $provider->listen(FetchBlogPostEvent::class, $container->get(FetchBlogPostFromMapperListener::class));
+
+        $listener = $container->get(FetchBlogPostFromMapperListener::class);
+        assert($listener instanceof FetchBlogPostFromMapperListener);
+
+        $provider->listen(FetchBlogPostEvent::class, $listener);
         return $provider;
     }
 }

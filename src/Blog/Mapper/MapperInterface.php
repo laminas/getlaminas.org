@@ -9,9 +9,6 @@ use Laminas\Paginator\Paginator;
 
 interface MapperInterface
 {
-    /**
-     * @return false|array
-     */
     public function fetch(string $id): ?BlogPost;
 
     public function fetchAll(): Paginator;
@@ -20,5 +17,5 @@ interface MapperInterface
 
     public function fetchAllByTag(string $tag): Paginator;
 
-    public function search(string $toMatch): array;
+    public function search(string $toMatch): ?array;
 }

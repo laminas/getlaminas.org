@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
 
-use DirectoryIterator;
 use FilterIterator;
 use InvalidArgumentException;
 use RecursiveDirectoryIterator;
-use RecursiveIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 
 use function is_dir;
-use function is_string;
 use function sprintf;
 
 /**
@@ -35,25 +32,18 @@ class MarkdownFileFilter extends FilterIterator
 {
     public function __construct(string $dirOrIterator = '.')
     {
-        if (is_string($dirOrIterator)) {
-            if (! is_dir($dirOrIterator)) {
-                throw new InvalidArgumentException(sprintf(
-                    'Expected a valid directory name; received "%s"',
-                    $dirOrIterator
-                ));
-            }
-
-            $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
-        }
-        if (! $dirOrIterator instanceof DirectoryIterator) {
-            throw new InvalidArgumentException('Expected a DirectoryIterator');
+        if (! is_dir($dirOrIterator)) {
+            throw new InvalidArgumentException(sprintf(
+                'Expected a valid directory name; received "%s"',
+                $dirOrIterator
+            ));
         }
 
-        $iterator = $dirOrIterator instanceof RecursiveIterator
-            ? new RecursiveIteratorIterator($dirOrIterator)
-            : $dirOrIterator;
+        $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
+        $iterator      = new RecursiveIteratorIterator($dirOrIterator);
 
         parent::__construct($iterator);
+
         $this->rewind();
     }
 

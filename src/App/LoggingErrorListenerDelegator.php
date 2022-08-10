@@ -8,6 +8,8 @@ use Laminas\Stratigility\Middleware\ErrorHandler;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
+use function assert;
+
 class LoggingErrorListenerDelegator
 {
     public function __invoke(
@@ -16,9 +18,13 @@ class LoggingErrorListenerDelegator
         callable $callback
     ): ErrorHandler {
         $errorHandler = $callback();
-        $errorHandler->attachListener(
-            new LoggingErrorListener($container->get(LoggerInterface::class))
-        );
+        assert($errorHandler instanceof ErrorHandler);
+
+        $logger = $container->get(LoggerInterface::class);
+        assert($logger instanceof LoggerInterface);
+
+        $errorHandler->attachListener(new LoggingErrorListener($logger));
+
         return $errorHandler;
     }
 }

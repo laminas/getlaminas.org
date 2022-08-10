@@ -8,13 +8,14 @@ use DateTimeImmutable;
 use Exception;
 use Laminas\Feed\Reader\Reader;
 use Laminas\Feed\Writer\Feed;
-use League\CommonMark\MarkdownConverterInterface;
+use League\CommonMark\ConverterInterface;
 use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
 use function explode;
 use function file_get_contents;
 use function file_put_contents;
@@ -28,7 +29,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
 {
     public function __construct(
         private string $feedFile,
-        private MarkdownConverterInterface $markdown,
+        private ConverterInterface $markdown,
         private ResponseFactoryInterface $responseFactory,
         private ProblemDetailsResponseFactory $problemFactory
     ) {
@@ -86,7 +87,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
             $data['package'],
             $data['version'],
             $data['url'],
-            $this->markdown->convertToHtml($data['changelog'])->getContent(),
+            $this->markdown->convert($data['changelog'])->getContent(),
             new DateTimeImmutable($data['publication_date']),
             new Author($data['author_name'], $authorUrl)
         );
@@ -100,7 +101,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
 
         foreach ($feed as $entry) {
             $title               = $entry->getTitle();
-            [$package, $version] = explode(' ', $title);
+            [$package, $version] = explode(' ', $title, 2);
 
             $author     = $entry->getAuthor();
             $authorName = $author['name'];
@@ -135,6 +136,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
 
         $latest = false;
         foreach ($releases as $release) {
+            assert($release instanceof Release);
             $latest = $latest ?: $release->date;
 
             $entry = $feed->createEntry();
@@ -149,8 +151,10 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
             $feed->addEntry($entry);
         }
 
-        $feed->setDateModified($latest);
-        $feed->setLastBuildDate($latest);
+        if ($latest !== false) {
+            $feed->setDateModified($latest);
+            $feed->setLastBuildDate($latest);
+        }
 
         return $feed;
     }

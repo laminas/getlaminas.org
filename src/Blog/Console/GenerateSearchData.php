@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GetLaminas\Blog\Console;
 
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
+use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -52,6 +53,7 @@ class GenerateSearchData extends Command
 
         $documents = [];
         foreach (new MarkdownFileFilter($path) as $fileInfo) {
+            /** @var SplFileInfo $fileInfo */
             $post        = $this->createBlogPostFromDataArray(['path' => $fileInfo->getPathname()]);
             $documents[] = [
                 'id'      => sprintf('/blog/%s.html', $post->id),

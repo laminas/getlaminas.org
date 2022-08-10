@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
+use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -14,7 +15,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
-use function array_merge;
 use function count;
 use function iterator_to_array;
 use function sprintf;
@@ -74,12 +74,6 @@ class ListPostsHandler implements RequestHandlerInterface
         return $page < 1 ? 1 : $page;
     }
 
-    /**
-     * @var string $path
-     * @var int $page
-     * @var object $pagination
-     * @return object $pagination
-     */
     private function preparePagination(string $path, int $page, stdClass $pagination): stdClass
     {
         $pagination->base_path = $path;
@@ -87,7 +81,7 @@ class ListPostsHandler implements RequestHandlerInterface
         $pagination->is_last   = $page === $pagination->last;
 
         $pages = [];
-        for ($i = $pagination->firstPageInRange; $i <= $pagination->lastPageInRange; $i += 1) {
+        for ($i = (int) $pagination->firstPageInRange; $i <= (int) $pagination->lastPageInRange; $i += 1) {
             $pages[] = [
                 'base_path' => $path,
                 'number'    => $i,
@@ -101,8 +95,7 @@ class ListPostsHandler implements RequestHandlerInterface
 
     /**
      * @param BlogPost[] $entries
-     * @param object $pagination
-     * @return array
+     * @psalm-return array<string, mixed>
      */
     private function prepareView(string $tag, array $entries, stdClass $pagination): array
     {
@@ -112,9 +105,12 @@ class ListPostsHandler implements RequestHandlerInterface
             $view['rss']  = $this->router->generateUri('blog.tag.feed', ['tag' => $tag, 'type' => 'rss']);
         }
 
-        return array_merge($view, [
-            'posts'      => $entries,
-            'pagination' => $pagination,
-        ]);
+        return [
+            ...$view,
+            ...[
+                'posts'      => $entries,
+                'pagination' => $pagination,
+            ],
+        ];
     }
 }

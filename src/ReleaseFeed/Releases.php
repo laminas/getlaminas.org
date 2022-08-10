@@ -15,6 +15,7 @@ use function usort;
 
 class Releases implements IteratorAggregate
 {
+    /** @psalm-var list<Release> */
     private array $releases = [];
 
     public function getIterator(): Iterator
@@ -29,14 +30,22 @@ class Releases implements IteratorAggregate
         $this->releases[] = $release;
     }
 
+    /**
+     * @psalm-param list<Release> $releases
+     * @psalm-return list<Release>
+     */
     private function sort(array $releases): array
     {
-        usort($releases, function (Release $a, Release $b) {
+        usort($releases, function (Release $a, Release $b): int {
             return $a->date <=> $b->date;
         });
         return array_reverse($releases);
     }
 
+    /**
+     * @psalm-param list<Release> $releases
+     * @psalm-return list<Release>
+     */
     private function truncate(array $releases): array
     {
         if (count($releases) < 30) {

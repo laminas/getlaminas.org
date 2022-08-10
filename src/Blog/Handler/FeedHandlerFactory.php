@@ -7,12 +7,15 @@ namespace GetLaminas\Blog\Handler;
 use Mezzio\Handler\NotFoundHandler;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class FeedHandlerFactory
 {
     public function __invoke(ContainerInterface $container): FeedHandler
     {
-        return new FeedHandler(
-            $container->get(NotFoundHandler::class)
-        );
+        $notFoundHandler = $container->get(NotFoundHandler::class);
+        assert($notFoundHandler instanceof NotFoundHandler);
+
+        return new FeedHandler($notFoundHandler);
     }
 }

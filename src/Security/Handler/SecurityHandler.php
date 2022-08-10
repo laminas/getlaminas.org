@@ -13,12 +13,15 @@ use Mezzio\Template;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
+use function array_keys;
 use function array_slice;
 use function basename;
 use function ceil;
 use function count;
 use function current;
+use function is_string;
 use function preg_match;
 use function sprintf;
 
@@ -101,18 +104,22 @@ class SecurityHandler implements RequestHandlerInterface
         $first      = current($advisories);
         $feed->setDateModified(new DateTimeImmutable($first['date']));
 
-        foreach ($advisories as $id => $advisory) {
+        foreach (array_keys($advisories) as $id) {
+            if (! is_string($id)) {
+                throw new RuntimeException('Unexpected feed identifier; expected string');
+            }
+
             $content = $this->advisory->getFromFile($id);
             $entry   = $feed->createEntry();
-            $entry->setTitle($content['title']);
-            $entry->setLink(sprintf('%s/%s', $advisoryUrl, basename($id, '.md')));
+            $entry->setTitle($content['title'] ?? '');
+            $entry->setLink(sprintf('%s/%s', (string) $advisoryUrl, basename($id, '.md')));
             $entry->addAuthor([
                 'name'  => 'Laminas Project Security',
                 'email' => 'security@getlaminas.org',
             ]);
-            $entry->setDateCreated(new DateTimeImmutable($content['date']));
-            $entry->setDateModified(new DateTimeImmutable($content['date']));
-            $entry->setContent($content['body']);
+            $entry->setDateCreated(new DateTimeImmutable($content['date'] ?? 'now'));
+            $entry->setDateModified(new DateTimeImmutable($content['date'] ?? 'now'));
+            $entry->setContent($content['body'] ?? '');
             $feed->addEntry($entry);
         }
 
