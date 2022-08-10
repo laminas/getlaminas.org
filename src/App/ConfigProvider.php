@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace App;
 
+use Laminas\Stratigility\Middleware\ErrorHandler;
 use League\Plates\Engine as PlatesEngine;
+use Mezzio\Application;
+use Mezzio\Plates\PlatesEngineFactory;
 use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
 use Psr\Log\LoggerInterface;
-use Mezzio\Application;
-use Mezzio\Plates\PlatesEngineFactory;
-use Laminas\Stratigility\Middleware\ErrorHandler;
+
+use function rtrim;
 
 /**
  * The configuration provider for the App module
@@ -25,7 +27,6 @@ class ConfigProvider
      *
      * To add a bit of a structure, each section is defined in a separate
      * method which returns an array with its configuration.
-     *
      */
     public function __invoke(): array
     {
@@ -43,7 +44,7 @@ class ConfigProvider
     public function getDependencies(): array
     {
         return [
-            'aliases' => [
+            'aliases'    => [
                 ListenerProviderInterface::class => AttachableListenerProvider::class,
             ],
             'delegators' => [
@@ -83,6 +84,7 @@ class ConfigProvider
 
     public function registerRoutes(Application $app, string $basePath = '/'): void
     {
+        // phpcs:disable Generic.Files.LineLength.TooLong
         $basePath = rtrim($basePath, '/') . '/';
         $app->get($basePath, Handler\HomePageHandler::class, 'app.home-page');
         $app->get($basePath . 'about[/]', Handler\StaticPageHandler::class, 'about.overview');
@@ -94,5 +96,6 @@ class ConfigProvider
         $app->get($basePath . 'participate[/]', Handler\StaticPageHandler::class, 'community.participate');
         $app->get($basePath . 'support[/]', Handler\StaticPageHandler::class, 'app.support');
         $app->get($basePath . 'commercial-vendor-program[/]', Handler\CommercialVendorsHandler::class, 'app.commercial-vendor-program');
+        // phpcs:enable Generic.Files.LineLength.TooLong
     }
 }

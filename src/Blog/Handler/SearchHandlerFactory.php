@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace GetLaminas\Blog\Handler;
 
 use GetLaminas\Blog\Mapper\MapperInterface;
-use Psr\Container\ContainerInterface;
 use Mezzio\Helper\UrlHelper;
+use Psr\Container\ContainerInterface;
 
 class SearchHandlerFactory
 {

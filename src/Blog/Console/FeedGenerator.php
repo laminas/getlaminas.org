@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
@@ -12,20 +7,18 @@ namespace GetLaminas\Blog\Console;
 use GetLaminas\Blog\BlogAuthor;
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\Mapper\MapperInterface;
+use Laminas\Diactoros\Uri;
+use Laminas\Feed\Writer\Feed as FeedWriter;
+use Mezzio\Helper\ServerUrlHelper;
+use Mezzio\Router\RouterInterface;
+use Mezzio\Template\TemplateRendererInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Parser as YamlParser;
 use Traversable;
-use Laminas\Diactoros\Uri;
-use Mezzio\Helper\ServerUrlHelper;
-use Mezzio\Router\RouterInterface;
-use Mezzio\Template\TemplateRendererInterface;
-use Laminas\Feed\Writer\Feed as FeedWriter;
 
-use function file_exists;
 use function file_put_contents;
 use function method_exists;
 use function sprintf;
@@ -35,33 +28,20 @@ class FeedGenerator extends Command
 {
     use RoutesTrait;
 
-    private $authorsPath;
-
-    private $defaultAuthor = [
+    private array $defaultAuthor = [
         'name'  => 'Matthew Weier O\'Phinney',
         'email' => 'me@mwop.net',
         'uri'   => 'https://mwop.net',
     ];
 
-    private $io;
-
-    private $mapper;
-
-    private $renderer;
-
-    private $router;
-
     public function __construct(
-        MapperInterface $mapper,
-        RouterInterface $router,
-        TemplateRendererInterface $renderer,
+        private MapperInterface $mapper,
+        private RouterInterface $router,
+        private TemplateRendererInterface $renderer,
         ServerUrlHelper $serverUrlHelper,
-        string $authorsPath
+        private string $authorsPath
     ) {
-        $this->mapper      = $mapper;
-        $this->router      = $this->seedRoutes($router);
-        $this->renderer    = $renderer;
-        $this->authorsPath = $authorsPath;
+        $this->seedRoutes($router);
 
         if (method_exists($mapper, 'setAuthorDataRootPath')) {
             $mapper->setAuthorDataRootPath($authorsPath);
@@ -209,9 +189,7 @@ class FeedGenerator extends Command
     /**
      * Normalize generated URIs.
      *
-     * @param string $route
      * @param array $options
-     * @return string
      */
     private function generateUri(string $route, array $options): string
     {

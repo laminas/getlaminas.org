@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
+use Laminas\Stratigility\Middleware\ErrorHandler;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use Laminas\Stratigility\Middleware\ErrorHandler;
 
 class LoggingErrorListenerDelegator
 {

@@ -1,18 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\Blog;
 
 use DateTimeInterface;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
+use League\Plates\Template\Template;
 use Psr\Container\ContainerInterface;
+
+use function sprintf;
 
 class PlatesFunctionsDelegator implements ExtensionInterface
 {
-    public $template;
+    public Template $template;
 
-    public function __invoke(ContainerInterface $container, $name, callable $factory)
+    public function __invoke(ContainerInterface $container, string $name, callable $factory): Engine
     {
+        /** @var Engine $engine */
         $engine = $factory();
         $engine->loadExtension($this);
         return $engine;

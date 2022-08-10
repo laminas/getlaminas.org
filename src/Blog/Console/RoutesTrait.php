@@ -1,24 +1,19 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
 
+use Mezzio\Router\Route;
+use Mezzio\Router\RouterInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Mezzio\Router\Route;
-use Mezzio\Router\RouterInterface;
 
 trait RoutesTrait
 {
-    private $routes = [
+    private array $routes = [
         'blog'               => '/blog[/]',
         'blog.post'          => '/blog/{id:[^/]+}.html',
         'blog.feed.php'      => '/blog/tag/{tag:php}.xml',
@@ -31,7 +26,7 @@ trait RoutesTrait
         'resume'             => '/resume',
     ];
 
-    private function seedRoutes(RouterInterface $router): RouterInterface
+    private function seedRoutes(RouterInterface $router): void
     {
         $middleware = new class implements MiddlewareInterface {
             public function process(
@@ -44,7 +39,5 @@ trait RoutesTrait
         foreach ($this->routes as $name => $path) {
             $router->addRoute(new Route($path, $middleware, ['GET'], $name));
         }
-
-        return $router;
     }
 }

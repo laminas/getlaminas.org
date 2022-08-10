@@ -1,13 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\Security\Handler;
 
 use GetLaminas\Security\Advisory;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mezzio\Template;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+use function basename;
+use function file_exists;
+use function sprintf;
 
 class AdvisoryHandler implements RequestHandlerInterface
 {
@@ -35,8 +41,8 @@ class AdvisoryHandler implements RequestHandlerInterface
             return new HtmlResponse($this->template->render('error::404'));
         }
 
-        $content = $this->advisory->getFromFile($file);
-        $content['layout'] = 'layout::default';
+        $content             = $this->advisory->getFromFile($file);
+        $content['layout']   = 'layout::default';
         $content['advisory'] = $advisory;
 
         return new HtmlResponse($this->template->render('security::advisory', $content));

@@ -13,11 +13,20 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "8.0"
+            "php": "8.1.99"
         },
         "allow-plugins": {
             "laminas/laminas-component-installer": true,
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": true,
+            "laminas/laminas-dependency-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "laminas": {
+            "component-ignore-list": [
+                "mezzio/mezzio-tooling"
+            ]
         }
     },
     "support": {
@@ -28,17 +37,18 @@
         "forum": "https://discourse.laminas.dev"
     },
     "require": {
-        "php": "~8.0.0",
+        "php": "~8.1.0",
         "ext-pdo": "*",
         "dflydev/fig-cookies": "^3.0",
-        "laminas/laminas-component-installer": "^2.8",
+        "laminas/laminas-cli": "^1.5",
+        "laminas/laminas-component-installer": "^3.0",
         "laminas/laminas-config-aggregator": "^1.8",
         "laminas/laminas-diactoros": "^2.14.0",
         "laminas/laminas-feed": "^2.18.1",
         "laminas/laminas-paginator": "^2.13",
         "laminas/laminas-servicemanager": "^3.16",
         "laminas/laminas-stdlib": "^3.11.0",
-        "league/commonmark": "^1.6.7",
+        "league/commonmark": "^2.3.5",
         "mezzio/mezzio": "^3.11.0",
         "mezzio/mezzio-fastroute": "^3.5",
         "mezzio/mezzio-helpers": "^5.8.0",
@@ -48,16 +58,16 @@
         "phly/phly-configfactory": "^1.1",
         "phly/phly-event-dispatcher": "^1.2",
         "spatie/yaml-front-matter": "^2.0.7",
-        "symfony/console": "^5.4.11",
-        "symfony/yaml": "^5.4.11"
+        "symfony/console": "^6.0",
+        "symfony/yaml": "^6.0"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
+        "laminas/laminas-coding-standard": "^2.3",
         "laminas/laminas-development-mode": "^3.3",
-        "mezzio/mezzio-tooling": "^1.4",
-        "phpunit/phpunit": "^9.5.5",
-        "roave/security-advisories": "dev-master",
-        "squizlabs/php_codesniffer": "^3.6.2"
+        "mezzio/mezzio-tooling": "^2.6",
+        "phpunit/phpunit": "^9.5.12",
+        "roave/security-advisories": "dev-master"
     },
     "replace": {
         "laminas/laminas-zendframework-bridge": "*"
@@ -77,12 +87,12 @@
     "scripts": {
         "build": [
             "@build-blog",
-            "./bin/console security:build"
+            "laminas security:build"
         ],
         "build-blog": [
-            "./bin/console blog:seed-db",
-            "./bin/console blog:feed-generator",
-            "./bin/console blog:generate-search-data"
+            "laminas blog:seed-db",
+            "laminas blog:feed-generator",
+            "laminas blog:generate-search-data"
         ],
         "post-create-project-cmd": [
             "@development-enable"
@@ -90,7 +100,6 @@
         "development-disable": "laminas-development-mode disable",
         "development-enable": "laminas-development-mode enable",
         "development-status": "laminas-development-mode status",
-        "expressive": "expressive --ansi",
         "check": [
             "@cs-check",
             "@test"

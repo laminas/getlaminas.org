@@ -1,5 +1,7 @@
 .env
 .idea
+.phpcs-cache
+.phpunit.result.cache
 composer.phar
 clover.xml
 coveralls-upload.json

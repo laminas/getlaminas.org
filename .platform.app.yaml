@@ -1,6 +1,6 @@
 name: getlaminas_org
 
-type: php:8.0
+type: php:8.1
 
 size: S
 
@@ -18,7 +18,7 @@ dependencies:
   php:
     "composer/composer": "^2"
   nodejs:
-    gulp-cli: '~2.2.0'
+    gulp-cli: '~2.3.0'
 
 mounts:
   'data/cache':

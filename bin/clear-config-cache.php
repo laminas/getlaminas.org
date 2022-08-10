@@ -1,12 +1,11 @@
 <?php
+
 /**
  * Script for clearing the configuration cache.
  *
  * Can also be invoked as `composer clear-config-cache`.
  *
  * @see       https://github.com/laminas/getlaminas.org for the canonical source repository
- * @copyright https://github.com/laminas/getlaminas.org/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas/getlaminas.org/blob/master/LICENSE.md New BSD License
  */
 
 declare(strict_types=1);

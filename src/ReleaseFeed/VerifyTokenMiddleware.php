@@ -10,18 +10,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function preg_match;
+
 class VerifyTokenMiddleware implements MiddlewareInterface
 {
-    /** ProblemDetailsResponseFactory */
-    private $problemFactory;
-
-    /** @var string */
-    private $token;
-
-    public function __construct(string $token, ProblemDetailsResponseFactory $problemFactory)
-    {
-        $this->token = $token;
-        $this->problemFactory = $problemFactory;
+    public function __construct(
+        private string $token,
+        private ProblemDetailsResponseFactory $problemFactory
+    ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

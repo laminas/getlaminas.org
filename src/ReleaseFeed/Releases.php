@@ -8,9 +8,14 @@ use ArrayIterator;
 use Iterator;
 use IteratorAggregate;
 
+use function array_reverse;
+use function array_slice;
+use function count;
+use function usort;
+
 class Releases implements IteratorAggregate
 {
-    private $releases = [];
+    private array $releases = [];
 
     public function getIterator(): Iterator
     {

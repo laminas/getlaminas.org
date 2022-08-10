@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\Security\Console;
 
 use App\FrontMatter\Parser;
@@ -8,6 +10,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+
+use function file_exists;
+use function unlink;
 
 class BuildCommand extends Command
 {

@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\Security;
 
-use Mezzio\Application;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Mezzio\Application;
 
 class ConfigProvider
 {
@@ -11,6 +13,7 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencies(),
+            'laminas-cli'  => $this->getConsoleConfig(),
             'templates'    => $this->getTemplates(),
         ];
     }
@@ -35,6 +38,15 @@ class ConfigProvider
         return [
             'paths' => [
                 'security' => ['templates/security'],
+            ],
+        ];
+    }
+
+    public function getConsoleConfig(): array
+    {
+        return [
+            'commands' => [
+                'security:build' => Console\BuildCommand::class,
             ],
         ];
     }

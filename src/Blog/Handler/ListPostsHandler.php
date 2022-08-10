@@ -1,24 +1,24 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
 use GetLaminas\Blog\Mapper\MapperInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Mezzio\Router\RouterInterface;
 use Mezzio\Template\TemplateRendererInterface;
-use Laminas\Paginator\Paginator;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use stdClass;
+
+use function array_merge;
+use function count;
+use function iterator_to_array;
+use function sprintf;
+use function str_replace;
 
 class ListPostsHandler implements RequestHandlerInterface
 {
@@ -36,9 +36,9 @@ class ListPostsHandler implements RequestHandlerInterface
         TemplateRendererInterface $template,
         RouterInterface $router
     ) {
-        $this->mapper    = $mapper;
-        $this->template  = $template;
-        $this->router    = $router;
+        $this->mapper   = $mapper;
+        $this->template = $template;
+        $this->router   = $router;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -71,7 +71,7 @@ class ListPostsHandler implements RequestHandlerInterface
     {
         $page = $request->getQueryParams()['page'] ?? 1;
         $page = (int) $page;
-        return ($page < 1) ? 1 : $page;
+        return $page < 1 ? 1 : $page;
     }
 
     /**
@@ -83,15 +83,15 @@ class ListPostsHandler implements RequestHandlerInterface
     private function preparePagination(string $path, int $page, stdClass $pagination): stdClass
     {
         $pagination->base_path = $path;
-        $pagination->is_first  = ($page === $pagination->first);
-        $pagination->is_last   = ($page === $pagination->last);
+        $pagination->is_first  = $page === $pagination->first;
+        $pagination->is_last   = $page === $pagination->last;
 
         $pages = [];
         for ($i = $pagination->firstPageInRange; $i <= $pagination->lastPageInRange; $i += 1) {
             $pages[] = [
                 'base_path' => $path,
                 'number'    => $i,
-                'current'   => ($page === $i),
+                'current'   => $page === $i,
             ];
         }
         $pagination->pages = $pages;
@@ -100,7 +100,6 @@ class ListPostsHandler implements RequestHandlerInterface
     }
 
     /**
-     * @param string $tag
      * @param BlogPost[] $entries
      * @param object $pagination
      * @return array

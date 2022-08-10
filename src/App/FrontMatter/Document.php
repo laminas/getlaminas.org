@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\FrontMatter;
 
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\MarkdownConverter;
 use Spatie\YamlFrontMatter\Document as SpatieDocument;
 
 use function str_replace;
@@ -29,13 +31,15 @@ final class Document implements DocumentInterface
 
     public function getContent(): string
     {
-        $env = Environment::createCommonMarkEnvironment();
+        $env = new Environment();
+        $env->addExtension(new CommonMarkCoreExtension());
+        $env->addExtension(new GithubFlavoredMarkdownExtension());
         $env->addExtension(new TableExtension());
 
-        $converter = new CommonMarkConverter([], $env);
+        $converter = new MarkdownConverter($env);
 
         return $this->postProcessHtml(
-            $converter->convertToHtml($this->document->body())
+            $converter->convertToHtml($this->document->body())->getContent()
         );
     }
 

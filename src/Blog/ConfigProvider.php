@@ -1,18 +1,13 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog;
 
 use League\Plates\Engine;
+use Mezzio\Application;
 use Phly\ConfigFactory\ConfigFactory;
 use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
-use Mezzio\Application;
 
 class ConfigProvider
 {
@@ -21,6 +16,7 @@ class ConfigProvider
         return [
             'blog'         => $this->getConfig(),
             'dependencies' => $this->getDependencies(),
+            'laminas-cli'  => $this->getConsoleConfig(),
             'templates'    => $this->getTemplateConfig(),
         ];
     }
@@ -58,7 +54,7 @@ class ConfigProvider
                 AttachableListenerProvider::class => [
                     Listener\FetchBlogPostEventListenersDelegator::class,
                 ],
-                Engine::class => [
+                Engine::class                     => [
                     PlatesFunctionsDelegator::class,
                 ],
             ],
@@ -70,6 +66,17 @@ class ConfigProvider
         return [
             'paths' => [
                 'blog' => [__DIR__ . '/templates'],
+            ],
+        ];
+    }
+
+    public function getConsoleConfig(): array
+    {
+        return [
+            'commands' => [
+                'blog:feed-generator'       => Console\FeedGenerator::class,
+                'blog:generate-search-data' => Console\GenerateSearchData::class,
+                'blog:seed-db'              => Console\SeedBlogDatabase::class,
             ],
         ];
     }
