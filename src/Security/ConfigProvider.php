@@ -13,6 +13,7 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencies(),
+            'laminas-cli'  => $this->getConsoleConfig(),
             'templates'    => $this->getTemplates(),
         ];
     }
@@ -37,6 +38,15 @@ class ConfigProvider
         return [
             'paths' => [
                 'security' => ['templates/security'],
+            ],
+        ];
+    }
+
+    public function getConsoleConfig(): array
+    {
+        return [
+            'commands' => [
+                'security:build' => Console\BuildCommand::class,
             ],
         ];
     }

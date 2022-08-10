@@ -40,6 +40,7 @@
         "php": "~8.1.0",
         "ext-pdo": "*",
         "dflydev/fig-cookies": "^3.0",
+        "laminas/laminas-cli": "^1.5",
         "laminas/laminas-component-installer": "^3.0",
         "laminas/laminas-config-aggregator": "^1.8",
         "laminas/laminas-diactoros": "^2.14.0",
@@ -86,12 +87,12 @@
     "scripts": {
         "build": [
             "@build-blog",
-            "./bin/console security:build"
+            "laminas security:build"
         ],
         "build-blog": [
-            "./bin/console blog:seed-db",
-            "./bin/console blog:feed-generator",
-            "./bin/console blog:generate-search-data"
+            "laminas blog:seed-db",
+            "laminas blog:feed-generator",
+            "laminas blog:generate-search-data"
         ],
         "post-create-project-cmd": [
             "@development-enable"
@@ -99,7 +100,6 @@
         "development-disable": "laminas-development-mode disable",
         "development-enable": "laminas-development-mode enable",
         "development-status": "laminas-development-mode status",
-        "expressive": "expressive --ansi",
         "check": [
             "@cs-check",
             "@test"

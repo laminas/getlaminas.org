@@ -16,6 +16,7 @@ class ConfigProvider
         return [
             'blog'         => $this->getConfig(),
             'dependencies' => $this->getDependencies(),
+            'laminas-cli'  => $this->getConsoleConfig(),
             'templates'    => $this->getTemplateConfig(),
         ];
     }
@@ -65,6 +66,17 @@ class ConfigProvider
         return [
             'paths' => [
                 'blog' => [__DIR__ . '/templates'],
+            ],
+        ];
+    }
+
+    public function getConsoleConfig(): array
+    {
+        return [
+            'commands' => [
+                'blog:feed-generator'       => Console\FeedGenerator::class,
+                'blog:generate-search-data' => Console\GenerateSearchData::class,
+                'blog:seed-db'              => Console\SeedBlogDatabase::class,
             ],
         ];
     }
