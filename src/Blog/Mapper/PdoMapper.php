@@ -61,7 +61,7 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $tag)]);
     }
 
-    public function search(string $toMatch): array
+    public function search(string $toMatch): ?array
     {
         $select = $this->pdo->prepare('SELECT id, title from search WHERE search MATCH :query');
         if (! $select->execute([':query' => $toMatch])) {

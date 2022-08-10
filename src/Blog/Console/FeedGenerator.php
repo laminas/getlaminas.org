@@ -106,7 +106,7 @@ class FeedGenerator extends Command
         string $feedRoute,
         array $routeOptions,
         Traversable $posts
-    ) {
+    ): void {
         foreach (['atom', 'rss'] as $type) {
             $this->generateFeed($type, $fileBase, $baseUri, $title, $landingRoute, $feedRoute, $routeOptions, $posts);
         }
@@ -121,7 +121,7 @@ class FeedGenerator extends Command
         string $feedRoute,
         array $routeOptions,
         Traversable $posts
-    ) {
+    ): void {
         $routeOptions['type'] = $type;
 
         $landingUri = $baseUri . $this->generateUri($landingRoute, $routeOptions);

@@ -74,12 +74,6 @@ class ListPostsHandler implements RequestHandlerInterface
         return $page < 1 ? 1 : $page;
     }
 
-    /**
-     * @var string $path
-     * @var int $page
-     * @var object $pagination
-     * @return object $pagination
-     */
     private function preparePagination(string $path, int $page, stdClass $pagination): stdClass
     {
         $pagination->base_path = $path;
@@ -99,11 +93,7 @@ class ListPostsHandler implements RequestHandlerInterface
         return $pagination;
     }
 
-    /**
-     * @param BlogPost[] $entries
-     * @param object $pagination
-     * @return array
-     */
+    /** @param BlogPost[] $entries */
     private function prepareView(string $tag, array $entries, stdClass $pagination): array
     {
         $view = $tag ? ['tag' => $tag] : [];
