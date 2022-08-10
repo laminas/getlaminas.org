@@ -105,12 +105,14 @@
                 Laminas Projects are supported by these commercial vendors.
             </p>
 
-            <div class="row align-items-center justify-content-center">
-            <?php foreach ($commercialVendors as $commercialVendor): ?>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                <?php foreach ($commercialVendors as $commercialVendor): ?>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                    </div>
+                <?php endforeach ?>
                 </div>
-            <?php endforeach ?>
             </div>
 
             <div class="mt-4">
