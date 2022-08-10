@@ -12,23 +12,11 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class DisplayFeedHandler implements RequestHandlerInterface
 {
-    /** @var string */
-    private $feedFile;
-
-    /** @var ResponseFactoryInterface */
-    private $responseFactory;
-
-    /** @var StreamFactoryInterface */
-    private $streamFactory;
-
     public function __construct(
-        StreamFactoryInterface $streamFactory,
-        ResponseFactoryInterface $responseFactory,
-        string $feedFile
+        private StreamFactoryInterface $streamFactory,
+        private ResponseFactoryInterface $responseFactory,
+        private string $feedFile
     ) {
-        $this->streamFactory   = $streamFactory;
-        $this->responseFactory = $responseFactory;
-        $this->feedFile        = $feedFile;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
