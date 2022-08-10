@@ -7,6 +7,9 @@ namespace App\Handler;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+use function is_array;
+
 class CommercialVendorsHandlerFactory
 {
     public function __invoke(ContainerInterface $container): CommercialVendorsHandler

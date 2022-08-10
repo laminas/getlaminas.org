@@ -15,11 +15,13 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 
+use function array_keys;
 use function array_slice;
 use function basename;
 use function ceil;
 use function count;
 use function current;
+use function is_string;
 use function preg_match;
 use function sprintf;
 

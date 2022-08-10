@@ -10,6 +10,7 @@ use Mezzio\Router\RouterInterface;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
 use function getcwd;
 use function realpath;
 

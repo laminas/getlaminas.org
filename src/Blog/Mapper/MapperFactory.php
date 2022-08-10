@@ -7,6 +7,9 @@ namespace GetLaminas\Blog\Mapper;
 use PDO;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+use function is_array;
+
 class MapperFactory
 {
     public function __invoke(ContainerInterface $container): PdoMapper

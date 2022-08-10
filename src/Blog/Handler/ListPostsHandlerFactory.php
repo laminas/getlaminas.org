@@ -9,6 +9,8 @@ use Mezzio\Router\RouterInterface;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class ListPostsHandlerFactory
 {
     public function __invoke(ContainerInterface $container): ListPostsHandler

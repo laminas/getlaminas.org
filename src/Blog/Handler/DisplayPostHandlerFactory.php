@@ -9,6 +9,8 @@ use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
+use function assert;
+
 class DisplayPostHandlerFactory
 {
     public function __invoke(ContainerInterface $container): DisplayPostHandler

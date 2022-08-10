@@ -8,6 +8,7 @@ use Closure;
 use League\Plates\Engine as PlatesEngine;
 use Psr\Container\ContainerInterface;
 
+use function assert;
 use function file_exists;
 use function file_get_contents;
 use function getcwd;
@@ -18,7 +19,7 @@ class InjectAssetRevisionsDelegator
 {
     public function __invoke(ContainerInterface $container, string $serviceName, callable $factory): PlatesEngine
     {
-        $engine    = $factory();
+        $engine = $factory();
         assert($engine instanceof PlatesEngine);
 
         $config = $container->get('config') ?? [];

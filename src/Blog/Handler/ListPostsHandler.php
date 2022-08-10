@@ -15,7 +15,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
-use function array_merge;
 use function count;
 use function iterator_to_array;
 use function sprintf;
@@ -94,7 +93,10 @@ class ListPostsHandler implements RequestHandlerInterface
         return $pagination;
     }
 
-    /** @param BlogPost[] entries */
+    /**
+     * @param BlogPost[] $entries
+     * @psalm-return array<string, mixed>
+     */
     private function prepareView(string $tag, array $entries, stdClass $pagination): array
     {
         $view = $tag ? ['tag' => $tag] : [];
@@ -103,9 +105,12 @@ class ListPostsHandler implements RequestHandlerInterface
             $view['rss']  = $this->router->generateUri('blog.tag.feed', ['tag' => $tag, 'type' => 'rss']);
         }
 
-        return [...$view, ...[
-            'posts'      => $entries,
-            'pagination' => $pagination,
-        ]];
+        return [
+            ...$view,
+            ...[
+                'posts'      => $entries,
+                'pagination' => $pagination,
+            ],
+        ];
     }
 }

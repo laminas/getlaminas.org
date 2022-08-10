@@ -7,6 +7,8 @@ namespace App\Handler;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class StaticPageHandlerFactory
 {
     public function __invoke(ContainerInterface $container): StaticPageHandler

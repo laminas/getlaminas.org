@@ -6,7 +6,9 @@ namespace GetLaminas\ReleaseFeed;
 
 use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
 use Psr\Container\ContainerInterface;
-use RuntimeException;
+
+use function assert;
+use function is_string;
 
 class VerifyTokenMiddlewareFactory
 {

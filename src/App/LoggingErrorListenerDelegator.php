@@ -8,6 +8,8 @@ use Laminas\Stratigility\Middleware\ErrorHandler;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
+use function assert;
+
 class LoggingErrorListenerDelegator
 {
     public function __invoke(

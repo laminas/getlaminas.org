@@ -14,6 +14,9 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use RuntimeException;
 
+use function assert;
+use function is_string;
+
 class ReceiveFeedItemHandlerFactory
 {
     public function __invoke(ContainerInterface $container): ReceiveFeedItemHandler

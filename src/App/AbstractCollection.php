@@ -21,7 +21,7 @@ abstract class AbstractCollection
     protected const FOLDER_COLLECTION = '';
 
     /** @var string */
-    protected const CACHE_FILE        = '';
+    protected const CACHE_FILE = '';
 
     protected array $collection = [];
 

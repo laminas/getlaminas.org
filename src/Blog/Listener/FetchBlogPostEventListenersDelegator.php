@@ -8,6 +8,8 @@ use GetLaminas\Blog\FetchBlogPostEvent;
 use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class FetchBlogPostEventListenersDelegator
 {
     public function __invoke(

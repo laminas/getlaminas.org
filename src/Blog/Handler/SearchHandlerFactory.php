@@ -8,6 +8,8 @@ use GetLaminas\Blog\Mapper\MapperInterface;
 use Mezzio\Helper\UrlHelper;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class SearchHandlerFactory
 {
     public function __invoke(ContainerInterface $container): SearchHandler

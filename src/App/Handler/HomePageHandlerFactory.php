@@ -7,6 +7,9 @@ namespace App\Handler;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+use function is_array;
+
 class HomePageHandlerFactory
 {
     public function __invoke(ContainerInterface $container): HomePageHandler

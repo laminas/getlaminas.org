@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
 
-use DirectoryIterator;
 use FilterIterator;
 use InvalidArgumentException;
 use RecursiveDirectoryIterator;
-use RecursiveIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 
 use function is_dir;
-use function is_string;
 use function sprintf;
 
 /**

@@ -8,6 +8,8 @@ use GetLaminas\Security\Advisory;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+
 class SecurityHandlerFactory
 {
     public function __invoke(ContainerInterface $container): SecurityHandler
