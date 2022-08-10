@@ -1,9 +1,5 @@
-<?php
+<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.Trait.Suffix
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
 
 declare(strict_types=1);
 
@@ -12,9 +8,16 @@ namespace GetLaminas\Blog;
 use App\FrontMatter\Parser;
 use App\FrontMatter\ParserInterface;
 use DateTime;
-use DateTimezone;
+use DateTimeZone;
 use RuntimeException;
 use Symfony\Component\Yaml\Yaml;
+
+use function explode;
+use function file_exists;
+use function is_array;
+use function is_numeric;
+use function sprintf;
+use function trim;
 
 trait CreateBlogPostFromDataArray
 {
@@ -81,7 +84,7 @@ trait CreateBlogPostFromDataArray
     private function createDateTimeFromString(string $dateString): DateTime
     {
         return is_numeric($dateString)
-            ? new DateTime('@' . $dateString, new DateTimezone('America/Chicago'))
+            ? new DateTime('@' . $dateString, new DateTimeZone('America/Chicago'))
             : new DateTime($dateString);
     }
 

@@ -6,18 +6,15 @@ namespace GetLaminas\ReleaseFeed;
 
 class Author
 {
-    public $name;
-    public $uri;
-
     public function __construct(
-        string $name,
-        string $uri
+        public readonly string $name,
+        public readonly string $uri,
     ) {
         $this->name = $name;
-        $this->uri = $uri;
+        $this->uri  = $uri;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'name' => $this->name,

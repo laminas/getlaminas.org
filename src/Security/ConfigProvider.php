@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\Security;
 
-use Mezzio\Application;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Mezzio\Application;
 
 class ConfigProvider
 {

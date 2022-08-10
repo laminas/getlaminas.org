@@ -1,20 +1,17 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
 use GetLaminas\Blog\Mapper\MapperInterface;
+use Laminas\Diactoros\Response\JsonResponse;
+use Mezzio\Helper\UrlHelper;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Laminas\Diactoros\Response\JsonResponse;
-use Mezzio\Helper\UrlHelper;
+
+use function array_map;
 
 class SearchHandler implements RequestHandlerInterface
 {

@@ -9,11 +9,20 @@ use Exception;
 use Laminas\Feed\Reader\Reader;
 use Laminas\Feed\Writer\Feed;
 use League\CommonMark\CommonMarkConverter;
+use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
-use Psr\Http\Message\ResponseFactoryInterface;
+
+use function explode;
+use function file_get_contents;
+use function file_put_contents;
+use function parse_url;
+use function sprintf;
+
+use const LOCK_EX;
+use const PHP_URL_PATH;
 
 class ReceiveFeedItemHandler implements RequestHandlerInterface
 {
@@ -106,8 +115,8 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
         $releases = new Releases();
 
         foreach ($feed as $entry) {
-            $title = $entry->getTitle();
-            list($package, $version) = explode(' ', $title);
+            $title               = $entry->getTitle();
+            [$package, $version] = explode(' ', $title);
 
             $author     = $entry->getAuthor();
             $authorName = $author['name'];

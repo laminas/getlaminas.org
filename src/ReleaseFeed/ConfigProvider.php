@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GetLaminas\ReleaseFeed;
 
 use Mezzio\Application;
 use Mezzio\Helper\BodyParams\BodyParamsMiddleware;
+
+use function getcwd;
 
 class ConfigProvider
 {
@@ -35,7 +39,7 @@ class ConfigProvider
         $app->post('/api/release', [
             VerifyTokenMiddleware::class,
             BodyParamsMiddleware::class,
-            ReceiveFeedItemHandler::class
+            ReceiveFeedItemHandler::class,
         ], 'api.release');
     }
 }

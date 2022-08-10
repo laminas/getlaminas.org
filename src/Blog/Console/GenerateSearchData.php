@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
@@ -16,6 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+use function file_put_contents;
 use function getcwd;
 use function implode;
 use function json_encode;
@@ -48,7 +44,7 @@ class GenerateSearchData extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
+        $io       = new SymfonyStyle($input, $output);
         $basePath = $input->getOption('path');
         $path     = realpath($basePath) . '/data/blog';
 

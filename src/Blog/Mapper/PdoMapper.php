@@ -1,25 +1,15 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Mapper;
 
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
-use PDO;
 use Laminas\Paginator\Paginator;
+use PDO;
 
-use function array_map;
-use function array_reduce;
-use function explode;
 use function sprintf;
-use function str_replace;
-use function trim;
 
 class PdoMapper implements MapperInterface
 {
@@ -30,7 +20,7 @@ class PdoMapper implements MapperInterface
 
     public function __construct(PDO $pdo)
     {
-        $this->pdo    = $pdo;
+        $this->pdo = $pdo;
     }
 
     public function fetch(string $id): ?BlogPost

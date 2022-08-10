@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Psr\Http\Message\ResponseInterface;
@@ -14,11 +16,8 @@ class LoggingErrorListener
      */
     private const LOG_STRING = '{status} [{method}] {uri}: {error}';
 
-    private $logger;
-
-    public function __construct(LoggerInterface $logger)
+    public function __construct(private LoggerInterface $logger)
     {
-        $this->logger = $logger;
     }
 
     public function __invoke(

@@ -1,31 +1,26 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\Stream;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use RuntimeException;
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\Stream;
+
+use function file_exists;
+use function fopen;
+use function sprintf;
+use function str_replace;
 
 class FeedHandler implements RequestHandlerInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $feedPath;
 
-    /**
-     * @var RequestHandlerInterface
-     */
+    /** @var RequestHandlerInterface */
     private $notFoundHandler;
 
     public function __construct(RequestHandlerInterface $notFoundHandler, string $feedPath = 'var/blog/feeds')

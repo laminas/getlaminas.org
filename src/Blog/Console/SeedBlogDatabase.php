@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Console;
@@ -16,7 +11,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Parser as YamlParser;
 
 use function file_exists;
 use function getcwd;
@@ -25,6 +19,7 @@ use function ltrim;
 use function realpath;
 use function sprintf;
 use function strlen;
+use function substr;
 use function unlink;
 
 class SeedBlogDatabase extends Command

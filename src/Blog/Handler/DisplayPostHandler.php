@@ -1,21 +1,16 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Handler;
 
 use GetLaminas\Blog\FetchBlogPostEvent;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Mezzio\Template\TemplateRendererInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Laminas\Diactoros\Response\HtmlResponse;
-use Mezzio\Template\TemplateRendererInterface;
 
 class DisplayPostHandler implements RequestHandlerInterface
 {
@@ -61,7 +56,7 @@ class DisplayPostHandler implements RequestHandlerInterface
 
         return new HtmlResponse(
             $this->template->render('blog::post', [
-                'post'   => $post,
+                'post' => $post,
             ]),
             200,
             [

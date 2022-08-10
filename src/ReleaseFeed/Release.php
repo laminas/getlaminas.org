@@ -8,26 +8,13 @@ use DateTimeInterface;
 
 class Release
 {
-    public $author;
-    public $content;
-    public $date;
-    public $package;
-    public $url;
-    public $version;
-
     public function __construct(
-        string $package,
-        string $version,
-        string $url,
-        string $content,
-        DateTimeInterface $date,
-        Author $author
+        public readonly string $package,
+        public readonly string $version,
+        public readonly string $url,
+        public readonly string $content,
+        public readonly DateTimeInterface $date,
+        public readonly Author $author,
     ) {
-        $this->package = $package;
-        $this->version = $version;
-        $this->url     = $url;
-        $this->content = $content;
-        $this->date    = $date;
-        $this->author  = $author;
     }
 }

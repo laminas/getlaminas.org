@@ -1,20 +1,16 @@
 <?php
 
-/**
- * @license http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
- * @copyright Copyright (c) Matthew Weier O'Phinney
- */
-
 declare(strict_types=1);
 
 namespace GetLaminas\Blog\Mapper;
 
 use Closure;
+use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
+use Laminas\Paginator\Adapter\AdapterInterface;
 use PDO;
 use PDOStatement;
 use RuntimeException;
-use Laminas\Paginator\Adapter\AdapterInterface;
 
 use function array_map;
 use function array_merge;
@@ -42,7 +38,7 @@ class PdoPaginator implements AdapterInterface
     /**
      * @param int $offset
      * @param int $itemCountPerPage
-     * @return \GetLaminas\Blog\BlogPost[]
+     * @return BlogPost[]
      */
     public function getItems($offset, $itemCountPerPage): array
     {
