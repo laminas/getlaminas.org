@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use Exception;
 use Laminas\Feed\Reader\Reader;
 use Laminas\Feed\Writer\Feed;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\MarkdownConverterInterface;
 use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -26,28 +26,12 @@ use const PHP_URL_PATH;
 
 class ReceiveFeedItemHandler implements RequestHandlerInterface
 {
-    /** @var string */
-    private $feedFile;
-
-    /** @var CommonMarkConverter */
-    private $markdown;
-
-    /** @var ProblemDetailsResponseFactory */
-    private $problemFactory;
-
-    /** @var ResponseFactoryInterface */
-    private $responseFactory;
-
     public function __construct(
-        string $feedFile,
-        CommonMarkConverter $markdown,
-        ResponseFactoryInterface $responseFactory,
-        ProblemDetailsResponseFactory $problemFactory
+        private string $feedFile,
+        private MarkdownConverterInterface $markdown,
+        private ResponseFactoryInterface $responseFactory,
+        private ProblemDetailsResponseFactory $problemFactory
     ) {
-        $this->feedFile        = $feedFile;
-        $this->markdown        = $markdown;
-        $this->responseFactory = $responseFactory;
-        $this->problemFactory  = $problemFactory;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -102,7 +86,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
             $data['package'],
             $data['version'],
             $data['url'],
-            $this->markdown->convertToHtml($data['changelog']),
+            $this->markdown->convertToHtml($data['changelog'])->getContent(),
             new DateTimeImmutable($data['publication_date']),
             new Author($data['author_name'], $authorUrl)
         );
