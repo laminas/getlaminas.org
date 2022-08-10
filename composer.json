@@ -54,7 +54,7 @@
         "mezzio/mezzio-helpers": "^5.8.0",
         "mezzio/mezzio-platesrenderer": "^2.4",
         "mezzio/mezzio-problem-details": "^1.6",
-        "monolog/monolog": "^1.27.1",
+        "monolog/monolog": "^3.2.0",
         "phly/phly-configfactory": "^1.1",
         "phly/phly-event-dispatcher": "^1.2",
         "spatie/yaml-front-matter": "^2.0.7",
