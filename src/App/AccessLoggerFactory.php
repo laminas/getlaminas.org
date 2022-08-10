@@ -7,19 +7,17 @@ namespace App;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\PsrLogMessageProcessor;
-use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
 class AccessLoggerFactory
 {
-    public function __invoke(ContainerInterface $container): LoggerInterface
+    public function __invoke(): LoggerInterface
     {
-        $logger             = new Logger('getlaminas');
+        $logger = new Logger('getlaminas');
         $logger->pushHandler(new StreamHandler(
-            'php://stderr',
-            Logger::INFO,
-            $bubble         = true,
-            $expandNewLines = true
+            stream: 'php://stderr',
+            level: Logger::INFO,
+            bubble: true,
         ));
         $logger->pushProcessor(new PsrLogMessageProcessor());
         return $logger;
