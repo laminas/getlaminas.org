@@ -18,7 +18,8 @@
         "allow-plugins": {
             "laminas/laminas-component-installer": true,
             "composer/package-versions-deprecated": true,
-            "laminas/laminas-dependency-plugin": true
+            "laminas/laminas-dependency-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "extra": {
@@ -61,11 +62,11 @@
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
+        "laminas/laminas-coding-standard": "^2.3",
         "laminas/laminas-development-mode": "^3.3",
         "mezzio/mezzio-tooling": "^2.6",
         "phpunit/phpunit": "^9.5.12",
-        "roave/security-advisories": "dev-master",
-        "squizlabs/php_codesniffer": "^3.6.2"
+        "roave/security-advisories": "dev-master"
     },
     "replace": {
         "laminas/laminas-zendframework-bridge": "*"
