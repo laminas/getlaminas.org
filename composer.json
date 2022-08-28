@@ -43,7 +43,7 @@
         "laminas/laminas-cli": "^1.5",
         "laminas/laminas-component-installer": "^3.0",
         "laminas/laminas-config-aggregator": "^1.8",
-        "laminas/laminas-diactoros": "^2.15.0",
+        "laminas/laminas-diactoros": "^2.16.0",
         "laminas/laminas-feed": "^2.18.2",
         "laminas/laminas-paginator": "^2.13",
         "laminas/laminas-servicemanager": "^3.16",
