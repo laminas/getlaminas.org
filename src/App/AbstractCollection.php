@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\FrontMatter\ParserInterface;
+use App\ContentParser\ParserInterface;
 use RuntimeException;
 
 use function file_exists;
@@ -25,7 +25,7 @@ abstract class AbstractCollection
 
     protected array $collection = [];
 
-    public function __construct(protected ParserInterface $frontMatterParser)
+    public function __construct(protected ParserInterface $contentParser)
     {
         if (empty(static::CACHE_FILE)) {
             throw new RuntimeException('The cache file path is not defined!');
@@ -48,8 +48,8 @@ abstract class AbstractCollection
     {
         $result = [];
         if (file_exists($file)) {
-            $doc            = $this->frontMatterParser->parse($file);
-            $result         = $doc->getYAML();
+            $doc            = $this->contentParser->parse($file);
+            $result         = $doc->getFrontMatter();
             $result['body'] = $doc->getContent();
         }
         return $result;
@@ -62,8 +62,8 @@ abstract class AbstractCollection
         }
 
         foreach (glob(static::FOLDER_COLLECTION . '/*.md') as $file) {
-            $doc                     = $this->frontMatterParser->parse($file);
-            $fields                  = $doc->getYAML();
+            $doc                     = $this->contentParser->parse($file);
+            $fields                  = $doc->getFrontMatter();
             $this->collection[$file] = $fields;
         }
 

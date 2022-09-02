@@ -5,8 +5,8 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog;
 
-use App\FrontMatter\Parser;
-use App\FrontMatter\ParserInterface;
+use App\ContentParser\Parser;
+use App\ContentParser\ParserInterface;
 use DateTime;
 use DateTimeZone;
 use RuntimeException;
@@ -23,7 +23,7 @@ trait CreateBlogPostFromDataArray
 {
     private string $authorDataRootPath = 'data/blog/authors';
 
-    private ?ParserInterface $frontMatterParser = null;
+    private ?ParserInterface $contentParser = null;
 
     /**
      * Delimiter between post summary and extended body
@@ -35,13 +35,13 @@ trait CreateBlogPostFromDataArray
         $this->authorDataRootPath = $path;
     }
 
-    private function getFrontMatterParser(): ParserInterface
+    private function getContentParser(): ParserInterface
     {
-        if (null === $this->frontMatterParser) {
-            $this->frontMatterParser = new Parser();
+        if (null === $this->contentParser) {
+            $this->contentParser = new Parser();
         }
 
-        return $this->frontMatterParser;
+        return $this->contentParser;
     }
 
     private function createBlogPostFromDataArray(array $post): BlogPost
@@ -53,8 +53,8 @@ trait CreateBlogPostFromDataArray
             ));
         }
 
-        $document = $this->getFrontMatterParser()->parse($post['path']);
-        $post     = $document->getYAML();
+        $document = $this->getContentParser()->parse($post['path']);
+        $post     = $document->getFrontMatter();
         $parts    = explode($this->postDelimiter, $document->getContent(), 2);
         $created  = $this->createDateTimeFromString($post['created']);
         $updated  = $post['updated'] && $post['updated'] !== $post['created']

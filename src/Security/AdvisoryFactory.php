@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GetLaminas\Security;
 
-use App\FrontMatter\Parser;
+use App\ContentParser\Parser;
 
 class AdvisoryFactory
 {
