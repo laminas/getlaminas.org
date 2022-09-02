@@ -16,7 +16,7 @@ final class Document implements DocumentInterface
 
     public function getFrontMatter(): array
     {
-        return (array)$this->renderedContent->getFrontMatter();
+        return (array) $this->renderedContent->getFrontMatter();
     }
 
     public function getTableOfContents(): ?string

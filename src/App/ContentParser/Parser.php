@@ -19,6 +19,8 @@ use League\CommonMark\Node\Query;
 use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
 
+use function file_get_contents;
+
 final class Parser implements ParserInterface
 {
     private MarkdownConverter $converter;
