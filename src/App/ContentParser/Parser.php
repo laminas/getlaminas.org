@@ -32,7 +32,7 @@ final class Parser implements ParserInterface
     public function __construct()
     {
         // Create default converter
-        $env = new Environment(
+        $environment = new Environment(
             [
                 'default_attributes' => [
                     Table::class => [
@@ -46,16 +46,16 @@ final class Parser implements ParserInterface
                 ],
             ]
         );
-        $env->addExtension(new CommonMarkCoreExtension());
-        $env->addExtension(new DefaultAttributesExtension());
-        $env->addExtension(new FrontMatterExtension());
-        $env->addExtension(new HeadingPermalinkExtension());
-        $env->addExtension(new TableExtension());
+        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new DefaultAttributesExtension());
+        $environment->addExtension(new FrontMatterExtension());
+        $environment->addExtension(new HeadingPermalinkExtension());
+        $environment->addExtension(new TableExtension());
 
-        $this->converter = new MarkdownConverter($env);
+        $this->converter = new MarkdownConverter($environment);
 
         // Create parser and renderer for table of contents
-        $env = new Environment(
+        $environment = new Environment(
             [
                 'table_of_contents' => [
                     'min_heading_level' => 2,
@@ -63,13 +63,13 @@ final class Parser implements ParserInterface
                 ],
             ]
         );
-        $env->addExtension(new CommonMarkCoreExtension());
-        $env->addExtension(new FrontMatterExtension());
-        $env->addExtension(new HeadingPermalinkExtension());
-        $env->addExtension(new TableOfContentsExtension());
+        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new FrontMatterExtension());
+        $environment->addExtension(new HeadingPermalinkExtension());
+        $environment->addExtension(new TableOfContentsExtension());
 
-        $this->parser   = new MarkdownParser($env);
-        $this->renderer = new HtmlRenderer($env);
+        $this->parser   = new MarkdownParser($environment);
+        $this->renderer = new HtmlRenderer($environment);
     }
 
     public function parse(string $file): DocumentInterface
