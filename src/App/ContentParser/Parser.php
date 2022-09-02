@@ -23,11 +23,11 @@ use function file_get_contents;
 
 final class Parser implements ParserInterface
 {
-    private MarkdownConverter $converter;
+    private readonly MarkdownConverter $converter;
 
-    private MarkdownParser $parser;
+    private readonly MarkdownParser $parser;
 
-    private HtmlRenderer $renderer;
+    private readonly HtmlRenderer $renderer;
 
     public function __construct()
     {
