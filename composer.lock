@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f86e926bc0401bca14b64128fcc19ce1",
+    "content-hash": "7b0a67277f01dc836a95ebcf985e82df",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1664,16 +1664,16 @@
         },
         {
             "name": "mezzio/mezzio-problem-details",
-            "version": "1.6.2",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-problem-details.git",
-                "reference": "7b319ee07669fcc2fb768d82358f0253d8cf5786"
+                "reference": "8b5de5859383ae44ec85d0a94ad251864692a22b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/7b319ee07669fcc2fb768d82358f0253d8cf5786",
-                "reference": "7b319ee07669fcc2fb768d82358f0253d8cf5786",
+                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/8b5de5859383ae44ec85d0a94ad251864692a22b",
+                "reference": "8b5de5859383ae44ec85d0a94ad251864692a22b",
                 "shasum": ""
             },
             "require": {
@@ -1692,9 +1692,9 @@
                 "zendframework/zend-problem-details": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
+                "laminas/laminas-coding-standard": "~2.4.0",
                 "phpunit/phpunit": "^9.5.11",
-                "psalm/plugin-phpunit": "^0.16.1",
+                "psalm/plugin-phpunit": "^0.17.0",
                 "vimeo/psalm": "^4.17"
             },
             "type": "library",
@@ -1737,7 +1737,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-02-03T13:52:27+00:00"
+            "time": "2022-09-18T11:20:18+00:00"
         },
         {
             "name": "mezzio/mezzio-router",
