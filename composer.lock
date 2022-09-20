@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b0a67277f01dc836a95ebcf985e82df",
+    "content-hash": "cb4a56b2163e66e800a733fe6a7bcc35",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1431,16 +1431,16 @@
         },
         {
             "name": "mezzio/mezzio-fastroute",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-fastroute.git",
-                "reference": "1ee4c1f9d7f57c1de08e16e16cb4b7a46a950ecb"
+                "reference": "7ce0f00a172e3cbc8ebe8e34eedf9c6feeca7b5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-fastroute/zipball/1ee4c1f9d7f57c1de08e16e16cb4b7a46a950ecb",
-                "reference": "1ee4c1f9d7f57c1de08e16e16cb4b7a46a950ecb",
+                "url": "https://api.github.com/repos/mezzio/mezzio-fastroute/zipball/7ce0f00a172e3cbc8ebe8e34eedf9c6feeca7b5c",
+                "reference": "7ce0f00a172e3cbc8ebe8e34eedf9c6feeca7b5c",
                 "shasum": ""
             },
             "require": {
@@ -1457,14 +1457,14 @@
                 "zendframework/zend-expressive-fastroute": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.2.0",
-                "laminas/laminas-diactoros": "^2.5.0",
-                "laminas/laminas-stratigility": "^3.0",
-                "mikey179/vfsstream": "^1.6.10",
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-diactoros": "^2.17.0",
+                "laminas/laminas-stratigility": "^3.8.0",
+                "mikey179/vfsstream": "^1.6.11",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.4.1",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "vimeo/psalm": "^4.6"
+                "phpunit/phpunit": "^9.5.24",
+                "psalm/plugin-phpunit": "^0.17.0",
+                "vimeo/psalm": "^4.26.0"
             },
             "type": "library",
             "extra": {
@@ -1506,7 +1506,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-01-22T15:26:25+00:00"
+            "time": "2022-09-20T10:45:22+00:00"
         },
         {
             "name": "mezzio/mezzio-helpers",
@@ -1588,16 +1588,16 @@
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-platesrenderer.git",
-                "reference": "6c86500a0b91d56f68436cf4489aa14ece6467ed"
+                "reference": "edb0dac9cec8f54bc4073429d291c7026618a418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-platesrenderer/zipball/6c86500a0b91d56f68436cf4489aa14ece6467ed",
-                "reference": "6c86500a0b91d56f68436cf4489aa14ece6467ed",
+                "url": "https://api.github.com/repos/mezzio/mezzio-platesrenderer/zipball/edb0dac9cec8f54bc4073429d291c7026618a418",
+                "reference": "edb0dac9cec8f54bc4073429d291c7026618a418",
                 "shasum": ""
             },
             "require": {
@@ -1660,7 +1660,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-14T09:16:36+00:00"
+            "time": "2022-09-20T15:30:31+00:00"
         },
         {
             "name": "mezzio/mezzio-problem-details",
