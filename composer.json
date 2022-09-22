@@ -46,7 +46,7 @@
         "laminas/laminas-diactoros": "^2.17.0",
         "laminas/laminas-feed": "^2.18.2",
         "laminas/laminas-paginator": "^2.13",
-        "laminas/laminas-servicemanager": "^3.16",
+        "laminas/laminas-servicemanager": "^3.17",
         "laminas/laminas-stdlib": "^3.13.0",
         "league/commonmark": "^2.3.5",
         "mezzio/mezzio": "^3.11.0",
