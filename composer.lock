@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "168988000ec0450c8e5b26b498ba7db0",
+    "content-hash": "acd42111c5ec257c8fe0e18c0d90c2cc",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1429,16 +1429,16 @@
         },
         {
             "name": "mezzio/mezzio-fastroute",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-fastroute.git",
-                "reference": "7ce0f00a172e3cbc8ebe8e34eedf9c6feeca7b5c"
+                "reference": "7f952dfb8c9acf8c59b4f2ff854839b74b092d09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-fastroute/zipball/7ce0f00a172e3cbc8ebe8e34eedf9c6feeca7b5c",
-                "reference": "7ce0f00a172e3cbc8ebe8e34eedf9c6feeca7b5c",
+                "url": "https://api.github.com/repos/mezzio/mezzio-fastroute/zipball/7f952dfb8c9acf8c59b4f2ff854839b74b092d09",
+                "reference": "7f952dfb8c9acf8c59b4f2ff854839b74b092d09",
                 "shasum": ""
             },
             "require": {
@@ -1446,7 +1446,7 @@
                 "laminas/laminas-stdlib": "^2.0 || ^3.1",
                 "mezzio/mezzio-router": "^3.7",
                 "nikic/fast-route": "^1.2",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
                 "psr/container": "^1.0 || ^2.0",
                 "psr/http-message": "^1.0.1"
             },
@@ -1456,13 +1456,12 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.4.0",
-                "laminas/laminas-diactoros": "^2.17.0",
-                "laminas/laminas-stratigility": "^3.8.0",
+                "laminas/laminas-diactoros": "^2.18",
+                "laminas/laminas-stratigility": "^3.9",
                 "mikey179/vfsstream": "^1.6.11",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.24",
+                "phpunit/phpunit": "^9.5.25",
                 "psalm/plugin-phpunit": "^0.17.0",
-                "vimeo/psalm": "^4.26.0"
+                "vimeo/psalm": "^4.28"
             },
             "type": "library",
             "extra": {
@@ -1504,7 +1503,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-20T10:45:22+00:00"
+            "time": "2022-10-10T21:52:43+00:00"
         },
         {
             "name": "mezzio/mezzio-helpers",
@@ -1739,21 +1738,21 @@
         },
         {
             "name": "mezzio/mezzio-router",
-            "version": "3.8.0",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-router.git",
-                "reference": "27075d3e9b407791abf7ba5e62954a59be4b18df"
+                "reference": "5b03ab8ef9ae8323a9093d5b9d79a69a3733968f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-router/zipball/27075d3e9b407791abf7ba5e62954a59be4b18df",
-                "reference": "27075d3e9b407791abf7ba5e62954a59be4b18df",
+                "url": "https://api.github.com/repos/mezzio/mezzio-router/zipball/5b03ab8ef9ae8323a9093d5b9d79a69a3733968f",
+                "reference": "5b03ab8ef9ae8323a9093d5b9d79a69a3733968f",
                 "shasum": ""
             },
             "require": {
                 "fig/http-message-util": "^1.1.2",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
                 "psr/container": "^1.0 || ^2.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0.1",
@@ -1765,14 +1764,12 @@
                 "zendframework/zend-expressive-router": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-diactoros": "^2.6",
-                "laminas/laminas-stratigility": "^3.4",
-                "phpspec/prophecy": "^1.9",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.11",
-                "psalm/plugin-phpunit": "^0.15.0",
-                "vimeo/psalm": "^4.17"
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-diactoros": "^2.18",
+                "laminas/laminas-stratigility": "^3.8",
+                "phpunit/phpunit": "^9.5.25",
+                "psalm/plugin-phpunit": "^0.17.0",
+                "vimeo/psalm": "^4.28"
             },
             "suggest": {
                 "mezzio/mezzio-aurarouter": "^3.0 to use the Aura.Router routing adapter",
@@ -1818,7 +1815,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-01-06T16:27:49+00:00"
+            "time": "2022-10-10T19:40:00+00:00"
         },
         {
             "name": "mezzio/mezzio-template",
