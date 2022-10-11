@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "757345cd82be8c7034c5faaea6deeedd",
+    "content-hash": "290c6e920fb653ee64a47917e3aeef10",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1506,21 +1506,21 @@
         },
         {
             "name": "mezzio/mezzio-helpers",
-            "version": "5.9.0",
+            "version": "5.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-helpers.git",
-                "reference": "b460d1d9ded9af5b9e257005afe2da1c4323ea13"
+                "reference": "3b9b04d9111b21ce749fcc73a522439c9093a45a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/b460d1d9ded9af5b9e257005afe2da1c4323ea13",
-                "reference": "b460d1d9ded9af5b9e257005afe2da1c4323ea13",
+                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/3b9b04d9111b21ce749fcc73a522439c9093a45a",
+                "reference": "3b9b04d9111b21ce749fcc73a522439c9093a45a",
                 "shasum": ""
             },
             "require": {
                 "mezzio/mezzio-router": "^3.0",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
                 "psr/container": "^1.0 || ^2.0",
                 "psr/http-message": "^1.0.1",
                 "psr/http-server-middleware": "^1.0"
@@ -1531,12 +1531,10 @@
             "require-dev": {
                 "ext-json": "*",
                 "laminas/laminas-coding-standard": "~2.4.0",
-                "laminas/laminas-diactoros": "^2.11.1",
-                "mockery/mockery": "^1.4.2",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.11",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "vimeo/psalm": "^4.17"
+                "laminas/laminas-diactoros": "^2.19",
+                "phpunit/phpunit": "^9.5.25",
+                "psalm/plugin-phpunit": "^0.17.0",
+                "vimeo/psalm": "^4.29"
             },
             "suggest": {
                 "ext-json": "If you wish to use the JsonStrategy with BodyParamsMiddleware"
@@ -1580,7 +1578,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-14T07:33:03+00:00"
+            "time": "2022-10-11T20:03:17+00:00"
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
