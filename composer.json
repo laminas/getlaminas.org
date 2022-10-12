@@ -51,7 +51,7 @@
         "league/commonmark": "^2.3.5",
         "mezzio/mezzio": "^3.13.0",
         "mezzio/mezzio-fastroute": "^3.7",
-        "mezzio/mezzio-helpers": "^5.10.0",
+        "mezzio/mezzio-helpers": "^5.11.0",
         "mezzio/mezzio-platesrenderer": "^2.6",
         "mezzio/mezzio-problem-details": "^1.7",
         "monolog/monolog": "^3.2.0",

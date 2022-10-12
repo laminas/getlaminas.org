@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c8c5f11ca8cf99e9fe3d32b811ea19c",
+    "content-hash": "0e2cf2116abb5bd0c1b8efaa5cf4c9e1",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1506,16 +1506,16 @@
         },
         {
             "name": "mezzio/mezzio-helpers",
-            "version": "5.10.0",
+            "version": "5.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-helpers.git",
-                "reference": "3b9b04d9111b21ce749fcc73a522439c9093a45a"
+                "reference": "ac47b19c92e050e53fe9172d3ccf7ab7cf9e9945"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/3b9b04d9111b21ce749fcc73a522439c9093a45a",
-                "reference": "3b9b04d9111b21ce749fcc73a522439c9093a45a",
+                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/ac47b19c92e050e53fe9172d3ccf7ab7cf9e9945",
+                "reference": "ac47b19c92e050e53fe9172d3ccf7ab7cf9e9945",
                 "shasum": ""
             },
             "require": {
@@ -1578,7 +1578,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-11T20:03:17+00:00"
+            "time": "2022-10-12T21:00:46+00:00"
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
