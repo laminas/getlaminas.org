@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "290c6e920fb653ee64a47917e3aeef10",
+    "content-hash": "5c8c5f11ca8cf99e9fe3d32b811ea19c",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -250,21 +250,21 @@
         },
         {
             "name": "laminas/laminas-cli",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cli.git",
-                "reference": "fb1076fbd0cb472fff3ebf9e08a7a9dbd70634a7"
+                "reference": "da26bc52aef67f7bc8977269afb3c995102884e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cli/zipball/fb1076fbd0cb472fff3ebf9e08a7a9dbd70634a7",
-                "reference": "fb1076fbd0cb472fff3ebf9e08a7a9dbd70634a7",
+                "url": "https://api.github.com/repos/laminas/laminas-cli/zipball/da26bc52aef67f7bc8977269afb3c995102884e6",
+                "reference": "da26bc52aef67f7bc8977269afb3c995102884e6",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0.0",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
                 "psr/container": "^1.0 || ^2.0",
                 "symfony/console": "^5.3.7 || ^6.0",
                 "symfony/event-dispatcher": "^5.0 || ^6.0",
@@ -272,13 +272,13 @@
                 "webmozart/assert": "^1.10"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-mvc": "^3.1.1",
-                "laminas/laminas-servicemanager": "^3.15.1",
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-mvc": "^3.3.5",
+                "laminas/laminas-servicemanager": "^3.19",
                 "mikey179/vfsstream": "2.0.x-dev",
-                "phpunit/phpunit": "^9.5.9",
+                "phpunit/phpunit": "^9.5.25",
                 "psalm/plugin-phpunit": "^0.17.0",
-                "vimeo/psalm": "^4.24.0"
+                "vimeo/psalm": "^4.29"
             },
             "bin": [
                 "bin/laminas"
@@ -314,7 +314,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-08-03T17:19:22+00:00"
+            "time": "2022-10-11T20:47:19+00:00"
         },
         {
             "name": "laminas/laminas-component-installer",
@@ -385,22 +385,22 @@
         },
         {
             "name": "laminas/laminas-config-aggregator",
-            "version": "1.9.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config-aggregator.git",
-                "reference": "14cd94568ac8e4a8cf005c7e81509b8599fe3b20"
+                "reference": "847394b3435081e93464341261446e453051d1af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/14cd94568ac8e4a8cf005c7e81509b8599fe3b20",
-                "reference": "14cd94568ac8e4a8cf005c7e81509b8599fe3b20",
+                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/847394b3435081e93464341261446e453051d1af",
+                "reference": "847394b3435081e93464341261446e453051d1af",
                 "shasum": ""
             },
             "require": {
                 "brick/varexporter": "^0.3.7",
                 "laminas/laminas-stdlib": "^3.10.1",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
                 "webimpress/safe-writer": "^2.2.0"
             },
             "conflict": {
@@ -410,10 +410,10 @@
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.4.0",
                 "laminas/laminas-config": "^3.7.0",
-                "laminas/laminas-servicemanager": "^3.15.1",
-                "phpunit/phpunit": "^9.5.21",
+                "laminas/laminas-servicemanager": "^3.19",
+                "phpunit/phpunit": "^9.5.25",
                 "psalm/plugin-phpunit": "^0.17.0",
-                "vimeo/psalm": "^4.24.0"
+                "vimeo/psalm": "^4.29"
             },
             "suggest": {
                 "laminas/laminas-config": "Allows loading configuration from XML, INI, YAML, and JSON files",
@@ -450,7 +450,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-15T13:40:43+00:00"
+            "time": "2022-10-11T23:40:37+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
