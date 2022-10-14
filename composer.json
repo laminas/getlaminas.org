@@ -58,8 +58,8 @@
         "phly/phly-configfactory": "^1.1",
         "phly/phly-event-dispatcher": "^1.2",
         "spatie/yaml-front-matter": "^2.0.7",
-        "symfony/console": "^6.1",
-        "symfony/yaml": "^6.1"
+        "symfony/console": "^6.1.6",
+        "symfony/yaml": "^6.1.6"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
