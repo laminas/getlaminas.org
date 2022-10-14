@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e2cf2116abb5bd0c1b8efaa5cf4c9e1",
+    "content-hash": "8679900dfe6f98dd15a570654c38603d",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -250,16 +250,16 @@
         },
         {
             "name": "laminas/laminas-cli",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cli.git",
-                "reference": "da26bc52aef67f7bc8977269afb3c995102884e6"
+                "reference": "8476ca735f788cddc456ad660a29d9c8349554b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cli/zipball/da26bc52aef67f7bc8977269afb3c995102884e6",
-                "reference": "da26bc52aef67f7bc8977269afb3c995102884e6",
+                "url": "https://api.github.com/repos/laminas/laminas-cli/zipball/8476ca735f788cddc456ad660a29d9c8349554b0",
+                "reference": "8476ca735f788cddc456ad660a29d9c8349554b0",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +314,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-11T20:47:19+00:00"
+            "time": "2022-10-13T22:36:07+00:00"
         },
         {
             "name": "laminas/laminas-component-installer",

@@ -40,7 +40,7 @@
         "php": "~8.1.0",
         "ext-pdo": "*",
         "dflydev/fig-cookies": "^3.0",
-        "laminas/laminas-cli": "^1.6",
+        "laminas/laminas-cli": "^1.7",
         "laminas/laminas-component-installer": "^3.0",
         "laminas/laminas-config-aggregator": "^1.11",
         "laminas/laminas-diactoros": "^2.19.0",
