@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9e97b6aaa762969cde3225b06975203",
+    "content-hash": "6841b4ebde9d5669f95fa99dfbc7497f",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1658,16 +1658,16 @@
         },
         {
             "name": "mezzio/mezzio-problem-details",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-problem-details.git",
-                "reference": "ee10fe6e77952e0efbda1b008132dddbbb1f1855"
+                "reference": "e2c1a5e7526be28c55f1176d390432998bc4e854"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/ee10fe6e77952e0efbda1b008132dddbbb1f1855",
-                "reference": "ee10fe6e77952e0efbda1b008132dddbbb1f1855",
+                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/e2c1a5e7526be28c55f1176d390432998bc4e854",
+                "reference": "e2c1a5e7526be28c55f1176d390432998bc4e854",
                 "shasum": ""
             },
             "require": {
@@ -1731,7 +1731,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-14T16:37:00+00:00"
+            "time": "2022-10-15T11:33:10+00:00"
         },
         {
             "name": "mezzio/mezzio-router",
