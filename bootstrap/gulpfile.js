@@ -6,7 +6,7 @@ const cleanCss = require('gulp-clean-css');
 const {series, src, dest, watch} = require('gulp');
 const postcss = require('gulp-postcss');
 const rev = require('gulp-rev-all');
-const revCleaner = require('gulp-rev-dist-clean');
+const revCleaner = require('gulp-rev-dist-clean').default;
 const sass = require('gulp-dart-sass');
 const terser = require('gulp-terser');
 
