@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "anchor-js": "^4.3.1",
-    "autoprefixer": "^9.8.8",
+    "autoprefixer": "^10.0.0",
     "bootstrap": "^4.6.2",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
