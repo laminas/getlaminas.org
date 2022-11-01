@@ -63,8 +63,8 @@
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
-        "laminas/laminas-coding-standard": "^2.3",
-        "laminas/laminas-development-mode": "^3.3",
+        "laminas/laminas-coding-standard": "^2.4.0",
+        "laminas/laminas-development-mode": "^3.10.0",
         "mezzio/mezzio-tooling": "^2.6",
         "phpunit/phpunit": "^9.5.12",
         "psalm/plugin-phpunit": "^0.17.0",
