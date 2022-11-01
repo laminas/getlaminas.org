@@ -23,7 +23,7 @@
     "gulp-dart-sass": "^1.0.2",
     "gulp-postcss": "^9.0.1",
     "gulp-rev-all": "^3.0.0",
-    "gulp-rev-dist-clean": "^2.0.0",
+    "gulp-rev-dist-clean": "^3.2.3",
     "gulp-terser": "^1.4.1",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
