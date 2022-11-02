@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.28.0@52e96bea381e6cb07a672aefec791a5817694a26">
+<files psalm-version="4.29.0@7ec5ffbd5f68ae03782d7fd33fff0c45a69f95b3">
   <file src="bin/clear-config-cache.php">
     <MixedArgument occurrences="5">
       <code>$config['config_cache_path']</code>
@@ -64,13 +64,11 @@
       <code>static::FOLDER_COLLECTION</code>
     </MixedOperand>
   </file>
-  <file src="src/App/FrontMatter/Document.php">
-    <MixedInferredReturnType occurrences="1">
+  <file src="src/App/ContentParser/Document.php">
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>(array) $this-&gt;renderedContent-&gt;getFrontMatter()</code>
       <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;document-&gt;matter()</code>
-    </MixedReturnStatement>
+    </MixedReturnTypeCoercion>
   </file>
   <file src="src/App/Handler/StaticPageHandler.php">
     <PossiblyFalseArgument occurrences="1">
@@ -142,16 +140,14 @@
     </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Blog/CreateBlogPostFromDataArray.php">
-    <MixedArgument occurrences="9">
+    <DocblockTypeContradiction occurrences="1">
+      <code>explode('|', trim((string) $post['tags'], '|'))</code>
+    </DocblockTypeContradiction>
+    <MixedArgument occurrences="4">
       <code>$metadata['email'] ?? ''</code>
       <code>$metadata['name'] ?? 'no-reply@getlaminas.org'</code>
       <code>$metadata['uri'] ?? ''</code>
-      <code>$post['author']</code>
-      <code>$post['created']</code>
-      <code>$post['id']</code>
       <code>$post['path']</code>
-      <code>$post['title']</code>
-      <code>$post['updated']</code>
     </MixedArgument>
     <MixedArrayAccess occurrences="3">
       <code>$metadata['email']</code>
@@ -161,6 +157,13 @@
     <MixedAssignment occurrences="1">
       <code>$metadata</code>
     </MixedAssignment>
+    <RedundantCastGivenDocblockType occurrences="2">
+      <code>(bool) $post['draft']</code>
+      <code>(bool) $post['public']</code>
+    </RedundantCastGivenDocblockType>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>is_array($post['tags'])</code>
+    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Blog/Handler/DisplayPostHandler.php">
     <MixedArgument occurrences="1">

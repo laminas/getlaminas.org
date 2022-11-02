@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GetLaminas\Security\Console;
 
-use App\FrontMatter\Parser;
+use App\ContentParser\Parser;
 use GetLaminas\Security\Advisory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
