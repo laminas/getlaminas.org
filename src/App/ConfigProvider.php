@@ -78,6 +78,7 @@ class ConfigProvider
                 'community' => ['templates/community'],
                 'error'     => ['templates/error'],
                 'layout'    => ['templates/layout'],
+                'partials'  => ['templates/partials'],
             ],
         ];
     }

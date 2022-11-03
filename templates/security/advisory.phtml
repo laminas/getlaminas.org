@@ -1,4 +1,15 @@
-<?php $this->layout('layout::default', ['title' => 'Security Advisories']) ?>
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var string                          $body
+ * @var string                          $date
+ */
+
+$this->layout('layout::default', ['title' => 'Security Advisories']);
+?>
 
 <div class="container">
     <div class="row align-items-start mt-5">

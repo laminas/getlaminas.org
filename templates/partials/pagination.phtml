@@ -1,3 +1,20 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var object{
+ *     is_first: bool,
+ *     is_last: bool,
+ *     previous: ?int,
+ *     next: ?int,
+ *     last: int,
+ *     pages: list<array{current: bool, number: int}>,
+ *     base_path: string
+ * } $pagination
+ */
+?>
+<?php if (count($pagination->pages) > 1): ?>
 <div class="row justify-content-center">
   <nav class="col-md-6">
     <ul class="pagination">
@@ -27,3 +44,4 @@
     </ul>
   </nav>
 </div>
+<?php endif ?>
