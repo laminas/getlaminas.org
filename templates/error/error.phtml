@@ -1,4 +1,14 @@
-<?php $this->layout('layout::default', ['title' => sprintf('%d %s', $status, $reason)]) ?>
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var int                             $status
+ * @var string                          $reason
+ */
+$this->layout('layout::default', ['title' => sprintf('%d %s', $status, $reason)]);
+?>
 
 <div class="container">
     <div class="row align-items-start mt-5">

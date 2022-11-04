@@ -1,8 +1,15 @@
 <?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var list<array{name: string, logo: string, url: string, text: string}> $commercialVendors
+ */
+
 const CVP_CONTACT_EMAIL = 'commercial-vendor-program@getlaminas.org';
 $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
 ?>
-
 <div class="container">
     <div class="row mt-5">
         <div class="col">
