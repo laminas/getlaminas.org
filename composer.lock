@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ff0b5bdb85c361ba895eb782aa46da3",
+    "content-hash": "ce7731e556fe8c7982625f2ed3460deb",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1582,16 +1582,16 @@
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-platesrenderer.git",
-                "reference": "edb0dac9cec8f54bc4073429d291c7026618a418"
+                "reference": "d31eba77eb2431f8e657ae7d6ccb7d1d3c4283de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-platesrenderer/zipball/edb0dac9cec8f54bc4073429d291c7026618a418",
-                "reference": "edb0dac9cec8f54bc4073429d291c7026618a418",
+                "url": "https://api.github.com/repos/mezzio/mezzio-platesrenderer/zipball/d31eba77eb2431f8e657ae7d6ccb7d1d3c4283de",
+                "reference": "d31eba77eb2431f8e657ae7d6ccb7d1d3c4283de",
                 "shasum": ""
             },
             "require": {
@@ -1609,10 +1609,10 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.4.0",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.24",
-                "psalm/plugin-phpunit": "0.17.0",
-                "vimeo/psalm": "^4.27.0"
+                "phpspec/prophecy-phpunit": "^2.0.1",
+                "phpunit/phpunit": "^9.5.26",
+                "psalm/plugin-phpunit": "0.18.3",
+                "vimeo/psalm": "^4.29.0"
             },
             "type": "library",
             "extra": {
@@ -1654,7 +1654,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-20T15:30:31+00:00"
+            "time": "2022-11-04T14:21:11+00:00"
         },
         {
             "name": "mezzio/mezzio-problem-details",
