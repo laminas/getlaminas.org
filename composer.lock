@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b21dbaa17016b701a9315490a8b985d",
+    "content-hash": "52c1e30b33c641ec46c783a74b1c7c9d",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -318,33 +318,33 @@
         },
         {
             "name": "laminas/laminas-component-installer",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-component-installer.git",
-                "reference": "b019598964a1bda56c9fa2199287469fe75c0a25"
+                "reference": "8e8f8e700380a9e05a8e05a1b975682cdf8b0533"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-component-installer/zipball/b019598964a1bda56c9fa2199287469fe75c0a25",
-                "reference": "b019598964a1bda56c9fa2199287469fe75c0a25",
+                "url": "https://api.github.com/repos/laminas/laminas-component-installer/zipball/8e8f8e700380a9e05a8e05a1b975682cdf8b0533",
+                "reference": "8e8f8e700380a9e05a8e05a1b975682cdf8b0533",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.0",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "conflict": {
                 "zendframework/zend-component-installer": "*"
             },
             "require-dev": {
-                "composer/composer": "^2.3",
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "mikey179/vfsstream": "^1.6.10",
-                "phpunit/phpunit": "^9.5.19",
-                "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.23",
-                "webmozart/assert": "^1.10.0"
+                "composer/composer": "^2.4.4",
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "mikey179/vfsstream": "^1.6.11",
+                "phpunit/phpunit": "^9.5.26",
+                "psalm/plugin-phpunit": "^0.18.0",
+                "vimeo/psalm": "^4.29.0",
+                "webmozart/assert": "^1.11.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -381,7 +381,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-07-13T13:58:21+00:00"
+            "time": "2022-11-15T22:21:52+00:00"
         },
         {
             "name": "laminas/laminas-config-aggregator",
