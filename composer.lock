@@ -5000,43 +5000,40 @@
         },
         {
             "name": "mezzio/mezzio-tooling",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-tooling.git",
-                "reference": "2c2c1cfe58fb7c71891cf252edae3afbd1783b8e"
+                "reference": "e1e45932446484bc5340d3fe0a724f6d2223c2cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-tooling/zipball/2c2c1cfe58fb7c71891cf252edae3afbd1783b8e",
-                "reference": "2c2c1cfe58fb7c71891cf252edae3afbd1783b8e",
+                "url": "https://api.github.com/repos/mezzio/mezzio-tooling/zipball/e1e45932446484bc5340d3fe0a724f6d2223c2cd",
+                "reference": "e1e45932446484bc5340d3fe0a724f6d2223c2cd",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laminas/laminas-cli": "^1.2",
-                "laminas/laminas-code": "^4.5",
-                "laminas/laminas-stdlib": "^3.1",
-                "laminas/laminas-stratigility": "^3.0",
-                "mezzio/mezzio": "^3.0",
-                "mezzio/mezzio-router": "^3.0",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
-                "symfony/process": "^4.3 || ^5.1.2 || ^6.0"
-            },
-            "conflict": {
-                "zendframework/zend-expressive-tooling": "*"
+                "laminas/laminas-cli": "^1.7.0",
+                "laminas/laminas-code": "^4.7.1",
+                "laminas/laminas-stdlib": "^3.15.0",
+                "laminas/laminas-stratigility": "^3.9.0",
+                "mezzio/mezzio": "^3.13.0",
+                "mezzio/mezzio-router": "^3.9.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+                "symfony/process": "^6.0.11"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-diactoros": "^1.8.7 || ^2.2.3",
-                "mikey179/vfsstream": "^1.6.10",
-                "mockery/mockery": "^1.2.4",
-                "php-mock/php-mock-phpunit": "^2.6",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.11",
-                "psalm/plugin-mockery": "^0.9.1",
-                "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.10"
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-diactoros": "^2.2.3",
+                "mikey179/vfsstream": "^1.6.11",
+                "mockery/mockery": "^1.5.1",
+                "php-mock/php-mock-phpunit": "^2.6.1",
+                "phpdocumentor/reflection-docblock": "^5.3.0",
+                "phpunit/phpunit": "^9.5.26",
+                "psalm/plugin-mockery": "^0.11.0",
+                "psalm/plugin-phpunit": "^0.18.3",
+                "vimeo/psalm": "^4.30.0"
             },
             "type": "library",
             "extra": {
@@ -5077,7 +5074,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-08-10T08:16:52+00:00"
+            "time": "2022-11-25T15:49:08+00:00"
         },
         {
             "name": "myclabs/deep-copy",
