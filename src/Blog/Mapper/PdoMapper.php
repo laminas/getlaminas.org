@@ -71,6 +71,7 @@ class PdoMapper implements MapperInterface
         return $select->fetchAll();
     }
 
+    /** @return Paginator<int, BlogPost> */
     private function preparePaginator(string $select, string $count, array $params = []): Paginator
     {
         $select = $this->pdo->prepare($select);
