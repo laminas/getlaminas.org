@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93198cdb63d224e2f4aa4542c4ae51c0",
+    "content-hash": "e9ed1329a8a32674a535bab06e0a6ea6",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1320,16 +1320,16 @@
         },
         {
             "name": "mezzio/mezzio",
-            "version": "3.13.0",
+            "version": "3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio.git",
-                "reference": "a9d6f7d6e45c37180059e5a4731a225ceb80cef1"
+                "reference": "cbb044afda55f8d4a9b395d5aa37c98d1e1e5369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/a9d6f7d6e45c37180059e5a4731a225ceb80cef1",
-                "reference": "a9d6f7d6e45c37180059e5a4731a225ceb80cef1",
+                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/cbb044afda55f8d4a9b395d5aa37c98d1e1e5369",
+                "reference": "cbb044afda55f8d4a9b395d5aa37c98d1e1e5369",
                 "shasum": ""
             },
             "require": {
@@ -1363,9 +1363,9 @@
                 "mezzio/mezzio-fastroute": "^3.7",
                 "mezzio/mezzio-laminasrouter": "^3.7",
                 "mockery/mockery": "^1.5.1",
-                "phpunit/phpunit": "^9.5.25",
-                "psalm/plugin-phpunit": "^0.17",
-                "vimeo/psalm": "^4.28"
+                "phpunit/phpunit": "^9.5.26",
+                "psalm/plugin-phpunit": "^0.18",
+                "vimeo/psalm": "^5.0.0"
             },
             "suggest": {
                 "filp/whoops": "^2.1 to use the Whoops error handler",
@@ -1424,7 +1424,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-11T08:04:06+00:00"
+            "time": "2022-12-05T09:40:08+00:00"
         },
         {
             "name": "mezzio/mezzio-fastroute",

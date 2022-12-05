@@ -49,7 +49,7 @@
         "laminas/laminas-servicemanager": "^3.20.0",
         "laminas/laminas-stdlib": "^3.16.0",
         "league/commonmark": "^2.3.7",
-        "mezzio/mezzio": "^3.13.0",
+        "mezzio/mezzio": "^3.14.0",
         "mezzio/mezzio-fastroute": "^3.7",
         "mezzio/mezzio-helpers": "^5.11.0",
         "mezzio/mezzio-platesrenderer": "^2.8.0",
