@@ -58,7 +58,7 @@
         "phly/phly-configfactory": "^1.1",
         "phly/phly-event-dispatcher": "^1.2",
         "spatie/yaml-front-matter": "^2.0.7",
-        "symfony/console": "^6.2.2",
+        "symfony/console": "^6.2.3",
         "symfony/yaml": "^6.2.2"
     },
     "require-dev": {
