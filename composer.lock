@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50226c46972e415e6631bc1d8134ca55",
+    "content-hash": "b2d3c14d935526c31306ffa9b857a68d",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1658,16 +1658,16 @@
         },
         {
             "name": "mezzio/mezzio-problem-details",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-problem-details.git",
-                "reference": "aef81d451ccddb7b6c0ad1e7b58cedc6945a9603"
+                "reference": "20ae0fc679fa694d86e048488b1dcf7482918c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/aef81d451ccddb7b6c0ad1e7b58cedc6945a9603",
-                "reference": "aef81d451ccddb7b6c0ad1e7b58cedc6945a9603",
+                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/20ae0fc679fa694d86e048488b1dcf7482918c8d",
+                "reference": "20ae0fc679fa694d86e048488b1dcf7482918c8d",
                 "shasum": ""
             },
             "require": {
@@ -1686,10 +1686,10 @@
                 "zendframework/zend-problem-details": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.4.0",
-                "phpunit/phpunit": "^9.5.26",
-                "psalm/plugin-phpunit": "^0.18.0",
-                "vimeo/psalm": "^5.0"
+                "laminas/laminas-coding-standard": "~2.5.0",
+                "phpunit/phpunit": "^9.5.27",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "vimeo/psalm": "^5.4"
             },
             "type": "library",
             "extra": {
@@ -1731,7 +1731,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-12-01T11:14:39+00:00"
+            "time": "2023-01-10T11:56:56+00:00"
         },
         {
             "name": "mezzio/mezzio-router",
@@ -2726,21 +2726,21 @@
         },
         {
             "name": "spatie/array-to-xml",
-            "version": "3.1.4",
+            "version": "3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/array-to-xml.git",
-                "reference": "670ede8c579207f6d1b65f3405edb2dfd1c34722"
+                "reference": "13f76acef5362d15c71ae1ac6350cc3df5e25e43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/670ede8c579207f6d1b65f3405edb2dfd1c34722",
-                "reference": "670ede8c579207f6d1b65f3405edb2dfd1c34722",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/13f76acef5362d15c71ae1ac6350cc3df5e25e43",
+                "reference": "13f76acef5362d15c71ae1ac6350cc3df5e25e43",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "php": "^8.0 || ^8.1 || ^8.2"
+                "php": "^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
@@ -2773,7 +2773,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/spatie/array-to-xml/tree/3.1.4"
+                "source": "https://github.com/spatie/array-to-xml/tree/3.1.5"
             },
             "funding": [
                 {
@@ -2785,7 +2785,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-24T00:22:29+00:00"
+            "time": "2022-12-24T13:43:51+00:00"
         },
         {
             "name": "spatie/yaml-front-matter",
