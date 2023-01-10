@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2d3c14d935526c31306ffa9b857a68d",
+    "content-hash": "55fbfcacda7af2fc6a2449792dcb527a",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -2291,21 +2291,21 @@
         },
         {
             "name": "phly/phly-event-dispatcher",
-            "version": "1.2.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phly/phly-event-dispatcher.git",
-                "reference": "74c077fa6e65359cdf5bd574968e5d3206852712"
+                "reference": "f85132b634e31fe2bb09ede5101be8d1091216c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phly/phly-event-dispatcher/zipball/74c077fa6e65359cdf5bd574968e5d3206852712",
-                "reference": "74c077fa6e65359cdf5bd574968e5d3206852712",
+                "url": "https://api.github.com/repos/phly/phly-event-dispatcher/zipball/f85132b634e31fe2bb09ede5101be8d1091216c0",
+                "reference": "f85132b634e31fe2bb09ede5101be8d1091216c0",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/event-dispatcher": "^1.0"
             },
             "conflict": {
@@ -2321,11 +2321,7 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev",
-                    "dev-develop": "1.1.x-dev"
-                },
-                "zf": {
+                "laminas": {
                     "config-provider": "Phly\\EventDispatcher\\ConfigProvider"
                 }
             },
@@ -2352,7 +2348,7 @@
                 "rss": "https://github.com/phly/phly-event-dispatcher/releases.atom",
                 "source": "https://github.com/phly/phly-event-dispatcher"
             },
-            "time": "2022-01-31T16:16:03+00:00"
+            "time": "2023-01-10T19:15:49+00:00"
         },
         {
             "name": "psr/container",
