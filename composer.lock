@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55fbfcacda7af2fc6a2449792dcb527a",
+    "content-hash": "d75f47a5e23ee6820790ed9bc1aa2102",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1506,16 +1506,16 @@
         },
         {
             "name": "mezzio/mezzio-helpers",
-            "version": "5.11.0",
+            "version": "5.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-helpers.git",
-                "reference": "ac47b19c92e050e53fe9172d3ccf7ab7cf9e9945"
+                "reference": "e165b3dac9c314ab7f879740ca12455b20716b1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/ac47b19c92e050e53fe9172d3ccf7ab7cf9e9945",
-                "reference": "ac47b19c92e050e53fe9172d3ccf7ab7cf9e9945",
+                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/e165b3dac9c314ab7f879740ca12455b20716b1d",
+                "reference": "e165b3dac9c314ab7f879740ca12455b20716b1d",
                 "shasum": ""
             },
             "require": {
@@ -1530,11 +1530,11 @@
             },
             "require-dev": {
                 "ext-json": "*",
-                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-coding-standard": "~2.5.0",
                 "laminas/laminas-diactoros": "^2.19",
                 "phpunit/phpunit": "^9.5.25",
-                "psalm/plugin-phpunit": "^0.17.0",
-                "vimeo/psalm": "^4.29"
+                "psalm/plugin-phpunit": "^0.18.0",
+                "vimeo/psalm": "^5.0"
             },
             "suggest": {
                 "ext-json": "If you wish to use the JsonStrategy with BodyParamsMiddleware"
@@ -1578,7 +1578,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-12T21:00:46+00:00"
+            "time": "2023-01-11T08:34:19+00:00"
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
@@ -1735,16 +1735,16 @@
         },
         {
             "name": "mezzio/mezzio-router",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-router.git",
-                "reference": "f98d3e97b0e949d394703e526bf218402be601bf"
+                "reference": "a80fb92d25deae21e76452f541129c09aa52a886"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-router/zipball/f98d3e97b0e949d394703e526bf218402be601bf",
-                "reference": "f98d3e97b0e949d394703e526bf218402be601bf",
+                "url": "https://api.github.com/repos/mezzio/mezzio-router/zipball/a80fb92d25deae21e76452f541129c09aa52a886",
+                "reference": "a80fb92d25deae21e76452f541129c09aa52a886",
                 "shasum": ""
             },
             "require": {
@@ -1761,7 +1761,7 @@
                 "zendframework/zend-expressive-router": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-coding-standard": "~2.5.0",
                 "laminas/laminas-diactoros": "^2.20.0",
                 "laminas/laminas-stratigility": "^3.9.0",
                 "phpunit/phpunit": "^9.5.26",
@@ -1812,7 +1812,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-12-13T20:50:07+00:00"
+            "time": "2023-01-11T00:54:57+00:00"
         },
         {
             "name": "mezzio/mezzio-template",
