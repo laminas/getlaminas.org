@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5efd45f6b9ae2e72cf260ca9aaa5b0b1",
+    "content-hash": "9ff107f479b4f251bb8a434c32828e61",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -2236,38 +2236,31 @@
         },
         {
             "name": "phly/phly-configfactory",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phly/phly-configfactory.git",
-                "reference": "82edb55aaa19541791b847438f334de91763597c"
+                "reference": "4aa670ded163fac95bd5104a72eb5a783dfa7a46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phly/phly-configfactory/zipball/82edb55aaa19541791b847438f334de91763597c",
-                "reference": "82edb55aaa19541791b847438f334de91763597c",
+                "url": "https://api.github.com/repos/phly/phly-configfactory/zipball/4aa670ded163fac95bd5104a72eb5a783dfa7a46",
+                "reference": "4aa670ded163fac95bd5104a72eb5a783dfa7a46",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3 || ~8.0.0 || ~8.1.0",
-                "psr/container": "^1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+                "psr/container": "^1.0 || ^2.0"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.3.0",
-                "laminas/laminas-dependency-plugin": "^2.1",
                 "laminas/laminas-servicemanager": "^3.4",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5.5"
+                "phpunit/phpunit": "^9.6"
             },
             "suggest": {
                 "laminas/laminas-servicemanager": "Install laminas-servicemanager to use the ConfigAbstractFactory"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Phly\\ConfigFactory\\": "src/"
@@ -2289,7 +2282,7 @@
                 "rss": "https://github.com/phly/phly-configfactory/releases.atom",
                 "source": "https://github.com/phly/phly-configfactory"
             },
-            "time": "2021-11-15T16:22:18+00:00"
+            "time": "2023-03-09T15:24:53+00:00"
         },
         {
             "name": "phly/phly-event-dispatcher",
