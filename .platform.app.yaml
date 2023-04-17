@@ -1,6 +1,6 @@
 name: getlaminas_org
 
-type: php:8.1
+type: php:8.2
 
 size: S
 
