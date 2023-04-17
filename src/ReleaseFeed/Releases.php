@@ -13,6 +13,9 @@ use function array_slice;
 use function count;
 use function usort;
 
+/**
+ * @template-implements IteratorAggregate<mixed, Release>
+ */
 class Releases implements IteratorAggregate
 {
     /** @psalm-var list<Release> */

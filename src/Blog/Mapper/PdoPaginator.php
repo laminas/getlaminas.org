@@ -15,6 +15,7 @@ use RuntimeException;
 use function array_map;
 use function array_merge;
 
+/** @template-implements AdapterInterface<int, BlogPost> */
 class PdoPaginator implements AdapterInterface
 {
     use CreateBlogPostFromDataArray;
@@ -31,11 +32,7 @@ class PdoPaginator implements AdapterInterface
         $this->params = $params;
     }
 
-    /**
-     * @param int $offset
-     * @param int $itemCountPerPage
-     * @return BlogPost[]
-     */
+    /** @inheritDoc */
     public function getItems($offset, $itemCountPerPage): array
     {
         $params = array_merge($this->params, [

@@ -9,6 +9,7 @@ use InvalidArgumentException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
+use Traversable;
 
 use function is_dir;
 use function sprintf;
@@ -18,29 +19,23 @@ use function sprintf;
  *
  * <code>
  * $files = new MarkdownFileFilter($path);
- *
- * // or
- * $dir   = new DirectoryIterator($path);
- * $files = new MarkdownFileIterator($dir);
- *
- * // or
- * $dir   = new RecursiveDirectoryIterator($path);
- * $files = new MarkdownFileIterator($dir);
  * </code>
+ *
+ * @template-extends FilterIterator<mixed, string, Traversable<mixed, string>>
  */
 class MarkdownFileFilter extends FilterIterator
 {
-    public function __construct(string $dirOrIterator = '.')
+    public function __construct(string $dir = '.')
     {
-        if (! is_dir($dirOrIterator)) {
+        if (! is_dir($dir)) {
             throw new InvalidArgumentException(sprintf(
                 'Expected a valid directory name; received "%s"',
-                $dirOrIterator
+                $dir
             ));
         }
 
-        $dirOrIterator = new RecursiveDirectoryIterator($dirOrIterator);
-        $iterator      = new RecursiveIteratorIterator($dirOrIterator);
+        $dir      = new RecursiveDirectoryIterator($dir);
+        $iterator = new RecursiveIteratorIterator($dir);
 
         parent::__construct($iterator);
 

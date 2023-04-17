@@ -8,15 +8,14 @@ use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
+use Laminas\Stdlib\ArrayUtils;
 use Mezzio\Router\RouterInterface;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function count;
-use function iterator_to_array;
 use function sprintf;
 use function str_replace;
 
@@ -61,7 +60,7 @@ class ListPostsHandler implements RequestHandlerInterface
             'blog::list',
             $this->prepareView(
                 $tag,
-                iterator_to_array($posts->getItemsByPage($page)),
+                $posts->getItemsByPage($page),
                 $this->preparePagination($path, $page, $posts->getPages())
             )
         ));
@@ -74,7 +73,7 @@ class ListPostsHandler implements RequestHandlerInterface
         return $page < 1 ? 1 : $page;
     }
 
-    private function preparePagination(string $path, int $page, stdClass $pagination): stdClass
+    private function preparePagination(string $path, int $page, object $pagination): object
     {
         $pagination->base_path = $path;
         $pagination->is_first  = $page === $pagination->first;
@@ -94,10 +93,10 @@ class ListPostsHandler implements RequestHandlerInterface
     }
 
     /**
-     * @param BlogPost[] $entries
+     * @param iterable<int, BlogPost> $entries
      * @psalm-return array<string, mixed>
      */
-    private function prepareView(string $tag, array $entries, stdClass $pagination): array
+    private function prepareView(string $tag, iterable $entries, object $pagination): array
     {
         $view = $tag ? ['tag' => $tag] : [];
         if ($tag) {
@@ -108,7 +107,7 @@ class ListPostsHandler implements RequestHandlerInterface
         return [
             ...$view,
             ...[
-                'posts'      => $entries,
+                'posts'      => ArrayUtils::iteratorToArray($entries, false),
                 'pagination' => $pagination,
             ],
         ];

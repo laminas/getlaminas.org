@@ -1,312 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.29.0@7ec5ffbd5f68ae03782d7fd33fff0c45a69f95b3">
+<files psalm-version="5.9.0@8b9ad1eb9e8b7d3101f949291da2b9f7767cd163">
   <file src="bin/clear-config-cache.php">
-    <MixedArgument occurrences="5">
-      <code>$config['config_cache_path']</code>
-      <code>$config['config_cache_path']</code>
-      <code>$config['config_cache_path']</code>
-      <code>$config['config_cache_path']</code>
-      <code>$config['config_cache_path']</code>
+    <MixedArgument>
+      <code><![CDATA[$config['config_cache_path']]]></code>
+      <code><![CDATA[$config['config_cache_path']]]></code>
+      <code><![CDATA[$config['config_cache_path']]]></code>
+      <code><![CDATA[$config['config_cache_path']]]></code>
+      <code><![CDATA[$config['config_cache_path']]]></code>
     </MixedArgument>
   </file>
   <file src="config/container.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$dependencies</code>
     </MixedArgument>
-    <MixedArrayAccess occurrences="1">
-      <code>$dependencies['services']</code>
+    <MixedArrayAccess>
+      <code><![CDATA[$dependencies['services']]]></code>
     </MixedArrayAccess>
-    <MixedArrayAssignment occurrences="1">
-      <code>$dependencies['services']</code>
+    <MixedArrayAssignment>
+      <code><![CDATA[$dependencies['services']]]></code>
+      <code><![CDATA[$dependencies['services']['config']]]></code>
     </MixedArrayAssignment>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$dependencies</code>
     </MixedAssignment>
-  </file>
-  <file src="config/pipeline.php">
-    <UnusedClosureParam occurrences="2">
-      <code>$container</code>
-      <code>$factory</code>
-    </UnusedClosureParam>
-  </file>
-  <file src="config/routes.php">
-    <UnusedClosureParam occurrences="2">
-      <code>$container</code>
-      <code>$factory</code>
-    </UnusedClosureParam>
   </file>
   <file src="public/index.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$factory</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$factory</code>
     </MixedAssignment>
-    <PossiblyUndefinedArrayOffset occurrences="1">
-      <code>$_SERVER['SCRIPT_FILENAME']</code>
+    <PossiblyUndefinedArrayOffset>
+      <code><![CDATA[$_SERVER['SCRIPT_FILENAME']]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/App/AbstractCollection.php">
-    <InvalidScalarArgument occurrences="1">
-      <code>[$this, 'order']</code>
-    </InvalidScalarArgument>
-    <MixedArgument occurrences="2">
-      <code>static::CACHE_FILE</code>
-      <code>static::CACHE_FILE</code>
-    </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>uasort($this-&gt;collection, [$this, 'order'])</code>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[uasort($this->collection, [$this, 'order'])]]></code>
     </MixedArgumentTypeCoercion>
-    <MixedAssignment occurrences="1">
-      <code>$this-&gt;collection</code>
+    <MixedAssignment>
+      <code><![CDATA[$this->collection]]></code>
     </MixedAssignment>
-    <MixedOperand occurrences="1">
-      <code>static::FOLDER_COLLECTION</code>
-    </MixedOperand>
   </file>
   <file src="src/App/ContentParser/Document.php">
-    <MixedReturnTypeCoercion occurrences="2">
-      <code>(array) $this-&gt;renderedContent-&gt;getFrontMatter()</code>
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[(array) $this->renderedContent->getFrontMatter()]]></code>
       <code>array</code>
     </MixedReturnTypeCoercion>
   </file>
   <file src="src/App/Handler/StaticPageHandler.php">
-    <PossiblyFalseArgument occurrences="1">
-      <code>$routeResult-&gt;getMatchedRouteName()</code>
+    <PossiblyFalseArgument>
+      <code><![CDATA[$routeResult->getMatchedRouteName()]]></code>
     </PossiblyFalseArgument>
   </file>
   <file src="src/App/Template/InjectAssetRevisionsDelegator.php">
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$revisions</code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/BlogPost.php">
-    <MixedPropertyTypeCoercion occurrences="1">
+    <MixedPropertyTypeCoercion>
       <code>$tags</code>
     </MixedPropertyTypeCoercion>
   </file>
   <file src="src/Blog/Console/FeedGenerator.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$latest-&gt;updated</code>
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$latest->updated]]></code>
     </ArgumentTypeCoercion>
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$baseUri</code>
     </MixedArgument>
-    <MixedAssignment occurrences="3">
+    <MixedAssignment>
       <code>$baseUri</code>
       <code>$outputDir</code>
       <code>$post</code>
     </MixedAssignment>
-    <MixedOperand occurrences="1">
+    <MixedOperand>
       <code>$outputDir</code>
     </MixedOperand>
-    <UnusedParam occurrences="1">
-      <code>$post</code>
-    </UnusedParam>
   </file>
   <file src="src/Blog/Console/GenerateSearchData.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$basePath</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$basePath</code>
-      <code>$fileInfo</code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/Console/RoutesTrait.php">
-    <UndefinedFunction occurrences="1">
-      <code>RuntimeException('This should never be called')</code>
+    <ArgumentTypeCoercion>
+      <code>$path</code>
+    </ArgumentTypeCoercion>
+    <UndefinedFunction>
+      <code><![CDATA[RuntimeException('This should never be called')]]></code>
     </UndefinedFunction>
   </file>
   <file src="src/Blog/Console/SeedBlogDatabase.php">
-    <DocblockTypeContradiction occurrences="1">
-      <code>(new DateTimeImmutable('now'))-&gt;getTimestamp()</code>
+    <DocblockTypeContradiction>
+      <code><![CDATA[(new DateTimeImmutable('now'))->getTimestamp()]]></code>
     </DocblockTypeContradiction>
-    <MixedArgument occurrences="3">
+    <MixedArgument>
       <code>$basePath</code>
       <code>$dbPath</code>
       <code>$postsPath</code>
     </MixedArgument>
-    <MixedAssignment occurrences="5">
+    <MixedAssignment>
       <code>$basePath</code>
       <code>$dbPath</code>
-      <code>$fileInfo</code>
       <code>$postsPath</code>
-      <code>$this-&gt;authorDataRootPath</code>
+      <code><![CDATA[$this->authorDataRootPath]]></code>
     </MixedAssignment>
-    <RedundantConditionGivenDocblockType occurrences="2">
-      <code>$post-&gt;created</code>
-      <code>$post-&gt;created</code>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[$post->created]]></code>
     </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Blog/CreateBlogPostFromDataArray.php">
-    <DocblockTypeContradiction occurrences="1">
-      <code>explode('|', trim((string) $post['tags'], '|'))</code>
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->postDelimiter]]></code>
+    </ArgumentTypeCoercion>
+    <DocblockTypeContradiction>
+      <code><![CDATA[explode('|', trim((string) $post['tags'], '|'))]]></code>
     </DocblockTypeContradiction>
-    <MixedArgument occurrences="4">
-      <code>$metadata['email'] ?? ''</code>
-      <code>$metadata['name'] ?? 'no-reply@getlaminas.org'</code>
-      <code>$metadata['uri'] ?? ''</code>
-      <code>$post['path']</code>
+    <MixedArgument>
+      <code><![CDATA[$metadata['email'] ?? '']]></code>
+      <code><![CDATA[$metadata['name'] ?? 'no-reply@getlaminas.org']]></code>
+      <code><![CDATA[$metadata['uri'] ?? '']]></code>
+      <code><![CDATA[$post['path']]]></code>
     </MixedArgument>
-    <MixedArrayAccess occurrences="3">
-      <code>$metadata['email']</code>
-      <code>$metadata['name']</code>
-      <code>$metadata['uri']</code>
+    <MixedArrayAccess>
+      <code><![CDATA[$metadata['email']]]></code>
+      <code><![CDATA[$metadata['name']]]></code>
+      <code><![CDATA[$metadata['uri']]]></code>
     </MixedArrayAccess>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$metadata</code>
     </MixedAssignment>
-    <RedundantCastGivenDocblockType occurrences="2">
-      <code>(bool) $post['draft']</code>
-      <code>(bool) $post['public']</code>
+    <RedundantCastGivenDocblockType>
+      <code><![CDATA[(bool) $post['draft']]]></code>
+      <code><![CDATA[(bool) $post['public']]]></code>
     </RedundantCastGivenDocblockType>
-    <RedundantConditionGivenDocblockType occurrences="1">
-      <code>is_array($post['tags'])</code>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[is_array($post['tags'])]]></code>
     </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Blog/Handler/DisplayPostHandler.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$id</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$id</code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/Handler/FeedHandler.php">
-    <MixedArgument occurrences="3">
+    <MixedArgument>
       <code>$tag</code>
       <code>$type</code>
       <code>$type</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$tag</code>
       <code>$type</code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/Handler/ListPostsHandler.php">
-    <MixedArgument occurrences="4">
+    <MixedArgument>
       <code>$path</code>
       <code>$path</code>
-      <code>$posts-&gt;getItemsByPage($page)</code>
-      <code>$request-&gt;getAttribute('tag', '')</code>
+      <code><![CDATA[$request->getAttribute('tag', '')]]></code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>iterator_to_array($posts-&gt;getItemsByPage($page))</code>
-    </MixedArgumentTypeCoercion>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$page</code>
       <code>$path</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="2">
+    <MixedMethodCall>
       <code>getPath</code>
       <code>getUri</code>
     </MixedMethodCall>
   </file>
   <file src="src/Blog/Handler/SearchHandler.php">
-    <PossiblyNullArgument occurrences="1">
-      <code>$this-&gt;mapper-&gt;search($toMatch)</code>
+    <PossiblyNullArgument>
+      <code><![CDATA[$this->mapper->search($toMatch)]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Blog/Mapper/MapperFactory.php">
-    <MixedArgument occurrences="1">
-      <code>$config['db'] ?? ''</code>
+    <MixedArgument>
+      <code><![CDATA[$config['db'] ?? '']]></code>
     </MixedArgument>
   </file>
   <file src="src/Blog/Mapper/PdoMapper.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$post</code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="1">
+    <MixedArgumentTypeCoercion>
       <code>$params</code>
     </MixedArgumentTypeCoercion>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$post</code>
     </MixedAssignment>
   </file>
-  <file src="src/Blog/Mapper/PdoPaginator.php">
-    <MixedReturnTypeCoercion occurrences="2">
-      <code>BlogPost[]</code>
-    </MixedReturnTypeCoercion>
-  </file>
   <file src="src/Blog/PlatesFunctionsDelegator.php">
-    <MixedInferredReturnType occurrences="1">
+    <MixedInferredReturnType>
       <code>string</code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;template-&gt;url('blog.post', ['id' =&gt; $post-&gt;id])</code>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->template->url('blog.post', ['id' => $post->id])]]></code>
     </MixedReturnStatement>
   </file>
   <file src="src/ReleaseFeed/ReceiveFeedItemHandler.php">
-    <ArgumentTypeCoercion occurrences="2">
+    <ArgumentTypeCoercion>
       <code>$latest</code>
       <code>$latest</code>
     </ArgumentTypeCoercion>
-    <MixedArgument occurrences="16">
-      <code>$authorName</code>
-      <code>$authorName</code>
+    <MixedArgument>
       <code>$authorUrl</code>
-      <code>$authorUrl</code>
-      <code>$data['author_name']</code>
-      <code>$data['author_url']</code>
-      <code>$data['author_url']</code>
-      <code>$data['changelog']</code>
-      <code>$data['package']</code>
-      <code>$data['publication_date']</code>
-      <code>$data['url']</code>
-      <code>$data['version']</code>
-      <code>$date</code>
-      <code>$entry-&gt;getContent()</code>
-      <code>$entry-&gt;getLink()</code>
-      <code>$title</code>
+      <code><![CDATA[$data['author_name']]]></code>
+      <code><![CDATA[$data['author_url']]]></code>
+      <code><![CDATA[$data['author_url']]]></code>
+      <code><![CDATA[$data['changelog']]]></code>
+      <code><![CDATA[$data['package']]]></code>
+      <code><![CDATA[$data['publication_date']]]></code>
+      <code><![CDATA[$data['url']]]></code>
+      <code><![CDATA[$data['version']]]></code>
     </MixedArgument>
-    <MixedArrayAccess occurrences="2">
-      <code>$author['name']</code>
-      <code>$author['uri']</code>
-    </MixedArrayAccess>
-    <MixedAssignment occurrences="7">
-      <code>$author</code>
-      <code>$authorName</code>
+    <MixedAssignment>
       <code>$authorUrl</code>
-      <code>$authorUrl</code>
-      <code>$date</code>
-      <code>$entry</code>
-      <code>$title</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="5">
-      <code>getAuthor</code>
-      <code>getContent</code>
-      <code>getDateCreated</code>
-      <code>getLink</code>
-      <code>getTitle</code>
-    </MixedMethodCall>
-    <PossiblyInvalidArgument occurrences="2">
+    <PossiblyInvalidArgument>
       <code>$data</code>
       <code>$data</code>
     </PossiblyInvalidArgument>
+    <PossiblyNullArgument>
+      <code>$authorName</code>
+      <code>$authorName</code>
+      <code>$date</code>
+    </PossiblyNullArgument>
+    <PossiblyNullArrayAccess>
+      <code><![CDATA[$author['name']]]></code>
+    </PossiblyNullArrayAccess>
+    <PossiblyUndefinedArrayOffset>
+      <code>$version</code>
+    </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Security/Handler/AdvisoryHandler.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$advisory</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$advisory</code>
-      <code>$content['advisory']</code>
+      <code><![CDATA[$content['advisory']]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Security/Handler/SecurityHandler.php">
-    <MixedArgument occurrences="6">
+    <MixedArgument>
       <code>$action</code>
-      <code>$content['body'] ?? ''</code>
-      <code>$content['date'] ?? 'now'</code>
-      <code>$content['date'] ?? 'now'</code>
-      <code>$content['title'] ?? ''</code>
-      <code>$first['date']</code>
+      <code><![CDATA[$content['body'] ?? '']]></code>
+      <code><![CDATA[$content['date'] ?? 'now']]></code>
+      <code><![CDATA[$content['date'] ?? 'now']]></code>
+      <code><![CDATA[$content['title'] ?? '']]></code>
+      <code><![CDATA[$first['date']]]></code>
     </MixedArgument>
-    <MixedArrayAccess occurrences="1">
-      <code>$first['date']</code>
+    <MixedArrayAccess>
+      <code><![CDATA[$first['date']]]></code>
     </MixedArrayAccess>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment>
       <code>$action</code>
       <code>$first</code>
     </MixedAssignment>
