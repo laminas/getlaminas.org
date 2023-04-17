@@ -71,8 +71,8 @@ abstract class AbstractCollection
         file_put_contents(static::CACHE_FILE, '<?php return ' . var_export($this->collection, true) . ';', LOCK_EX);
     }
 
-    protected function order(array $a, array $b): bool|int
+    protected function order(array $a, array $b): int
     {
-        return false;
+        return 0;
     }
 }
