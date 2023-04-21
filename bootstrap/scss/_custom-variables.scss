@@ -2,6 +2,16 @@
 // You can find them in node_modules/bootstrap/scss/_variables.scss
 // Copy the variables you need into this file, don't modify files under node_modules/
 
+// Colors
+$header-footer-font-color: #fff;
+$footer-bg-color: hsl(201, 98%, 6%);
+$separater-color: #efefef;
+$text-color-secondary: rgb(119, 119, 119);
+$text-color-reduced: rgb(150, 152, 154);
+$overiew-body-bg: #f9fafb;
+$code-sample-bg-color: rgb(60, 65, 70);
+$donation-color: rgb(14, 109, 212);
+
 // Changing the theme colors
 $primary:       #013755;
 $secondary:     #009ee3;
@@ -26,6 +36,12 @@ $enable-shadows: true;
 $enable-gradients: true;
 $enable-responsive-font-sizes: true;
 
+// Colors
+$brand-primary: rgb(1, 55, 85);
+$link-color: $brand-primary;
+
+$primary: $brand-primary;
+
 // Changing the body background and text
 $body-bg: #ffffff;
 $body-color: #000000;
@@ -37,3 +53,7 @@ $body-color: #000000;
 $jumbotron-color: #000000;
 
 $support-color: rgb(14, 109, 212);
+
+// Font-awesome path
+$fa-font-path: 'fonts';
+$fa-font-size-base: 18px;

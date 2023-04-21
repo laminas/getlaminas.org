@@ -1,0 +1,29 @@
+.footer {
+    background-color: $footer-bg-color;
+    color: darken($header-footer-font-color, 15%);
+    padding: map_get($spacers, 3) 0 map_get($spacers, 3);
+    border-top: 5px solid var(--primary-color);
+    margin-top: map_get($spacers, 5);
+
+    &__headline {
+        border-bottom: 1px solid darken($header-footer-font-color, 50%);
+        padding-bottom: map_get($spacers, 3);
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: map_get($spacers, 4);
+    }
+
+    a {
+        &:link,
+        &:visited {
+            color: var(--primary-color);
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
+}

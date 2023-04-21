@@ -1,0 +1,77 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ */
+?>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a class="footer__button" href="#page-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Laminas</h5>
+                <ul>
+                    <li>Mezzio <a href="https://docs.mezzio.dev/">PSR-15 middleware in minutes</a></li>
+                    <li>Components <a href="https://docs.laminas.dev/components">Components for enterprise applications</a></li>
+                    <li>MVC <a href="https://docs.laminas.dev/mvc">MVC for enterprise applications</a></li>
+                    <li>API Tools <a href="https://api-tools.getlaminas.org/">Build RESTful APIs in minutes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="footer__headline">Support</h4>
+                <ul class="support__list">
+                    <li class="support__list-item">
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://github.com/laminas" class="support__link" title="Github"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://twitter.com/getlaminas" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="footer__headline">License</h4>
+                <p>Code licensed under BSD 3-Clause.</p>
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="footer__headline">Copyright</h4>
+                <p>
+                    &copy; <?= date('Y') ?> by <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.
+                </p>
+            </div>
+        </div>
+
+        Design by <a href="https://www.blackpoints.ch" target="_blank">Blackpoints AG</a>
+
+        <div>
+            Hosting sponsored by the <a title="platform.sh" href="https://platform.sh/?medium=referral&utm_campaign=sponsored_sites&utm_source=laminas_getlaminas_org"><img class="platformsh-logo" src="https://platform.sh/logos/redesign/Platformsh_logo_white@2x.png" alt="platform.sh logo" style="padding: 0 3px 0 3px;height: 1.1em; vertical-align: text-bottom;"/></a> <a href="https://platform.sh/?medium=referral&utm_campaign=sponsored_sites&utm_source=laminas_getlaminas_org">PHP Cloud Hosting</a> Service
+        </div>
+
+        <div>The Linux Foundation's only PHP project.</div>
+    </div>
+</footer>
+

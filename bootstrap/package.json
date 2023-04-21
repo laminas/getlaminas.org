@@ -15,17 +15,18 @@
   "license": "MIT",
   "devDependencies": {
     "anchor-js": "^4.3.1",
-    "autoprefixer": "^10.0.0",
+    "autoprefixer": "^10.4.14",
     "bootstrap": "^4.6.2",
+    "font-awesome": "^4.7.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-dart-sass": "^1.0.2",
+    "gulp-dart-sass": "^1.1.0",
     "gulp-postcss": "^9.0.1",
     "gulp-rev-all": "^3.0.0",
     "gulp-rev-dist-clean": "^3.2.3",
     "gulp-terser": "^2.1.0",
-    "jquery": "^3.6.1",
+    "jquery": "^3.6.4",
     "popper.js": "^1.16.1",
     "prismjs": "^1.29.0"
   }
