@@ -22,7 +22,7 @@ declare(strict_types=1);
     <link rel="stylesheet" href="/<?= $this->assets('css/laminas.css') ?>">
     <?= $this->section('stylesheets') ?>
 </head>
-<body class="h-100 d-flex flex-column">
+<body id="page-top" class="h-100 d-flex flex-column">
     <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow"><div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="/">
@@ -59,56 +59,7 @@ declare(strict_types=1);
         <?= $this->section('content') ?>
     </main>
 
-    <footer class="bg-primary mt-4 text-white">
-        <div class="container">
-            <div class="row align-items-top justify-content-between">
-                <div class="col-md-4">
-                    <h5 class="border-bottom border-white">Projects</h5>
-                    <nav class="nav flex-column">
-                        <a class="nav-item" href="https://docs.laminas.dev/">Components and MVC</a>
-                        <a class="nav-item" href="https://docs.mezzio.dev/">Mezzio: PSR-15 Middleware in Minutes</a>
-                        <a class="nav-item" href="https://api-tools.getlaminas.org/">Laminas API Tools</a>
-                    </nav>
-                </div>
-
-                <div class="col-md-4">
-                    <h5 class="border-bottom border-white">Resources</h5>
-                    <nav class="nav flex-column">
-                        <a class="nav-item" href="<?= $this->url('about.overview') ?>">About</a>
-                        <a class="nav-item" href="<?= $this->url('about.tsc') ?>">Technical Steering Committee</a>
-                        <a class="nav-item" href="https://docs.laminas.dev">Documentation</a>
-                        <a class="nav-item" href="<?= $this->url('blog') ?>">Blog</a>
-                        <a class="nav-item" href="<?= $this->url('releases.feed') ?>">Releases <span class="fas fa-rss-square"></span></a>
-                        <a class="nav-item" href="<?= $this->url('security') ?>">Security</a>
-                        <a class="nav-item" href="<?= $this->url('app.commercial-vendor-program') ?>">Commercial Vendors</a>
-                    </nav>
-                </div>
-
-                <div class="col-sm-4 col-xs-12 text-right social text-white">
-                    <a class="btn btn-social btn-outline" title="Github" href="https://github.com/laminas"><i class="fab fa-github"></i></a>
-                    <a class="btn btn-social btn-outline" title="Twitter" href="https://twitter.com/getlaminas"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-social btn-outline" title="Slack" href="https://laminas.dev/chat"><i class="fab fa-slack"></i></a>
-                    <a class="btn btn-social btn-outline" title="Forums" href="https://discourse.laminas.dev"><i class="far fa-comments"></i></a>
-                    <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="btn btn-social btn-outline" title="Blog RSS Feed"><i class="fas fa-rss"></i></a>
-                    <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="btn btn-social btn-outline" title="Security feed"><i class="fas fa-rss-square"></i></a>
-                </div>
-            </div>
-
-            <div class="row align-items-center justify-content-between mt-5 border-top border-white">
-                <div class="col text-left">
-                    &copy; <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.
-
-                    <br />
-
-                    Design by <a href="https://www.blackpoints.ch" target="_blank">Blackpoints AG</a>
-
-                    <div class="platform_sh_widget">
-                        Hosting sponsored by the <a title="platform.sh" href="https://platform.sh/?medium=referral&utm_campaign=sponsored_sites&utm_source=laminas_getlaminas_org"><img class="platformsh-logo" src="https://platform.sh/logos/redesign/Platformsh_logo_white@2x.png" alt="platform.sh logo" style="padding: 0 3px 0 3px;height: 1.1em; vertical-align: text-bottom;"/></a> <a href="https://platform.sh/?medium=referral&utm_campaign=sponsored_sites&utm_source=laminas_getlaminas_org">PHP Cloud Hosting</a> Service
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?= $this->insert('partials::footer') ?>
 
     <script src="/<?= $this->assets('js/laminas.js') ?>"></script>
     <?= $this->section('javascript') ?>

@@ -1,0 +1,15 @@
+.support {
+    &__list {
+        list-style-type: none;
+        padding-left: 0;
+
+        &-item {
+            display: inline;
+        }
+    }
+
+    &__link {
+        font-size: 1.3rem;
+        margin-right: map_get($spacers, 3);
+    }
+}

@@ -1,0 +1,20 @@
+:root {
+    --primary-color: #{mix($brand-primary, #fff, 60%)};
+    /*--primary-color: #{$brand-primary};*/
+}
+
+.components {
+    --primary-color: #{map-get($theme-colors, "laminas")};
+}
+
+.mvc {
+    --primary-color: #{map-get($theme-colors, "mvc")};
+}
+
+.mezzio {
+    --primary-color: #{map-get($theme-colors, "mezzio")};
+}
+
+.api-tools {
+    --primary-color: #{map-get($theme-colors, "api-tools")};
+}
