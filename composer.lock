@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d427b8668ca8d5c1402624ab8eaf9437",
+    "content-hash": "c5ea22d07d1773a1ae23e0b1a78b6461",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1308,16 +1308,16 @@
         },
         {
             "name": "mezzio/mezzio",
-            "version": "3.16.1",
+            "version": "3.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio.git",
-                "reference": "ef8a39a6a54f52bc5891609d9e2dac5b5da19fc4"
+                "reference": "11fd593cba09946b80749a62ad5ba937ecee4cde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/ef8a39a6a54f52bc5891609d9e2dac5b5da19fc4",
-                "reference": "ef8a39a6a54f52bc5891609d9e2dac5b5da19fc4",
+                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/11fd593cba09946b80749a62ad5ba937ecee4cde",
+                "reference": "11fd593cba09946b80749a62ad5ba937ecee4cde",
                 "shasum": ""
             },
             "require": {
@@ -1350,7 +1350,7 @@
                 "mezzio/mezzio-aurarouter": "^3.6",
                 "mezzio/mezzio-fastroute": "^3.8",
                 "mezzio/mezzio-laminasrouter": "^3.7",
-                "phpunit/phpunit": "^10.0.11",
+                "phpunit/phpunit": "^10.1",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "vimeo/psalm": "^5.7.7"
             },
@@ -1411,7 +1411,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-04-03T07:40:43+00:00"
+            "time": "2023-05-09T00:23:21+00:00"
         },
         {
             "name": "mezzio/mezzio-fastroute",
