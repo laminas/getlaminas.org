@@ -1,20 +1,14 @@
 {
-  "name": "theme-kit",
-  "version": "1.0.1",
-  "description": "A starter project to build your own Bootstrap themes",
-  "repository": "https://github.com/HackerThemes/theme-kit",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "@laminas/getlaminas.org",
+  "private": "true",
+  "description": "getlaminas.org Bootstrap based theme",
+  "repository": "https://github.com/laminas/getlaminas.org",
+  "engines": {
+    "node": "^18"
   },
-  "keywords": [
-    "bootstrap",
-    "themes"
-  ],
-  "author": "Alexander Rechsteiner",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "devDependencies": {
-    "anchor-js": "^4.3.1",
+    "anchor-js": "^5.0.0",
     "autoprefixer": "^10.4.14",
     "bootstrap": "^4.6.2",
     "font-awesome": "^4.7.0",
@@ -23,7 +17,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-dart-sass": "^1.1.0",
     "gulp-postcss": "^9.0.1",
-    "gulp-rev-all": "^3.0.0",
+    "gulp-rev-all": "^4.0.0",
     "gulp-rev-dist-clean": "^3.2.3",
     "gulp-terser": "^2.1.0",
     "jquery": "^3.6.4",

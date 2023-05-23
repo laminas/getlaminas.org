@@ -1,14 +1,14 @@
-'use strict';
+import autoprefixer from 'autoprefixer';
+import concat from 'gulp-concat';
+import cleanCss from 'gulp-clean-css';
+import gulp from 'gulp';
+import postcss from 'gulp-postcss';
+import rev from 'gulp-rev-all';
+import revCleaner from 'gulp-rev-dist-clean';
+import sass from 'gulp-dart-sass';
+import terser from'gulp-terser';
 
-const autoprefixer = require('autoprefixer');
-const concat = require('gulp-concat');
-const cleanCss = require('gulp-clean-css');
-const {series, src, dest, watch} = require('gulp');
-const postcss = require('gulp-postcss');
-const rev = require('gulp-rev-all');
-const revCleaner = require('gulp-rev-dist-clean').default;
-const sass = require('gulp-dart-sass');
-const terser = require('gulp-terser');
+const {series, src, dest, watch} = gulp;
 
 const prism = [
     'core',
@@ -108,26 +108,28 @@ function copyRev() {
         .pipe(dest('../data'));
 }
 
-exports.js = js;
-exports.css = css;
-exports.revGenerate = revGenerate;
-exports.revClean = revClean;
-exports.copyAssets = copyAssets;
-exports.copyRev = copyRev;
-exports.fonts = fonts;
+export {
+    js,
+    css,
+    revGenerate,
+    revClean,
+    copyAssets,
+    copyRev,
+    fonts
+};
 
 /* Primary build task
  * Add items to this series that need to occur when building the final
  * production image.
  */
-exports.deploy = series(js, fonts, css, revGenerate, revClean);
+export const deploy = series(js, fonts, css, revGenerate, revClean);
 
 /* Development build task
  * Add items to this series that need to occur when building assets during
  * development.
  */
-exports.develop = series(exports.deploy, copyAssets, copyRev);
+export const develop = series(deploy, copyAssets, copyRev);
 
-exports.default = () => {
-    watch('scss/*.scss', exports.develop);
+export default () => {
+    watch('scss/*.scss', develop);
 };
