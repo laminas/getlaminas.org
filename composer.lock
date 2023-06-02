@@ -5946,12 +5946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e7a16840e9d12291c351fee9896838900f534d68"
+                "reference": "4dac38892bfbf1fc7536b70b0a1f60718b39af1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e7a16840e9d12291c351fee9896838900f534d68",
-                "reference": "e7a16840e9d12291c351fee9896838900f534d68",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4dac38892bfbf1fc7536b70b0a1f60718b39af1c",
+                "reference": "4dac38892bfbf1fc7536b70b0a1f60718b39af1c",
                 "shasum": ""
             },
             "conflict": {
@@ -6283,7 +6283,7 @@
                 "pimcore/pimcore": "<10.5.21",
                 "pixelfed/pixelfed": "<=0.11.4",
                 "pocketmine/bedrock-protocol": "<8.0.2",
-                "pocketmine/pocketmine-mp": "<4.12.5|>= 4.0.0-BETA5, < 4.4.2",
+                "pocketmine/pocketmine-mp": "< 4.18.0-ALPHA2|<4.12.5|>= 4.0.0-BETA5, < 4.4.2",
                 "pressbooks/pressbooks": "<5.18",
                 "prestashop/autoupgrade": ">=4,<4.10.1",
                 "prestashop/blockwishlist": ">=2,<2.1.1",
@@ -6545,7 +6545,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-31T16:04:38+00:00"
+            "time": "2023-06-01T20:04:19+00:00"
         },
         {
             "name": "sebastian/cli-parser",
