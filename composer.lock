@@ -4892,30 +4892,30 @@
         },
         {
             "name": "laminas/laminas-development-mode",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-development-mode.git",
-                "reference": "f9b561be3efa9e8ce1da5ec10860fc3308b548cf"
+                "reference": "3be715ec938e1aa9ffb586a07588c3b312857a8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-development-mode/zipball/f9b561be3efa9e8ce1da5ec10860fc3308b548cf",
-                "reference": "f9b561be3efa9e8ce1da5ec10860fc3308b548cf",
+                "url": "https://api.github.com/repos/laminas/laminas-development-mode/zipball/3be715ec938e1aa9ffb586a07588c3b312857a8c",
+                "reference": "3be715ec938e1aa9ffb586a07588c3b312857a8c",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+                "php": "~8.1.0 || ~8.2.0"
             },
             "conflict": {
                 "zfcampus/zf-development-mode": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.4.0",
+                "laminas/laminas-coding-standard": "~2.5.0",
                 "mikey179/vfsstream": "^1.6.11",
-                "phpunit/phpunit": "^9.5.25",
-                "psalm/plugin-phpunit": "^0.17.0",
-                "vimeo/psalm": "^4.29"
+                "phpunit/phpunit": "^10.2.2",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "vimeo/psalm": "^5.13.1"
             },
             "bin": [
                 "bin/laminas-development-mode"
@@ -4949,7 +4949,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-22T12:11:18+00:00"
+            "time": "2023-06-28T11:00:04+00:00"
         },
         {
             "name": "mezzio/mezzio-tooling",
@@ -5946,12 +5946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "3b77f2101068074f1c98977cc34ef939bbce3d19"
+                "reference": "9920192eab87b9ae105696b0b86326c8fac91677"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3b77f2101068074f1c98977cc34ef939bbce3d19",
-                "reference": "3b77f2101068074f1c98977cc34ef939bbce3d19",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9920192eab87b9ae105696b0b86326c8fac91677",
+                "reference": "9920192eab87b9ae105696b0b86326c8fac91677",
                 "shasum": ""
             },
             "conflict": {
@@ -6327,7 +6327,7 @@
                 "shopware/core": "<=6.4.20",
                 "shopware/platform": "<=6.4.20",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<=5.7.14",
+                "shopware/shopware": "<=5.7.17",
                 "shopware/storefront": "<=6.4.8.1",
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
@@ -6553,7 +6553,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-28T00:17:41+00:00"
+            "time": "2023-06-28T23:04:41+00:00"
         },
         {
             "name": "sebastian/cli-parser",
