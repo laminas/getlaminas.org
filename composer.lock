@@ -5946,12 +5946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "885786b30f50e83a88941df2062d68de623599fd"
+                "reference": "6ea60363203786a5dd5617c28e933280bb61f78b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/885786b30f50e83a88941df2062d68de623599fd",
-                "reference": "885786b30f50e83a88941df2062d68de623599fd",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6ea60363203786a5dd5617c28e933280bb61f78b",
+                "reference": "6ea60363203786a5dd5617c28e933280bb61f78b",
                 "shasum": ""
             },
             "conflict": {
@@ -6249,6 +6249,7 @@
                 "opencart/opencart": "<=3.0.3.7",
                 "openid/php-openid": "<2.3",
                 "openmage/magento-lts": "<19.4.22|>=20,<20.0.19",
+                "opensource-workshop/connect-cms": "<1.7.2|>=2,<2.3.2",
                 "orchid/platform": ">=9,<9.4.4",
                 "oro/commerce": ">=4.1,<5.0.6",
                 "oro/crm": ">=1.7,<1.7.4|>=3.1,<4.1.17|>=4.2,<4.2.7",
@@ -6553,7 +6554,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-30T21:04:19+00:00"
+            "time": "2023-07-05T23:04:23+00:00"
         },
         {
             "name": "sebastian/cli-parser",
