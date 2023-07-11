@@ -5946,12 +5946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "b20303370a20649e20dbd8d40117323d7d8d6e65"
+                "reference": "bcc78ca7e0e2bf8f2f8afd4eb9aabb988d593c21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/b20303370a20649e20dbd8d40117323d7d8d6e65",
-                "reference": "b20303370a20649e20dbd8d40117323d7d8d6e65",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bcc78ca7e0e2bf8f2f8afd4eb9aabb988d593c21",
+                "reference": "bcc78ca7e0e2bf8f2f8afd4eb9aabb988d593c21",
                 "shasum": ""
             },
             "conflict": {
@@ -6381,6 +6381,7 @@
                 "statamic/cms": "<4.10",
                 "stormpath/sdk": ">=0,<9.9.99",
                 "studio-42/elfinder": "<2.1.62",
+                "subhh/libconnect": "<7.0.8|>=8,<8.1",
                 "subrion/cms": "<=4.2.1",
                 "sukohi/surpass": "<1",
                 "sulu/sulu": "= 2.4.0-RC1|<1.6.44|>=2,<2.2.18|>=2.3,<2.3.8",
@@ -6568,7 +6569,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-11T00:17:04+00:00"
+            "time": "2023-07-11T01:32:50+00:00"
         },
         {
             "name": "sebastian/cli-parser",
