@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93b19f4f2edf17595551a55ecb24fa3d",
+    "content-hash": "59137815b4d6ca1ec3dc2862b79ea0c1",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1645,22 +1645,22 @@
         },
         {
             "name": "mezzio/mezzio-problem-details",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-problem-details.git",
-                "reference": "ae583a383d8d1a49f55d02668518034bfb8300c3"
+                "reference": "7871fdfed25cb4572494cc8f16d3b83ecbec0ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/ae583a383d8d1a49f55d02668518034bfb8300c3",
-                "reference": "ae583a383d8d1a49f55d02668518034bfb8300c3",
+                "url": "https://api.github.com/repos/mezzio/mezzio-problem-details/zipball/7871fdfed25cb4572494cc8f16d3b83ecbec0ff6",
+                "reference": "7871fdfed25cb4572494cc8f16d3b83ecbec0ff6",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "fig/http-message-util": "^1.1.2",
-                "php": "~8.1.0 || ~8.2.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
                 "psr/container": "^1.0 || ^2.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0 || ^2.0",
@@ -1719,7 +1719,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-05-30T18:20:38+00:00"
+            "time": "2023-11-08T14:15:07+00:00"
         },
         {
             "name": "mezzio/mezzio-router",
@@ -2704,16 +2704,16 @@
         },
         {
             "name": "spatie/array-to-xml",
-            "version": "3.1.6",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/array-to-xml.git",
-                "reference": "e210b98957987c755372465be105d32113f339a4"
+                "reference": "84a404e5b67dd21466a0ff47d335129d67b94029"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/e210b98957987c755372465be105d32113f339a4",
-                "reference": "e210b98957987c755372465be105d32113f339a4",
+                "url": "https://api.github.com/repos/spatie/array-to-xml/zipball/84a404e5b67dd21466a0ff47d335129d67b94029",
+                "reference": "84a404e5b67dd21466a0ff47d335129d67b94029",
                 "shasum": ""
             },
             "require": {
@@ -2751,7 +2751,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/spatie/array-to-xml/tree/3.1.6"
+                "source": "https://github.com/spatie/array-to-xml/tree/3.2.1"
             },
             "funding": [
                 {
@@ -2763,7 +2763,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-11T14:04:07+00:00"
+            "time": "2023-11-08T08:19:46+00:00"
         },
         {
             "name": "spatie/yaml-front-matter",
