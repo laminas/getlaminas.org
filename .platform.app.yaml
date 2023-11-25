@@ -83,3 +83,5 @@ web:
         \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|cast|mp4|json|html|ico|svg|asc|webmanifest)$:
           allow: true
           expires: 300s
+          headers:
+            Access-Control-Allow-Origin: "*"
