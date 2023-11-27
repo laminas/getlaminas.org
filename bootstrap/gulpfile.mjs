@@ -78,13 +78,6 @@ function css() {
         .pipe(dest('build/css'));
 }
 
-function fonts() {
-    return src([
-        'node_modules/font-awesome/fonts/**.*',
-    ])
-        .pipe(dest('build/css/fonts'));
-}
-
 function revGenerate() {
     return src(['build/css/laminas.css', 'build/js/laminas.js'], {base: 'build'})
         .pipe(rev.revision({ fileNameManifest: "build/assets.json" }))
@@ -99,7 +92,7 @@ function revClean() {
 }
 
 function copyAssets() {
-  return src(['build/css/*.css', 'build/css/fonts/*', 'build/js/*.js'], {base: 'build'})
+  return src(['build/css/*.css', 'build/js/*.js'], {base: 'build'})
         .pipe(dest('../public'));
 }
 
@@ -114,15 +107,14 @@ export {
     revGenerate,
     revClean,
     copyAssets,
-    copyRev,
-    fonts
+    copyRev
 };
 
 /* Primary build task
  * Add items to this series that need to occur when building the final
  * production image.
  */
-export const deploy = series(js, fonts, css, revGenerate, revClean);
+export const deploy = series(js, css, revGenerate, revClean);
 
 /* Development build task
  * Add items to this series that need to occur when building assets during
