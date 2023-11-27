@@ -22,37 +22,7 @@ declare(strict_types=1);
     <?= $this->section('stylesheets') ?>
 </head>
 <body id="page-top" class="h-100 d-flex flex-column">
-    <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow"><div class="container">
-        <!-- Brand -->
-        <a class="navbar-brand" href="/">
-            <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project" />
-        </a>
-
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Links -->
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $this->url('about.overview') ?>">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $this->url('blog') ?>">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://docs.laminas.dev">Docs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $this->url('community.participate') ?>">Community</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $this->url('app.support') ?>">Support Laminas</a>
-                </li>
-            </ul>
-        </div>
-    </div></nav>
+    <?= $this->insert('partials::navigation') ?>
 
     <main class="flex-grow-1">
         <?= $this->section('content') ?>
