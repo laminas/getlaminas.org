@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ */
+?>
+<nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project"/>
+        </a>
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle<?= str_starts_with($this->url(), $this->url('about.overview')) || str_starts_with($this->url(), $this->url('security')) ? ' active' : '' ?>"
+                       href="#"
+                       data-toggle="dropdown"
+                       aria-expanded="false">About</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item<?= $this->url() === $this->url('about.overview') ? ' active' : '' ?>" href="<?= $this->url('about.overview') ?>">Overview</a>
+                        <a class="dropdown-item<?= $this->url() === $this->url('about.tsc') || $this->url() === $this->url('about.join') ? ' active' : '' ?>" href="<?= $this->url('about.tsc') ?>">Technical Steering Committee</a>
+                        <a class="dropdown-item<?= $this->url() === $this->url('about.foundation') ? ' active' : '' ?>" href="<?= $this->url('about.foundation') ?>">About the Foundation</a>
+                        <a class="dropdown-item<?= str_starts_with($this->url(), $this->url('security')) ? ' active' : '' ?>" href="<?= $this->url('security') ?>">Security</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($this->url(), $this->url('blog')) ? ' active' : '' ?>"
+                       href="<?= $this->url('blog') ?>"
+                       href="<?= $this->url('blog') ?>">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://docs.laminas.dev">Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($this->url(), $this->url('community.participate')) ? ' active' : '' ?>"
+                       href="<?= $this->url('community.participate') ?>"
+                       href="<?= $this->url('community.participate') ?>">Community</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle<?= str_starts_with($this->url(), $this->url('app.support')) || str_starts_with($this->url(), $this->url('app.commercial-vendor-program')) ? ' active' : '' ?>"
+                       href="<?= $this->url('app.support') ?>"
+                       href="#"
+                       data-toggle="dropdown"
+                       aria-expanded="false">Support Laminas</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item<?= $this->url() === $this->url('app.support') ? ' active' : '' ?>" href="<?= $this->url('app.support') ?>">Overview</a>
+                        <a class="dropdown-item" href="https://crowdfunding.lfx.linuxfoundation.org/projects/laminas-project" target="_blank">Sponsor Laminas Development <i class="fas fa-external-link-alt"></i></a>
+                        <a class="dropdown-item<?= $this->url() === $this->url('app.commercial-vendor-program') ? ' active' : '' ?>" href="<?= $this->url('app.commercial-vendor-program') ?>">Commercial Vendor Program</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

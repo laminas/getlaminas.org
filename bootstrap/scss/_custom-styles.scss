@@ -181,3 +181,10 @@ article {
         }
     }
 }
+
+.dropdown-item {
+    &.active,
+    &:active {
+        background: $dropdown-link-active-bg;
+    }
+}
