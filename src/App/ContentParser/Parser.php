@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\ContentParser;
 
 use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
 use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
@@ -48,6 +49,7 @@ final class Parser implements ParserInterface
         );
         $environment->addExtension(new CommonMarkCoreExtension());
         $environment->addExtension(new DefaultAttributesExtension());
+        $environment->addExtension(new AttributesExtension());
         $environment->addExtension(new FrontMatterExtension());
         $environment->addExtension(new HeadingPermalinkExtension());
         $environment->addExtension(new TableExtension());
