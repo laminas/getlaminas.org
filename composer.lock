@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee97add3242c90a9fc3b792574eea015",
+    "content-hash": "6d6a78dc99c0b46029a08fbfb285d0f7",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -2767,21 +2767,21 @@
         },
         {
             "name": "spatie/yaml-front-matter",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/yaml-front-matter.git",
-                "reference": "f49f228994de70827ca857efffdd3bd7703aea34"
+                "reference": "f2f1f749a405fafc9d6337067c92c062d51a581c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/yaml-front-matter/zipball/f49f228994de70827ca857efffdd3bd7703aea34",
-                "reference": "f49f228994de70827ca857efffdd3bd7703aea34",
+                "url": "https://api.github.com/repos/spatie/yaml-front-matter/zipball/f2f1f749a405fafc9d6337067c92c062d51a581c",
+                "reference": "f2f1f749a405fafc9d6337067c92c062d51a581c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0|^8.0",
-                "symfony/yaml": "^3.0|^4.0|^5.0|^6.0"
+                "symfony/yaml": "^3.0|^4.0|^5.0|^6.0|^7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0"
@@ -2813,7 +2813,7 @@
                 "yaml"
             ],
             "support": {
-                "source": "https://github.com/spatie/yaml-front-matter/tree/2.0.7"
+                "source": "https://github.com/spatie/yaml-front-matter/tree/2.0.8"
             },
             "funding": [
                 {
@@ -2825,7 +2825,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-06T12:03:55+00:00"
+            "time": "2023-12-04T10:02:52+00:00"
         },
         {
             "name": "symfony/console",
