@@ -16,7 +16,7 @@ variables:
 
 dependencies:
   php:
-    "composer/composer": "^2"
+    "composer/composer": "~2.5.8"
   nodejs:
     gulp-cli: '~2.3.0'
 
