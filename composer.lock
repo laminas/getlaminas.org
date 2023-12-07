@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d6a78dc99c0b46029a08fbfb285d0f7",
+    "content-hash": "7bc95740587a130e9b2fcc8cad36f5a3",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1569,16 +1569,16 @@
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-platesrenderer.git",
-                "reference": "34ca8e67ef8318a448df6ed080b7b4a49abd8a3c"
+                "reference": "45abd67ab3e6ff0e862186fb50fc195fee56516d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-platesrenderer/zipball/34ca8e67ef8318a448df6ed080b7b4a49abd8a3c",
-                "reference": "34ca8e67ef8318a448df6ed080b7b4a49abd8a3c",
+                "url": "https://api.github.com/repos/mezzio/mezzio-platesrenderer/zipball/45abd67ab3e6ff0e862186fb50fc195fee56516d",
+                "reference": "45abd67ab3e6ff0e862186fb50fc195fee56516d",
                 "shasum": ""
             },
             "require": {
@@ -1587,7 +1587,7 @@
                 "mezzio/mezzio-helpers": "^5.2",
                 "mezzio/mezzio-router": "^3.0",
                 "mezzio/mezzio-template": "^2.0",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
                 "psr/container": "^1.0 || ^2.0"
             },
             "conflict": {
@@ -1596,7 +1596,6 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.5.0",
-                "phpspec/prophecy-phpunit": "^2.0.1",
                 "phpunit/phpunit": "^9.5.28",
                 "psalm/plugin-phpunit": "0.18.4",
                 "vimeo/psalm": "^5.4"
@@ -1641,7 +1640,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-01-15T11:18:12+00:00"
+            "time": "2023-12-07T19:41:05+00:00"
         },
         {
             "name": "mezzio/mezzio-problem-details",

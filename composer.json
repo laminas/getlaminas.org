@@ -49,7 +49,7 @@
         "mezzio/mezzio": "^3.18.0",
         "mezzio/mezzio-fastroute": "^3.11.0",
         "mezzio/mezzio-helpers": "^5.16.0",
-        "mezzio/mezzio-platesrenderer": "^2.9.0",
+        "mezzio/mezzio-platesrenderer": "^2.10.0",
         "mezzio/mezzio-problem-details": "^1.13.0",
         "monolog/monolog": "^3.5.0",
         "phly/phly-configfactory": "^1.2.0",
