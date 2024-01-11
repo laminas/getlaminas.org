@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "151a0573069e3d97b54a17fd7bbe696f",
+    "content-hash": "4261f5dec411b64ede5433199607e02a",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -749,16 +749,16 @@
         },
         {
             "name": "laminas/laminas-paginator",
-            "version": "2.18.0",
+            "version": "2.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-paginator.git",
-                "reference": "caacfd2625bf354be32888dd55767c893b89d38f"
+                "reference": "6a03499a899fb8ba650594ddf4b4338d4235252a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-paginator/zipball/caacfd2625bf354be32888dd55767c893b89d38f",
-                "reference": "caacfd2625bf354be32888dd55767c893b89d38f",
+                "url": "https://api.github.com/repos/laminas/laminas-paginator/zipball/6a03499a899fb8ba650594ddf4b4338d4235252a",
+                "reference": "6a03499a899fb8ba650594ddf4b4338d4235252a",
                 "shasum": ""
             },
             "require": {
@@ -824,7 +824,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-11-08T15:42:20+00:00"
+            "time": "2024-01-11T11:00:36+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
