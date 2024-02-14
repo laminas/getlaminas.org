@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0569e62e67ae00e16f9693ecf1da829a",
+    "content-hash": "361a5617561c68a13ad46226f5f3cfca",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -682,16 +682,16 @@
         },
         {
             "name": "laminas/laminas-httphandlerrunner",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-httphandlerrunner.git",
-                "reference": "d3e84755a17e563b1c5f8290cbfb150210501a77"
+                "reference": "35a0ba92e940a2f9533754f5a56187fa321f7693"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/d3e84755a17e563b1c5f8290cbfb150210501a77",
-                "reference": "d3e84755a17e563b1c5f8290cbfb150210501a77",
+                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/35a0ba92e940a2f9533754f5a56187fa321f7693",
+                "reference": "35a0ba92e940a2f9533754f5a56187fa321f7693",
                 "shasum": ""
             },
             "require": {
@@ -702,10 +702,10 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.5.0",
-                "laminas/laminas-diactoros": "^3.0.0",
-                "phpunit/phpunit": "^10.1.2",
+                "laminas/laminas-diactoros": "^3.3.0",
+                "phpunit/phpunit": "^10.5.5",
                 "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.11"
+                "vimeo/psalm": "^5.18"
             },
             "type": "library",
             "extra": {
@@ -745,7 +745,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-09-04T10:43:03+00:00"
+            "time": "2024-01-04T10:50:34+00:00"
         },
         {
             "name": "laminas/laminas-paginator",
@@ -1308,16 +1308,16 @@
         },
         {
             "name": "mezzio/mezzio",
-            "version": "3.18.0",
+            "version": "3.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio.git",
-                "reference": "450512a378967d23243f784808a8436bc7a125a7"
+                "reference": "e9bbc0addbf2dbde6721e4d30a965d8512c5ce54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/450512a378967d23243f784808a8436bc7a125a7",
-                "reference": "450512a378967d23243f784808a8436bc7a125a7",
+                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/e9bbc0addbf2dbde6721e4d30a965d8512c5ce54",
+                "reference": "e9bbc0addbf2dbde6721e4d30a965d8512c5ce54",
                 "shasum": ""
             },
             "require": {
@@ -1347,12 +1347,12 @@
                 "laminas/laminas-coding-standard": "~2.5.0",
                 "laminas/laminas-diactoros": "^3.3.0",
                 "laminas/laminas-servicemanager": "^3.22.1",
-                "mezzio/mezzio-aurarouter": "^3.6",
+                "mezzio/mezzio-aurarouter": "^3.7",
                 "mezzio/mezzio-fastroute": "^3.11",
-                "mezzio/mezzio-laminasrouter": "^3.8",
-                "phpunit/phpunit": "^10.4.2",
+                "mezzio/mezzio-laminasrouter": "^3.9",
+                "phpunit/phpunit": "^10.5.9",
                 "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.15.0"
+                "vimeo/psalm": "^5.21.1"
             },
             "suggest": {
                 "filp/whoops": "^2.1 to use the Whoops error handler",
@@ -1411,7 +1411,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-11-03T13:17:33+00:00"
+            "time": "2024-02-14T10:42:11+00:00"
         },
         {
             "name": "mezzio/mezzio-fastroute",
@@ -1804,16 +1804,16 @@
         },
         {
             "name": "mezzio/mezzio-template",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-template.git",
-                "reference": "16060229d23cd5b715d92f28d9779c574b1d8385"
+                "reference": "2cc943c996b8a63f1f945a2b891346ecbc8f7a33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-template/zipball/16060229d23cd5b715d92f28d9779c574b1d8385",
-                "reference": "16060229d23cd5b715d92f28d9779c574b1d8385",
+                "url": "https://api.github.com/repos/mezzio/mezzio-template/zipball/2cc943c996b8a63f1f945a2b891346ecbc8f7a33",
+                "reference": "2cc943c996b8a63f1f945a2b891346ecbc8f7a33",
                 "shasum": ""
             },
             "require": {
@@ -1864,7 +1864,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-11-01T09:29:30+00:00"
+            "time": "2024-01-08T15:20:45+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3145,16 +3145,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.28.0",
+            "version": "v1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
+                "reference": "ef4d7e442ca910c4764bce785146269b30cb5fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
-                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ef4d7e442ca910c4764bce785146269b30cb5fc4",
+                "reference": "ef4d7e442ca910c4764bce785146269b30cb5fc4",
                 "shasum": ""
             },
             "require": {
@@ -3168,9 +3168,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -3207,7 +3204,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.29.0"
             },
             "funding": [
                 {
@@ -3223,7 +3220,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-26T09:26:14+00:00"
+            "time": "2024-01-29T20:11:03+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
@@ -6876,16 +6873,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "5.0.3",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "912dc2fbe3e3c1e7873313cc801b100b6c68c87b"
+                "reference": "fbf413a49e54f6b9b17e12d900ac7f6101591b7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/912dc2fbe3e3c1e7873313cc801b100b6c68c87b",
-                "reference": "912dc2fbe3e3c1e7873313cc801b100b6c68c87b",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/fbf413a49e54f6b9b17e12d900ac7f6101591b7f",
+                "reference": "fbf413a49e54f6b9b17e12d900ac7f6101591b7f",
                 "shasum": ""
             },
             "require": {
@@ -6898,7 +6895,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "5.0-dev"
+                    "dev-main": "5.1-dev"
                 }
             },
             "autoload": {
@@ -6931,7 +6928,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "security": "https://github.com/sebastianbergmann/diff/security/policy",
-                "source": "https://github.com/sebastianbergmann/diff/tree/5.0.3"
+                "source": "https://github.com/sebastianbergmann/diff/tree/5.1.0"
             },
             "funding": [
                 {
@@ -6939,7 +6936,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-01T07:48:21+00:00"
+            "time": "2023-12-22T10:55:06+00:00"
         },
         {
             "name": "sebastian/environment",
