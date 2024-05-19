@@ -20,7 +20,7 @@ $path = parse_url($this->serverurl(), PHP_URL_PATH);
         <li class="nav-item<?= ($path === $url) ? ' active' : '' ?>">
             <a href="<?= $url ?>">
             <?php if ('/security/feed' === $url) : ?>
-                <i class="fas fa-rss-square"></i>
+                <i class="bi-rss-fill"></i>
             <?php else : ?>
                 <span class="glyphicon glyphicon-chevron-right"></span>
             <?php endif ?>
@@ -33,7 +33,7 @@ $path = parse_url($this->serverurl(), PHP_URL_PATH);
 
 <div class="card border border-primary rounded mt-5">
     <div class="card-body">
-        <p class="card-text"><i class="fa fa-bug fa-2x"></i> Have you identified a security vulnerability?</p>
+        <p class="card-text"><i class="bi-bug-fill"></i> Have you identified a security vulnerability?</p>
 
         <p>Please report it to us at <a href="mailto:security@getlaminas.org">security@getlaminas.org</a></p>
     </div>

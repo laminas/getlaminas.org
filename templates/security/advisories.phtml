@@ -36,13 +36,26 @@ $this->layout('layout::default', ['title' => 'Security Advisories']);
             <div class="spacing"></div>
             <div class="hline"></div>
 
-            <?php if ($tot > 0) : ?>
+            <?php if ($tot > 1) : ?>
             <nav arial-label="Security advisory page navigation">
                 <ul class="pagination mt-4 justify-content-center">
-                    <li class="page-item previous<?= $prev ? '' : ' disabled' ?>"><a class="page-link" href="<?= $prev ? '?page=' . $prev : '#' ?>"><i class="fa fa-chevron-left"></i>&nbsp;Previous</a>
+                    <li class="page-item previous<?= $prev ? '' : ' disabled' ?>">
+                        <a class="page-link" href="<?= $prev ? '?page=' . $prev : '#' ?>">
+                            <i class="bi-arrow-left-square-fill"></i>
+                            Previous
+                        </a>
                     </li>
-                    <li class="page-item active"><a class="page-link" href="#">Page <?= $page ?> of <?= $tot ?></a></li>
-                    <li class="page-item next<?= $next ? '' : ' disabled' ?>"><a class="page-link" href="<?= $next ? '?page=' . $next : '#' ?>">Next&nbsp;<i class="fa fa-chevron-right"></i></a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">
+                            Page <?= $page ?> of <?= $tot ?>
+                        </a>
+                    </li>
+                    <li class="page-item next<?= $next ? '' : ' disabled' ?>">
+                        <a class="page-link" href="<?= $next ? '?page=' . $next : '#' ?>">
+                            Next
+                            <i class="bi-arrow-right-square-fill"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <?php endif ?>

@@ -52,7 +52,12 @@ $this->end();
 
             <div class="entry body p-summary"><?= $post->body ?></div>
 
-            <p><a href="<?= $this->postUrl($post) ?>">Continue reading...</a></p>
+            <p>
+                <a href="<?= $this->postUrl($post) ?>">
+                    Continue reading
+                    <i class="bi-arrow-right"></i>
+                </a>
+            </p>
         </section>
     </div>
     <?php endforeach ?>

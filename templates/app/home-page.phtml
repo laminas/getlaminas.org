@@ -42,6 +42,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                     </p>
 
                     <a class="btn btn-components mt-auto text-white" href="https://docs.laminas.dev">
+                        <i class="bi-book-half"></i>
                         Laminas documentation
                     </a>
                 </div>
@@ -66,6 +67,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                     </p>
 
                     <a class="btn btn-expressive mt-auto text-white" href="https://docs.mezzio.dev">
+                        <i class="bi-book-half"></i>
                         Mezzio documentation
                     </a>
                 </div>
@@ -89,6 +91,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                     </p>
 
                     <a class="btn btn-apigility mt-auto text-white" href="https://api-tools.getlaminas.org">
+                        <i class="bi-book-half"></i>
                         API Tools documentation
                     </a>
                 </div>
@@ -102,7 +105,10 @@ $this->layout('layout::default', ['title' => 'Home']);
         <div class="card-body">
             <h1 class="card-title">Donate</h1>
             <p class="card-text">Support Laminas Developers Directly</p>
-            <a href="<?= $this->url('app.support') ?>" class="btn btn-secondary">Support Laminas</a>
+            <a href="<?= $this->url('app.support') ?>" class="btn btn-secondary">
+                <i class="bi-suit-heart-fill"></i>
+                Support Laminas
+            </a>
         </div>
     </div>
 </div>
@@ -126,7 +132,10 @@ $this->layout('layout::default', ['title' => 'Home']);
             </div>
 
             <div class="mt-4">
-                <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="btn btn-secondary text-white">Find out more!</a>
+                <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="btn btn-secondary text-white">
+                    <i class="bi-umbrella-fill"></i>
+                    Find out more!
+                </a>
             </div>
         </div>
     </div>
