@@ -11,7 +11,7 @@
     "anchor-js": "^5.0.0",
     "autoprefixer": "^10.4.14",
     "bootstrap": "^4.6.2",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-dart-sass": "^1.1.0",
