@@ -11,7 +11,9 @@ declare(strict_types=1);
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <a class="footer__button" href="#page-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                <a class="footer__button" href="#page-top">
+                    <i class="bi-arrow-up-square-fill" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
 
@@ -32,22 +34,22 @@ declare(strict_types=1);
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="bi-chat-text-fill"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="fab fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="bi-slack"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://github.com/laminas" class="support__link" title="Github"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/laminas" class="support__link" title="Github"><i class="bi-github"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://phpc.social/@getlaminas" class="support__link" title="Mastodon"><i class="fab fa-mastodon"></i></a>
+                        <a href="https://phpc.social/@getlaminas" class="support__link" title="Mastodon"><i class="bi-mastodon"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                        <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed"><i class="bi-rss"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                        <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed"><i class="bi-rss-fill"></i></a>
                     </li>
                 </ul>
             </div>
