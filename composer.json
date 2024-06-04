@@ -56,7 +56,7 @@
         "phly/phly-event-dispatcher": "^1.4.0",
         "spatie/yaml-front-matter": "^2.0.8",
         "symfony/console": "^6.4.6",
-        "symfony/yaml": "^6.4.3"
+        "symfony/yaml": "^7.1.1"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
