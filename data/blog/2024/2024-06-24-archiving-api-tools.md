@@ -1,7 +1,7 @@
 ---
 id: 2024-06-24-archiving-api-tools
 author: julian
-title: 'API Tools (formerly Apigility) retirement'
+title: 'Laminas API Tools (formerly Apigility) retirement'
 draft: false
 public: true
 created: '2024-06-24T11:00:00-01:00'
@@ -11,7 +11,7 @@ tags:
 ---
 
 On Monday, **6 May 2024**, the Technical Steering Committee for the Laminas Project held its monthly meeting.
-The topics discussed included the **API Tools (formerly Apigility)** alternatives.
+The topics discussed included the **Laminas API Tools (formerly Apigility)** alternatives.
 
 <!--- EXTENDED -->
 
