@@ -1,7 +1,7 @@
 ---
-id: 2024-06-27-dotkernel-replacement-for-laminas-api-tools
+id: 2024-06-27-dotkernel-a-replacement-for-laminas-api-tools
 author: julian
-title: 'Dotkernel API: a replacement for security-only Laminas API Tools (formerly Apigility)'
+title: 'Dotkernel API: a replacement for legacy Laminas API Tools'
 draft: false
 public: true
 created: '2024-06-27T11:00:00-01:00'
@@ -43,8 +43,8 @@ more details. Of note are the PHP version and the architecture.
   **Mezzio** in this particular case - which provides functionality to connect applications, tools and databases in an
   intelligent and efficient way.
 - [The PHP Framework Interop Group](https://www.php-fig.org/) aims to establish a standardization and interoperability
-  of programming concepts in PHP via a list of **PSRs**. DotKernel API has already implemented PSR-3, PSR-4, PSR-11 and
-  PSR-15.
+  of programming concepts in PHP via a list of **PSRs**. DotKernel API has already implemented PSR-3, PSR-4, PSR-7,
+  PSR-11 and PSR-15.
 - The **sunset header evolution strategy** was chosen as a way to highlight deprecation before an API endpoint
   (or feature) is updated, removed or replaced. It provides a clear alert, with a link to documentation, as well as
   ample opportunity for developers to implement the update.
