@@ -1,11 +1,11 @@
 ---
-id: 2024-06-27-dotkernel-a-replacement-for-laminas-api-tools
+id: 2024-07-02-dotkernel-a-replacement-for-laminas-api-tools
 author: julian
 title: 'Dotkernel API: a replacement for legacy Laminas API Tools'
 draft: false
 public: true
-created: '2024-06-27T11:00:00-01:00'
-updated: '2024-06-27T11:00:00-01:00'
+created: '2024-07-02T11:00:00-01:00'
+updated: '2024-07-02T11:00:00-01:00'
 tags:
   - laminas api tools
 ---
