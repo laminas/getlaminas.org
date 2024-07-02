@@ -10,8 +10,13 @@ tags:
   - laminas api tools
 ---
 
-Technical Steering Committee for the Laminas Project decided to mark **Laminas API Tools (formerly Apigility)** as
-`security-only` and to recommend as alternative **DotKernel API**.
+The Technical Steering Committee for the Laminas Project has decided to mark **Laminas API Tools (formerly Apigility)**
+as `security-only`, indicating that no new features or enhancements will be developed and only security-related updates
+will be provided going forward. This decision is made in light of the evolving landscape of web API development and the
+desire to ensure that users have access to modern, fully supported tools. As an alternative, the committee recommends
+**DotKernel API**, a robust and actively maintained framework that offers enhanced features, better performance, and
+ongoing support to meet the needs of developers. This recommendation aims to facilitate a smooth transition for users
+seeking a reliable and future-proof solution for their API development needs.
 
 <!--- EXTENDED -->
 
