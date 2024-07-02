@@ -10,8 +10,8 @@ tags:
   - laminas api tools
 ---
 
-On Monday, **6 May 2024**, the Technical Steering Committee for the Laminas Project held its monthly meeting to discuss,
-among other things the **Laminas API Tools (formerly Apigility)** alternatives.
+Technical Steering Committee for the Laminas Project decided to mark **Laminas API Tools (formerly Apigility)** as
+`security-only` and to recommend as alternative **DotKernel API**.
 
 <!--- EXTENDED -->
 
