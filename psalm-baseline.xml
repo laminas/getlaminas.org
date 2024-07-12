@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.9.0@8b9ad1eb9e8b7d3101f949291da2b9f7767cd163">
+<files psalm-version="5.13.1@086b94371304750d1c673315321a55d15fc59015">
   <file src="bin/clear-config-cache.php">
     <MixedArgument>
       <code><![CDATA[$config['config_cache_path']]]></code>
@@ -41,6 +41,11 @@
     </MixedArgumentTypeCoercion>
     <MixedAssignment>
       <code><![CDATA[$this->collection]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="src/App/Console/WriteRepositoryData.php">
+    <MixedAssignment>
+      <code>$token</code>
     </MixedAssignment>
   </file>
   <file src="src/App/ContentParser/Document.php">
@@ -267,5 +272,10 @@
       <code>$action</code>
       <code>$first</code>
     </MixedAssignment>
+  </file>
+  <file src="vendor/symfony/console/Command/Command.php">
+    <PossiblyNullArgument>
+      <code>$name</code>
+    </PossiblyNullArgument>
   </file>
 </files>

@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var string $lastUpdated
+ * @var array $repositoryData
+ */
+
+$this->layout('layout::default', ['title' => 'Packages Custom Properties']);
+
+const GITHUB_URL = 'https://github.com/';
+
+$this->start('styles');
+$this->insert('blog::styles');
+$this->stop();
+
+$this->push('scripts');
+$this->insert('blog::scripts');
+$this->end();
+
+?>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h1>Packages Custom Properties</h1>
+        </div>
+    </div>
+
+    <div class="repository-container">
+        <?php foreach($repositoryData as $organization => $orgData): ?>
+            <div class="repository-organization <?= $organization ?>">
+                <h1><?= $organization ?></h1>
+                <div class="repository-card-container">
+                    <?php foreach($orgData as $i => $data): ?>
+                        <div class="repository-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a
+                                            target="_blank"
+                                            href="<?= GITHUB_URL . $organization . DIRECTORY_SEPARATOR . $data['name']
+                                            ?>">
+                                        <?= $data['name'] ?>
+                                    </a>
+                                </h5>
+                                <?php foreach ($data['properties'] as $property): ?>
+                                    <div class="repo-properties">
+                                        <p class="repo-property-name">
+                                            <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>:
+                                        </p>
+                                        <p class="repo-property-value"><?= $property['value'] ?></p>
+                                    </div>
+                                <?php endforeach;?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <p id="repository-last-updated">Last update: <?= $lastUpdated ?></p>
+</div>

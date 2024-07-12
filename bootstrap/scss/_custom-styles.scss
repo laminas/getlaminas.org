@@ -188,3 +188,74 @@ article {
         background: $dropdown-link-active-bg;
     }
 }
+
+/*
+ * Repository data section
+ */
+.repository-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media(max-width:600px) {
+    .repository-container {
+        flex-direction: column;
+    }
+}
+
+.repo-property-name.active {
+    --repo-value: #03711d;
+}
+
+.repo-property-name.false {
+    --repo-value: #6c2e2e;
+}
+
+.repository-organization.laminas {
+    --org-color: #E64010FF;
+}
+
+.repository-organization.laminas-api-tools {
+    --org-color: #C71F38;
+}
+
+.repository-organization.mezzio {
+    --org-color: #009655FF;
+}
+
+.repository-organization {
+    border: 1px solid var(--org-color);
+    border-radius: .25rem;
+    height: fit-content;
+
+    h1 {
+        color: white;
+        font-size: 1.5rem;
+        border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+        background-color: var(--org-color);
+        padding: .75rem 1.25rem;
+    }
+
+    .repository-card-container {
+    }
+
+    .repo-properties {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .repo-property-name {
+        font-weight: bold;
+    }
+
+    .card-body {
+        padding: .75rem;
+    }
+}
+
+#repository-last-updated {
+    font-style: italic;
+    font-size: .8rem;
+}

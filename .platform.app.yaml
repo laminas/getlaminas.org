@@ -24,6 +24,9 @@ mounts:
   'data/cache':
     source: local
     source_path: data/cache
+  'public/share':
+    source: local
+    source_path: public/share
 
 hooks:
   build: |
@@ -52,22 +55,34 @@ hooks:
   deploy: |
     rm -f data/cache/config-cache.php
     if [ ! -e data/cache/releases.rss ];then cp templates/releases.rss data/cache/ ;fi
+    if [ "$PLATFORM_BRANCH" = staging ]; then
+      ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
+    fi
 
 crons:
-    snapshot:
-        # Take a snapshot automatically every night at 3 am (UTC).
-        spec: '0 3 * * *'
-        cmd: |
-            if [ "$PLATFORM_BRANCH" = master ]; then
-                platform snapshot:create --yes --no-wait
-            fi
-    renewcert:
-        # Force a redeploy at 8 am (UTC) on the 14th and 28th of every month.
-        spec: '0 8 14,28 * *'
-        cmd: |
-            if [ "$PLATFORM_BRANCH" = master ]; then
-                platform redeploy --yes --no-wait
-            fi
+  snapshot:
+    # Take a snapshot automatically every night at 3 am (UTC).
+    spec: '0 3 * * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = master ]; then
+          platform snapshot:create --yes --no-wait
+      fi
+  renewcert:
+    # Force a redeploy at 8 am (UTC) on the 14th and 28th of every month.
+    spec: '0 8 14,28 * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = master ]; then
+          platform redeploy --yes --no-wait
+      fi
+  generatedata:
+    # Refresh repository data every night at 2 am (UTC).
+    spec: '0 2 * * * *'
+    commands :
+      start: |
+        if [ "$PLATFORM_BRANCH" = staging ]; then
+           ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
+        fi
+    shutdown_timeout: 20
 
 web:
   locations:
