@@ -76,7 +76,7 @@ crons:
       fi
   generatedata:
     # Refresh repository data every night at 2 am (UTC).
-    spec: '0 2 * * * *'
+    spec: '0 2 * * *'
     commands :
       start: |
         if [ "$PLATFORM_BRANCH" = staging ]; then
