@@ -35,6 +35,7 @@ class ConfigProvider
             'commercial-vendors' => [],
             'dependencies'       => $this->getDependencies(),
             'templates'          => $this->getTemplates(),
+            'laminas-cli'        => $this->getConsoleConfig(),
         ];
     }
 
@@ -58,10 +59,20 @@ class ConfigProvider
             'factories'  => [
                 EventDispatcherInterface::class         => EventDispatcherFactory::class,
                 Handler\CommercialVendorsHandler::class => Handler\CommercialVendorsHandlerFactory::class,
+                Handler\CustomPropertiesHandler::class  => Handler\CustomPropertiesHandlerFactory::class,
                 Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
                 Handler\StaticPageHandler::class        => Handler\StaticPageHandlerFactory::class,
                 LoggerInterface::class                  => AccessLoggerFactory::class,
                 PlatesEngine::class                     => PlatesEngineFactory::class,
+            ],
+        ];
+    }
+
+    public function getConsoleConfig(): array
+    {
+        return [
+            'commands' => [
+                'repository:generate-data' => Console\WriteRepositoryData::class,
             ],
         ];
     }
@@ -97,6 +108,7 @@ class ConfigProvider
         $app->get($basePath . 'participate[/]', Handler\StaticPageHandler::class, 'community.participate');
         $app->get($basePath . 'support[/]', Handler\StaticPageHandler::class, 'app.support');
         $app->get($basePath . 'commercial-vendor-program[/]', Handler\CommercialVendorsHandler::class, 'app.commercial-vendor-program');
+        $app->get($basePath . 'packages-custom-properties[/]', Handler\CustomPropertiesHandler::class, 'app.packages-custom-properties');
         // phpcs:enable Generic.Files.LineLength.TooLong
     }
 }
