@@ -83,9 +83,7 @@ class WriteRepositoryData extends Command
             assert(isset($variables['REPO_TOKEN']));
 
             $token = $variables['REPO_TOKEN'];
-            assert(is_string($token));
         }
-
         assert(is_string($token));
 
         $this->generateDataFile($userAgent, $token);
