@@ -45,12 +45,14 @@ $this->end();
                                     </a>
                                 </h5>
                                 <?php foreach ($data['properties'] as $property): ?>
-                                    <div class="repo-properties">
-                                        <p class="repo-property-name">
-                                            <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>
-                                        </p>
-                                        <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
-                                    </div>
+                                    <?php if ($property['value'] !== null && ! in_array($property['property_name'], ['is-deprecated', 'is-published-component'], true)) : ?>
+                                        <div class="repo-properties">
+                                            <p class="repo-property-name">
+                                                <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>
+                                            </p>
+                                            <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
+                                        </div>
+                                    <?php endif?>
                                 <?php endforeach;?>
                             </div>
                         </div>
