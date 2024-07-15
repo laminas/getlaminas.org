@@ -60,36 +60,36 @@ footer {
 .jumbotron {
     border-radius: 0;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
     background-position: 50% 50%;
-} 
+}
 
 .jumbotron-home-page {
     background-image: url(/images/pictures/home-page.jpg);
-} 
-
-.jumbotron-join { 
-    background-image: url(/images/pictures/join.jpg);  
 }
 
-.jumbotron-join-thank-you { 
-    background-image: url(/images/pictures/join-thank-you.jpg); 
+.jumbotron-join {
+    background-image: url(/images/pictures/join.jpg);
 }
 
-.jumbotron-404 { 
-    background-image: url(/images/pictures/404.jpg); 
+.jumbotron-join-thank-you {
+    background-image: url(/images/pictures/join-thank-you.jpg);
+}
+
+.jumbotron-404 {
+    background-image: url(/images/pictures/404.jpg);
 }
 
 .lead-box {
-    padding: 5rem; 
+    padding: 5rem;
     background-color: #e9ecef;
     opacity: 0.7;
     @include media-breakpoint-down(sm) {
         padding: map_get($spacers, 3) * 1.25;
     }
-} 
+}
 
-.teardrop.card { 
+.teardrop.card {
     border-top-left-radius: 0;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
@@ -103,40 +103,40 @@ footer {
     }
 }
 
-.teardrop .card-header { 
+.teardrop .card-header {
     border-bottom: none;
-    padding-top: 2rem; 
+    padding-top: 2rem;
 }
 
-.btn { 
+.btn {
     color: #dee2e6;
 }
 
-.btn.btn-social { 
+.btn.btn-social {
     color: $success;
-} 
+}
 
-.btn.btn-social:hover { 
+.btn.btn-social:hover {
     color: #ffffff;
-} 
-
-.blockquote { 
-    border-left: 5px solid #013755; 
 }
 
-a { 
+.blockquote {
+    border-left: 5px solid #013755;
+}
+
+a {
     color: $success;
 }
 
-footer a { 
+footer a {
     color: $success;
 }
 
-footer a:visited { 
+footer a:visited {
     color: $success;
 }
 
-footer a:hover { 
+footer a:hover {
     color: #ffffff;
 }
 
@@ -205,12 +205,20 @@ article {
     }
 }
 
-.repo-property-name.active {
-    --repo-value: #03711d;
+.repo-property-value.active, {
+    --prop-value-color: #4cc61e;
 }
 
-.repo-property-name.false {
-    --repo-value: #6c2e2e;
+.repo-property-value:not(.active) {
+    --prop-value-color: #cda519;
+}
+
+.repo-property-value.is-deprecated.false {
+    --prop-value-color: #4cc61e;
+}
+
+.repo-property-value.is-deprecated.true {
+    --prop-value-color: #d43442;
 }
 
 .repository-organization.laminas {
@@ -229,6 +237,7 @@ article {
     border: 1px solid var(--org-color);
     border-radius: .25rem;
     height: fit-content;
+    flex: 1 1 0px;
 
     h1 {
         color: white;
@@ -238,16 +247,26 @@ article {
         padding: .75rem 1.25rem;
     }
 
-    .repository-card-container {
-    }
-
     .repo-properties {
         display: flex;
-        gap: 1rem;
+        line-height: 1.8;
     }
 
     .repo-property-name {
-        font-weight: bold;
+        font-size: .75rem;
+        background-color: #4e4e4e;
+        color: #fff;
+        border-radius: .25rem 0 0 .25rem;
+        padding: 0 .15rem
+    }
+
+    .repo-property-value {
+        font-size: .75rem;
+        background-color: var(--prop-value-color, #cda519);
+        color: #fff;
+        border-color: var(--prop-value-color, #cda519);
+        border-radius: 0 .25rem .25rem 0;
+        padding: 0 .15rem;
     }
 
     .card-body {
