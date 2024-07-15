@@ -25,6 +25,7 @@ use function is_string;
 use function json_decode;
 use function json_encode;
 use function sprintf;
+use function urlencode;
 
 use const CURLOPT_FOLLOWLOCATION;
 use const CURLOPT_HTTPHEADER;
@@ -108,11 +109,12 @@ class WriteRepositoryData extends Command
 
         /** @var string $org */
         foreach ($this->orgs as $org) {
-            $perPage = 100;
-            $page    = 1;
+            $perPage    = 100;
+            $page       = 1;
+            $visibility = urlencode('is:public');
 
             do {
-                $query = "per_page=$perPage&page=$page";
+                $query = "q=$$visibility&per_page=$perPage&page=$page";
                 $url   = "https://api.github.com/orgs/" . $org . "/properties/values?$query";
 
                 curl_setopt($curl, CURLOPT_URL, $url);
@@ -129,12 +131,27 @@ class WriteRepositoryData extends Command
                         continue;
                     }
 
+                    $propertyResult = [];
+                    /** @var array $propertyData */
+                    foreach ($value['properties'] as $propertyData) {
+                        if ($propertyData['property_name'] === 'is-published-component') {
+                            if ($propertyData['value'] === 'true') {
+                                continue;
+                            } else {
+                                continue 2;
+                            }
+                        }
+
+                        if ($propertyData['value'] !== null) {
+                            $propertyResult[] = $propertyData;
+                        }
+                    }
+
                     $singleResult[$org][] = [
                         'name'       => $value['repository_name'],
-                        'properties' => $value['properties'],
+                        'properties' => $propertyResult,
                     ];
                 }
-
                 $page++;
             } while (count($decodedRes) === $perPage);
         }

@@ -47,9 +47,9 @@ $this->end();
                                 <?php foreach ($data['properties'] as $property): ?>
                                     <div class="repo-properties">
                                         <p class="repo-property-name">
-                                            <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>:
+                                            <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>
                                         </p>
-                                        <p class="repo-property-value"><?= $property['value'] ?></p>
+                                        <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
                                     </div>
                                 <?php endforeach;?>
                             </div>

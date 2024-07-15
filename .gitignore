@@ -8,5 +8,6 @@ coveralls-upload.json
 phpunit.xml
 public/css/*
 public/js/*
+public/share/properties.json
 var/
 vendor/
