@@ -28,6 +28,39 @@ $this->end();
         </div>
     </div>
 
+    <div id="repository-legend">
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value active">active</p>
+            </div>
+            <p class="repo-legend-text">The repository is actively being supported</p>
+        </div>
+
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value security-only">maintenance-only</p>
+            </div>
+            <p class="repo-legend-text">The repository is only receiving support for bugs and security features</p>
+        </div>
+
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value security-only">security-only</p>
+            </div>
+            <p class="repo-legend-text">The repository is only receiving critical security support</p>
+        </div>
+
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value discontinued">discontinued</p>
+            </div>
+            <p class="repo-legend-text">The repository is no longer being supported</p>
+        </div>
+    </div>
     <div class="repository-container">
         <?php foreach($repositoryData as $organization => $orgData): ?>
             <div class="repository-organization <?= $organization ?>">
@@ -50,7 +83,13 @@ $this->end();
                                             <p class="repo-property-name">
                                                 <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>
                                             </p>
-                                            <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
+                                            <?php if ($property['property_name'] === 'maintenance-mode-minutes') : ?>
+                                                <a href="<?= sprintf('https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s', $organization, $property['value']) ?>" target="_blank">
+                                                    <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
+                                                </a>
+                                            <?php else: ?>
+                                                <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
+                                            <?php endif ?>
                                         </div>
                                     <?php endif?>
                                 <?php endforeach;?>

@@ -213,6 +213,10 @@ article {
     --prop-value-color: #cda519;
 }
 
+.repo-property-value.discontinued, {
+    --prop-value-color: #d43442;
+}
+
 .repo-property-value.is-deprecated.false {
     --prop-value-color: #4cc61e;
 }
@@ -247,31 +251,64 @@ article {
         padding: .75rem 1.25rem;
     }
 
-    .repo-properties {
-        display: flex;
-        line-height: 1.8;
-    }
-
-    .repo-property-name {
-        font-size: .75rem;
-        background-color: #4e4e4e;
-        color: #fff;
-        border-radius: .25rem 0 0 .25rem;
-        padding: 0 .15rem
-    }
-
-    .repo-property-value {
-        font-size: .75rem;
-        background-color: var(--prop-value-color, #cda519);
-        color: #fff;
-        border-color: var(--prop-value-color, #cda519);
-        border-radius: 0 .25rem .25rem 0;
-        padding: 0 .15rem;
-    }
-
     .card-body {
         padding: 0 .75rem;
     }
+}
+
+.repo-properties {
+    display: flex;
+    line-height: 1.8;
+}
+
+#repository-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: .5rem;
+    margin-bottom: .5rem;
+
+    :last-child * {
+        margin-bottom: 0;
+    }
+
+    .legend-item {
+        display: flex;
+    }
+
+    .repo-legend-text {
+        margin-left: 1rem;
+        line-height: normal;
+    }
+
+    @media(max-width:600px) {
+        .legend-item {
+            flex-direction: column;
+        }
+
+        .repo-legend-text {
+            margin-left: 0;
+        }
+    }
+}
+
+.repo-property-name {
+    font-size: .75rem;
+    background-color: #4e4e4e;
+    color: #fff;
+    border-radius: .25rem 0 0 .25rem;
+    padding: 0 .15rem
+}
+
+.repo-property-value {
+    font-size: .75rem;
+    background-color: var(--prop-value-color, #cda519);
+    color: #fff;
+    border-color: var(--prop-value-color, #cda519);
+    border-radius: 0 .25rem .25rem 0;
+    padding: 0 .15rem;
 }
 
 #repository-last-updated {

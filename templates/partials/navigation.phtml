@@ -43,6 +43,11 @@ declare(strict_types=1);
                        href="<?= $this->url('community.participate') ?>"
                        href="<?= $this->url('community.participate') ?>">Community</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link<?= str_starts_with($this->url(), $this->url('app.packages-custom-properties')) ? ' active' : '' ?>"
+                       href="<?= $this->url('app.packages-custom-properties') ?>"
+                       href="<?= $this->url('app.packages-custom-properties') ?>">Packages</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle<?= str_starts_with($this->url(), $this->url('app.support')) || str_starts_with($this->url(), $this->url('app.commercial-vendor-program')) ? ' active' : '' ?>"
                        href="<?= $this->url('app.support') ?>"
