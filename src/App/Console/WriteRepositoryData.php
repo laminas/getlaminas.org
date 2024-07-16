@@ -19,12 +19,13 @@ use function curl_setopt;
 use function date;
 use function file_put_contents;
 use function getcwd;
-use function in_array;
 use function is_array;
 use function is_string;
 use function json_decode;
 use function json_encode;
+use function mb_strtolower;
 use function sprintf;
+use function str_contains;
 use function urlencode;
 
 use const CURLOPT_FOLLOWLOCATION;
@@ -47,8 +48,6 @@ class WriteRepositoryData extends Command
         'laminas-api-tools',
         'mezzio',
     ];
-
-    private array $exceptions = [];
 
     public function __construct()
     {
@@ -125,9 +124,16 @@ class WriteRepositoryData extends Command
                 $decodedRes = json_decode($curlResult, true);
                 assert(is_array($decodedRes));
 
-                /** @var array $value */
+                /**
+                 * @var array{
+                 *     repository_id: int,
+                 *     repository_name: string,
+                 *     repository_full_name: string,
+                 *     properties: array
+                 *  } $value
+                 */
                 foreach ($decodedRes as $value) {
-                    if (in_array($value['repository_name'], $this->exceptions)) {
+                    if (str_contains(mb_strtolower($value['repository_name']), 'ghsa')) {
                         continue;
                     }
 
@@ -148,13 +154,12 @@ class WriteRepositoryData extends Command
                 $page++;
             } while (count($decodedRes) === $perPage);
         }
+        curl_close($curl);
 
         file_put_contents(
             sprintf('%s/%s', $this->cachePath, $this->propsFile),
             json_encode($singleResult, JSON_PRETTY_PRINT),
             FILE_USE_INCLUDE_PATH
         );
-
-        curl_close($curl);
     }
 }
