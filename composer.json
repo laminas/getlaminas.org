@@ -36,6 +36,7 @@
     "require": {
         "php": "~8.2.0",
         "ext-pdo": "*",
+        "ext-curl": "*",
         "dflydev/fig-cookies": "^3.1.0",
         "laminas/laminas-cli": "^1.10.0",
         "laminas/laminas-component-installer": "^3.4.0",

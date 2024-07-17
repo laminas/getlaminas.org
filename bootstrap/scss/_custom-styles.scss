@@ -60,36 +60,36 @@ footer {
 .jumbotron {
     border-radius: 0;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
     background-position: 50% 50%;
-} 
+}
 
 .jumbotron-home-page {
     background-image: url(/images/pictures/home-page.jpg);
-} 
-
-.jumbotron-join { 
-    background-image: url(/images/pictures/join.jpg);  
 }
 
-.jumbotron-join-thank-you { 
-    background-image: url(/images/pictures/join-thank-you.jpg); 
+.jumbotron-join {
+    background-image: url(/images/pictures/join.jpg);
 }
 
-.jumbotron-404 { 
-    background-image: url(/images/pictures/404.jpg); 
+.jumbotron-join-thank-you {
+    background-image: url(/images/pictures/join-thank-you.jpg);
+}
+
+.jumbotron-404 {
+    background-image: url(/images/pictures/404.jpg);
 }
 
 .lead-box {
-    padding: 5rem; 
+    padding: 5rem;
     background-color: #e9ecef;
     opacity: 0.7;
     @include media-breakpoint-down(sm) {
         padding: map_get($spacers, 3) * 1.25;
     }
-} 
+}
 
-.teardrop.card { 
+.teardrop.card {
     border-top-left-radius: 0;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
@@ -103,40 +103,40 @@ footer {
     }
 }
 
-.teardrop .card-header { 
+.teardrop .card-header {
     border-bottom: none;
-    padding-top: 2rem; 
+    padding-top: 2rem;
 }
 
-.btn { 
+.btn {
     color: #dee2e6;
 }
 
-.btn.btn-social { 
+.btn.btn-social {
     color: $success;
-} 
+}
 
-.btn.btn-social:hover { 
+.btn.btn-social:hover {
     color: #ffffff;
-} 
-
-.blockquote { 
-    border-left: 5px solid #013755; 
 }
 
-a { 
+.blockquote {
+    border-left: 5px solid #013755;
+}
+
+a {
     color: $success;
 }
 
-footer a { 
+footer a {
     color: $success;
 }
 
-footer a:visited { 
+footer a:visited {
     color: $success;
 }
 
-footer a:hover { 
+footer a:hover {
     color: #ffffff;
 }
 
@@ -187,4 +187,141 @@ article {
     &:active {
         background: $dropdown-link-active-bg;
     }
+}
+
+/*
+ * Repository data section
+ */
+.repository-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media(max-width:600px) {
+    .repository-container {
+        flex-direction: column;
+    }
+}
+
+.repo-property-value.active, {
+    --prop-value-color: #4cc61e;
+}
+
+.repo-property-value:not(.active) {
+    --prop-value-color: #cda519;
+}
+
+.repo-property-value.discontinued, {
+    --prop-value-color: #d43442;
+}
+
+.repo-property-value.is-deprecated.false {
+    --prop-value-color: #4cc61e;
+}
+
+.repo-property-value.is-deprecated.true {
+    --prop-value-color: #d43442;
+}
+
+.repository-organization.laminas {
+    --org-color: #E64010FF;
+}
+
+.repository-organization.laminas-api-tools {
+    --org-color: #e5007d;
+}
+
+.repository-organization.mezzio {
+    --org-color: #009655FF;
+}
+
+.repository-organization {
+    border: 1px solid var(--org-color);
+    border-radius: .25rem;
+    height: fit-content;
+    flex: 1 1 0px;
+
+    h1 {
+        color: white;
+        font-size: 1.5rem;
+        border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+        background-color: var(--org-color);
+        padding: .75rem 1.25rem;
+    }
+
+    .card-body {
+        padding: .15rem .75rem;
+    }
+}
+
+.repo-properties {
+    display: flex;
+    line-height: 1.8;
+}
+
+#repository-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: .5rem;
+    margin-bottom: .5rem;
+
+    :last-child * {
+        margin-bottom: 0;
+    }
+
+    .legend-item {
+        display: flex;
+    }
+
+    .repo-legend-text {
+        margin-left: 1rem;
+        line-height: normal;
+    }
+
+    @media(max-width:600px) {
+        .legend-item {
+            flex-direction: column;
+        }
+
+        .repo-legend-text {
+            margin-left: 0;
+        }
+    }
+}
+
+.repo-property-name {
+    font-size: .75rem;
+    background-color: #4e4e4e;
+    color: #fff;
+    border-radius: .25rem 0 0 .25rem;
+    padding: 0 .15rem
+}
+
+.repo-property-value {
+    font-size: .75rem;
+    background-color: var(--prop-value-color, #cda519);
+    color: #fff;
+    border-color: var(--prop-value-color, #cda519);
+    border-radius: 0 .25rem .25rem 0;
+    padding: 0 .15rem;
+}
+
+.repository-data-text {
+    font-size: .8rem;
+    line-height: normal;
+    margin-bottom: .5rem;
+}
+
+#repository-last-updated {
+    font-style: italic;
+    font-size: .8rem;
+}
+
+.repository-card {
+    border-bottom: 1px solid rgba(0,0,0,.125) ;
 }

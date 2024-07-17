@@ -1,0 +1,138 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var string $lastUpdated
+ * @var array $repositoryData
+ */
+
+$this->layout('layout::default', ['title' => 'Current Maintenance Status of Laminas & Mezzio Packages']);
+
+const GITHUB_URL = 'https://github.com/';
+
+$this->start('styles');
+$this->insert('blog::styles');
+$this->stop();
+
+$this->push('scripts');
+$this->insert('blog::scripts');
+$this->end();
+
+?>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h1>Current Maintenance Status of Laminas & Mezzio Packages</h1>
+        </div>
+    </div>
+
+    <div id="repository-legend">
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value active">active</p>
+            </div>
+            <p class="repo-legend-text">The repository is actively being supported</p>
+        </div>
+
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value security-only">maintenance-only</p>
+            </div>
+            <p class="repo-legend-text">The repository is only receiving support for bugs and security features</p>
+        </div>
+
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value security-only">security-only</p>
+            </div>
+            <p class="repo-legend-text">The repository is only receiving critical security support</p>
+        </div>
+
+        <div class="legend-item">
+            <div class="repo-properties">
+                <p class="repo-property-name">Maintenance Mode</p>
+                <p class="repo-property-value discontinued">discontinued</p>
+            </div>
+            <p class="repo-legend-text">The repository is no longer being supported</p>
+        </div>
+    </div>
+    <div class="repository-container">
+        <?php foreach($repositoryData as $organization => $orgData): ?>
+            <div class="repository-organization <?= $organization ?>">
+                <h1><?= $organization ?></h1>
+                <div class="repository-card-container">
+                    <?php
+                    /** @var array $data */
+                    foreach($orgData as $data) :
+                        ?>
+                        <div class="repository-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a
+                                            target="_blank"
+                                            href="<?= GITHUB_URL . $organization . DIRECTORY_SEPARATOR . $data['name']
+                                            ?>">
+                                        <?= $data['name'] ?>
+                                    </a>
+                                </h5>
+                                <?php
+                                $badgeLabel  = null;
+                                $badgeValue  = null;
+                                $minutesDate = null;
+                                $minutesFile = null;
+                                $minutesUrl  = null;
+                                /** @var array $property */
+                                foreach ($data['properties'] as $property) {
+                                    if ($property['property_name'] === 'maintenance-mode') {
+                                        $badgeLabel = ucwords(str_replace('-', ' ', $property['property_name']));
+                                        $badgeValue = $property['value'];
+                                    }
+
+                                    if ($property['property_name'] === 'maintenance-mode-date') {
+                                        $minutesDate = $property['value'];
+                                    }
+
+                                    if ($property['property_name'] === 'maintenance-mode-minutes') {
+                                        $minutesFile = $property['value'];
+                                        $minutesUrl  = sprintf('https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s', $organization, $minutesFile);
+                                    }
+                                }
+                                ?>
+
+                                <?php if ($badgeLabel !== null) : ?>
+                                    <div class="repo-properties">
+                                        <div class="repo-properties">
+                                            <p class="repo-property-name">
+                                                <?= $badgeLabel ?>
+                                            </p>
+                                            <p class="repo-property-value <?= $badgeLabel . ' ' . $badgeValue ?>"><?= $badgeValue ?></p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($minutesDate !== null) : ?>
+                                    <p class="repository-data-text">
+                                        Maintenance mode changed on: <?= $minutesDate ?>.
+                                    </p>
+                                    <?php if ($minutesFile !== null) : ?>
+                                        <p class="repository-data-text">
+                                            See <a href="<?= $minutesUrl ?>" target="_blank">
+                                                <?= $minutesFile ?>
+                                            </a>
+                                        </p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <p id="repository-last-updated">Last update: <?= $lastUpdated ?></p>
+</div>
