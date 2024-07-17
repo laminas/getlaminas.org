@@ -15,8 +15,6 @@ variables:
     NODE_VERSION: v18.15.0
 
 dependencies:
-  php:
-    "composer/composer": "~2.5.8"
   nodejs:
     gulp-cli: '~2.3.0'
 
