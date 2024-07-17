@@ -108,7 +108,7 @@ class ConfigProvider
         $app->get($basePath . 'participate[/]', Handler\StaticPageHandler::class, 'community.participate');
         $app->get($basePath . 'support[/]', Handler\StaticPageHandler::class, 'app.support');
         $app->get($basePath . 'commercial-vendor-program[/]', Handler\CommercialVendorsHandler::class, 'app.commercial-vendor-program');
-        $app->get($basePath . 'packages-custom-properties[/]', Handler\CustomPropertiesHandler::class, 'app.packages-custom-properties');
+        $app->get($basePath . 'packages-maintenance-status[/]', Handler\CustomPropertiesHandler::class, 'app.packages-maintenance-status');
         // phpcs:enable Generic.Files.LineLength.TooLong
     }
 }
