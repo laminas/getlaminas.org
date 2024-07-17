@@ -36,6 +36,10 @@
     </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/App/AbstractCollection.php">
+    <MissingClassConstType>
+      <code><![CDATA[CACHE_FILE = '']]></code>
+      <code><![CDATA[FOLDER_COLLECTION = '']]></code>
+    </MissingClassConstType>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[uasort($this->collection, [$this, 'order'])]]></code>
     </MixedArgumentTypeCoercion>
@@ -44,6 +48,10 @@
     </MixedAssignment>
   </file>
   <file src="src/App/Console/WriteRepositoryData.php">
+    <MissingClassConstType>
+      <code><![CDATA[ARGUMENT_TOKEN      = 'token']]></code>
+      <code><![CDATA[ARGUMENT_USER_AGENT = 'userAgent']]></code>
+    </MissingClassConstType>
     <MixedAssignment>
       <code><![CDATA[$token]]></code>
     </MixedAssignment>
@@ -58,6 +66,11 @@
     <PossiblyFalseArgument>
       <code><![CDATA[$routeResult->getMatchedRouteName()]]></code>
     </PossiblyFalseArgument>
+  </file>
+  <file src="src/App/LoggingErrorListener.php">
+    <MissingClassConstType>
+      <code><![CDATA[LOG_STRING = '{status} [{method}] {uri}: {error}']]></code>
+    </MissingClassConstType>
   </file>
   <file src="src/App/Template/InjectAssetRevisionsDelegator.php">
     <MixedAssignment>
@@ -254,6 +267,12 @@
       <code><![CDATA[$version]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
+  <file src="src/Security/Advisory.php">
+    <MissingClassConstType>
+      <code><![CDATA[CACHE_FILE        = 'var/advisories.php']]></code>
+      <code><![CDATA[FOLDER_COLLECTION = 'data/advisories']]></code>
+    </MissingClassConstType>
+  </file>
   <file src="src/Security/Handler/AdvisoryHandler.php">
     <MixedArgument>
       <code><![CDATA[$advisory]]></code>
@@ -264,6 +283,10 @@
     </MixedAssignment>
   </file>
   <file src="src/Security/Handler/SecurityHandler.php">
+    <MissingClassConstType>
+      <code><![CDATA[ADVISORY_PER_FEED = 15]]></code>
+      <code><![CDATA[ADVISORY_PER_PAGE = 10]]></code>
+    </MissingClassConstType>
     <MixedArgument>
       <code><![CDATA[$action]]></code>
       <code><![CDATA[$content['body'] ?? '']]></code>
