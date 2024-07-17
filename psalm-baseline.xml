@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.13.1@086b94371304750d1c673315321a55d15fc59015">
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
   <file src="bin/clear-config-cache.php">
     <MixedArgument>
       <code><![CDATA[$config['config_cache_path']]]></code>
@@ -11,7 +11,7 @@
   </file>
   <file src="config/container.php">
     <MixedArgument>
-      <code>$dependencies</code>
+      <code><![CDATA[$dependencies]]></code>
     </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$dependencies['services']]]></code>
@@ -21,15 +21,15 @@
       <code><![CDATA[$dependencies['services']['config']]]></code>
     </MixedArrayAssignment>
     <MixedAssignment>
-      <code>$dependencies</code>
+      <code><![CDATA[$dependencies]]></code>
     </MixedAssignment>
   </file>
   <file src="public/index.php">
     <MixedArgument>
-      <code>$factory</code>
+      <code><![CDATA[$factory]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$factory</code>
+      <code><![CDATA[$factory]]></code>
     </MixedAssignment>
     <PossiblyUndefinedArrayOffset>
       <code><![CDATA[$_SERVER['SCRIPT_FILENAME']]]></code>
@@ -45,13 +45,13 @@
   </file>
   <file src="src/App/Console/WriteRepositoryData.php">
     <MixedAssignment>
-      <code>$token</code>
+      <code><![CDATA[$token]]></code>
     </MixedAssignment>
   </file>
   <file src="src/App/ContentParser/Document.php">
     <MixedReturnTypeCoercion>
       <code><![CDATA[(array) $this->renderedContent->getFrontMatter()]]></code>
-      <code>array</code>
+      <code><![CDATA[array]]></code>
     </MixedReturnTypeCoercion>
   </file>
   <file src="src/App/Handler/StaticPageHandler.php">
@@ -61,12 +61,12 @@
   </file>
   <file src="src/App/Template/InjectAssetRevisionsDelegator.php">
     <MixedAssignment>
-      <code>$revisions</code>
+      <code><![CDATA[$revisions]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/BlogPost.php">
     <MixedPropertyTypeCoercion>
-      <code>$tags</code>
+      <code><![CDATA[$tags]]></code>
     </MixedPropertyTypeCoercion>
   </file>
   <file src="src/Blog/Console/FeedGenerator.php">
@@ -74,46 +74,43 @@
       <code><![CDATA[$latest->updated]]></code>
     </ArgumentTypeCoercion>
     <MixedArgument>
-      <code>$baseUri</code>
+      <code><![CDATA[$baseUri]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$baseUri</code>
-      <code>$outputDir</code>
-      <code>$post</code>
+      <code><![CDATA[$baseUri]]></code>
+      <code><![CDATA[$outputDir]]></code>
+      <code><![CDATA[$post]]></code>
     </MixedAssignment>
     <MixedOperand>
-      <code>$outputDir</code>
+      <code><![CDATA[$outputDir]]></code>
     </MixedOperand>
   </file>
   <file src="src/Blog/Console/GenerateSearchData.php">
     <MixedArgument>
-      <code>$basePath</code>
+      <code><![CDATA[$basePath]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$basePath</code>
+      <code><![CDATA[$basePath]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/Console/RoutesTrait.php">
     <ArgumentTypeCoercion>
-      <code>$path</code>
+      <code><![CDATA[$path]]></code>
     </ArgumentTypeCoercion>
-    <UndefinedFunction>
-      <code><![CDATA[RuntimeException('This should never be called')]]></code>
-    </UndefinedFunction>
   </file>
   <file src="src/Blog/Console/SeedBlogDatabase.php">
     <DocblockTypeContradiction>
       <code><![CDATA[(new DateTimeImmutable('now'))->getTimestamp()]]></code>
     </DocblockTypeContradiction>
     <MixedArgument>
-      <code>$basePath</code>
-      <code>$dbPath</code>
-      <code>$postsPath</code>
+      <code><![CDATA[$basePath]]></code>
+      <code><![CDATA[$dbPath]]></code>
+      <code><![CDATA[$postsPath]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$basePath</code>
-      <code>$dbPath</code>
-      <code>$postsPath</code>
+      <code><![CDATA[$basePath]]></code>
+      <code><![CDATA[$dbPath]]></code>
+      <code><![CDATA[$postsPath]]></code>
       <code><![CDATA[$this->authorDataRootPath]]></code>
     </MixedAssignment>
     <RedundantConditionGivenDocblockType>
@@ -127,6 +124,9 @@
     <DocblockTypeContradiction>
       <code><![CDATA[explode('|', trim((string) $post['tags'], '|'))]]></code>
     </DocblockTypeContradiction>
+    <InvalidCast>
+      <code><![CDATA[$post['tags']]]></code>
+    </InvalidCast>
     <MixedArgument>
       <code><![CDATA[$metadata['email'] ?? '']]></code>
       <code><![CDATA[$metadata['name'] ?? 'no-reply@getlaminas.org']]></code>
@@ -139,7 +139,7 @@
       <code><![CDATA[$metadata['uri']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$metadata</code>
+      <code><![CDATA[$metadata]]></code>
     </MixedAssignment>
     <RedundantCastGivenDocblockType>
       <code><![CDATA[(bool) $post['draft']]]></code>
@@ -151,37 +151,41 @@
   </file>
   <file src="src/Blog/Handler/DisplayPostHandler.php">
     <MixedArgument>
-      <code>$id</code>
+      <code><![CDATA[$id]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$id</code>
+      <code><![CDATA[$id]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/Handler/FeedHandler.php">
     <MixedArgument>
-      <code>$tag</code>
-      <code>$type</code>
-      <code>$type</code>
+      <code><![CDATA[$tag]]></code>
+      <code><![CDATA[$type]]></code>
+      <code><![CDATA[$type]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$tag</code>
-      <code>$type</code>
+      <code><![CDATA[$tag]]></code>
+      <code><![CDATA[$type]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/Handler/ListPostsHandler.php">
     <MixedArgument>
-      <code>$path</code>
-      <code>$path</code>
+      <code><![CDATA[$path]]></code>
+      <code><![CDATA[$path]]></code>
       <code><![CDATA[$request->getAttribute('tag', '')]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$page</code>
-      <code>$path</code>
+      <code><![CDATA[$page]]></code>
+      <code><![CDATA[$path]]></code>
     </MixedAssignment>
     <MixedMethodCall>
-      <code>getPath</code>
-      <code>getUri</code>
+      <code><![CDATA[getPath]]></code>
+      <code><![CDATA[getUri]]></code>
     </MixedMethodCall>
+    <PossiblyInvalidArgument>
+      <code><![CDATA[$tag]]></code>
+      <code><![CDATA[$tag]]></code>
+    </PossiblyInvalidArgument>
   </file>
   <file src="src/Blog/Handler/SearchHandler.php">
     <PossiblyNullArgument>
@@ -195,18 +199,18 @@
   </file>
   <file src="src/Blog/Mapper/PdoMapper.php">
     <MixedArgument>
-      <code>$post</code>
+      <code><![CDATA[$post]]></code>
     </MixedArgument>
     <MixedArgumentTypeCoercion>
-      <code>$params</code>
+      <code><![CDATA[$params]]></code>
     </MixedArgumentTypeCoercion>
     <MixedAssignment>
-      <code>$post</code>
+      <code><![CDATA[$post]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Blog/PlatesFunctionsDelegator.php">
     <MixedInferredReturnType>
-      <code>string</code>
+      <code><![CDATA[string]]></code>
     </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$this->template->url('blog.post', ['id' => $post->id])]]></code>
@@ -214,13 +218,12 @@
   </file>
   <file src="src/ReleaseFeed/ReceiveFeedItemHandler.php">
     <ArgumentTypeCoercion>
-      <code>$latest</code>
-      <code>$latest</code>
+      <code><![CDATA[$latest]]></code>
+      <code><![CDATA[$latest]]></code>
     </ArgumentTypeCoercion>
     <MixedArgument>
-      <code>$authorUrl</code>
+      <code><![CDATA[$authorUrl]]></code>
       <code><![CDATA[$data['author_name']]]></code>
-      <code><![CDATA[$data['author_url']]]></code>
       <code><![CDATA[$data['author_url']]]></code>
       <code><![CDATA[$data['changelog']]]></code>
       <code><![CDATA[$data['package']]]></code>
@@ -229,36 +232,40 @@
       <code><![CDATA[$data['version']]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$authorUrl</code>
+      <code><![CDATA[$authorUrl]]></code>
     </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[$data['author_url']]]></code>
+    </PossiblyFalseArgument>
     <PossiblyInvalidArgument>
-      <code>$data</code>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$data]]></code>
     </PossiblyInvalidArgument>
     <PossiblyNullArgument>
-      <code>$authorName</code>
-      <code>$authorName</code>
-      <code>$date</code>
+      <code><![CDATA[$authorName]]></code>
+      <code><![CDATA[$authorName]]></code>
+      <code><![CDATA[$data['author_url']]]></code>
+      <code><![CDATA[$date]]></code>
     </PossiblyNullArgument>
     <PossiblyNullArrayAccess>
       <code><![CDATA[$author['name']]]></code>
     </PossiblyNullArrayAccess>
     <PossiblyUndefinedArrayOffset>
-      <code>$version</code>
+      <code><![CDATA[$version]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Security/Handler/AdvisoryHandler.php">
     <MixedArgument>
-      <code>$advisory</code>
+      <code><![CDATA[$advisory]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$advisory</code>
+      <code><![CDATA[$advisory]]></code>
       <code><![CDATA[$content['advisory']]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Security/Handler/SecurityHandler.php">
     <MixedArgument>
-      <code>$action</code>
+      <code><![CDATA[$action]]></code>
       <code><![CDATA[$content['body'] ?? '']]></code>
       <code><![CDATA[$content['date'] ?? 'now']]></code>
       <code><![CDATA[$content['date'] ?? 'now']]></code>
@@ -269,13 +276,13 @@
       <code><![CDATA[$first['date']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$action</code>
-      <code>$first</code>
+      <code><![CDATA[$action]]></code>
+      <code><![CDATA[$first]]></code>
     </MixedAssignment>
   </file>
   <file src="vendor/symfony/console/Command/Command.php">
     <PossiblyNullArgument>
-      <code>$name</code>
+      <code><![CDATA[$name]]></code>
     </PossiblyNullArgument>
   </file>
 </files>
