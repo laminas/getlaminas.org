@@ -52,12 +52,12 @@
         "mezzio/mezzio-helpers": "^5.16.0",
         "mezzio/mezzio-platesrenderer": "^2.10.0",
         "mezzio/mezzio-problem-details": "^1.14.0",
-        "monolog/monolog": "^3.6.0",
+        "monolog/monolog": "^3.7.0",
         "phly/phly-configfactory": "^1.3.0",
         "phly/phly-event-dispatcher": "^1.4.0",
-        "spatie/yaml-front-matter": "^2.0.8",
-        "symfony/console": "^6.4.6",
-        "symfony/yaml": "^6.4.3"
+        "spatie/yaml-front-matter": "^2.0.9",
+        "symfony/console": "^6.4.9",
+        "symfony/yaml": "^6.4.8"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
