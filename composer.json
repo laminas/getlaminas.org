@@ -34,7 +34,7 @@
         "forum": "https://discourse.laminas.dev"
     },
     "require": {
-        "php": "~8.2.0",
+        "php": "~8.3.0",
         "ext-pdo": "*",
         "ext-curl": "*",
         "dflydev/fig-cookies": "^3.1.0",
