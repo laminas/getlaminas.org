@@ -40,7 +40,7 @@
         "dflydev/fig-cookies": "^3.1.0",
         "laminas/laminas-cli": "^1.10.0",
         "laminas/laminas-component-installer": "^3.4.0",
-        "laminas/laminas-config-aggregator": "^1.14.0",
+        "laminas/laminas-config-aggregator": "^1.15.0",
         "laminas/laminas-diactoros": "^3.3.1",
         "laminas/laminas-feed": "^2.22.0",
         "laminas/laminas-paginator": "^2.18.1",
