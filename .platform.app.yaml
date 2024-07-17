@@ -55,9 +55,7 @@ hooks:
   deploy: |
     rm -f data/cache/config-cache.php
     if [ ! -e data/cache/releases.rss ];then cp templates/releases.rss data/cache/ ;fi
-    if [ "$PLATFORM_BRANCH" = staging ]; then
-      ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
-    fi
+    ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
 
 crons:
   snapshot:
@@ -79,7 +77,7 @@ crons:
     spec: '0 2 * * *'
     commands :
       start: |
-        if [ "$PLATFORM_BRANCH" = staging ]; then
+        if [ "$PLATFORM_BRANCH" = master ]; then
            ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
         fi
     shutdown_timeout: 20
