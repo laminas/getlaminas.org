@@ -4,7 +4,7 @@
   "description": "getlaminas.org Bootstrap based theme",
   "repository": "https://github.com/laminas/getlaminas.org",
   "engines": {
-    "node": "^18"
+    "node": "^20.0.0"
   },
   "license": "BSD-3-Clause",
   "devDependencies": {
