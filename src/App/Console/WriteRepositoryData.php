@@ -27,6 +27,7 @@ use function mb_strtolower;
 use function sprintf;
 use function str_contains;
 use function urlencode;
+use function usort;
 
 use const CURLOPT_FOLLOWLOCATION;
 use const CURLOPT_HTTPHEADER;
@@ -45,8 +46,8 @@ class WriteRepositoryData extends Command
 
     private array $orgs = [
         'laminas',
-        'laminas-api-tools',
         'mezzio',
+        'laminas-api-tools',
     ];
 
     public function __construct()
@@ -153,6 +154,11 @@ class WriteRepositoryData extends Command
                 }
                 $page++;
             } while (count($decodedRes) === $perPage);
+            assert(is_array($singleResult[$org]));
+
+            usort($singleResult[$org], function (array $a, array $b) {
+                return $a['name'] <=> $b['name'];
+            });
         }
         curl_close($curl);
 

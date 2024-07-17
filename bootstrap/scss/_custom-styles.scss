@@ -230,7 +230,7 @@ article {
 }
 
 .repository-organization.laminas-api-tools {
-    --org-color: #C71F38;
+    --org-color: #e5007d;
 }
 
 .repository-organization.mezzio {
@@ -252,7 +252,7 @@ article {
     }
 
     .card-body {
-        padding: 0 .75rem;
+        padding: .15rem .75rem;
     }
 }
 
@@ -309,6 +309,12 @@ article {
     border-color: var(--prop-value-color, #cda519);
     border-radius: 0 .25rem .25rem 0;
     padding: 0 .15rem;
+}
+
+.repository-data-text {
+    font-size: .8rem;
+    line-height: normal;
+    margin-bottom: .5rem;
 }
 
 #repository-last-updated {

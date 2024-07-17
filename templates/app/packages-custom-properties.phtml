@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @var array $repositoryData
  */
 
-$this->layout('layout::default', ['title' => 'Packages Custom Properties']);
+$this->layout('layout::default', ['title' => 'Current Maintenance Status of Laminas & Mezzio Packages']);
 
 const GITHUB_URL = 'https://github.com/';
 
@@ -24,7 +24,7 @@ $this->end();
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-            <h1>Packages Custom Properties</h1>
+            <h1>Current Maintenance Status of Laminas & Mezzio Packages</h1>
         </div>
     </div>
 
@@ -66,7 +66,10 @@ $this->end();
             <div class="repository-organization <?= $organization ?>">
                 <h1><?= $organization ?></h1>
                 <div class="repository-card-container">
-                    <?php foreach($orgData as $i => $data): ?>
+                    <?php
+                    /** @var array $data */
+                    foreach($orgData as $data) :
+                        ?>
                         <div class="repository-card">
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -77,25 +80,56 @@ $this->end();
                                         <?= $data['name'] ?>
                                     </a>
                                 </h5>
-                                <?php foreach ($data['properties'] as $property): ?>
-                                    <?php if ($property['value'] !== null && ! in_array($property['property_name'], ['is-deprecated', 'is-published-component'], true)) : ?>
+                                <?php
+                                $badgeLabel  = null;
+                                $badgeValue  = null;
+                                $minutesDate = null;
+                                $minutesFile = null;
+                                $minutesUrl  = null;
+                                /** @var array $property */
+                                foreach ($data['properties'] as $property) {
+                                    if ($property['property_name'] === 'maintenance-mode') {
+                                        $badgeLabel = ucwords(str_replace('-', ' ', $property['property_name']));
+                                        $badgeValue = $property['value'];
+                                    }
+
+                                    if ($property['property_name'] === 'maintenance-mode-date') {
+                                        $minutesDate = $property['value'];
+                                    }
+
+                                    if ($property['property_name'] === 'maintenance-mode-minutes') {
+                                        $minutesFile = $property['value'];
+                                        $minutesUrl  = sprintf('https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s', $organization, $minutesFile);
+                                    }
+                                }
+                                ?>
+
+                                <?php if ($badgeLabel !== null) : ?>
+                                    <div class="repo-properties">
                                         <div class="repo-properties">
                                             <p class="repo-property-name">
-                                                <?= ucwords(str_replace('-', ' ', $property['property_name'])) ?>
+                                                <?= $badgeLabel ?>
                                             </p>
-                                            <?php if ($property['property_name'] === 'maintenance-mode-minutes') : ?>
-                                                <a href="<?= sprintf('https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s', $organization, $property['value']) ?>" target="_blank">
-                                                    <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
-                                                </a>
-                                            <?php else: ?>
-                                                <p class="repo-property-value  <?= $property['property_name'] . ' ' . $property['value'] ?>"><?= $property['value'] ?></p>
-                                            <?php endif ?>
+                                            <p class="repo-property-value <?= $badgeLabel . ' ' . $badgeValue ?>"><?= $badgeValue ?></p>
                                         </div>
-                                    <?php endif?>
-                                <?php endforeach;?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($minutesDate !== null) : ?>
+                                    <p class="repository-data-text">
+                                        Maintenance mode changed on: <?= $minutesDate ?>.
+                                    </p>
+                                    <?php if ($minutesFile !== null) : ?>
+                                        <p class="repository-data-text">
+                                            See <a href="<?= $minutesUrl ?>" target="_blank">
+                                                <?= $minutesFile ?>
+                                            </a>
+                                        </p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach ?>
                 </div>
             </div>
         <?php endforeach ?>
