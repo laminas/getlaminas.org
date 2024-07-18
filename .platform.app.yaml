@@ -1,6 +1,6 @@
 name: getlaminas_org
 
-type: php:8.2
+type: php:8.3
 
 size: S
 
@@ -11,12 +11,10 @@ build:
 
 variables:
   env:
-    NVM_VERSION: v0.39.3
-    NODE_VERSION: v18.15.0
+    NVM_VERSION: v0.39.7
+    NODE_VERSION: v20.11.1
 
 dependencies:
-  php:
-    "composer/composer": "~2.5.8"
   nodejs:
     gulp-cli: '~2.3.0'
 
