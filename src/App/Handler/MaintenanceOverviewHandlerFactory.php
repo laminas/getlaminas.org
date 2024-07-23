@@ -17,15 +17,21 @@ use function is_string;
 use function json_decode;
 use function sprintf;
 
-class CustomPropertiesHandlerFactory
+class MaintenanceOverviewHandlerFactory
 {
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container): CustomPropertiesHandler
+    public function __invoke(ContainerInterface $container): MaintenanceOverviewHandler
     {
-        $rawData        = file_get_contents(sprintf('%s/%s', getcwd() . "/public/share", 'properties.json'));
+        $rawData        = file_get_contents(
+            sprintf(
+                '%s/%s',
+                getcwd() . MaintenanceOverviewHandler::CUSTOM_PROPERTIES_DIRECTORY,
+                MaintenanceOverviewHandler::CUSTOM_PROPERTIES_FILE
+            )
+        );
         $repositoryData = json_decode($rawData, true);
         assert(is_array($repositoryData));
 
@@ -36,6 +42,6 @@ class CustomPropertiesHandlerFactory
         assert(is_string($lastUpdated));
         unset($repositoryData['last_updated']);
 
-        return new CustomPropertiesHandler($repositoryData, $lastUpdated, $renderer);
+        return new MaintenanceOverviewHandler($repositoryData, $lastUpdated, $renderer);
     }
 }

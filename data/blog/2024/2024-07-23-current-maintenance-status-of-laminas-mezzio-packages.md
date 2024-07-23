@@ -7,32 +7,30 @@ public: true
 created: '2024-07-23T11:00:00-01:00'
 updated: '2024-07-23T11:00:00-01:00'
 tags:
-  - laminas api tools
   - custom proprieties
   - maintenance status
 ---
 
-Laminas Project has created a large number of packages to serve the needs of the PHP community. Unfortunately, there is
-no aggregated place to see the status of each package easily. You would need to visit each one of them on GitHub and
-check out the *Custom Properties* page. And that is when you remember to do so...
+The Laminas Project has created a large number of packages to serve the needs of the PHP community.
+But what happens when you need to make sure that the package you want to use in your application is being actively
+maintained?
+Sure, you can check each package manually, but the most useful thing would be a full overview of this vital
+information.
 
 <!--- EXTENDED -->
 
 ### Laminas and Mezzio packages maintenance status at a glance
 
-The page below intends to provide a fast, accessible way to examine every package at a glance. It provides a column for
-each of the three organizations: Laminas, Api Tools and Mezzio.
-The page is automatically refreshed daily and is publicly available.
+The page below intends to provide exactly that - a fast, accessible way to examine every package at a glance. It
+contains columns for each of the three organizations: Laminas, Mezzio and Api Tools. The page automatically refreshes
+the package status daily, is sorted alphabetically and is publicly available.
 
 [**Current Maintenance Status of Laminas & Mezzio Packages**](https://getlaminas.org/packages-maintenance-status/)
 
-There is also a JSON version [**here**](https://getlaminas.org/share/properties.json). It contains the full list of
-properties for each package. Note that the properties differ between organizations.
+### Stay vigilant!
 
-Below is the meaning of each status. The non-active statuses may include the date when they were set and the Technical
-Steering Committee minute file where they were discussed.
-
-- **active** - The component is receiving regular updates and maintenance.
-- **maintenance-only** - The component is receiving only maintenance-related updates, but no new features.
-- **security-only** - The component is receiving only security-related updates, but no new features.
-- **discontinued** - The component has been abandoned, so it will receive no new updates.
+Things are constantly in motion, though, so you need to check on this page regularly to make sure that the packages you
+chose for your project are still reliable. If the status of a package changes from active to `maintenance-only`,
+`security-only` or is `discontinued`, you can quickly see it and take action.
+The handy link to the relevant Technical Steering Committee minute file details the reason for the status change and a
+recommended solution for moving forward.
