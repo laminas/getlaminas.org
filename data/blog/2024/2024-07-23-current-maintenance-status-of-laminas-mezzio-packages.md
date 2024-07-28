@@ -21,7 +21,7 @@ information.
 ### Laminas and Mezzio packages maintenance status at a glance
 
 The page below intends to provide exactly that - a fast, accessible way to examine every package at a glance. It
-contains columns for each of the three organizations: Laminas, Mezzio and Api Tools. The page automatically refreshes
+contains columns for each subproject: Mezzio, Laminas Components, Laminas MVC and API Tools. The page automatically refreshes
 the package status daily, is sorted alphabetically and is publicly available.
 
 [**Current Maintenance Status of Laminas & Mezzio Packages**](https://getlaminas.org/packages-maintenance-status/)
