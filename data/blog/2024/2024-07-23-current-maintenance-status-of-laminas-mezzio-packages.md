@@ -7,7 +7,6 @@ public: true
 created: '2024-07-23T11:00:00-01:00'
 updated: '2024-07-23T11:00:00-01:00'
 tags:
-  - custom proprieties
   - maintenance status
 ---
 
