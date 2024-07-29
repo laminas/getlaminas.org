@@ -33,13 +33,8 @@ $this->end();
     <div>
         <p>
             The page below intends to provide a fast, accessible way to examine every package at a glance.
-            It provides a column for each of the three organizations: Laminas, Api Tools and Mezzio.
+            It provides a column for each subproject: Mezzio, Laminas Components, Laminas MVC and API Tools.
             The page is automatically refreshed daily and is publicly available.
-        </p>
-        <p>
-            There is also a JSON version
-            <a href="<?= $this->url('app.maintenance-status') ?>" target="_blank">here</a>.
-            It contains the full list of properties for each package. Note that the properties differ between organizations.
         </p>
         <p>
             Below is the meaning of each status. The non-active statuses also include the date when they were set and the TSC md file where they were discussed
@@ -153,4 +148,9 @@ $this->end();
         <?php endforeach ?>
     </div>
     <p id="repository-last-updated">Last update: <?= $lastUpdated ?></p>
+    <p>
+        There is also a JSON version
+        <a href="<?= $this->url('app.maintenance-status') ?>" target="_blank">here</a>.
+        It contains the full list of properties for each package. Note that the properties differ between organizations.
+    </p>
 </div>
