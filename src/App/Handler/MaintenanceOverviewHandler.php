@@ -16,6 +16,7 @@ class MaintenanceOverviewHandler implements RequestHandlerInterface
     public const string CUSTOM_PROPERTIES_DIRECTORY = '/public/share';
 
     public const array MVC_COMPONENTS = [
+        'laminas-developer-tools',
         'laminas-mvc',
         'laminas-mvc-console',
         'laminas-mvc-form',
