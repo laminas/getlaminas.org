@@ -112,8 +112,11 @@ $this->end();
 
                                     if ($property['property_name'] === 'maintenance-mode-minutes') {
                                         $minutesFile = $property['value'];
-                                        $minutesUrl  = sprintf('https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s', $organization, $minutesFile);
-                                    }
+                                        $minutesUrl  = sprintf(
+                                            'https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s',
+                                            $organization !== 'laminas-mvc' ? $organization : 'laminas',
+                                            $minutesFile
+                                        );                                    }
                                 }
                                 ?>
 

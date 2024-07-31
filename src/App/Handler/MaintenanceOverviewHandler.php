@@ -15,6 +15,23 @@ class MaintenanceOverviewHandler implements RequestHandlerInterface
     public const string CUSTOM_PROPERTIES_FILE      = 'maintenance-status.json';
     public const string CUSTOM_PROPERTIES_DIRECTORY = '/public/share';
 
+    public const array MVC_COMPONENTS = [
+        'laminas-mvc',
+        'laminas-modulemanager',
+        'laminas-mvc-plugin-fileprg',
+        'laminas-mvc-plugin-flashmessenger',
+        'laminas-mvc-plugin-identity',
+        'laminas-mvc-plugin-prg',
+        'laminas-mvc-middleware',
+        'laminas-mvc-i18n',
+        'laminas-mvc-psr7bridge',
+        'laminas-mvc-console',
+        'laminas-test',
+        'laminas-mvc-form',
+        'laminas-mvc-plugins',
+        'laminas-mvc-view',
+    ];
+
     public function __construct(
         private array $repositoryData,
         private string $lastUpdated,

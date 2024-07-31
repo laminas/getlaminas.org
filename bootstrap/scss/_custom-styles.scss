@@ -225,16 +225,24 @@ article {
     --prop-value-color: #d43442;
 }
 
+.repository-organization.mezzio {
+    order: 0;
+    --org-color: #009655FF;
+}
+
 .repository-organization.laminas {
+    order: 1;
     --org-color: #E64010FF;
 }
 
-.repository-organization.laminas-api-tools {
-    --org-color: #e5007d;
+.repository-organization.laminas-mvc {
+    order: 2;
+    --org-color: #009ee3;
 }
 
-.repository-organization.mezzio {
-    --org-color: #009655FF;
+.repository-organization.laminas-api-tools {
+    order: 3;
+    --org-color: #e5007d;
 }
 
 .repository-organization {
