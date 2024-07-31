@@ -17,14 +17,12 @@ class MaintenanceOverviewHandler implements RequestHandlerInterface
 
     public const array MVC_COMPONENTS = [
         'laminas-mvc',
-        'laminas-modulemanager',
         'laminas-mvc-plugin-fileprg',
         'laminas-mvc-plugin-flashmessenger',
         'laminas-mvc-plugin-identity',
         'laminas-mvc-plugin-prg',
         'laminas-mvc-middleware',
         'laminas-mvc-i18n',
-        'laminas-psr7bridge',
         'laminas-mvc-console',
         'laminas-test',
     ];
