@@ -57,13 +57,14 @@ class ConfigProvider
                 ],
             ],
             'factories'  => [
-                EventDispatcherInterface::class         => EventDispatcherFactory::class,
-                Handler\CommercialVendorsHandler::class => Handler\CommercialVendorsHandlerFactory::class,
-                Handler\CustomPropertiesHandler::class  => Handler\CustomPropertiesHandlerFactory::class,
-                Handler\HomePageHandler::class          => Handler\HomePageHandlerFactory::class,
-                Handler\StaticPageHandler::class        => Handler\StaticPageHandlerFactory::class,
-                LoggerInterface::class                  => AccessLoggerFactory::class,
-                PlatesEngine::class                     => PlatesEngineFactory::class,
+                EventDispatcherInterface::class           => EventDispatcherFactory::class,
+                Handler\CommercialVendorsHandler::class   => Handler\CommercialVendorsHandlerFactory::class,
+                Handler\MaintenanceOverviewHandler::class => Handler\MaintenanceOverviewHandlerFactory::class,
+                Handler\MaintenanceStatusHandler::class   => Handler\MaintenanceStatusHandlerFactory::class,
+                Handler\HomePageHandler::class            => Handler\HomePageHandlerFactory::class,
+                Handler\StaticPageHandler::class          => Handler\StaticPageHandlerFactory::class,
+                LoggerInterface::class                    => AccessLoggerFactory::class,
+                PlatesEngine::class                       => PlatesEngineFactory::class,
             ],
         ];
     }
@@ -108,7 +109,8 @@ class ConfigProvider
         $app->get($basePath . 'participate[/]', Handler\StaticPageHandler::class, 'community.participate');
         $app->get($basePath . 'support[/]', Handler\StaticPageHandler::class, 'app.support');
         $app->get($basePath . 'commercial-vendor-program[/]', Handler\CommercialVendorsHandler::class, 'app.commercial-vendor-program');
-        $app->get($basePath . 'packages-maintenance-status[/]', Handler\CustomPropertiesHandler::class, 'app.packages-maintenance-status');
+        $app->get($basePath . 'packages-maintenance-status[/]', Handler\MaintenanceOverviewHandler::class, 'app.packages-maintenance-status');
+        $app->get($basePath . 'maintenance-status', Handler\MaintenanceStatusHandler::class, 'app.maintenance-status');
         // phpcs:enable Generic.Files.LineLength.TooLong
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Handler\MaintenanceOverviewHandler;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,9 +42,6 @@ class WriteRepositoryData extends Command
     private const ARGUMENT_USER_AGENT = 'userAgent';
     private const ARGUMENT_TOKEN      = 'token';
 
-    private string $propsFile;
-    private string $cachePath;
-
     private array $orgs = [
         'laminas',
         'mezzio',
@@ -53,9 +51,6 @@ class WriteRepositoryData extends Command
     public function __construct()
     {
         parent::__construct();
-
-        $this->propsFile = 'properties.json';
-        $this->cachePath = getcwd() . "/public/share";
     }
 
     protected function configure(): void
@@ -163,7 +158,11 @@ class WriteRepositoryData extends Command
         curl_close($curl);
 
         file_put_contents(
-            sprintf('%s/%s', $this->cachePath, $this->propsFile),
+            sprintf(
+                '%s/%s',
+                getcwd() . MaintenanceOverviewHandler::CUSTOM_PROPERTIES_DIRECTORY,
+                MaintenanceOverviewHandler::CUSTOM_PROPERTIES_FILE
+            ),
             json_encode($singleResult, JSON_PRETTY_PRINT),
             FILE_USE_INCLUDE_PATH
         );

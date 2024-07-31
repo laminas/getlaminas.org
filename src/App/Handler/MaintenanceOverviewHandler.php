@@ -10,8 +10,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CustomPropertiesHandler implements RequestHandlerInterface
+class MaintenanceOverviewHandler implements RequestHandlerInterface
 {
+    public const string CUSTOM_PROPERTIES_FILE      = 'maintenance-status.json';
+    public const string CUSTOM_PROPERTIES_DIRECTORY = '/public/share';
+
     public function __construct(
         private array $repositoryData,
         private string $lastUpdated,
@@ -22,7 +25,7 @@ class CustomPropertiesHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return new HtmlResponse($this->renderer->render(
-            'app::packages-custom-properties',
+            'app::maintenance-overview',
             [
                 'repositoryData' => $this->repositoryData,
                 'lastUpdated'    => $this->lastUpdated,
