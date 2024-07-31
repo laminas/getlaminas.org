@@ -77,7 +77,7 @@ $this->end();
     <div class="repository-container">
         <?php foreach($repositoryData as $organization => $orgData): ?>
             <div class="repository-organization <?= $organization ?>">
-                <h1><?= $organization ?></h1>
+                <h1><?= MaintenanceOverviewHandler::GITHUB_ORGANIZATIONS[$organization] ?? $organization ?></h1>
                 <div class="repository-card-container">
                     <?php
                     /** @var array $data */

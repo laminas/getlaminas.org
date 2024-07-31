@@ -31,6 +31,13 @@ class MaintenanceOverviewHandler implements RequestHandlerInterface
         'laminas-test',
     ];
 
+    public const array GITHUB_ORGANIZATIONS = [
+        'mezzio'            => 'Mezzio',
+        'laminas'           => 'Components',
+        'laminas-mvc'       => 'MVC',
+        'laminas-api-tools' => 'API Tools',
+    ];
+
     public function __construct(
         private array $repositoryData,
         private string $lastUpdated,
