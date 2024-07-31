@@ -48,10 +48,6 @@
     </MixedAssignment>
   </file>
   <file src="src/App/Console/WriteRepositoryData.php">
-    <MissingClassConstType>
-      <code><![CDATA[ARGUMENT_TOKEN      = 'token']]></code>
-      <code><![CDATA[ARGUMENT_USER_AGENT = 'userAgent']]></code>
-    </MissingClassConstType>
     <MixedAssignment>
       <code><![CDATA[$token]]></code>
     </MixedAssignment>

@@ -20,6 +20,7 @@ use function curl_setopt;
 use function date;
 use function file_put_contents;
 use function getcwd;
+use function in_array;
 use function is_array;
 use function is_string;
 use function json_decode;
@@ -39,8 +40,8 @@ use const JSON_PRETTY_PRINT;
 
 class WriteRepositoryData extends Command
 {
-    private const ARGUMENT_USER_AGENT = 'userAgent';
-    private const ARGUMENT_TOKEN      = 'token';
+    private const string ARGUMENT_USER_AGENT = 'userAgent';
+    private const string ARGUMENT_TOKEN      = 'token';
 
     private array $orgs = [
         'laminas',
@@ -100,7 +101,8 @@ class WriteRepositoryData extends Command
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $singleResult = ['last_updated' => date('Y-m-d H:i:s')];
+
+        $singleResult = [];
 
         /** @var string $org */
         foreach ($this->orgs as $org) {
@@ -142,20 +144,37 @@ class WriteRepositoryData extends Command
                         }
                     }
 
-                    $singleResult[$org][] = [
-                        'name'       => $value['repository_name'],
-                        'properties' => $value['properties'],
-                    ];
+                    if (
+                        $org === 'laminas'
+                        && in_array(
+                            $value['repository_name'],
+                            MaintenanceOverviewHandler::MVC_COMPONENTS,
+                            true
+                        )
+                    ) {
+                        $singleResult['laminas-mvc'][] = [
+                            'name'       => $value['repository_name'],
+                            'properties' => $value['properties'],
+                        ];
+                    } else {
+                        $singleResult[$org][] = [
+                            'name'       => $value['repository_name'],
+                            'properties' => $value['properties'],
+                        ];
+                    }
                 }
                 $page++;
             } while (count($decodedRes) === $perPage);
-            assert(is_array($singleResult[$org]));
+        }
+        curl_close($curl);
 
-            usort($singleResult[$org], function (array $a, array $b) {
+        foreach ($singleResult as $key => $value) {
+            usort($singleResult[$key], function (array $a, array $b) {
                 return $a['name'] <=> $b['name'];
             });
         }
-        curl_close($curl);
+
+        $singleResult['last_updated'] = date('Y-m-d H:i:s');
 
         file_put_contents(
             sprintf(

@@ -77,7 +77,7 @@ $this->end();
     <div class="repository-container">
         <?php foreach($repositoryData as $organization => $orgData): ?>
             <div class="repository-organization <?= $organization ?>">
-                <h1><?= $organization ?></h1>
+                <h1><?= MaintenanceOverviewHandler::GITHUB_ORGANIZATIONS[$organization] ?? $organization ?></h1>
                 <div class="repository-card-container">
                     <?php
                     /** @var array $data */
@@ -86,10 +86,14 @@ $this->end();
                         <div class="repository-card">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <a
-                                            target="_blank"
-                                            href="<?= GITHUB_URL . $organization . DIRECTORY_SEPARATOR . $data['name']
-                                            ?>">
+                                    <a target="_blank"
+                                       href="<?= sprintf(
+                                           '%s%s/%s',
+                                           GITHUB_URL,
+                                           $organization !== 'laminas-mvc' ? $organization : 'laminas',
+                                           $data['name']
+                                       )
+                                       ?>">
                                         <?= $data['name'] ?>
                                     </a>
                                 </h5>
@@ -112,8 +116,11 @@ $this->end();
 
                                     if ($property['property_name'] === 'maintenance-mode-minutes') {
                                         $minutesFile = $property['value'];
-                                        $minutesUrl  = sprintf('https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s', $organization, $minutesFile);
-                                    }
+                                        $minutesUrl  = sprintf(
+                                            'https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s',
+                                            $organization !== 'laminas-mvc' ? $organization : 'laminas',
+                                            $minutesFile
+                                        );                                    }
                                 }
                                 ?>
 
