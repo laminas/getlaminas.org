@@ -24,12 +24,9 @@ class MaintenanceOverviewHandler implements RequestHandlerInterface
         'laminas-mvc-plugin-prg',
         'laminas-mvc-middleware',
         'laminas-mvc-i18n',
-        'laminas-mvc-psr7bridge',
+        'laminas-psr7bridge',
         'laminas-mvc-console',
         'laminas-test',
-        'laminas-mvc-form',
-        'laminas-mvc-plugins',
-        'laminas-mvc-view',
     ];
 
     public function __construct(

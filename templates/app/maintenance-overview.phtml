@@ -86,10 +86,14 @@ $this->end();
                         <div class="repository-card">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <a
-                                            target="_blank"
-                                            href="<?= GITHUB_URL . $organization . DIRECTORY_SEPARATOR . $data['name']
-                                            ?>">
+                                    <a target="_blank"
+                                       href="<?= sprintf(
+                                           '%s%s/%s',
+                                           GITHUB_URL,
+                                           $organization !== 'laminas-mvc' ? $organization : 'laminas',
+                                           $data['name']
+                                       )
+                                       ?>">
                                         <?= $data['name'] ?>
                                     </a>
                                 </h5>
