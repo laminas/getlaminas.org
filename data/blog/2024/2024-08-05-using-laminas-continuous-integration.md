@@ -59,12 +59,12 @@ jobs:
 
 When pushing PHP code for review, Laminas CI generates a series of automated processes which are designed to:
 
-- Check **code style and formatting** using PHP Code Sniffer based on `phpcs.xml` (`phpcs.xml.dist` can also be used).
+- Check **code style and formatting** using PHP Code Sniffer based on the presence of `phpcs.xml` (`phpcs.xml.dist` can also be used).
 - Run the battery of **tests** using PHPUnit based on `phpunit.xml` (`phpunit.xml.dist` can also be used).
 - Run **static analysis** to detect bugs and check that best programming practices are respected using psalm based on `psalm.xml` (`psalm.xml.dist` can also be used).
 - Run **yamllint and markdownlint** for `docs/book/**/*.md` files and `mkdocs.yml`.
 
-A full list of its capabilities is listed on [Laminas CI Automation](https://github.com/laminas/laminas-ci-matrix-action).
+A full list of its capabilities is listed on the [Laminas CI Automation README](https://github.com/laminas/laminas-ci-matrix-action).
 Check it out to see what items it can identify based on the configuration files you include in your project.
 
 Based on your project and the files you update in a given push, you can expect to see a **job matrix** like the one below:
@@ -99,13 +99,13 @@ Only when all errors are resolved do you get the coveted green check mark. And a
 ### Conclusions
 
 Using Laminas CI in a CI pipeline can be beneficial for any framework or library, given its broad range.
-It usually takes less than a minute to receive the feedback that turns iterating on patches into a breeze, which means you can release easily and release often.
+It usually takes less than a minute to receive the feedback that turns iterating on patches into a breeze, meaning you can release easily and release often.
 Its high value is guaranteed by the authors of the Mezzio microframework and Laminas components, the people who best understand the ins and outs of those code bases.
 They expanded their initial CI workflow multiple times, based on their needs, while ensuring that the flow has universal application for any PHP project.
 
 - **The CI pipeline can be optimized for PHP-specific tasks** because Laminas is designed specifically for PHP applications. 
   The tasks range from dependency management with Composer, to code style checks, to running PHPUnit tests.
-- Seamless **integration with Common CI/CD tools** like GitHub CI/CD, GitHub Actions, Jenkins and others.
+- Seamless integration with GitHub Actions
 - **Composer integration** ensures consistent dependency management across different environments, from development to production, which is crucial for maintaining stability and reliability.
 - Laminas encourages **modern PHP practices** by enforcing PSR (PHP Standard Recommendation) compliance and the use of dependency injection.
 - Extensive **Documentation and Community Support**
