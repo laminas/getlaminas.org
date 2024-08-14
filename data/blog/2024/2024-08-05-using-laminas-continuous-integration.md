@@ -18,8 +18,7 @@ This flow streamlines the development process for faster and more reliable relea
 
 If you only have a handful of codebases, you may be able to handle their maintenance manually, but the automated solution is just around the corner.
 Take the [Laminas Project](https://github.com/laminas), for example.
-
-It has around 200 repositories between the main project and Mezzio.
+It has around 200 repositories between the Laminas components, MVC and Mezzio.
 Maintaining all of that code, from bug fixes to patches, from improvements to releases is a titanic task.
 Laminas CI is designed to help maintainers and developers review, merge and release updates rapidly and with fewer headaches.
 Wouldn't you rather sleep soundly at night knowing that your code has been checked by a tireless, objective reviewer?
@@ -32,6 +31,7 @@ You can grab it from [**GitHub Marketplace**](https://github.com/marketplace/act
 
 We will cover the implementation in the next chapter.
 **Dotkernel API** is one of the several organizations that use Laminas components, so it makes perfect sense to trigger Laminas CI for each code update, as you can read more about [Dotkernel API Workflows](https://github.com/dotkernel/api/tree/5.0/.github/workflows).
+Another example of Laminas CI integration is **php/pie** [PHP Installer for Extensions using Laminas CI](https://github.com/php/pie/blob/main/.github/workflows/continuous-integration.yml).
 
 ### How to implement the Laminas CI pipeline
 
@@ -57,7 +57,7 @@ jobs:
     uses: laminas/workflow-continuous-integration/.github/workflows/continuous-integration.yml@1.x
 ```
 
-In Dotkernel projects, when pushing PHP code for review, Laminas CI generates a series of automated processes which are designed to:
+When pushing PHP code for review, Laminas CI generates a series of automated processes which are designed to:
 
 - Check **code style and formatting** using PHP Code Sniffer based on `phpcs.xml` (`phpcs.xml.dist` can also be used).
 - Run the battery of **tests** using PHPUnit based on `phpunit.xml` (`phpunit.xml.dist` can also be used).
@@ -109,7 +109,5 @@ Laminas CI in a CI pipeline can be advantageous, especially for projects built w
 
 ### More on the topic:
 
-- [Laminas CI Automation](https://mwop.net/blog/2021-03-12-laminas-ci.html)
-- [Laminas Continuous Integration Action on GitHub](https://github.com/laminas/laminas-continuous-integration-action)
-- [GitHub Action: Laminas CI Integration](https://getlaminas.org/blog/2023-11-28-laminas-and-mezzio-supports-php-83.html)
-- [PHP Installer for Extensions using Laminas CI](https://github.com/php/pie/blob/main/.github/workflows/continuous-integration.yml)
+- [Blog post by Matthew Weier O'Phinney: "Laminas CI Automation"](https://mwop.net/blog/2021-03-12-laminas-ci.html)
+- [Repository of Laminas Continuous Integration Action on GitHub](https://github.com/laminas/laminas-continuous-integration-action)
