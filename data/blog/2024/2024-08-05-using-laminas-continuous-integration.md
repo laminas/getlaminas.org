@@ -16,9 +16,9 @@ This flow streamlines the development process for faster and more reliable relea
 
 <!--- EXTENDED -->
 
-If you only have a handful of codebases, you may be able to handle their maintenance manually, but the automated solution is just around the corner.
+If you only have a handful of codebases, you may be able to handle maintenance manually, but an automated solution is readily available.
 Take the [Laminas Project](https://github.com/laminas), for example.
-It has around 200 repositories between the Laminas components, MVC and Mezzio.
+It has around 200 repositories across the Laminas and Mezzio organizations.
 Maintaining all of that code, from bug fixes to patches, from improvements to releases is a titanic task.
 Laminas CI is designed to help maintainers and developers review, merge and release updates rapidly and with fewer headaches.
 Wouldn't you rather sleep soundly at night knowing that your code has been checked by a tireless, objective reviewer?
@@ -26,11 +26,11 @@ Laminas CD will be the topic of a future article, so let's focus on Laminas CI.
 
 ### Can I use Laminas CI in my own projects?
 
-Of course! Any project or package can benefit from using CI, especially Laminas CI which is designed to be universal and easy to install.
+Of course! Any project or package can benefit from a robust CI pipeline, and the Laminas CI workflows have been designed to be universal and easy to install.
 You can grab it from [**GitHub Marketplace**](https://github.com/marketplace/actions/laminas-continuous-integration).
 
 We will cover the implementation in the next chapter.
-**Dotkernel API** is one of the several organizations that use Laminas components, so it makes perfect sense to trigger Laminas CI for each code update, as you can read more about [Dotkernel API Workflows](https://github.com/dotkernel/api/tree/5.0/.github/workflows).
+**Dotkernel API** is one of the several organizations that use Laminas components, so it makes perfect sense to trigger Laminas CI for each code update; you can read more about [Dotkernel API Workflows](https://github.com/dotkernel/api/tree/5.0/.github/workflows).
 Another example of Laminas CI integration is **php/pie** [PHP Installer for Extensions using Laminas CI](https://github.com/php/pie/blob/main/.github/workflows/continuous-integration.yml).
 
 ### How to implement the Laminas CI pipeline
@@ -41,7 +41,7 @@ It generates a matrix of jobs for GitHub Actions based on your project configura
 
 Create the file `.github/workflows/continuous-integration.yml` using the content below.
 In this example, the workflow will run for all pull requests, pushes to any branch, and newly published tags.
-You can check out the documentation on the page [GitHub Workflow Documentation](https://docs.github.com/en/actions/using-workflows/about-workflows).
+You can check out the documentation on the [GitHub Workflow Documentation page](https://docs.github.com/en/actions/using-workflows/about-workflows).
 
 ```yaml
 name: "Continuous Integration"
