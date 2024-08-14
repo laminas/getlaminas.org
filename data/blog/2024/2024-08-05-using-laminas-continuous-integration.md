@@ -98,7 +98,8 @@ Only when all errors are resolved do you get the coveted green check mark. And a
 
 ### Conclusions
 
-Laminas CI in a CI pipeline can be advantageous, especially for projects built with the Laminas//Mezzio microframework, but also for any other framework or library, given its broad range.
+Laminas CI in a CI pipeline can be beneficial, especially for projects built with the Mezzio microframework or using Laminas components.
+It's valuable for any other framework or library, given its broad range.
 
 - **The CI pipeline can be optimized for PHP-specific tasks** because Laminas is designed specifically for PHP applications. 
   The tasks range from dependency management with Composer, to code style checks, to running PHPUnit tests.
