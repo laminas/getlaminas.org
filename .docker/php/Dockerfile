@@ -15,20 +15,21 @@ RUN mkdir -p /assets && mv /work/build/* /assets
 # Build the PHP container
 FROM php:8.3-fpm-alpine
 
-# System dependencies
-# RUN mkdir -p /etc/apk && echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
 RUN apk update && \
-  apk add --no-cache \
-    bash \
-    php8-bcmath \
-    php8-bz2 \
-    php8-dom \
-    php8-intl \
-    php8-opcache \
-    php8-pcntl \
-    php8-sockets \
-    php8-xsl \
-    php8-zip
+    apk add --no-cache bash
+
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions && \
+    install-php-extensions \
+    bcmath \
+    bz2 \
+    dom \
+    intl \
+    opcache \
+    pcntl \
+    sockets \
+    xsl \
+    zip
 
 # PHP configuration
 COPY .docker/php/getlaminas.ini /usr/local/etc/php/conf.d/999-getlaminas.ini
