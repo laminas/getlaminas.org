@@ -17,9 +17,15 @@ class HomePageHandlerFactory
         $commercialVendors = $container->get('config')['commercial-vendors'] ?? [];
         assert(is_array($commercialVendors));
 
+        $projects = $container->get('config')['projects-using-components'] ?? [];
+        assert(is_array($projects));
+
+        $sponsors = $container->get('config')['sponsors'] ?? [];
+        assert(is_array($sponsors));
+
         $renderer = $container->get(TemplateRendererInterface::class);
         assert($renderer instanceof TemplateRendererInterface);
 
-        return new HomePageHandler($commercialVendors, $renderer);
+        return new HomePageHandler($commercialVendors, $sponsors, $projects, $renderer);
     }
 }

@@ -333,3 +333,40 @@ article {
 .repository-card {
     border-bottom: 1px solid rgba(0,0,0,.125) ;
 }
+
+.homepage-listing {
+    .card {
+        margin-bottom: 1.5rem;
+    }
+
+    .card-title, .card-text {
+        margin-bottom: 1rem;
+    }
+
+    .listing-icon {
+        font-size: 1.5rem;
+    }
+
+    .card-footer {
+        p {
+            color: rgba(0,0,0,.7);
+            font-weight: bold;
+        }
+    }
+
+    .sponsor-item {
+        margin: 1rem 0;
+
+        img {
+            max-height: 2.5rem;
+        }
+    }
+
+    .project-item {
+        margin: 1rem 0;
+
+        img {
+            max-height: 2.5rem;
+        }
+    }
+}
