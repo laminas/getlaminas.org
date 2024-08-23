@@ -28,59 +28,59 @@ return [
     'projects-using-components' => [
         [
             'name' => 'Magento',
-            'logo' => '/images/sponsors/magento.png',
+            'logo' => '/images/projects/magento.png',
         ],
         [
             'name' => 'Owncloud',
-            'logo' => '/images/sponsors/owncloud.png',
+            'logo' => '/images/projects/owncloud.png',
         ],
         [
             'name' => 'Drupal',
-            'logo' => '/images/sponsors/drupal.png',
+            'logo' => '/images/projects/drupal.png',
         ],
         [
             'name' => 'Laravel',
-            'logo' => '/images/sponsors/laravel.png',
+            'logo' => '/images/projects/laravel.png',
         ],
         [
             'name' => 'CodeIgniter',
-            'logo' => '/images/sponsors/codeigniter.png',
+            'logo' => '/images/projects/codeigniter.png',
         ],
         [
             'name' => 'Shopware',
-            'logo' => '/images/sponsors/shopware.png',
+            'logo' => '/images/projects/shopware.png',
         ],
         [
             'name' => 'CakePHP',
-            'logo' => '/images/sponsors/cakephp.png',
+            'logo' => '/images/projects/cakephp.png',
         ],
         [
             'name' => 'Spiral Framework',
-            'logo' => '/images/sponsors/spiral-framework.png',
+            'logo' => '/images/projects/spiral-framework.png',
         ],
         [
             'name' => 'Slim Framework',
-            'logo' => '/images/sponsors/slim-framework.png',
+            'logo' => '/images/projects/slim-framework.png',
         ],
         [
             'name' => 'Silverstripe',
-            'logo' => '/images/sponsors/silverstripe.png',
+            'logo' => '/images/projects/silverstripe.png',
         ],
         [
             'name' => 'Joomla',
-            'logo' => '/images/sponsors/joomla.png',
+            'logo' => '/images/projects/joomla.png',
         ],
         [
             'name' => 'Kirby CMS',
-            'logo' => '/images/sponsors/kirby-cms.png',
+            'logo' => '/images/projects/kirby-cms.png',
         ],
         [
             'name' => 'Wallabag',
-            'logo' => '/images/sponsors/wallabag.png',
+            'logo' => '/images/projects/wallabag.png',
         ],
         [
             'name' => 'Flarum',
-            'logo' => '/images/sponsors/flarum.png',
+            'logo' => '/images/projects/flarum.png',
         ],
     ],
     'sponsors'                  => [
