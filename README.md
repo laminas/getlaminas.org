@@ -43,6 +43,7 @@ Fourth, prepare the blog and security announcements:
 
 ```bash
 $ mkdir -p var/blog/feeds
+$ mkdir -p public/js
 $ composer build
 ```
 
