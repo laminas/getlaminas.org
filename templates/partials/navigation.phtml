@@ -5,13 +5,7 @@ declare(strict_types=1);
 /**
  * @var League\Plates\Template\Template $this
  */
-$currentUrl = null;
-try {
-    $currentUrl = $this->url();
-} catch (Throwable $e) {
-    // While accessing a nonexistent URL, $this->url() will throw an exception
-    // which prevents the 404 template from being rendered
-}
+$currentUrl = parse_url($this->serverurl(), PHP_URL_PATH);
 ?>
 <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow">
     <div class="container">
@@ -26,37 +20,37 @@ try {
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle<?= $currentUrl && str_starts_with($currentUrl, $this->url('about.overview')) || $currentUrl && str_starts_with($currentUrl, $this->url('security')) ? ' active' : '' ?>"
+                    <a class="nav-link dropdown-toggle<?= str_starts_with($currentUrl, $this->url('about.overview')) || str_starts_with($currentUrl, $this->url('security')) ? ' active' : '' ?>"
                        href="#"
                        data-toggle="dropdown"
                        aria-expanded="false">About</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item<?= $currentUrl && $currentUrl === $this->url('about.overview') ? ' active' : '' ?>" href="<?= $this->url('about.overview') ?>">Overview</a>
-                        <a class="dropdown-item<?= $currentUrl && $currentUrl === $this->url('about.tsc') || $currentUrl === $this->url('about.join') ? ' active' : '' ?>" href="<?= $this->url('about.tsc') ?>">Technical Steering Committee</a>
-                        <a class="dropdown-item<?= $currentUrl && $currentUrl === $this->url('about.foundation') ? ' active' : '' ?>" href="<?= $this->url('about.foundation') ?>">About the Foundation</a>
-                        <a class="dropdown-item<?= $currentUrl && str_starts_with($currentUrl, $this->url('security')) ? ' active' : '' ?>" href="<?= $this->url('security') ?>">Security</a>
+                        <a class="dropdown-item<?= $currentUrl === $this->url('about.overview') ? ' active' : '' ?>" href="<?= $this->url('about.overview') ?>">Overview</a>
+                        <a class="dropdown-item<?= $currentUrl === $this->url('about.tsc') || $currentUrl === $this->url('about.join') ? ' active' : '' ?>" href="<?= $this->url('about.tsc') ?>">Technical Steering Committee</a>
+                        <a class="dropdown-item<?= $currentUrl === $this->url('about.foundation') ? ' active' : '' ?>" href="<?= $this->url('about.foundation') ?>">About the Foundation</a>
+                        <a class="dropdown-item<?= str_starts_with($currentUrl, $this->url('security')) ? ' active' : '' ?>" href="<?= $this->url('security') ?>">Security</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link<?= $currentUrl && str_starts_with($currentUrl, $this->url('blog')) ? ' active' : '' ?>"
+                    <a class="nav-link<?= str_starts_with($currentUrl, $this->url('blog')) ? ' active' : '' ?>"
                        href="<?= $this->url('blog') ?>">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://docs.laminas.dev">Docs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link<?= $currentUrl && str_starts_with($currentUrl, $this->url('community.participate')) ? ' active' : '' ?>"
+                    <a class="nav-link<?= str_starts_with($currentUrl, $this->url('community.participate')) ? ' active' : '' ?>"
                        href="<?= $this->url('community.participate') ?>">Community</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle<?= $currentUrl && str_starts_with($currentUrl, $this->url('app.support')) || $currentUrl && str_starts_with($currentUrl, $this->url('app.commercial-vendor-program')) ? ' active' : '' ?>"
+                    <a class="nav-link dropdown-toggle<?= str_starts_with($currentUrl, $this->url('app.support')) || str_starts_with($currentUrl, $this->url('app.commercial-vendor-program')) ? ' active' : '' ?>"
                        href="<?= $this->url('app.support') ?>"
                        data-toggle="dropdown"
                        aria-expanded="false">Support Laminas</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item<?= $currentUrl && $currentUrl === $this->url('app.support') ? ' active' : '' ?>" href="<?= $this->url('app.support') ?>">Overview</a>
+                        <a class="dropdown-item<?= $currentUrl === $this->url('app.support') ? ' active' : '' ?>" href="<?= $this->url('app.support') ?>">Overview</a>
                         <a class="dropdown-item" href="https://crowdfunding.lfx.linuxfoundation.org/projects/laminas-project" target="_blank">Sponsor Laminas Development <i class="bi-box-arrow-up-right"></i></a>
-                        <a class="dropdown-item<?= $currentUrl && $currentUrl === $this->url('app.commercial-vendor-program') ? ' active' : '' ?>" href="<?= $this->url('app.commercial-vendor-program') ?>">Commercial Vendor Program</a>
+                        <a class="dropdown-item<?= $currentUrl === $this->url('app.commercial-vendor-program') ? ' active' : '' ?>" href="<?= $this->url('app.commercial-vendor-program') ?>">Commercial Vendor Program</a>
                     </div>
                 </li>
             </ul>
