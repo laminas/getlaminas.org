@@ -16,7 +16,7 @@ variables:
 
 dependencies:
   nodejs:
-    gulp-cli: '~2.3.0'
+    gulp-cli: '~3.0.0'
 
 mounts:
   'data/cache':
