@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * @var League\Plates\Template\Template $this
  */
-$currentUrl = parse_url($this->serverurl(), PHP_URL_PATH);
+$currentUrl = rtrim(parse_url($this->serverurl(), PHP_URL_PATH), '/');
 
 $isCurrentRoute = function (string $routeName) use ($currentUrl): bool {
     $routeUrl = rtrim($this->url($routeName), '/');
