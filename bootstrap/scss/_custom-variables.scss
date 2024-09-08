@@ -20,16 +20,13 @@ $info:          #6578a2;
 $warning:       #f7a600;
 $danger:        #e64010;
 
-// Adding (!) an additional theme color (ex. classes bg-apigility, btn-mvc)
-$theme-colors: (
+$custom-theme-colors: (
   "cool":        #4d3fa3,
   "components":  $danger,
   "mvc":         $secondary,
   "apigility":   #e5007d,
   "expressive":  $success,
 );
-
-// Some example variables that you can uncomment:
 
 // Enabling shadows, gradients, responsive font
 $enable-shadows: true;
