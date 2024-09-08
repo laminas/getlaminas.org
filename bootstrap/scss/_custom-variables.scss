@@ -2,6 +2,15 @@
 // You can find them in node_modules/bootstrap/scss/_variables.scss
 // Copy the variables you need into this file, don't modify files under node_modules/
 
+// Brand colors
+$laminas-colors: (
+  "laminas":    #013755,
+  "components": #E64010,
+  "mvc":        #009EE3,
+  "api-tools":  #E5007D,
+  "mezzio":     #009655,
+);
+
 // Colors
 $header-footer-font-color: #fff;
 $footer-bg-color: hsl(201, 98%, 6%);
@@ -13,7 +22,7 @@ $code-sample-bg-color: rgb(60, 65, 70);
 $donation-color: rgb(14, 109, 212);
 
 // Changing the theme colors
-$primary:       #013755;
+$primary:       map_get($laminas-colors, laminas);
 $secondary:     #009ee3;
 $success:       #009655;
 $info:          #6578a2;
@@ -21,11 +30,11 @@ $warning:       #f7a600;
 $danger:        #e64010;
 
 $custom-theme-colors: (
-  "cool":        #4d3fa3,
-  "components":  $danger,
-  "mvc":         $secondary,
-  "apigility":   #e5007d,
-  "expressive":  $success,
+  "cool":       #4d3fa3,
+  "components": map_get($laminas-colors, components),
+  "mvc":        map_get($laminas-colors, mvc),
+  "mezzio":     map_get($laminas-colors, mezzio),
+  "api-tools":  map_get($laminas-colors, api-tools),
 );
 
 // Enabling shadows, gradients, responsive font
@@ -45,8 +54,5 @@ $body-color: #000000;
 
 // Changing the border radius of buttons
 //$border-radius: 15px;
-
-// Changing the jumbotron bg-color and text color
-$jumbotron-color: #000000;
 
 $support-color: rgb(14, 109, 212);
