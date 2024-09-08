@@ -57,36 +57,30 @@ footer {
     padding-left: 0.5em;
 }
 
-.jumbotron {
-    border-radius: 0;
+.hero-container {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-}
-
-.jumbotron-home-page {
     background-image: url(/images/pictures/home-page.jpg);
+    padding: map_get($spacers, 4) map_get($spacers, 2);
+
+    @include media-breakpoint-up(md) {
+        padding-top: map_get($spacers, 5);
+        padding-bottom: map_get($spacers, 5);
+
+    }
 }
 
-.jumbotron-join {
+.hero-join {
     background-image: url(/images/pictures/join.jpg);
 }
 
-.jumbotron-join-thank-you {
+.hero-join-thank-you {
     background-image: url(/images/pictures/join-thank-you.jpg);
 }
 
-.jumbotron-404 {
+.hero-404 {
     background-image: url(/images/pictures/404.jpg);
-}
-
-.lead-box {
-    padding: 5rem;
-    background-color: #e9ecef;
-    opacity: 0.7;
-    @include media-breakpoint-down(sm) {
-        padding: map_get($spacers, 3) * 1.25;
-    }
 }
 
 .teardrop.card {
