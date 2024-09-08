@@ -18,7 +18,7 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
     return str_starts_with($currentUrl, $routeUrl);
 };
 ?>
-<nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow">
+<nav class="navbar navbar-expand-md bg-body fixed-top shadow">
     <div class="container">
         <a class="navbar-brand" href="/">
             <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project"/>
@@ -29,10 +29,11 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle<?= $isRouteSubpath('about.overview') || $isRouteSubpath('security') ? ' active' : '' ?>"
                        href="#"
+                       role="button"
                        data-bs-toggle="dropdown"
                        aria-expanded="false">About</a>
                     <div class="dropdown-menu">
@@ -56,6 +57,7 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle<?= $isRouteSubpath('app.support') || $isRouteSubpath('app.commercial-vendor-program') ? ' active' : '' ?>"
                        href="<?= $this->url('app.support') ?>"
+                       role="button"
                        data-bs-toggle="dropdown"
                        aria-expanded="false">Support Laminas</a>
                     <div class="dropdown-menu">
