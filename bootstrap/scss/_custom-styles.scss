@@ -333,5 +333,7 @@ article {
 }
 
 .repository-card {
+    --bs-card-border-radius: 0;
+    --bs-card-border-width: 0;
     border-bottom: 1px solid rgba(0,0,0,.125) ;
 }
