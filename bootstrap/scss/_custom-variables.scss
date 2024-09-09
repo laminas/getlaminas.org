@@ -22,7 +22,7 @@ $code-sample-bg-color: rgb(60, 65, 70);
 $donation-color: rgb(14, 109, 212);
 
 // Changing the theme colors
-$primary:       map_get($laminas-colors, laminas);
+$primary:       map-get($laminas-colors, laminas);
 $secondary:     #009ee3;
 $success:       #009655;
 $info:          #6578a2;
@@ -31,10 +31,10 @@ $danger:        #e64010;
 
 $custom-theme-colors: (
   "cool":       #4d3fa3,
-  "components": map_get($laminas-colors, components),
-  "mvc":        map_get($laminas-colors, mvc),
-  "mezzio":     map_get($laminas-colors, mezzio),
-  "api-tools":  map_get($laminas-colors, api-tools),
+  "components": map-get($laminas-colors, components),
+  "mvc":        map-get($laminas-colors, mvc),
+  "mezzio":     map-get($laminas-colors, mezzio),
+  "api-tools":  map-get($laminas-colors, api-tools),
 );
 
 // Enabling shadows, gradients, responsive font

@@ -46,7 +46,7 @@ footer {
     .social {
         a {
             font-size: 2em;
-            padding: map_get($spacers, 3) * 0.375;
+            padding: map-get($spacers, 3) * 0.375;
         }
     }
 }
@@ -62,15 +62,15 @@ footer {
     background-size: cover;
     background-position: 50% 50%;
     background-image: url(/images/pictures/home-page.jpg);
-    padding: map_get($spacers, 4) map_get($spacers, 2);
+    padding: map-get($spacers, 4) map-get($spacers, 2);
 
     @include media-breakpoint-up(md) {
-        padding: map_get($spacers, 5) map_get($spacers, 4);
+        padding: map-get($spacers, 5) map-get($spacers, 4);
     }
 }
 
 .hero-box {
-    padding: map_get($spacers, 5) map_get($spacers, 3);
+    padding: map-get($spacers, 5) map-get($spacers, 3);
     background: rgba(var(--bs-secondary-bg-rgb), 0.7);
     color: rgba(var(--bs-primary-rgb), 0.7) !important;
 
@@ -229,22 +229,22 @@ article {
 
 .repository-organization.mezzio {
     order: 0;
-    --org-color: #009655FF;
+    --org-color: #{map-get($laminas-colors, mezzio)};
 }
 
 .repository-organization.laminas {
     order: 1;
-    --org-color: #E64010FF;
+    --org-color: #{map-get($laminas-colors, components)};
 }
 
 .repository-organization.laminas-mvc {
     order: 2;
-    --org-color: #009ee3;
+    --org-color: #{map-get($laminas-colors, mvc)};
 }
 
 .repository-organization.laminas-api-tools {
     order: 3;
-    --org-color: #e5007d;
+    --org-color: #{map-get($laminas-colors, api-tools)};
 }
 
 .repository-organization {
