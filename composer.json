@@ -34,7 +34,7 @@
         "forum": "https://discourse.laminas.dev"
     },
     "require": {
-        "php": "~8.3.0",
+        "php": "~8.3.11",
         "ext-pdo": "*",
         "ext-curl": "*",
         "dflydev/fig-cookies": "^3.1.0",
@@ -46,7 +46,7 @@
         "laminas/laminas-paginator": "^2.18.1",
         "laminas/laminas-servicemanager": "^3.22.1",
         "laminas/laminas-stdlib": "^3.19.0",
-        "league/commonmark": "^2.5.1",
+        "league/commonmark": "^2.5.3",
         "mezzio/mezzio": "^3.19.1",
         "mezzio/mezzio-fastroute": "^3.11.0",
         "mezzio/mezzio-helpers": "^5.16.0",
