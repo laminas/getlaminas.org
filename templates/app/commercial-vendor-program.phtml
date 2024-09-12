@@ -10,7 +10,7 @@ declare(strict_types=1);
 const CVP_CONTACT_EMAIL = 'commercial-vendor-program@getlaminas.org';
 $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
 ?>
-<div class="container">
+<div class="container-lg">
     <div class="row mt-5">
         <div class="col">
             <h1>Commercial Vendor Program</h1>
@@ -22,16 +22,18 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
         </div>
     </div>
 
-    <div class="card-deck">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <?php foreach($commercialVendors as $commercialVendor): ?>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><a target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>"><?= $this->escapeHtml($commercialVendor['name']) ?></a></h5>
-                <p class="card-text"><?= $this->escapeHtml($commercialVendor['text']) ?></p>
-            </div>
-            <img class="card-img-bottom px-5 pb-2" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
-            <div class="card-footer">
-                <a class="card-link" target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>">Visit <?= $this->escapeHtml($commercialVendor['name']) ?></a>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><a target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>"><?= $this->escapeHtml($commercialVendor['name']) ?></a></h5>
+                    <p class="card-text"><?= $this->escapeHtml($commercialVendor['text']) ?></p>
+                </div>
+                <img class="card-img-bottom px-5 pb-2" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                <div class="card-footer">
+                    <a class="card-link" target="_blank" href="<?= $this->escapeHtmlAttr($commercialVendor['url']) ?>">Visit <?= $this->escapeHtml($commercialVendor['name']) ?></a>
+                </div>
             </div>
         </div>
     <?php endforeach ?>
