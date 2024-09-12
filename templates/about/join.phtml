@@ -9,10 +9,10 @@ declare(strict_types=1);
 $this->layout('layout::default', ['title' => 'Become a Member']);
 ?>
 
-<div class="jumbotron jumbotron-join text-center">
-    <div class="lead-box">
-        <h1 class="text-primary">Become a Member</h1>
-        <h2 class="text-primary">Join!</h2>
+<div class="hero-container hero-join mb-4">
+    <div class="hero-box text-center">
+        <h1>Become a Member</h1>
+        <h2>Join!</h2>
     </div>
 </div>
 
@@ -44,34 +44,34 @@ $this->layout('layout::default', ['title' => 'Become a Member']);
             </p>
         </div>
 
-        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="teardrop card bg-primary text-white"><div class="card-body">
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="teardrop card text-bg-primary"><div class="card-body">
             <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-                <div class="form-group">
-                    <label for="first_name">First Name</label>
+                <div class="mb-3">
+                    <label class="form-label" for="first_name">First Name</label>
                     <input class="form-control" id="first_name" maxlength="40" name="first_name" type="text" />
                 </div>
 
-                <div class="form-group">
-                    <label for="last_name">Last Name</label>
+                <div class="mb-3">
+                    <label class="form-label" for="last_name">Last Name</label>
                     <input class="form-control" id="last_name" maxlength="80" name="last_name" type="text" />
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
                     <input class="form-control" id="email" maxlength="80" name="email" type="email" />
                 </div>
 
-                <div class="form-group">
-                    <label for="company">Company</label>
+                <div class="mb-3">
+                    <label class="form-label" for="company">Company</label>
                     <input class="form-control" id="company" maxlength="40" name="company" type="text" />
                 </div>
 
-                <div class="form-group">
-                    <label for="title">Title</label>
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
                     <input class="form-control" id="title" maxlength="40" name="title" type="text" />
                 </div>
 
-                <button class="btn btn-success float-right" type="submit" name="submit">Submit</button>
+                <button class="btn btn-success float-end" type="submit" name="submit">Submit</button>
 
                 <input type="hidden" id="Campaign_ID" name="Campaign_ID" value="7012M000001iJaa">
                 <input type="hidden" name="oid" value="00D41000000cNi0">

@@ -2,6 +2,15 @@
 // You can find them in node_modules/bootstrap/scss/_variables.scss
 // Copy the variables you need into this file, don't modify files under node_modules/
 
+// Brand colors
+$laminas-colors: (
+  "laminas":    #013755,
+  "components": #E64010,
+  "mvc":        #009EE3,
+  "api-tools":  #E5007D,
+  "mezzio":     #009655,
+);
+
 // Colors
 $header-footer-font-color: #fff;
 $footer-bg-color: hsl(201, 98%, 6%);
@@ -13,23 +22,20 @@ $code-sample-bg-color: rgb(60, 65, 70);
 $donation-color: rgb(14, 109, 212);
 
 // Changing the theme colors
-$primary:       #013755;
+$primary:       map-get($laminas-colors, laminas);
 $secondary:     #009ee3;
 $success:       #009655;
 $info:          #6578a2;
 $warning:       #f7a600;
 $danger:        #e64010;
 
-// Adding (!) an additional theme color (ex. classes bg-apigility, btn-mvc)
-$theme-colors: (
-  "cool":        #4d3fa3,
-  "components":  $danger,
-  "mvc":         $secondary,
-  "apigility":   #e5007d,
-  "expressive":  $success,
+$custom-theme-colors: (
+  "cool":       #4d3fa3,
+  "components": map-get($laminas-colors, components),
+  "mvc":        map-get($laminas-colors, mvc),
+  "mezzio":     map-get($laminas-colors, mezzio),
+  "api-tools":  map-get($laminas-colors, api-tools),
 );
-
-// Some example variables that you can uncomment:
 
 // Enabling shadows, gradients, responsive font
 $enable-shadows: true;
@@ -48,8 +54,5 @@ $body-color: #000000;
 
 // Changing the border radius of buttons
 //$border-radius: 15px;
-
-// Changing the jumbotron bg-color and text color
-$jumbotron-color: #000000;
 
 $support-color: rgb(14, 109, 212);

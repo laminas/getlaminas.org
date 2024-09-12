@@ -56,8 +56,7 @@ function js() {
             'node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js',
             'node_modules/prismjs/plugins/treeview/prism-treeview.min.js',
             'node_modules/jquery/dist/jquery.slim.min.js',
-            'node_modules/popper.js/dist/umd/popper.min.js',
-            'node_modules/popper.js/dist/umd/popper-utils.min.js',
+            'node_modules/@popperjs/core/dist/umd/popper.min.js',
             'node_modules/bootstrap/dist/js/bootstrap.min.js',
             'node_modules/anchor-js/anchor.min.js',
             'js/base.js'

@@ -1,13 +1,6 @@
-/*! Laminas Bootstrap 4 Theme
- *
- *  Built on top of Bootstrap 4 (https://getbootstrap.com)
- *  Built with the Bootstrap Theme Kit by HackerThemes (https://hackerthemes.com)
- */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-@import 'custom-variables';
-@import '../node_modules/bootstrap/scss/bootstrap';
-@import '../node_modules/bootstrap/scss/_utilities';
+@import "bootstrap";
 @import '../node_modules/prismjs/themes/prism-okaidia';
 @import '../node_modules/prismjs/plugins/line-highlight/prism-line-highlight';
 @import '../node_modules/prismjs/plugins/line-numbers/prism-line-numbers';
