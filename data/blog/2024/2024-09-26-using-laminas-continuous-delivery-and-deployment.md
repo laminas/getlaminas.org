@@ -1,5 +1,5 @@
 ---
-id: 2024-09-26-using-laminas-continuous-delivery-and-deployment.md
+id: 2024-09-26-using-laminas-continuous-delivery-and-deployment
 author: julian
 title: 'Using Laminas Continuous Delivery and Deployment'
 draft: false
