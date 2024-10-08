@@ -34,7 +34,7 @@ Let's investigate a **practical example** for creating a release:
 - Optionally, **merge the update** into a `developer` branch, which can result in conflicts.
 - Merge the `developer` branch into the `main` branch. Note the branch setup and names may differ.
 - Optionally, update your `CHANGELOG.md` file.
-- **Create a new release tag** which can follow the Semantic Versioning {MAJOR}.{MINOR}.{BUGFIX} versioning format.
+- **Create a new release tag** which can follow the [Semantic Versioning](https://semver.org) {MAJOR}.{MINOR}.{BUGFIX} versioning format.
 - **Push the release.**
 - **Create the release** on GitHub using the new tag and the description from the `CHANGELOG.md` file.
 
