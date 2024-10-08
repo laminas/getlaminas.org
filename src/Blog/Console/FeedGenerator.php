@@ -12,6 +12,7 @@ use Laminas\Feed\Writer\Feed as FeedWriter;
 use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Router\RouterInterface;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -52,6 +53,7 @@ class FeedGenerator extends Command
         parent::__construct();
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setName('blog:feed-generator');
@@ -75,6 +77,7 @@ class FeedGenerator extends Command
         );
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io        = new SymfonyStyle($input, $output);

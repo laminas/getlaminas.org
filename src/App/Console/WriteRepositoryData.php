@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console;
 
 use App\Handler\MaintenanceOverviewHandler;
+use Override;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -54,6 +55,7 @@ class WriteRepositoryData extends Command
         parent::__construct();
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setName('app:generate-repository-data');
@@ -65,6 +67,7 @@ class WriteRepositoryData extends Command
         $this->addArgument(self::ARGUMENT_TOKEN, InputArgument::OPTIONAL, 'GitHub token.');
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $userAgent = $input->getArgument(self::ARGUMENT_USER_AGENT);
@@ -75,7 +78,7 @@ class WriteRepositoryData extends Command
 
         $token = $input->getArgument(self::ARGUMENT_TOKEN);
         if (! $token) {
-            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
+            $variables = json_decode(base64_decode((string) $_ENV['PLATFORM_VARIABLES']), true);
             assert(is_array($variables));
             assert(isset($variables['REPO_TOKEN']));
 
@@ -169,9 +172,7 @@ class WriteRepositoryData extends Command
         curl_close($curl);
 
         foreach ($singleResult as $key => $value) {
-            usort($singleResult[$key], function (array $a, array $b) {
-                return $a['name'] <=> $b['name'];
-            });
+            usort($singleResult[$key], fn(array $a, array $b) => $a['name'] <=> $b['name']);
         }
 
         $singleResult['last_updated'] = date('Y-m-d H:i:s');

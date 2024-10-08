@@ -14,9 +14,9 @@ class LoggingErrorListener
     /**
      * Log message string with placeholders
      */
-    private const LOG_STRING = '{status} [{method}] {uri}: {error}';
+    private const string LOG_STRING = '{status} [{method}] {uri}: {error}';
 
-    public function __construct(private LoggerInterface $logger)
+    public function __construct(private readonly LoggerInterface $logger)
     {
     }
 

@@ -7,6 +7,7 @@ namespace GetLaminas\Security\Handler;
 use GetLaminas\Security\Advisory;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mezzio\Template;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -17,18 +18,13 @@ use function sprintf;
 
 class AdvisoryHandler implements RequestHandlerInterface
 {
-    /** @var Advisory */
-    private $advisory;
-
-    /** @var Template\TemplateRendererInterface */
-    private $template;
-
-    public function __construct(Advisory $advisory, Template\TemplateRendererInterface $template)
-    {
-        $this->advisory = $advisory;
-        $this->template = $template;
+    public function __construct(
+        private readonly Advisory $advisory,
+        private readonly Template\TemplateRendererInterface $template
+    ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $advisory = $request->getAttribute('advisory', false);
@@ -36,7 +32,7 @@ class AdvisoryHandler implements RequestHandlerInterface
             return new HtmlResponse($this->template->render('error::404'));
         }
 
-        $file = sprintf('data/advisories/%s.md', basename($advisory));
+        $file = sprintf('data/advisories/%s.md', basename((string) $advisory));
         if (! file_exists($file)) {
             return new HtmlResponse($this->template->render('error::404'));
         }

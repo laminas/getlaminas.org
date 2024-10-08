@@ -7,6 +7,7 @@ namespace GetLaminas\Blog\Handler;
 use GetLaminas\Blog\FetchBlogPostEvent;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,12 +16,13 @@ use Psr\Http\Server\RequestHandlerInterface;
 class DisplayPostHandler implements RequestHandlerInterface
 {
     public function __construct(
-        private EventDispatcherInterface $dispatcher,
-        private TemplateRendererInterface $template,
-        private RequestHandlerInterface $notFoundHandler,
+        private readonly EventDispatcherInterface $dispatcher,
+        private readonly TemplateRendererInterface $template,
+        private readonly RequestHandlerInterface $notFoundHandler,
     ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $id = $request->getAttribute('id', false);

@@ -7,6 +7,7 @@ namespace GetLaminas\Blog\Handler;
 use GetLaminas\Blog\Mapper\MapperInterface;
 use Laminas\Diactoros\Response\JsonResponse;
 use Mezzio\Helper\UrlHelper;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -17,11 +18,12 @@ use function is_string;
 class SearchHandler implements RequestHandlerInterface
 {
     public function __construct(
-        private MapperInterface $mapper,
-        private UrlHelper $urlHelper,
+        private readonly MapperInterface $mapper,
+        private readonly UrlHelper $urlHelper,
     ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $toMatch = $request->getQueryParams()['q'] ?? '';
@@ -30,12 +32,10 @@ class SearchHandler implements RequestHandlerInterface
             return new JsonResponse([]);
         }
 
-        $results = array_map(function (array $row): array {
-            return [
-                'link'  => $this->urlHelper->generate('blog.post', ['id' => $row['id']]),
-                'title' => $row['title'],
-            ];
-        }, $this->mapper->search($toMatch));
+        $results = array_map(fn(array $row): array => [
+            'link'  => $this->urlHelper->generate('blog.post', ['id' => $row['id']]),
+            'title' => $row['title'],
+        ], $this->mapper->search($toMatch));
 
         return new JsonResponse($results);
     }

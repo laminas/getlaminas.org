@@ -11,6 +11,7 @@ use Laminas\Diactoros\Response\RedirectResponse;
 use Laminas\Stdlib\ArrayUtils;
 use Mezzio\Router\RouterInterface;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -21,25 +22,14 @@ use function str_replace;
 
 class ListPostsHandler implements RequestHandlerInterface
 {
-    /** @var MapperInterface */
-    private $mapper;
-
-    /** @var RouterInterface */
-    private $router;
-
-    /** @var TemplateRendererInterface */
-    private $template;
-
     public function __construct(
-        MapperInterface $mapper,
-        TemplateRendererInterface $template,
-        RouterInterface $router
+        private readonly MapperInterface $mapper,
+        private readonly TemplateRendererInterface $template,
+        private readonly RouterInterface $router
     ) {
-        $this->mapper   = $mapper;
-        $this->template = $template;
-        $this->router   = $router;
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tag   = str_replace(['+', '%20'], ' ', $request->getAttribute('tag', ''));

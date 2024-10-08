@@ -10,6 +10,7 @@ use Laminas\Feed\Reader\Reader;
 use Laminas\Feed\Writer\Feed;
 use League\CommonMark\ConverterInterface;
 use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
+use Override;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,13 +29,14 @@ use const PHP_URL_PATH;
 class ReceiveFeedItemHandler implements RequestHandlerInterface
 {
     public function __construct(
-        private string $feedFile,
-        private ConverterInterface $markdown,
-        private ResponseFactoryInterface $responseFactory,
-        private ProblemDetailsResponseFactory $problemFactory
+        private readonly string $feedFile,
+        private readonly ConverterInterface $markdown,
+        private readonly ResponseFactoryInterface $responseFactory,
+        private readonly ProblemDetailsResponseFactory $problemFactory
     ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data = $request->getParsedBody();
@@ -79,7 +81,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
     private function createRelease(array $data): Release
     {
         // Ensure we have a fully qualified URL
-        $authorUrl = parse_url($data['author_url'], PHP_URL_PATH) === $data['author_url']
+        $authorUrl = parse_url((string) $data['author_url'], PHP_URL_PATH) === $data['author_url']
             ? sprintf('https://github.com/%s', $data['author_url'])
             : $data['author_url'];
 
@@ -101,7 +103,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
 
         foreach ($feed as $entry) {
             $title               = $entry->getTitle();
-            [$package, $version] = explode(' ', $title, 2);
+            [$package, $version] = explode(' ', (string) $title, 2);
 
             $author     = $entry->getAuthor();
             $authorName = $author['name'];

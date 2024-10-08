@@ -6,6 +6,7 @@ namespace GetLaminas\Security\Console;
 
 use App\ContentParser\Parser;
 use GetLaminas\Security\Advisory;
+use Override;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -16,6 +17,7 @@ use function unlink;
 
 class BuildCommand extends Command
 {
+    #[Override]
     protected function configure(): void
     {
         $this->setName('security:build');
@@ -25,6 +27,7 @@ class BuildCommand extends Command
         );
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
