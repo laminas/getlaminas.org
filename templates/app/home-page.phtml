@@ -5,6 +5,8 @@ declare(strict_types=1);
 /**
  * @var League\Plates\Template\Template $this
  * @var list<array{name: string, logo: string, url: string, text: string}> $commercialVendors
+ * @var list<array{name: string, logo: string, url: string, text: string}> $sponsors
+ * @var list<array{name: string, url: string}> $projects
  */
 
 $this->layout('layout::default', ['title' => 'Home']);
@@ -99,7 +101,7 @@ $this->layout('layout::default', ['title' => 'Home']);
 </div>
 
 <div class="container mb-4">
-    <div class="card text-white text-center support-banner">
+    <div class="card text-white text-center support-banner shadow">
         <div class="card-body">
             <h1 class="card-title">Donate</h1>
             <p class="card-text">Support Laminas Developers Directly</p>
@@ -111,8 +113,59 @@ $this->layout('layout::default', ['title' => 'Home']);
     </div>
 </div>
 
-<div class="container">
-    <div class="card text-center">
+<div class="container homepage-listing">
+    <div class="card sponsors text-center shadow ">
+        <div class="card-body">
+            <h4>Our Sponsors</h4>
+            <p>
+                The projects of Laminas are free, open source software made possible by many sponsors.
+            </p>
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <?php foreach ($sponsors as $sponsor): ?>
+                        <div class="sponsor-item col-12 col-sm-6 col-md-4 col-lg-4">
+                            <a href="<?= $sponsor['url'] ?>" target="_blank">
+                                <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
+            <div class="mt-4 mb-4">
+                <a href="<?= $this->url('app.support') ?>" class="btn btn-secondary text-white">
+                    <i class="bi-heart-fill"></i>
+                    And more...
+                </a>
+            </div>
+        </div>
+
+        <div class="card-footer align-items-center">
+            <p class="mt-3">Thank you so much!</p>
+        </div>
+    </div>
+
+    <div class="card projects text-center shadow">
+        <div class="card-body">
+            <h4 class="card-title">Popular Projects Which Use Components of Laminas</h4>
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <?php foreach ($projects as $project): ?>
+                        <div class="project-item col-12 col-sm-6 col-md-4 col-lg-2">
+                            <img class="img-fluid" src="<?= $this->escapeHtmlAttr($project['logo']) ?>" alt="<?= $this->escapeHtmlAttr($project['name']) ?>">
+                        </div>
+                    <?php endforeach ?>
+                </div>
+                <p class="card-text project">...</p>
+            </div>
+
+            <i class="bi bi-arrow-through-heart-fill listing-icon"></i>
+        </div>
+    </div>
+
+    <div class="card commercial-vendors text-center shadow">
         <div class="card-body">
             <h4 class="card-title">Commercial Vendors</h4>
             <p class="card-text">
@@ -123,7 +176,9 @@ $this->layout('layout::default', ['title' => 'Home']);
                 <div class="row align-items-center justify-content-center">
                     <?php foreach ($commercialVendors as $commercialVendor): ?>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                            <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                            <a href="<?= $commercialVendor['url'] ?>" target="_blank">
+                                <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                            </a>
                         </div>
                     <?php endforeach ?>
                 </div>

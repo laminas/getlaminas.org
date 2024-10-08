@@ -12,20 +12,23 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class HomePageHandler implements RequestHandlerInterface
 {
-    private array $vendors;
-    private TemplateRendererInterface $renderer;
-
-    public function __construct(array $vendors, TemplateRendererInterface $renderer)
-    {
-        $this->vendors  = $vendors;
-        $this->renderer = $renderer;
+    public function __construct(
+        private array $vendors,
+        private array $sponsors,
+        private array $projects,
+        private TemplateRendererInterface $renderer
+    ) {
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return new HtmlResponse($this->renderer->render(
             'app::home-page',
-            ['commercialVendors' => $this->vendors],
+            [
+                'commercialVendors' => $this->vendors,
+                'sponsors'          => $this->sponsors,
+                'projects'          => $this->projects,
+            ],
         ));
     }
 }
