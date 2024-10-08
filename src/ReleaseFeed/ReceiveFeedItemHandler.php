@@ -81,7 +81,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
     private function createRelease(array $data): Release
     {
         // Ensure we have a fully qualified URL
-        $authorUrl = parse_url((string) $data['author_url'], PHP_URL_PATH) === $data['author_url']
+        $authorUrl = parse_url($data['author_url'], PHP_URL_PATH) === $data['author_url']
             ? sprintf('https://github.com/%s', $data['author_url'])
             : $data['author_url'];
 
@@ -103,7 +103,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
 
         foreach ($feed as $entry) {
             $title               = $entry->getTitle();
-            [$package, $version] = explode(' ', (string) $title, 2);
+            [$package, $version] = explode(' ', $title, 2);
 
             $author     = $entry->getAuthor();
             $authorName = $author['name'];

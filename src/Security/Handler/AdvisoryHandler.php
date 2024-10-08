@@ -32,7 +32,7 @@ class AdvisoryHandler implements RequestHandlerInterface
             return new HtmlResponse($this->template->render('error::404'));
         }
 
-        $file = sprintf('data/advisories/%s.md', basename((string) $advisory));
+        $file = sprintf('data/advisories/%s.md', basename($advisory));
         if (! file_exists($file)) {
             return new HtmlResponse($this->template->render('error::404'));
         }

@@ -160,7 +160,7 @@ class SeedBlogDatabase extends Command
 
         $pdo = $this->createDatabase($dbPath);
 
-        $path = sprintf('%s/%s', realpath($basePath), ltrim((string) $postsPath));
+        $path = sprintf('%s/%s', realpath($basePath), ltrim($postsPath));
         $trim = strlen(realpath($basePath)) + 1;
 
         $statements = [];

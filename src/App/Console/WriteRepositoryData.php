@@ -78,7 +78,7 @@ class WriteRepositoryData extends Command
 
         $token = $input->getArgument(self::ARGUMENT_TOKEN);
         if (! $token) {
-            $variables = json_decode(base64_decode((string) $_ENV['PLATFORM_VARIABLES']), true);
+            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
             assert(is_array($variables));
             assert(isset($variables['REPO_TOKEN']));
 

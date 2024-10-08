@@ -28,8 +28,8 @@ use function sprintf;
 
 class SecurityHandler implements RequestHandlerInterface
 {
-    private const int ADVISORY_PER_PAGE = 10;
-    private const int ADVISORY_PER_FEED = 15;
+    private const ADVISORY_PER_PAGE = 10;
+    private const ADVISORY_PER_FEED = 15;
 
     public function __construct(
         private readonly Advisory $advisory,
