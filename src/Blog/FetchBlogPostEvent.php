@@ -5,23 +5,21 @@ declare(strict_types=1);
 namespace GetLaminas\Blog;
 
 use JsonSerializable;
+use Override;
 use Psr\EventDispatcher\StoppableEventInterface;
 
 class FetchBlogPostEvent implements
     JsonSerializable,
     StoppableEventInterface
 {
-    /** @var string */
-    private $id;
-
     /** @var null|BlogPost */
     private $post;
 
-    public function __construct(string $id)
+    public function __construct(private readonly string $id)
     {
-        $this->id = $id;
     }
 
+    #[Override]
     public function jsonSerialize(): array
     {
         return [
@@ -30,6 +28,7 @@ class FetchBlogPostEvent implements
         ];
     }
 
+    #[Override]
     public function isPropagationStopped(): bool
     {
         return null !== $this->post;
