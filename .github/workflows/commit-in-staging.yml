@@ -1,0 +1,12 @@
+name: Status check for live branch
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  commit-in-staging:
+    name: Commit is in the staging branch
+    runs-on: ubuntu-latest
+    steps:
+        - run: exit 0
