@@ -1,0 +1,13 @@
+name: Publish to live
+
+on:
+  workflow_dispatch:
+
+jobs:
+  push-to-live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git fetch origin
+          git push origin origin/staging:master
