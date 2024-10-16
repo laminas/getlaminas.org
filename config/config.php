@@ -31,7 +31,7 @@ $aggregator = new ConfigAggregator([
     // phpcs:disable
     class_exists(\Mezzio\Swoole\ConfigProvider::class)
         ? \Mezzio\Swoole\ConfigProvider::class
-        : function() { return []; },
+        : fn() => [],
     // phpcs:enable
 
     // Default App module config

@@ -6,6 +6,7 @@ namespace GetLaminas\Blog\Console;
 
 use FilterIterator;
 use InvalidArgumentException;
+use Override;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
@@ -42,6 +43,7 @@ class MarkdownFileFilter extends FilterIterator
         $this->rewind();
     }
 
+    #[Override]
     public function accept(): bool
     {
         $current = $this->getInnerIterator()->current();

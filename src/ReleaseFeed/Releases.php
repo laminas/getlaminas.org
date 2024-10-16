@@ -7,6 +7,7 @@ namespace GetLaminas\ReleaseFeed;
 use ArrayIterator;
 use Iterator;
 use IteratorAggregate;
+use Override;
 
 use function array_reverse;
 use function array_slice;
@@ -21,6 +22,7 @@ class Releases implements IteratorAggregate
     /** @psalm-var list<Release> */
     private array $releases = [];
 
+    #[Override]
     public function getIterator(): Iterator
     {
         $releases = $this->sort($this->releases);
@@ -39,9 +41,7 @@ class Releases implements IteratorAggregate
      */
     private function sort(array $releases): array
     {
-        usort($releases, function (Release $a, Release $b): int {
-            return $a->date <=> $b->date;
-        });
+        usort($releases, fn(Release $a, Release $b): int => $a->date <=> $b->date);
         return array_reverse($releases);
     }
 
