@@ -6,6 +6,11 @@
       enabled: true
       include_subdomains: true
       preload: true
+  redirects:
+    paths:
+      '/blog/2024-08-05-using-laminas-continuous-integration.md.html':
+        to: '/blog/2024-08-05-using-laminas-continuous-integration.html'
+        code: 301
 
 "https://www.{default}/":
   type: redirect
