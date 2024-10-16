@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8f2334100e8a2e5f97ddb821dbc91de",
+    "content-hash": "2edcbe0b9f9f2c2b6b8ad46bc695e0f1",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -750,37 +750,37 @@
         },
         {
             "name": "laminas/laminas-paginator",
-            "version": "2.18.1",
+            "version": "2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-paginator.git",
-                "reference": "6a03499a899fb8ba650594ddf4b4338d4235252a"
+                "reference": "d6339e7ad61491fd76b1490cf9f723d0348ce430"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-paginator/zipball/6a03499a899fb8ba650594ddf4b4338d4235252a",
-                "reference": "6a03499a899fb8ba650594ddf4b4338d4235252a",
+                "url": "https://api.github.com/repos/laminas/laminas-paginator/zipball/d6339e7ad61491fd76b1490cf9f723d0348ce430",
+                "reference": "d6339e7ad61491fd76b1490cf9f723d0348ce430",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "laminas/laminas-stdlib": "^3.10.1",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "conflict": {
                 "zendframework/zend-paginator": "*"
             },
             "require-dev": {
-                "laminas/laminas-cache": "^3.9",
-                "laminas/laminas-cache-storage-adapter-memory": "^2.2.0",
-                "laminas/laminas-coding-standard": "^2.4.0",
-                "laminas/laminas-config": "^3.8.0",
-                "laminas/laminas-filter": "^2.30",
-                "laminas/laminas-servicemanager": "^3.22",
-                "laminas/laminas-view": "^2.25",
-                "phpunit/phpunit": "^9.5.27",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.4"
+                "laminas/laminas-cache": "^3.12.2",
+                "laminas/laminas-cache-storage-adapter-memory": "^2.3.0",
+                "laminas/laminas-coding-standard": "^2.5.0",
+                "laminas/laminas-config": "^3.9.0",
+                "laminas/laminas-filter": "^2.37",
+                "laminas/laminas-servicemanager": "^3.22.1",
+                "laminas/laminas-view": "^2.35",
+                "phpunit/phpunit": "^10.5.30",
+                "psalm/plugin-phpunit": "^0.19.0",
+                "vimeo/psalm": "^5.25"
             },
             "suggest": {
                 "laminas/laminas-cache": "Laminas\\Cache component to support cache features",
@@ -825,7 +825,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-01-11T11:00:36+00:00"
+            "time": "2024-10-16T13:10:19+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
