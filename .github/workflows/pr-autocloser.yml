@@ -2,6 +2,8 @@ name: No PRs to live branch
 
 on:
   pull_request_target:
+    types:
+      - opened
     branches:
       - master
 
@@ -10,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Comment and close PR
-        if: github.event.action == 'opened'
         run: |
           gh pr close "${{ github.event.pull_request.url }}"
             --comment "Pull requests to the live branch are not allowed. Use staging branch. Publish via workflow dispatch to Publish to live workflow"
-      - name: Fail check for branch protection rule
-        run: exit 1
