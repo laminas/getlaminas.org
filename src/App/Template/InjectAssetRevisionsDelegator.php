@@ -30,9 +30,7 @@ class InjectAssetRevisionsDelegator
 
         isset($config['debug'])
             ? $this->injectAssets($engine, Closure::fromCallable([$this, 'getAssetMap']))
-            : $this->injectAssets($engine, function () use ($revisions): array {
-                return $revisions;
-            });
+            : $this->injectAssets($engine, fn(): array => $revisions);
 
         return $engine;
     }
