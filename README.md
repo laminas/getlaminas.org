@@ -79,3 +79,7 @@ container:
 ```bash
 $ docker-compose build php
 ```
+
+## Adding blog entries
+
+Blog posts can be submitted by following the process described [here](ADD_BLOG_ENTRY.md)
