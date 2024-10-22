@@ -4,7 +4,7 @@ Blog entries can be added by following these steps:
 
 - If submitting for the first time an [author](#blog-author) YAML file must be added to the `data/blog/authors` directory.
 - Add an MD file containing the [blog post's metadata and body](#blog-post-content).
-  - each file must be added in the current year's directory.
+  - each file must be added in the current year's directory, found in `data/blog/`.
 
 > All submissions must follow the [contributing guidelines](https://github.com/laminas/.github/blob/main/CONTRIBUTING.md) as well as the [Code of Conduct](https://github.com/laminas/.github/blob/main/CODE_OF_CONDUCT.md)
 
