@@ -79,3 +79,10 @@ container:
 ```bash
 $ docker-compose build php
 ```
+
+## Adding blog entries
+
+Everyone is welcome to post a blog entry. Once submitted, it will be reviewed by our team and approved to go live or rejected.
+If it's rejected, the reason for the rejection will be included, so you can update it and resubmit the post if applicable.
+
+The submission process is described in the [ADD_BLOG_ENTRY](ADD_BLOG_ENTRY.md) file.
