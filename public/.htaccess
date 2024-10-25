@@ -17,6 +17,3 @@ RewriteRule ^.*$ - [NC,L]
 RewriteCond %{REQUEST_URI}::$1 ^(/.+)(.+)::\2$
 RewriteRule ^(.*) - [E=BASE:%1]
 RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
-
-# Redirect for a blog article that do not follow properly the URL pattern
-Redirect 301 /blog/2024-08-05-using-laminas-continuous-integration.md.html /blog/2024-08-05-using-laminas-continuous-integration.html
