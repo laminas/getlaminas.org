@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: staging
+          fetch-depth: 0
       - run: |
-          git fetch origin
           git push origin origin/staging:master
+
