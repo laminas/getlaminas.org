@@ -49,6 +49,7 @@ hooks:
     echo "- Installing application dependencies"
     composer install --no-ansi --no-dev --no-interaction --no-scripts --no-plugins --optimize-autoloader
     mkdir -p var/blog/feeds
+    mkdir -p var/ecosystem
     composer build
   deploy: |
     rm -f data/cache/config-cache.php
@@ -79,7 +80,15 @@ crons:
            ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
         fi
     shutdown_timeout: 20
-
+  generateecosystem:
+    # Refresh repository data every 6 hours (UTC).
+    spec: '* */4 * * *'
+    commands:
+      start: |
+        if [ "$PLATFORM_BRANCH" = master ]; then
+            ./vendor/bin/laminas ecosystem:seed-db
+        fi
+    shutdown_timeout: 20
 web:
   locations:
     '/':
