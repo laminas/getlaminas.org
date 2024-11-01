@@ -1,0 +1,42 @@
+[
+  {
+    "packagistUrl": "https://packagist.org/packages/akrabat/ip-address-middleware",
+    "githubUrl":  "https://github.com/akrabat/ip-address-middleware",
+    "categories": ["ip", "address", "middleware"],
+    "homepage": ""
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/netglue/laminas-messenger",
+    "githubUrl":  "https://github.com/netglue/laminas-messenger",
+    "categories": ["laminas", "messenger"],
+    "homepage": ""
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
+    "githubUrl":  "https://github.com/dotkernel/dot-errorhandler",
+    "categories": ["error-handling"],
+    "homepage": "https://dotkernel.com"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
+    "githubUrl":  "",
+    "categories": ["middleware", "doctrine"],
+    "homepage": ""
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/asgrim/mini-mezzio",
+    "githubUrl":  "https://github.com/asgrim/mini-mezzio",
+    "categories": ["mezzio"],
+    "homepage": ""
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/phly/phly-simple-page",
+    "categories": [],
+    "homepage": "https://github.com/phly/PhlySimplePage"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mezzio/mezzio-aurarouter",
+    "categories": [],
+    "homepage": ""
+  }
+]

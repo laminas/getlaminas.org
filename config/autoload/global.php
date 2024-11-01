@@ -9,4 +9,7 @@ return [
     'blog'         => [
         'db' => 'sqlite:' . realpath(getcwd()) . '/var/blog/posts.db',
     ],
+    'packages'     => [
+        'db' => 'sqlite:' . realpath(getcwd()) . '/var/ecosystem/packages.db',
+    ],
 ];

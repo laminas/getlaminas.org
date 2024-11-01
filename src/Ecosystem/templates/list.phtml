@@ -1,0 +1,117 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var League\Plates\Template\Template $this
+ * @var array<\GetLaminas\Ecosystem\EcosystemPackage> $ecosystemPackages
+ * @var stdClass $pagination
+ * @var array $tags
+ * @var array $categories
+ * @var string $search
+ */
+
+$this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
+?>
+<section id="ecosystem-section" class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h1>Laminas Ecosystem</h1>
+        </div>
+        <div id="ecosystem-navbar">
+            <div id="ecosystem-search-container">
+                <input id="ecosystem-search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="<?= $search ?>">
+                <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
+            </div>
+
+            <div id="ecosystem-filter-container">
+                <?php foreach($tags as $tag) : ?>
+                    <p class="ecosystem-filter tag" data-value="<?= $tag ?>"><?= $tag ?> <i class="bi bi-x-circle"></i></p>
+                <?php endforeach?>
+
+                <?php foreach($categories as $category) : ?>
+                    <p class="ecosystem-filter category" data-value="<?= $category ?>"><?= $category ?> <i class="bi bi-x-circle"></i></p>
+                <?php endforeach?>
+            </div>
+        </div>
+    </div>
+
+    <div class="ecosystem-container">
+        <?php foreach($ecosystemPackages as $package): ?>
+            <div class="ecosystem-package">
+                <div class="ecosystem-package-details">
+                    <a href="<?= $package->packagistUrl ?>" target="_blank">
+                        <p class="details-item"><?= $package->name ?></p>
+                    </a>
+
+                    <p class="details-item"><?= $package->description ?></p>
+                    <?php if ($package->abandoned) : ?>
+                        <p class="details-item fw-bold"><i class="bi bi-exclamation-triangle"></i> This package has been abandoned</p>
+                    <?php endif?>
+
+
+                    <?php if (! empty($package->tags)) : ?>
+                        <div class="package-tags-container">
+                            <?php foreach ($package->tags as $tag) :
+                                if (empty($tag)) {
+                                    continue;
+                                }
+                                ?>
+                                <button type="button" class="package-button tag" data-value="<?= $tag ?>"><?= $tag ?></button>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (! empty($package->categories)) :?>
+                        <div class="package-categories-container">
+                            <?php foreach ($package->categories as $category) :
+                                if (empty($category)) {
+                                    continue;
+                                }
+                                ?>
+                                <button type="button" class="package-button category" data-value="<?= $category ?>"><?= $category ?></button>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <p class="details-item fst-italic mt-auto">Updated: <?= $package->updated->format('Y-m-d H:i') ?></p>
+                </div>
+                <div class="ecosystem-package-statistics">
+
+                    <?php if ($package->website !== '') : ?>
+                        <p class="statistics-item">
+                            <i class="bi bi-house"></i>
+                            <a href="<?= $package->website ?>" target="_blank">
+                                Homepage
+                            </a>
+                        </p>
+                    <?php endif; ?>
+                    <p class="statistics-item"><i class="bi bi-download"></i> <?= $package->downloads ?> total downloads</p>
+                    <p class="statistics-item"><i class="bi bi-star"></i> <?= $package->stars ?> stars</p>
+                    <p class="statistics-item"><i class="bi bi-sign-intersection-side"></i> <?= $package->forks ?> forks</p>
+                    <p class="statistics-item"><i class="bi bi-eye"></i> <?= $package->watchers ?> watchers</p>
+                    <p class="statistics-item">
+                        <i class="bi bi-exclamation-circle"></i>
+                        <?php if ($package->issues > 0 && $package->repository) : ?>
+                            <a href="<?= $package->repository . '/issues' ?>" target="_blank"><?= $package->issues ?> issues</a>
+                        <?php else : ?>
+                            <?= $package->issues ?> issues
+                        <?php endif ?>
+                    </p>
+                    <?php if ($package->license) : ?>
+                        <p class="details-item"><i class="bi bi-file-earmark-text"></i> <?= $package->license ?></p>
+                    <?php endif; ?>
+                    <?php if ($package->repository) : ?>
+                        <p class="statistics-item">
+                            <i class="bi-github"></i>
+                                <a href="<?= $package->repository ?>" target="_blank">See on GitHub</a>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <div id="ecosystem-pagination">
+        <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
+    </div>
+</section>
