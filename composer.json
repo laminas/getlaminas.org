@@ -76,6 +76,7 @@
         "psr-4": {
             "App\\": "src/App/",
             "GetLaminas\\Blog\\": "src/Blog/",
+            "GetLaminas\\Ecosystem\\": "src/Ecosystem/",
             "GetLaminas\\ReleaseFeed\\": "src/ReleaseFeed/",
             "GetLaminas\\Security\\": "src/Security/"
         }
@@ -87,7 +88,8 @@
     "scripts": {
         "build": [
             "@build-blog",
-            "laminas security:build"
+            "laminas security:build",
+            "laminas ecosystem:create-db"
         ],
         "build-blog": [
             "laminas blog:seed-db",
