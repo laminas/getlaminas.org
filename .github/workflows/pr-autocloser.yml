@@ -13,8 +13,9 @@ jobs:
     steps:
       - name: Comment and close PR
         run: |
-          gh pr close "${{ github.event.pull_request.url }}"
-            --comment "Pull requests to the live branch are not allowed. Use staging branch. Publish via workflow dispatch to Publish to live workflow"
+          gh pr close "${PR_URL}"
+            --comment "Pull requests to the master branch are not allowed. Use staging branch. Maintainer can publish staging branch using workflow dispatch at https://github.com/laminas/getlaminas.org/actions/workflows/publish.yml"
         env:
+          PR_URL:   ${{ github.event.pull_request.url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
