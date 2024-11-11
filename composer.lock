@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df64e3401b419d19a9e9121990414231",
+    "content-hash": "3ce42b4d5d230034b7c89bb7f923543e",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -385,16 +385,16 @@
         },
         {
             "name": "laminas/laminas-config-aggregator",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config-aggregator.git",
-                "reference": "102e048734413a4499846571b156aeaa6c2aba56"
+                "reference": "25a1b50d957ff8eaaaae9ae07dd22904ebbc9431"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/102e048734413a4499846571b156aeaa6c2aba56",
-                "reference": "102e048734413a4499846571b156aeaa6c2aba56",
+                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/25a1b50d957ff8eaaaae9ae07dd22904ebbc9431",
+                "reference": "25a1b50d957ff8eaaaae9ae07dd22904ebbc9431",
                 "shasum": ""
             },
             "require": {
@@ -408,7 +408,7 @@
                 "zendframework/zend-config-aggregator": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.5.0",
+                "laminas/laminas-coding-standard": "~3.0.0",
                 "laminas/laminas-config": "^3.9.0",
                 "phpunit/phpunit": "^10.5.11",
                 "psalm/plugin-phpunit": "^0.19.0",
@@ -449,7 +449,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-05-12T10:04:30+00:00"
+            "time": "2024-11-11T11:21:55+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
