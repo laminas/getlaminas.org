@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ce42b4d5d230034b7c89bb7f923543e",
+    "content-hash": "ac6807ea565135dacd76f0773debfd33",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -385,22 +385,22 @@
         },
         {
             "name": "laminas/laminas-config-aggregator",
-            "version": "1.16.0",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config-aggregator.git",
-                "reference": "25a1b50d957ff8eaaaae9ae07dd22904ebbc9431"
+                "reference": "0a70bfa21225c7c7075d1dac4a441a76b2ac49e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/25a1b50d957ff8eaaaae9ae07dd22904ebbc9431",
-                "reference": "25a1b50d957ff8eaaaae9ae07dd22904ebbc9431",
+                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/0a70bfa21225c7c7075d1dac4a441a76b2ac49e7",
+                "reference": "0a70bfa21225c7c7075d1dac4a441a76b2ac49e7",
                 "shasum": ""
             },
             "require": {
                 "brick/varexporter": "^0.5.0 || ^0.4.0",
                 "laminas/laminas-stdlib": "^3.18.0",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "webimpress/safe-writer": "^2.2.0"
             },
             "conflict": {
@@ -410,7 +410,7 @@
             "require-dev": {
                 "laminas/laminas-coding-standard": "~3.0.0",
                 "laminas/laminas-config": "^3.9.0",
-                "phpunit/phpunit": "^10.5.11",
+                "phpunit/phpunit": "^10.5.38",
                 "psalm/plugin-phpunit": "^0.19.0",
                 "vimeo/psalm": "^5.22.2"
             },
@@ -449,7 +449,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-11-11T11:21:55+00:00"
+            "time": "2024-11-17T10:16:45+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
