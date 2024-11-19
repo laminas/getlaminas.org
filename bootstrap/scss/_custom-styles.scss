@@ -379,7 +379,7 @@ article {
     .tag {
         --filter-button-color: #00131e;
     }
-    .category {
+    .keyword {
         --filter-button-color: #678799;
     }
     #ecosystem-pagination {
@@ -459,4 +459,9 @@ article {
     #ecosystem-search-btn {
         color: #00131e
     }
+}
+
+.package-image {
+    height: 5em;
+    aspect-ratio: 1;
 }
