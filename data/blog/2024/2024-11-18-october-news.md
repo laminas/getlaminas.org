@@ -10,7 +10,13 @@ tags:
     - development news
 ---
 
-## Laminas Validator Version 3 Released
+Laminas Validator Version 3 Released and being implemented in libraries that use it.
+Adding support for Laminas Service Manager v4 in laminas-filter is in progress.
+Check here the PHP 8.4 compatibility roadmap for Laminas and Mezzio components.
+
+<!--- EXTENDED -->
+
+### Laminas Validator Version 3 Released
 
 We [released version 3](https://github.com/laminas/laminas-validator/releases/tag/3.0.0) of `laminas-validator` in October with nearly 100 PR's merged.
 
@@ -29,7 +35,7 @@ Support for version 3 in other components is still in the works. The following l
 
 Please do try out the new version where possible and let us know how you get on in Slack, and any help you can provide with working on the dependents is appreciated!
 
-## Laminas Filter Version 3
+### Laminas Filter Version 3
 
 Work on the [next major version](https://github.com/laminas/laminas-filter/milestone/4) of `laminas-filter` is progressing well.
 We've been modernising and refactoring all the filters so that they are largely immutable, improving type safety and predictability with over 50 PRs merged so far.
@@ -38,7 +44,7 @@ When it's released `laminas-filter` will support Laminas Service Manager v4 and 
 
 We welcome contributions to help us get Laminas Filter over the line and there is a [handy todo list](https://github.com/laminas/laminas-filter/issues/177) you can consult to see if there's anything you can help with.
 
-## Getting Ready for PHP 8.4
+### Getting Ready for PHP 8.4
 
 Most Laminas and Mezzio components are now 8.4 compatible, ahead of the PHP 8.4 general release.
 
