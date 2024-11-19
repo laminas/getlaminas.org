@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GetLaminas\Ecosystem;
 
 use GetLaminas\Ecosystem\Console\CreateEcosystemDatabase;
+use GetLaminas\Ecosystem\Console\CreateEcosystemDatabaseDelegator;
 use GetLaminas\Ecosystem\Console\SeedEcosystemDatabase;
 use GetLaminas\Ecosystem\Console\SeedEcosystemDatabaseDelegator;
 use GetLaminas\Ecosystem\Handler\EcosystemHandler;
@@ -48,7 +49,10 @@ class ConfigProvider
                 CreateEcosystemDatabase::class => CreateEcosystemDatabase::class,
             ],
             'delegators' => [
-                SeedEcosystemDatabase::class => [
+                CreateEcosystemDatabase::class => [
+                    CreateEcosystemDatabaseDelegator::class,
+                ],
+                SeedEcosystemDatabase::class   => [
                     SeedEcosystemDatabaseDelegator::class,
                 ],
             ],

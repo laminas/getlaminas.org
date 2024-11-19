@@ -80,14 +80,14 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $tag)]);
     }
 
-    public function fetchAllByCategory(string $category): Paginator
+    public function fetchAllByKeyword(string $keyword): Paginator
     {
         $select = 'SELECT * FROM packages '
-            . 'WHERE categories LIKE :category '
+            . 'WHERE keywords LIKE :keyword '
             . 'ORDER BY downloads '
             . 'DESC LIMIT :offset, :limit';
-        $count  = 'SELECT COUNT(id) FROM packages WHERE categories LIKE :category';
-        return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $category)]);
+        $count  = 'SELECT COUNT(id) FROM packages WHERE keywords LIKE :keyword';
+        return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $keyword)]);
     }
 
     public function search(string $toMatch): ?array
@@ -120,6 +120,17 @@ class PdoMapper implements MapperInterface
         $select = $this->pdo->prepare('SELECT id, name, updated FROM packages WHERE updated <= :updated ');
 
         if (! $select->execute([':updated' => $updated->getTimestamp()])) {
+            return null;
+        }
+
+        return $select->fetchAll();
+    }
+
+    public function searchPackage(string $search): ?array
+    {
+        $select = $this->pdo->prepare('SELECT name FROM packages WHERE name = :search');
+
+        if (! $select->execute([':search' => $search])) {
             return null;
         }
 

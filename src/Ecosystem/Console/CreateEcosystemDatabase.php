@@ -10,6 +10,7 @@ use Exception;
 use GetLaminas\Ecosystem\CreateEcosystemPackageFromArrayTrait;
 use GetLaminas\Ecosystem\EcosystemPackage;
 use GetLaminas\Ecosystem\Handler\EcosystemHandler;
+use GetLaminas\Ecosystem\Mapper\PdoMapper;
 use PDO;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,9 +20,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function array_values;
 use function assert;
+use function base64_decode;
 use function curl_exec;
 use function curl_init;
 use function curl_setopt;
+use function explode;
 use function file_exists;
 use function file_get_contents;
 use function getcwd;
@@ -34,10 +37,11 @@ use function realpath;
 use function sprintf;
 use function strtolower;
 use function uniqid;
-use function unlink;
 
 use const CURLOPT_FOLLOWLOCATION;
 use const CURLOPT_HTTPHEADER;
+use const CURLOPT_POST;
+use const CURLOPT_POSTFIELDS;
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 
@@ -45,14 +49,18 @@ class CreateEcosystemDatabase extends Command
 {
     use CreateEcosystemPackageFromArrayTrait;
 
-    public const string PACKAGES_DB_PATH = 'var/ecosystem/packages.db';
+    public const string PACKAGES_DB_PATH = 'data/ecosystem/database';
+    public const string PACKAGES_DB_FILE = 'packages.db';
 
     private CurlHandle $curl;
+    private CurlHandle $githubCurl;
+    private ?string $ghToken = null;
+    public PdoMapper $mapper;
 
     /** @var string[] */
     private array $indices = [
         'CREATE INDEX tags ON packages ( tags )',
-        'CREATE INDEX categories ON packages ( categories )',
+        'CREATE INDEX keywords ON packages ( keywords )',
         'CREATE INDEX package_name ON packages ( name )',
     ];
 
@@ -60,6 +68,7 @@ class CreateEcosystemDatabase extends Command
         SELECT
             %s AS id,
             %s AS name,
+            %s AS type,
             %s AS packagistUrl,
             %s AS repository,
             %d AS abandoned,
@@ -67,20 +76,23 @@ class CreateEcosystemDatabase extends Command
             %s AS license,
             %d AS created,
             %d AS updated,
-            %s AS categories,
+            %s AS category,
+            %s AS keywords,
             %s AS tags,
             %s AS website,
             %d AS downloads,
             %d AS stars,
-            %d AS forks,
-            %d AS watchers,
-            %d AS issues';
+            %d AS issues,
+            %s AS image
+            ';
 
     private string $item = 'UNION SELECT
         %s,
         %s,
         %s,
         %s,
+        %s,
+        %s,
         %d,
         %s,
         %s,
@@ -89,11 +101,11 @@ class CreateEcosystemDatabase extends Command
         %s,
         %s,
         %s,
+        %s,
         %d,
         %d,
         %d,
-        %d,
-        %d';
+        %s';
 
     private string $searchTable = 'CREATE VIRTUAL TABLE search_packages USING FTS4(
             id,
@@ -101,7 +113,7 @@ class CreateEcosystemDatabase extends Command
             updated,
             name,
             tags,
-            categories
+            keywords
         )';
 
     private string $searchTrigger = 'CREATE TRIGGER after_packages_insert
@@ -113,7 +125,7 @@ class CreateEcosystemDatabase extends Command
                     updated,
                     name,
                     tags,
-                    categories
+                    keywords
                 )
                 VALUES (
                     new.id,
@@ -121,7 +133,7 @@ class CreateEcosystemDatabase extends Command
                     new.updated,
                     new.name,
                     new.tags,
-                    new.categories
+                    new.keywords
                 );
             END
         ';
@@ -135,7 +147,7 @@ class CreateEcosystemDatabase extends Command
                  updated = new.updated,
                  name = new.name,
                  tags = new.tags,
-                 categories = new.categories
+                 keywords = new.keywords
                  WHERE id = new.id;
             END
         ';
@@ -143,6 +155,7 @@ class CreateEcosystemDatabase extends Command
     private string $table = 'CREATE TABLE "packages" (
             id VARCHAR(255) NOT NULL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
+            type VARCHAR(255) NOT NULL,
             packagistUrl VARCHAR(255) NOT NULL,
             repository VARCHAR(255) NOT NULL,
             abandoned TINYINT NOT NULL,
@@ -150,15 +163,20 @@ class CreateEcosystemDatabase extends Command
             license VARCHAR(255) NOT NULL,
             created UNSIGNED INTEGER NOT NULL,
             updated UNSIGNED INTEGER NOT NULL,
-            categories VARCHAR(255),
+            category VARCHAR(255) NOT NULL,
+            keywords VARCHAR(255),
             tags VARCHAR(255),
             website VARCHAR(255),
             downloads UNSIGNED INTEGER,
             stars UNSIGNED INTEGER,
-            forks UNSIGNED INTEGER,
-            watchers UNSIGNED INTEGER,
-            issues UNSIGNED INTEGER
+            issues UNSIGNED INTEGER,
+            image VARCHAR(255) NOT NULL
         )';
+
+    public function setMapper(PdoMapper $mapper): void
+    {
+        $this->mapper = $mapper;
+    }
 
     protected function configure(): void
     {
@@ -195,7 +213,14 @@ class CreateEcosystemDatabase extends Command
             'b',
             InputOption::VALUE_REQUIRED,
             'Path to the database file, relative to the --path.',
-            self::PACKAGES_DB_PATH
+            sprintf('%s/%s', self::PACKAGES_DB_PATH, self::PACKAGES_DB_FILE)
+        );
+
+        $this->addOption(
+            'github-token',
+            'gt',
+            InputOption::VALUE_OPTIONAL,
+            'GitHub access token',
         );
     }
 
@@ -213,16 +238,24 @@ class CreateEcosystemDatabase extends Command
         assert(is_string($dataFile));
         $dbFile = $input->getOption('db-path');
         assert(is_string($dbFile));
+        $this->ghToken = $input->getOption('github-token');
+        if (! $this->ghToken) {
+            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
+            assert(is_array($variables));
+            assert(isset($variables['REPO_TOKEN']));
+
+            $this->ghToken = $variables['REPO_TOKEN'];
+        }
+        assert(is_string($this->ghToken));
 
         $path = sprintf(
-            '%s/%s/%s',
+            '%s%s/%s',
             $basePath,
             $dataPath,
             $dataFile
         );
 
         $io->title('Generating ecosystem packages database');
-
         $userData = file_get_contents($path);
         assert(is_string($userData));
 
@@ -241,6 +274,10 @@ class CreateEcosystemDatabase extends Command
             }
 
             $package = $this->createEcosystemPackageFromArray($curlResult);
+            if ($package === null) {
+                continue;
+            }
+
             $this->insertPackageInDatabase($package, $pdo);
         }
 
@@ -251,9 +288,9 @@ class CreateEcosystemDatabase extends Command
 
     private function createDatabase(string $path): PDO
     {
-        if (file_exists($path)) {
+        if (file_exists($path) && file_get_contents($path) !== '') {
             $path = realpath($path);
-            unlink($path);
+            return new PDO('sqlite:' . $path);
         }
 
         if ($path[0] !== '/') {
@@ -288,17 +325,36 @@ class CreateEcosystemDatabase extends Command
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $githubHeaders = [
+            'Accept: application/vnd.github+json',
+            'Authorization: Bearer ' . $this->ghToken,
+            'X-GitHub-Api-Version: 2022-11-28',
+            'User-Agent: jurj@rospace.com',
+        ];
+
+        $this->githubCurl = curl_init();
+        curl_setopt($this->githubCurl, CURLOPT_HTTPHEADER, $githubHeaders);
+        curl_setopt($this->githubCurl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($this->githubCurl, CURLOPT_RETURNTRANSFER, 1);
     }
 
     /**
-     * @param array{packagistUrl: string, githubUrl: string, categories: array<string>, homepage: string} $userData
+     * @phpcs:ignore
+     * @param array{
+     *     packagistUrl: string,
+     *     githubUrl: string,
+     *     keywords: array<string>,
+     *     homepage: string,
+     *     category: string
+     * } $userData
      */
     private function getPackageData(array $userData): ?array
     {
         $matches = [];
         preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $matches);
 
-        if (! isset($matches[1])) {
+        if (! isset($matches[1]) || ! empty($this->mapper->searchPackage($matches[1]))) {
             return null;
         }
 
@@ -312,7 +368,6 @@ class CreateEcosystemDatabase extends Command
 
         $packagistResult = json_decode($rawResult, true);
         assert(is_array($packagistResult));
-
         /**
          * @var array{
          *     name: string,
@@ -342,23 +397,45 @@ class CreateEcosystemDatabase extends Command
         return [
             'id'           => uniqid($packageData['name']),
             'name'         => $packageData['name'],
+            'type'         => $packageData['type'],
             'repository'   => $packageData['repository'],
             'description'  => $packageData['description'],
             'created'      => $timestamp,
             'updated'      => $timestamp,
-            'forks'        => $packageData['github_forks'],
-            'watchers'     => $packageData['github_watchers'],
             'stars'        => $packageData['github_stars'],
             'issues'       => $packageData['github_open_issues'],
             'downloads'    => $packageData['downloads']['total'],
             'abandoned'    => (int) isset($packageData['abandoned']),
+            'category'     => $userData['category'],
             'packagistUrl' => $userData['packagistUrl'],
-            'categories'   => $userData['categories'] !== [] ? $userData['categories'] : '',
+            'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
             'website'      => isset($userData['homepage']) && $userData['homepage'] !== '' ? $userData['homepage']
                 : $lastVersionData['homepage'] ?? '',
             'license'      => ! empty($lastVersionData['license']) ? $lastVersionData['license'][0] : '',
             'tags'         => ! empty($lastVersionData['keywords']) ? $lastVersionData['keywords'] : '',
+            'image'        => $this->getSocialPreview($matches[1]),
         ];
+    }
+
+    private function getSocialPreview(string $package): ?string
+    {
+        $packageId    = explode('/', $package);
+        $graphQlUrl   = 'https://api.github.com/graphql';
+        $graphQlQuery = sprintf(
+            '{"query": "query {repository(owner: \"%s\", name: \"%s\"){openGraphImageUrl}}"}',
+            $packageId[0],
+            $packageId[1]
+        );
+        curl_setopt($this->githubCurl, CURLOPT_URL, $graphQlUrl);
+        curl_setopt($this->githubCurl, CURLOPT_POST, true);
+        curl_setopt($this->githubCurl, CURLOPT_POSTFIELDS, $graphQlQuery);
+
+        $rawResult = curl_exec($this->githubCurl);
+        assert(is_string($rawResult));
+
+        $githubResult = json_decode($rawResult, true);
+
+        return $githubResult['data']['repository']['openGraphImageUrl'] ?? null;
     }
 
     private function insertPackageInDatabase(EcosystemPackage $package, PDO $pdo): void
@@ -367,6 +444,7 @@ class CreateEcosystemDatabase extends Command
             $this->initial,
             $pdo->quote($package->id),
             $pdo->quote($package->name),
+            $pdo->quote($package->type),
             $pdo->quote($package->packagistUrl),
             $pdo->quote($package->repository),
             (int) $package->abandoned,
@@ -374,8 +452,9 @@ class CreateEcosystemDatabase extends Command
             $pdo->quote($package->license),
             $package->created->getTimestamp(),
             $package->updated->getTimestamp(),
-            ! empty($package->categories)
-                ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $package->categories))))
+            $pdo->quote($package->category->value),
+            ! empty($package->keywords)
+                ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $package->keywords))))
                 : '',
             ! empty($package->tags)
                 ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $package->tags))))
@@ -383,9 +462,8 @@ class CreateEcosystemDatabase extends Command
             $pdo->quote($package->website),
             $package->downloads,
             $package->stars,
-            $package->forks,
-            $package->watchers,
-            $package->issues
+            $package->issues,
+            $package->image !== null ? $pdo->quote($package->image) : 0,
         );
 
         $pdo->exec($statement);

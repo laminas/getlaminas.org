@@ -17,9 +17,9 @@ $(document).ready(function () {
             }
         }
 
-        if ($(this).hasClass('category')) {
-            if (! params.has("categories[]", entry)) {
-                params.append("categories[]", entry);
+        if ($(this).hasClass('keyword')) {
+            if (! params.has("keywords[]", entry)) {
+                params.append("keywords[]", entry);
                 url.search = params.toString();
 
                 window.location.replace(url.toString());
@@ -43,9 +43,9 @@ $(document).ready(function () {
             }
         }
 
-        if ($(this).hasClass('category')) {
-            if (params.has("categories[]", entry)) {
-                params.delete("categories[]", entry);
+        if ($(this).hasClass('keyword')) {
+            if (params.has("keywords[]", entry)) {
+                params.delete("keywords[]", entry);
                 url.search = params.toString();
 
                 window.location.replace(url.toString());

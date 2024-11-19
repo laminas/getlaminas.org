@@ -20,7 +20,7 @@ interface MapperInterface
     public function fetchAllByTag(string $tag): Paginator;
 
     /** @return Paginator<int, EcosystemPackage> */
-    public function fetchAllByCategory(string $category): Paginator;
+    public function fetchAllByKeyword(string $keyword): Paginator;
 
     public function search(string $toMatch): ?array;
 

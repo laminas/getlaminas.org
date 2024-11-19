@@ -40,19 +40,19 @@ class EcosystemHandler implements RequestHandlerInterface
 
         $tags = $queryParams['tags'] ?? [];
         assert(is_array($tags));
-        $categories = $queryParams['categories'] ?? [];
-        assert(is_array($categories));
+        $keywords = $queryParams['keywords'] ?? [];
+        assert(is_array($keywords));
         $search = $queryParams['q'] ?? '';
         assert(is_string($search));
 
         $packages = $this->ecosystemMapper->fetchAllByFilters(
             [
-                'categories' => $categories !== []
+                'keywords' => $keywords !== []
                     ? array_map(
-                        fn (string $category) => strtolower($category),
-                        $categories
+                        fn (string $keyword) => strtolower($keyword),
+                        $keywords
                     ) : null,
-                'tags'       => $tags !== []
+                'tags'     => $tags !== []
                     ? array_map(
                         fn (string $tag) => strtolower($tag),
                         $tags
@@ -64,14 +64,14 @@ class EcosystemHandler implements RequestHandlerInterface
         $path = $request->getAttribute('originalRequest', $request)->getUri()->getPath();
         assert(is_string($path));
         $page = $this->getPageFromRequest($request);
-        $packages->setItemCountPerPage(2);
+        $packages->setItemCountPerPage(15);
 
         // If the requested page is later than the last, redirect to the last
-        // keep set tag, category and search queries
+        // keep set tag, keyword and search queries
         if (count($packages) && $page > count($packages)) {
-            $categoriesQuery = '';
-            if (! empty($categories)) {
-                $categoriesQuery = '&categories[]=' . implode("&categories[]=", $categories);
+            $keywordsQuery = '';
+            if (! empty($keywords)) {
+                $keywordsQuery = '&keywords[]=' . implode("&keywords[]=", $keywords);
             }
 
             $tagsQuery = '';
@@ -89,7 +89,7 @@ class EcosystemHandler implements RequestHandlerInterface
                     '%s?page=%d%s%s%s',
                     $path,
                     count($packages),
-                    $categoriesQuery,
+                    $keywordsQuery,
                     $tagsQuery,
                     $searchQuery
                 )
@@ -104,7 +104,7 @@ class EcosystemHandler implements RequestHandlerInterface
                 $packages->getItemsByPage($page),
                 $this->preparePagination($path, $page, $packages->getPages()),
                 $tags,
-                $categories,
+                $keywords,
                 $search
             ),
         ));
@@ -144,7 +144,7 @@ class EcosystemHandler implements RequestHandlerInterface
         iterable $entries,
         object $pagination,
         array $tags,
-        array $categories,
+        array $keywords,
         string $search
     ): array {
         return [
@@ -152,7 +152,7 @@ class EcosystemHandler implements RequestHandlerInterface
                 'ecosystemPackages' => ArrayUtils::iteratorToArray($entries, false),
                 'pagination'        => $pagination,
                 'tags'              => $tags,
-                'categories'        => $categories,
+                'keywords'          => $keywords,
                 'search'            => $search,
             ],
         ];

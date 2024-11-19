@@ -31,8 +31,9 @@ composer build
 {
   "packagistUrl": "",
   "githubUrl": "",
-  "categories": [],
-  "homepage": ""
+  "keywords": [],
+  "homepage": "",
+  "category": ""
 }
 ```
 
@@ -44,8 +45,11 @@ composer build
 - `githubUrl`
   **string** - optional link to be displayed on the package card
 
-- `categories`
+- `keywords`
   **array of strings** - user defined keywords used for filtering results
 
 - `homepage`
   **string** - optional URL to package homepage, will overwrite "homepage" field from Packagist Api data
+
+- `category`
+  **string** - package category must be one of "skeleton", "integration", "tool"
