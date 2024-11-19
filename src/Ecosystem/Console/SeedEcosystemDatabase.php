@@ -6,7 +6,6 @@ namespace GetLaminas\Ecosystem\Console;
 
 use CurlHandle;
 use DateTimeImmutable;
-use GetLaminas\Ecosystem\CreateEcosystemPackageFromArrayTrait;
 use GetLaminas\Ecosystem\Mapper\PdoMapper;
 use PDO;
 use Symfony\Component\Console\Command\Command;
@@ -17,9 +16,11 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function array_values;
 use function assert;
+use function base64_decode;
 use function curl_exec;
 use function curl_init;
 use function curl_setopt;
+use function explode;
 use function implode;
 use function is_array;
 use function is_string;
@@ -30,16 +31,18 @@ use function strtolower;
 
 use const CURLOPT_FOLLOWLOCATION;
 use const CURLOPT_HTTPHEADER;
+use const CURLOPT_POST;
+use const CURLOPT_POSTFIELDS;
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 
 class SeedEcosystemDatabase extends Command
 {
-    use CreateEcosystemPackageFromArrayTrait;
-
     public const string PACKAGE_UPDATE_TIME = '6 hours ago';
 
     private CurlHandle $curl;
+    private CurlHandle $githubCurl;
+    private ?string $ghToken = null;
     public PdoMapper $mapper;
 
     private string $update = 'UPDATE packages SET
@@ -52,9 +55,8 @@ class SeedEcosystemDatabase extends Command
             tags = %s,
             downloads = %d,
             stars = %d,
-            forks = %d,
-            watchers = %d,
-            issues = %d
+            issues = %d,
+            image = %s
             WHERE id = %s;';
 
     public function setMapper(PdoMapper $mapper): void
@@ -73,7 +75,14 @@ class SeedEcosystemDatabase extends Command
             'b',
             InputOption::VALUE_REQUIRED,
             'Path to the database file, relative to the --path.',
-            CreateEcosystemDatabase::PACKAGES_DB_PATH
+            sprintf('%s/%s', CreateEcosystemDatabase::PACKAGES_DB_PATH, CreateEcosystemDatabase::PACKAGES_DB_FILE)
+        );
+
+        $this->addOption(
+            'github-token',
+            'gt',
+            InputOption::VALUE_OPTIONAL,
+            'GitHub access token',
         );
     }
 
@@ -82,6 +91,15 @@ class SeedEcosystemDatabase extends Command
         $io     = new SymfonyStyle($input, $output);
         $dbFile = $input->getOption('db-path');
         assert(is_string($dbFile));
+        $this->ghToken = $input->getOption('github-token');
+        if (! $this->ghToken) {
+            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
+            assert(is_array($variables));
+            assert(isset($variables['REPO_TOKEN']));
+
+            $this->ghToken = $variables['REPO_TOKEN'];
+        }
+        assert(is_string($this->ghToken));
 
         /** @var array{id: string, name: string, updated: int}|null $packagesDueUpdates */
         $packagesDueUpdates = $this->mapper->fetchPackagesDueUpdates(
@@ -127,6 +145,18 @@ class SeedEcosystemDatabase extends Command
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $githubHeaders = [
+            'Accept: application/vnd.github+json',
+            'Authorization: Bearer ' . $this->ghToken,
+            'X-GitHub-Api-Version: 2022-11-28',
+            'User-Agent: getlaminas.org',
+        ];
+
+        $this->githubCurl = curl_init();
+        curl_setopt($this->githubCurl, CURLOPT_HTTPHEADER, $githubHeaders);
+        curl_setopt($this->githubCurl, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($this->githubCurl, CURLOPT_RETURNTRANSFER, 1);
     }
 
     private function getPackageData(array $package): array
@@ -148,8 +178,6 @@ class SeedEcosystemDatabase extends Command
          *     abandoned: string,
          *     description: string,
          *     updated: int,
-         *     forks: int,
-         *     watchers: int,
          *     stars: int,
          *     issues: int,
          *     downloads: array{total: int, monthly: int, daily: int},
@@ -167,33 +195,52 @@ class SeedEcosystemDatabase extends Command
             'abandoned'   => (int) isset($packageData['abandoned']),
             'description' => $packageData['description'],
             'updated'     => (new DateTimeImmutable())->getTimestamp(),
-            'forks'       => (int) $packageData['github_forks'],
-            'watchers'    => (int) $packageData['github_watchers'],
             'stars'       => (int) $packageData['github_stars'],
             'issues'      => (int) $packageData['github_open_issues'],
             'downloads'   => (int) $packageData['downloads']['total'],
             'license'     => ! empty($lastVersionData['license']) ? $lastVersionData['license'][0] : '',
             'tags'        => ! empty($lastVersionData['keywords']) ? $lastVersionData['keywords'] : '',
+            'image'       => $this->getSocialPreview($packageData['name']),
             'id'          => $package['id'],
         ];
+    }
+
+    private function getSocialPreview(string $package): ?string
+    {
+        $packageId    = explode('/', $package);
+        $graphQlQuery = sprintf(
+            '{"query": "query {repository(owner: \"%s\", name: \"%s\"){openGraphImageUrl}}"}',
+            $packageId[0],
+            $packageId[1]
+        );
+
+        curl_setopt($this->githubCurl, CURLOPT_URL, 'https://api.github.com/graphql');
+        curl_setopt($this->githubCurl, CURLOPT_POST, true);
+        curl_setopt($this->githubCurl, CURLOPT_POSTFIELDS, $graphQlQuery);
+
+        $rawResult = curl_exec($this->githubCurl);
+        assert(is_string($rawResult));
+
+        $githubResult = json_decode($rawResult, true);
+
+        return $githubResult['data']['repository']['openGraphImageUrl'] ?? null;
     }
 
     /**
      * @phpcs:ignore
      * @param array{
-     *    name: string,
-     *    repository: string,
-     *    abandoned: string,
-     *    description: string,
-     *    updated: int,
-     *    forks: int,
-     *    watchers: int,
-     *    stars: int,
-     *    issues: int,
-     *    downloads: array{total: int, monthly: int, daily: int},
-     *    license: string,
-     *    tags: array<string>|string,
-     *    id: string
+     *     name: string,
+     *     repository: string,
+     *     abandoned: string,
+     *     description: string,
+     *     updated: int,
+     *     stars: int,
+     *     issues: int,
+     *     downloads: array{total: int, monthly: int, daily: int},
+     *     license: string,
+     *     tags: array<string>|string,
+     *     image: string|null
+     *     id: string
      *    } $packageData
      */
     private function updatePackage(array $packageData, PDO $pdo): void
@@ -211,9 +258,8 @@ class SeedEcosystemDatabase extends Command
                 : $pdo->quote(''),
             $packageData['downloads'],
             $packageData['stars'],
-            $packageData['forks'],
-            $packageData['watchers'],
             $packageData['issues'],
+            $packageData['image'] !== null ? $pdo->quote($packageData['image']) : '0',
             $pdo->quote($packageData['id'])
         );
 

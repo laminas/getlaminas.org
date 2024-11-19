@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @var array<\GetLaminas\Ecosystem\EcosystemPackage> $ecosystemPackages
  * @var stdClass $pagination
  * @var array $tags
- * @var array $categories
+ * @var array $keywords
  * @var string $search
  */
 
@@ -29,26 +29,44 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                     <p class="ecosystem-filter tag" data-value="<?= $tag ?>"><?= $tag ?> <i class="bi bi-x-circle"></i></p>
                 <?php endforeach?>
 
-                <?php foreach($categories as $category) : ?>
-                    <p class="ecosystem-filter category" data-value="<?= $category ?>"><?= $category ?> <i class="bi bi-x-circle"></i></p>
+                <?php foreach($keywords as $keyword) : ?>
+                    <p class="ecosystem-filter keyword" data-value="<?= $keyword ?>"><?= $keyword ?> <i class="bi bi-x-circle"></i></p>
                 <?php endforeach?>
             </div>
         </div>
     </div>
 
-    <div class="ecosystem-container">
+    <div class="row row-cols-3 gy-5">
         <?php foreach($ecosystemPackages as $package): ?>
-            <div class="ecosystem-package">
-                <div class="ecosystem-package-details">
-                    <a href="<?= $package->packagistUrl ?>" target="_blank">
-                        <p class="details-item"><?= $package->name ?></p>
-                    </a>
+        <div class="card-group">
+            <div class="card">
+                <?php if (! empty($package->image)) :?>
+                    <img src="<?= $package->image ?>" class="card-img-top" alt="...">
+                <?php endif ?>
+                <div class="card-body">
+                    <div class="card-header row">
+                        <h5 class="card-title">
+                            <a href="<?= $package->packagistUrl ?>" target="_blank">
+<!--                                --><?php //if ($package->image !== null) :?>
+<!--                                    <div class="package-image-container">-->
+<!--                                        <img src="--><?php //= $package->image ?><!--" class="package-image rounded float-start" alt="...">-->
+<!--                                    </div>-->
+<!--                                --><?php //endif ?>
+                                <p class="details-item"><?= $package->name ?></p>
+                            </a>
+                        </h5>
+                    </div>
 
-                    <p class="details-item"><?= $package->description ?></p>
+                    <p class="card-text"><?= $package->description ?></p>
+
+                    <div class="row justify-content-between">
+                        <p class="col card-text fw-bold">Type: <?= $package->type ?></p>
+                        <p class="col card-text fw-bolder">Category: <?= $package->category->value ?></p>
+                    </div>
+
                     <?php if ($package->abandoned) : ?>
-                        <p class="details-item fw-bold"><i class="bi bi-exclamation-triangle"></i> This package has been abandoned</p>
+                        <p class="card-text details-item fw-bold"><i class="bi bi-exclamation-triangle"></i> This package has been abandoned</p>
                     <?php endif?>
-
 
                     <?php if (! empty($package->tags)) : ?>
                         <div class="package-tags-container">
@@ -62,53 +80,51 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                         </div>
                     <?php endif; ?>
 
-                    <?php if (! empty($package->categories)) :?>
+                    <?php if (! empty($package->keywords)) :?>
                         <div class="package-categories-container">
-                            <?php foreach ($package->categories as $category) :
-                                if (empty($category)) {
+                            <?php foreach ($package->keywords as $keyword) :
+                                if (empty($keyword)) {
                                     continue;
                                 }
                                 ?>
-                                <button type="button" class="package-button category" data-value="<?= $category ?>"><?= $category ?></button>
+                                <button type="button" class="package-button keyword" data-value="<?= $keyword ?>"><?= $keyword ?></button>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
 
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <p class="col statistics-item"><i class="bi bi-download"></i> <?= $package->downloads ?> downloads</p>
+                            <p class="col statistics-item"><i class="bi bi-star"></i> <?= $package->stars ?> stars</p>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <?php if ($package->license) : ?>
+                                <p class="details-item"><i class="bi bi-file-earmark-text"></i> <?= $package->license ?></p>
+                            <?php endif; ?>
+                            <div class="row align-content-">
+                                <?php if ($package->repository) : ?>
+                                    <p class="col statistics-item">
+                                        <i class="bi-github"></i>
+                                        <a href="<?= $package->repository ?>" target="_blank">See on GitHub</a>
+                                    </p>
+                                <?php endif; ?>
+                                <?php if ($package->website !== '') : ?>
+                                    <p class="col statistics-item">
+                                        <i class="bi bi-house"></i>
+                                        <a href="<?= $package->website ?>" target="_blank">
+                                            Homepage
+                                        </a>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
                     <p class="details-item fst-italic mt-auto">Updated: <?= $package->updated->format('Y-m-d H:i') ?></p>
                 </div>
-                <div class="ecosystem-package-statistics">
-
-                    <?php if ($package->website !== '') : ?>
-                        <p class="statistics-item">
-                            <i class="bi bi-house"></i>
-                            <a href="<?= $package->website ?>" target="_blank">
-                                Homepage
-                            </a>
-                        </p>
-                    <?php endif; ?>
-                    <p class="statistics-item"><i class="bi bi-download"></i> <?= $package->downloads ?> total downloads</p>
-                    <p class="statistics-item"><i class="bi bi-star"></i> <?= $package->stars ?> stars</p>
-                    <p class="statistics-item"><i class="bi bi-sign-intersection-side"></i> <?= $package->forks ?> forks</p>
-                    <p class="statistics-item"><i class="bi bi-eye"></i> <?= $package->watchers ?> watchers</p>
-                    <p class="statistics-item">
-                        <i class="bi bi-exclamation-circle"></i>
-                        <?php if ($package->issues > 0 && $package->repository) : ?>
-                            <a href="<?= $package->repository . '/issues' ?>" target="_blank"><?= $package->issues ?> issues</a>
-                        <?php else : ?>
-                            <?= $package->issues ?> issues
-                        <?php endif ?>
-                    </p>
-                    <?php if ($package->license) : ?>
-                        <p class="details-item"><i class="bi bi-file-earmark-text"></i> <?= $package->license ?></p>
-                    <?php endif; ?>
-                    <?php if ($package->repository) : ?>
-                        <p class="statistics-item">
-                            <i class="bi-github"></i>
-                                <a href="<?= $package->repository ?>" target="_blank">See on GitHub</a>
-                        </p>
-                    <?php endif; ?>
-                </div>
             </div>
+        </div>
         <?php endforeach ?>
     </div>
     <div id="ecosystem-pagination">
