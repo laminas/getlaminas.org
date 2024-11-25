@@ -99,4 +99,16 @@ $(document).ready(function () {
         url.searchParams.set('q', search);
         window.location.replace(url.toString());
     }
+
+    $('#clear-filters-button').click(function (e) {
+        const url = new URL(window.location.href);
+
+        for (let [k,v] of new URLSearchParams(window.location.search).entries()) {
+            if (k === 'type' || k === 'category' || k === 'usage') {
+                url.searchParams.delete(k)
+            }
+        }
+
+        window.location.replace(url.toString());
+    });
 });
