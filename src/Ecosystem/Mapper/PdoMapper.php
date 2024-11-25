@@ -70,16 +70,6 @@ class PdoMapper implements MapperInterface
         );
     }
 
-    public function fetchAllByTag(string $tag): Paginator
-    {
-        $select = 'SELECT * FROM packages '
-            . 'WHERE tags LIKE :tag '
-            . 'ORDER BY downloads '
-            . 'DESC LIMIT :offset, :limit';
-        $count  = 'SELECT COUNT(id) FROM packages WHERE tags LIKE :tag';
-        return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $tag)]);
-    }
-
     public function fetchAllByKeyword(string $keyword): Paginator
     {
         $select = 'SELECT * FROM packages '

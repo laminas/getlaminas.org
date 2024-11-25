@@ -6,79 +6,112 @@ declare(strict_types=1);
  * @var League\Plates\Template\Template $this
  * @var array<\GetLaminas\Ecosystem\EcosystemPackage> $ecosystemPackages
  * @var stdClass $pagination
- * @var array $tags
  * @var array $keywords
  * @var string $search
+ * @var string $type
+ * @var string $category
+ * @var string $usage
  */
+
+use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
+use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
+use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 
 $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
 ?>
 <section id="ecosystem-section" class="container">
-    <div class="row mt-5">
-        <div class="col">
+    <div class="mt-5">
+        <div>
             <h1>Laminas Ecosystem</h1>
         </div>
-        <div id="ecosystem-navbar">
-            <div id="ecosystem-search-container">
-                <input id="ecosystem-search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="<?= $search ?>">
-                <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
-            </div>
 
-            <div id="ecosystem-filter-container">
-                <?php foreach($tags as $tag) : ?>
-                    <p class="ecosystem-filter tag" data-value="<?= $tag ?>"><?= $tag ?> <i class="bi bi-x-circle"></i></p>
-                <?php endforeach?>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div id="ecosystem-navbar" class="container-fluid">
+                <div id="ecosystem-search-container">
+                    <input id="ecosystem-search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="<?= $search ?>">
+                    <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
+                </div>
 
-                <?php foreach($keywords as $keyword) : ?>
-                    <p class="ecosystem-filter keyword" data-value="<?= $keyword ?>"><?= $keyword ?> <i class="bi bi-x-circle"></i></p>
-                <?php endforeach?>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-success">Type</button>
+                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class=""><?= $type ?? '' ?></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <?php foreach (EcosystemTypeEnum::cases() as $case): ?>
+                            <li><a class="package-button type dropdown-item <?php if ($case->name === $type): ?> active <?php endif; ?>" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-success">Usage</button>
+                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class=""><?= $usage ?? '' ?></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <?php foreach (EcosystemUsageEnum::cases() as $case): ?>
+                            <li><a class="package-button usage dropdown-item <?php if ($case->name === $usage): ?> active <?php endif; ?>" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-success">Category</button>
+                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class=""><?= $category ?? '' ?></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <?php foreach (EcosystemCategoryEnum::cases() as $case): ?>
+                            <li><a class="package-button category dropdown-item <?php if ($case->name === $category): ?> active <?php endif; ?>" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
             </div>
+        </nav>
+
+        <div id="ecosystem-filter-container">
+            <?php foreach($keywords as $keyword) : ?>
+                <p class="ecosystem-filter keyword" data-value="<?= $keyword ?>"><?= $keyword ?> <i class="bi bi-x-circle"></i></p>
+            <?php endforeach?>
         </div>
     </div>
 
-    <div class="row row-cols-3 gy-5">
+    <div class="row gy-5">
         <?php foreach($ecosystemPackages as $package): ?>
-        <div class="card-group">
+        <div class="card-group col-sm-12 col-md-6 col-xl-4">
             <div class="card">
-                <?php if (! empty($package->image)) :?>
-                    <img src="<?= $package->image ?>" class="card-img-top" alt="...">
-                <?php endif ?>
+                <div class="package-image-container">
+                    <?php if ($package->abandoned) : ?>
+                        <p class="card-text details-item abandoned-package rounded-top fw-bold">
+                            <i class="bi bi-exclamation-triangle"></i> This package has been abandoned
+                        </p>
+                    <?php endif?>
+                    <?php if (! empty($package->image)) :?>
+                        <img src="<?= $package->image ?>" class="package-image card-img-top" alt="...">
+                    <?php else : ?>
+                        <?php if ($package->category === EcosystemCategoryEnum::Skeleton) : ?>
+                            <i class="default-package-image bi bi-stack"></i>
+                        <?php elseif ($package->category === EcosystemCategoryEnum::Integration) : ?>
+                            <i class="default-package-image bi bi-plug"></i>
+                        <?php elseif ($package->category === EcosystemCategoryEnum::Tool) : ?>
+                            <i class="default-package-image bi bi-wrench"></i>
+                        <?php endif ?>
+                    <?php endif ?>
+                </div>
                 <div class="card-body">
                     <div class="card-header row">
                         <h5 class="card-title">
                             <a href="<?= $package->packagistUrl ?>" target="_blank">
-<!--                                --><?php //if ($package->image !== null) :?>
-<!--                                    <div class="package-image-container">-->
-<!--                                        <img src="--><?php //= $package->image ?><!--" class="package-image rounded float-start" alt="...">-->
-<!--                                    </div>-->
-<!--                                --><?php //endif ?>
                                 <p class="details-item"><?= $package->name ?></p>
                             </a>
                         </h5>
                     </div>
-
-                    <p class="card-text"><?= $package->description ?></p>
-
                     <div class="row justify-content-between">
-                        <p class="col card-text fw-bold">Type: <?= $package->type ?></p>
+                        <p class="col card-text fw-bold">Type: <?= $package->type->value ?></p>
+                        <p class="col card-text fw-bold">Usage: <?= $package->usage->value ?></p>
                         <p class="col card-text fw-bolder">Category: <?= $package->category->value ?></p>
                     </div>
-
-                    <?php if ($package->abandoned) : ?>
-                        <p class="card-text details-item fw-bold"><i class="bi bi-exclamation-triangle"></i> This package has been abandoned</p>
-                    <?php endif?>
-
-                    <?php if (! empty($package->tags)) : ?>
-                        <div class="package-tags-container">
-                            <?php foreach ($package->tags as $tag) :
-                                if (empty($tag)) {
-                                    continue;
-                                }
-                                ?>
-                                <button type="button" class="package-button tag" data-value="<?= $tag ?>"><?= $tag ?></button>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
 
                     <?php if (! empty($package->keywords)) :?>
                         <div class="package-categories-container">
@@ -94,34 +127,34 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
 
                     <div class="container">
                         <div class="row justify-content-between">
-                            <p class="col statistics-item"><i class="bi bi-download"></i> <?= $package->downloads ?> downloads</p>
-                            <p class="col statistics-item"><i class="bi bi-star"></i> <?= $package->stars ?> stars</p>
-                        </div>
-                        <div class="row justify-content-md-center">
-                            <?php if ($package->license) : ?>
-                                <p class="details-item"><i class="bi bi-file-earmark-text"></i> <?= $package->license ?></p>
+                            <?php if ($package->repository) : ?>
+                                <p class="col statistics-item">
+                                    <i class="bi-github"></i>
+                                    <a href="<?= $package->repository ?>" target="_blank">Source</a>
+                                </p>
                             <?php endif; ?>
-                            <div class="row align-content-">
-                                <?php if ($package->repository) : ?>
-                                    <p class="col statistics-item">
-                                        <i class="bi-github"></i>
-                                        <a href="<?= $package->repository ?>" target="_blank">See on GitHub</a>
-                                    </p>
-                                <?php endif; ?>
-                                <?php if ($package->website !== '') : ?>
-                                    <p class="col statistics-item">
-                                        <i class="bi bi-house"></i>
-                                        <a href="<?= $package->website ?>" target="_blank">
-                                            Homepage
-                                        </a>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
+                            <p class="col statistics-item"><i class="bi bi-download"></i> <?= $package->downloads ?></p>
+                            <p class="col statistics-item"><i class="bi bi-star"></i> <?= $package->stars ?></p>
                         </div>
+                        <p class="card-text"><?= $package->description ?></p>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <p class="details-item fst-italic mt-auto">Updated: <?= $package->updated->format('Y-m-d H:i') ?></p>
+                    <?php if ($package->website !== '') : ?>
+                        <p class="card-homepage details-item">
+                            <small>
+                                <i class="bi bi-house"></i>
+                                <a href="<?= $package->website ?>" target="_blank">
+                                    Homepage
+                                </a>
+                            </small>
+                        </p>
+                    <?php endif; ?>
+                    <p class="card-updated details-item fst-italic mt-auto">
+                        <small>
+                            <i class="bi bi-clock"></i> <?= $package->updated->format('Y-m-d H:i') ?>
+                        </small>
+                    </p>
                 </div>
             </div>
         </div>

@@ -8,19 +8,46 @@ $(document).ready(function () {
         const params = new URLSearchParams(url.search);
         const entry = $(this).data('value');
 
-        if ($(this).hasClass('tag')) {
-            if (! params.has("tags[]", entry)) {
-                params.append("tags[]", entry);
+        if ($(this).hasClass('keyword')) {
+            if (! params.has("keywords[]", entry)) {
+                params.append("keywords[]", entry);
                 url.search = params.toString();
 
                 window.location.replace(url.toString());
             }
         }
 
-        if ($(this).hasClass('keyword')) {
-            if (! params.has("keywords[]", entry)) {
-                params.append("keywords[]", entry);
-                url.search = params.toString();
+        if ($(this).hasClass('type')) {
+            if (! params.has("type", entry)) {
+                url.searchParams.set('type', entry);
+
+                window.location.replace(url.toString());
+            } else if (params.get("type") === entry) {
+                url.searchParams.delete("type");
+
+                window.location.replace(url.toString());
+            }
+        }
+
+        if ($(this).hasClass('category')) {
+            if (! params.has("category", entry)) {
+                url.searchParams.set('category', entry);
+
+                window.location.replace(url.toString());
+            } else if (params.get("category") === entry) {
+                url.searchParams.delete("category");
+
+                window.location.replace(url.toString());
+            }
+        }
+
+        if ($(this).hasClass('usage')) {
+            if (! params.has("usage", entry)) {
+                url.searchParams.set('usage', entry);
+
+                window.location.replace(url.toString());
+            } else if (params.get("usage") === entry) {
+                url.searchParams.delete("usage");
 
                 window.location.replace(url.toString());
             }
@@ -33,15 +60,6 @@ $(document).ready(function () {
         const url = new URL(window.location.href);
         const params = new URLSearchParams(url.search);
         const entry = $(this).data('value');
-
-        if ($(this).hasClass('tag')) {
-            if (params.has("tags[]", entry)) {
-                params.delete("tags[]", entry);
-                url.search = params.toString();
-
-                window.location.replace(url.toString());
-            }
-        }
 
         if ($(this).hasClass('keyword')) {
             if (params.has("keywords[]", entry)) {
@@ -56,7 +74,7 @@ $(document).ready(function () {
     [...$('#ecosystem-pagination a')].forEach(a => {
         const url = new URL(a.href)
         for (let [k,v] of new URLSearchParams(window.location.search).entries()) {
-            if (k === 'tags[]' || k === 'categories[]' || k === 'q') {
+            if (k === 'keywords[]' || k === 'q' || k === 'type' || k === 'category' || k === 'usage') {
                 url.searchParams.set(k,v)
             }
         }

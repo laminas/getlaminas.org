@@ -8,6 +8,8 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Exception;
 use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
+use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
+use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 
 use function explode;
 use function is_array;
@@ -25,6 +27,7 @@ trait CreateEcosystemPackageFromArrayTrait
      *     type: string,
      *     repository: string,
      *     description: string,
+     *     usage: string,
      *     created: int,
      *     updated: int,
      *     category: string,
@@ -36,7 +39,6 @@ trait CreateEcosystemPackageFromArrayTrait
      *     keywords: string|array<string>,
      *     website: string,
      *     license: string,
-     *     tags: string|array<string>,
      *     image: string|null
      * } $packageData
      */
@@ -48,6 +50,8 @@ trait CreateEcosystemPackageFromArrayTrait
             : $created;
 
         $category = EcosystemCategoryEnum::tryFrom(trim($packageData['category']));
+        $type     = EcosystemTypeEnum::tryFrom(trim($packageData['type']));
+        $usage    = EcosystemUsageEnum::tryFrom(trim($packageData['usage']));
 
         if ($category === null) {
             return null;
@@ -56,21 +60,18 @@ trait CreateEcosystemPackageFromArrayTrait
         return new EcosystemPackage(
             $packageData['id'],
             $packageData['name'],
-            $packageData['type'],
+            $type,
             $packageData['packagistUrl'],
             $packageData['repository'],
             (bool) $packageData['abandoned'],
             $packageData['description'],
-            $packageData['license'],
+            $usage,
             $created,
             $updated,
             $category,
             is_array($packageData['keywords'])
                 ? $packageData['keywords']
                 : explode('|', trim($packageData['keywords'], '|')),
-            is_array($packageData['tags'])
-                ? $packageData['tags']
-                : explode('|', trim($packageData['tags'], '|')),
             $packageData['website'] ?? '',
             $packageData['downloads'],
             $packageData['stars'],

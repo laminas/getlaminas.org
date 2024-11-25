@@ -529,14 +529,66 @@ article {
 }
 
 #ecosystem-section {
-    .tag {
-        --filter-button-color: #00131e;
-    }
     .keyword {
         --filter-button-color: #678799;
     }
     #ecosystem-pagination {
         margin-top: 1em;
+    }
+
+    .card {
+        height: 500px;
+        transition: all .2s ease-in-out;
+
+        .abandoned-package {
+            position: absolute;
+            top: 0;
+            padding-left: 10pt;
+            background: #ff9102;
+            width: 100%;
+        }
+
+        .package-image-container {
+            display: grid;
+            align-items: center;
+            text-align: center;
+            height: 200px;
+        }
+
+        .card-body {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            .card-homepage {
+                float: left;
+            }
+            .card-updated {
+                float: right;
+            }
+        }
+
+        .default-package-image {
+            font-size: 100px;
+            padding: 50px
+        }
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        .package-image-container {
+            height: 100px;
+            overflow: hidden;
+            text-align: center;
+            transition: height 0.3s;
+        }
+
+        .card-body {
+            height: 300px;
+            transition: height 0.3s;
+            overflow: scroll;
+        }
     }
 }
 
@@ -544,6 +596,10 @@ article {
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+
+#ecosystem-navbar button {
+    color: #00131e
 }
 
 .ecosystem-package {
@@ -575,16 +631,20 @@ article {
     }
 }
 
-.package-categories-container, .package-tags-container {
+.details-item {
+    margin-bottom: 0;
+}
+
+.package-categories-container {
     display: flex;
     flex-wrap: wrap;
-    gap: .5em;
+    gap: .3em;
     margin-bottom: .5em;
 
     .package-button {
         border: 2px solid var(--filter-button-color);
         border-radius: 5px;
-        padding: 0 .5em;
+        padding: 0 .25em;
         color: var(--filter-button-color);
         font-weight: bold;
         background-color: white;
@@ -608,13 +668,4 @@ article {
     display: flex;
     margin: .5em 0;
     max-width: 50%;
-
-    #ecosystem-search-btn {
-        color: #00131e
-    }
-}
-
-.package-image {
-    height: 5em;
-    aspect-ratio: 1;
 }

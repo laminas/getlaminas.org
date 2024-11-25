@@ -92,6 +92,13 @@ crons:
             ./vendor/bin/laminas ecosystem:seed-db
         fi
     shutdown_timeout: 20
+
+operations:
+  rebuildEcosystemDatabase:
+    role: admin
+    commands:
+      start: ./vendor/bin/laminas ecosystem:create-db --force-rebuild
+
 web:
   locations:
     '/':

@@ -4,58 +4,67 @@
     "githubUrl":  "https://github.com/akrabat/ip-address-middleware",
     "keywords": ["ip", "address", "middleware"],
     "homepage": "",
-    "category": "tool"
+    "category": "tool",
+    "usage": "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/netglue/laminas-messenger",
     "githubUrl":  "https://github.com/netglue/laminas-messenger",
     "keywords": ["laminas", "messenger"],
     "homepage": "",
-    "category": "tool"
+    "category": "tool",
+    "usage":  "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
     "githubUrl":  "https://github.com/dotkernel/dot-errorhandler",
     "keywords": ["error-handling"],
     "homepage": "https://dotkernel.com",
-    "category": "integration"
+    "category": "integration",
+    "usage":  "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
     "githubUrl":  "",
     "keywords": ["middleware", "doctrine"],
     "homepage": "",
-    "category": "integration"
+    "category": "integration",
+    "usage":  "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/asgrim/mini-mezzio",
     "githubUrl":  "https://github.com/asgrim/mini-mezzio",
     "keywords": ["mezzio"],
     "homepage": "",
-    "category": "skeleton"
+    "category": "skeleton",
+    "usage":  "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/phly/phly-simple-page",
-    "keywords": [],
+    "keywords": ["mvc"],
     "homepage": "https://github.com/phly/PhlySimplePage",
-    "category": "skeleton "
+    "category": "tool",
+    "usage":  "mvc"
   },
   {
     "packagistUrl": "https://packagist.org/packages/mezzio/mezzio-aurarouter",
-    "keywords": [],
+    "keywords": ["middleware", "http"],
     "homepage": "",
-    "category": "invalid"
+    "category": "tool",
+    "usage":  "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/api",
-    "keywords": [],
+    "keywords": ["rest", "api"],
     "homepage": "",
-    "category": "skeleton"
+    "category": "skeleton",
+    "usage":  "mezzio"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/frontend",
-    "keywords": [""],
+    "keywords": ["frontend-application"],
     "homepage": "www.dotkernel.com",
-    "category": "skeleton"
+    "category": "skeleton",
+    "usage":  "mezzio"
   }
 ]
