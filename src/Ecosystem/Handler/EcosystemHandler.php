@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace GetLaminas\Ecosystem\Handler;
 
 use GetLaminas\Ecosystem\EcosystemPackage;
+use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
+use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
+use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 use GetLaminas\Ecosystem\Mapper\MapperInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -38,10 +41,17 @@ class EcosystemHandler implements RequestHandlerInterface
     {
         $queryParams = $request->getQueryParams();
 
-        $tags = $queryParams['tags'] ?? [];
-        assert(is_array($tags));
         $keywords = $queryParams['keywords'] ?? [];
         assert(is_array($keywords));
+        $type = $queryParams['type'] ?? '';
+        assert(is_string($type));
+        $type     = EcosystemTypeEnum::tryFrom($type)?->name;
+        $category = $queryParams['category'] ?? '';
+        assert(is_string($category));
+        $category = EcosystemCategoryEnum::tryFrom($category)?->name;
+        $usage    = $queryParams['usage'] ?? '';
+        assert(is_string($usage));
+        $usage  = EcosystemUsageEnum::tryFrom($usage)?->name;
         $search = $queryParams['q'] ?? '';
         assert(is_string($search));
 
@@ -52,11 +62,9 @@ class EcosystemHandler implements RequestHandlerInterface
                         fn (string $keyword) => strtolower($keyword),
                         $keywords
                     ) : null,
-                'tags'     => $tags !== []
-                    ? array_map(
-                        fn (string $tag) => strtolower($tag),
-                        $tags
-                    ) : null,
+                'type'     => [$type],
+                'category' => [$category],
+                'usage'    => [$usage],
             ],
             $search
         );
@@ -67,16 +75,11 @@ class EcosystemHandler implements RequestHandlerInterface
         $packages->setItemCountPerPage(15);
 
         // If the requested page is later than the last, redirect to the last
-        // keep set tag, keyword and search queries
+        // keep set keyword and search queries
         if (count($packages) && $page > count($packages)) {
             $keywordsQuery = '';
             if (! empty($keywords)) {
                 $keywordsQuery = '&keywords[]=' . implode("&keywords[]=", $keywords);
-            }
-
-            $tagsQuery = '';
-            if (! empty($tags)) {
-                $tagsQuery = '&tags[]=' . implode("&tags[]=", $tags);
             }
 
             $searchQuery = '';
@@ -84,14 +87,31 @@ class EcosystemHandler implements RequestHandlerInterface
                 $searchQuery = '&q=' . $search;
             }
 
+            $typeQuery = '';
+            if ($type !== '') {
+                $typeQuery = '&type=' . $type;
+            }
+
+            $categoryQuery = '';
+            if ($category !== '') {
+                $categoryQuery = '&category=' . $category;
+            }
+
+            $usageQuery = '';
+            if ($usage !== '') {
+                $usageQuery = '&usage=' . $usage;
+            }
+
             return new RedirectResponse(
                 sprintf(
-                    '%s?page=%d%s%s%s',
+                    '%s?page=%d%s%s%s%s%s',
                     $path,
                     count($packages),
                     $keywordsQuery,
-                    $tagsQuery,
-                    $searchQuery
+                    $searchQuery,
+                    $typeQuery,
+                    $categoryQuery,
+                    $usageQuery
                 )
             );
         }
@@ -103,9 +123,11 @@ class EcosystemHandler implements RequestHandlerInterface
             $this->prepareView(
                 $packages->getItemsByPage($page),
                 $this->preparePagination($path, $page, $packages->getPages()),
-                $tags,
                 $keywords,
-                $search
+                $search,
+                $type,
+                $category,
+                $usage
             ),
         ));
     }
@@ -143,17 +165,21 @@ class EcosystemHandler implements RequestHandlerInterface
     private function prepareView(
         iterable $entries,
         object $pagination,
-        array $tags,
         array $keywords,
-        string $search
+        string $search,
+        ?string $typeQuery,
+        ?string $categoryQuery,
+        ?string $usageQuery
     ): array {
         return [
             ...[
                 'ecosystemPackages' => ArrayUtils::iteratorToArray($entries, false),
                 'pagination'        => $pagination,
-                'tags'              => $tags,
                 'keywords'          => $keywords,
                 'search'            => $search,
+                'type'              => $typeQuery,
+                'category'          => $categoryQuery,
+                'usage'             => $usageQuery,
             ],
         ];
     }

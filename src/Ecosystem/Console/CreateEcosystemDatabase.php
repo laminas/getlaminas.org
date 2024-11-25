@@ -18,7 +18,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function array_values;
 use function assert;
 use function base64_decode;
 use function curl_exec;
@@ -37,6 +36,7 @@ use function realpath;
 use function sprintf;
 use function strtolower;
 use function uniqid;
+use function unlink;
 
 use const CURLOPT_FOLLOWLOCATION;
 use const CURLOPT_HTTPHEADER;
@@ -54,12 +54,12 @@ class CreateEcosystemDatabase extends Command
 
     private CurlHandle $curl;
     private CurlHandle $githubCurl;
-    private ?string $ghToken = null;
+    private ?string $ghToken   = null;
+    private bool $forceRebuild = false;
     public PdoMapper $mapper;
 
     /** @var string[] */
     private array $indices = [
-        'CREATE INDEX tags ON packages ( tags )',
         'CREATE INDEX keywords ON packages ( keywords )',
         'CREATE INDEX package_name ON packages ( name )',
     ];
@@ -73,12 +73,11 @@ class CreateEcosystemDatabase extends Command
             %s AS repository,
             %d AS abandoned,
             %s AS description,
-            %s AS license,
+            %s AS usage,
             %d AS created,
             %d AS updated,
             %s AS category,
             %s AS keywords,
-            %s AS tags,
             %s AS website,
             %d AS downloads,
             %d AS stars,
@@ -92,13 +91,12 @@ class CreateEcosystemDatabase extends Command
         %s,
         %s,
         %s,
-        %s,
         %d,
         %s,
         %s,
-        %d,
-        %d,
         %s,
+        %d,
+        %d,
         %s,
         %s,
         %s,
@@ -112,7 +110,6 @@ class CreateEcosystemDatabase extends Command
             created,
             updated,
             name,
-            tags,
             keywords
         )';
 
@@ -124,7 +121,6 @@ class CreateEcosystemDatabase extends Command
                     created,
                     updated,
                     name,
-                    tags,
                     keywords
                 )
                 VALUES (
@@ -132,7 +128,6 @@ class CreateEcosystemDatabase extends Command
                     new.created,
                     new.updated,
                     new.name,
-                    new.tags,
                     new.keywords
                 );
             END
@@ -146,7 +141,6 @@ class CreateEcosystemDatabase extends Command
                  id = new.id,
                  updated = new.updated,
                  name = new.name,
-                 tags = new.tags,
                  keywords = new.keywords
                  WHERE id = new.id;
             END
@@ -159,13 +153,12 @@ class CreateEcosystemDatabase extends Command
             packagistUrl VARCHAR(255) NOT NULL,
             repository VARCHAR(255) NOT NULL,
             abandoned TINYINT NOT NULL,
-            description VARCHAR(255) NOT NULL,
-            license VARCHAR(255) NOT NULL,
+            description TEXT NOT NULL,
+            usage VARCHAR(255) NOT NULL,
             created UNSIGNED INTEGER NOT NULL,
             updated UNSIGNED INTEGER NOT NULL,
             category VARCHAR(255) NOT NULL,
             keywords VARCHAR(255),
-            tags VARCHAR(255),
             website VARCHAR(255),
             downloads UNSIGNED INTEGER,
             stars UNSIGNED INTEGER,
@@ -222,6 +215,14 @@ class CreateEcosystemDatabase extends Command
             InputOption::VALUE_OPTIONAL,
             'GitHub access token',
         );
+
+        $this->addOption(
+            'force-rebuild',
+            'fr',
+            InputOption::VALUE_OPTIONAL,
+            'Regenerate database file from scratch',
+            $this->forceRebuild
+        );
     }
 
     /**
@@ -247,6 +248,8 @@ class CreateEcosystemDatabase extends Command
             $this->ghToken = $variables['REPO_TOKEN'];
         }
         assert(is_string($this->ghToken));
+
+        $this->forceRebuild = $input->getOption('force-rebuild') !== false;
 
         $path = sprintf(
             '%s%s/%s',
@@ -289,8 +292,12 @@ class CreateEcosystemDatabase extends Command
     private function createDatabase(string $path): PDO
     {
         if (file_exists($path) && file_get_contents($path) !== '') {
-            $path = realpath($path);
-            return new PDO('sqlite:' . $path);
+            if ($this->forceRebuild) {
+                unlink($path);
+            } else {
+                $path = realpath($path);
+                return new PDO('sqlite:' . $path);
+            }
         }
 
         if ($path[0] !== '/') {
@@ -330,7 +337,7 @@ class CreateEcosystemDatabase extends Command
             'Accept: application/vnd.github+json',
             'Authorization: Bearer ' . $this->ghToken,
             'X-GitHub-Api-Version: 2022-11-28',
-            'User-Agent: jurj@rospace.com',
+            'User-Agent: getlaminas.org',
         ];
 
         $this->githubCurl = curl_init();
@@ -346,7 +353,8 @@ class CreateEcosystemDatabase extends Command
      *     githubUrl: string,
      *     keywords: array<string>,
      *     homepage: string,
-     *     category: string
+     *     category: string,
+     *     usage: string
      * } $userData
      */
     private function getPackageData(array $userData): ?array
@@ -354,8 +362,10 @@ class CreateEcosystemDatabase extends Command
         $matches = [];
         preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $matches);
 
-        if (! isset($matches[1]) || ! empty($this->mapper->searchPackage($matches[1]))) {
-            return null;
+        if (! $this->forceRebuild) {
+            if (! isset($matches[1]) || ! empty($this->mapper->searchPackage($matches[1]))) {
+                return null;
+            }
         }
 
         $packagistUrl = sprintf(
@@ -390,9 +400,7 @@ class CreateEcosystemDatabase extends Command
          *  } $packageData
          */
         $packageData = $packagistResult['package'];
-
-        $lastVersionData = array_values($packageData['versions'])[0];
-        $timestamp       = (new DateTimeImmutable())->getTimestamp();
+        $timestamp   = (new DateTimeImmutable())->getTimestamp();
 
         return [
             'id'           => uniqid($packageData['name']),
@@ -406,13 +414,11 @@ class CreateEcosystemDatabase extends Command
             'issues'       => $packageData['github_open_issues'],
             'downloads'    => $packageData['downloads']['total'],
             'abandoned'    => (int) isset($packageData['abandoned']),
+            'usage'        => $userData['usage'],
             'category'     => $userData['category'],
             'packagistUrl' => $userData['packagistUrl'],
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
-            'website'      => isset($userData['homepage']) && $userData['homepage'] !== '' ? $userData['homepage']
-                : $lastVersionData['homepage'] ?? '',
-            'license'      => ! empty($lastVersionData['license']) ? $lastVersionData['license'][0] : '',
-            'tags'         => ! empty($lastVersionData['keywords']) ? $lastVersionData['keywords'] : '',
+            'website'      => isset($userData['homepage']) && $userData['homepage'] !== '' ? $userData['homepage'] : '',
             'image'        => $this->getSocialPreview($matches[1]),
         ];
     }
@@ -444,20 +450,17 @@ class CreateEcosystemDatabase extends Command
             $this->initial,
             $pdo->quote($package->id),
             $pdo->quote($package->name),
-            $pdo->quote($package->type),
+            $pdo->quote($package->type->value),
             $pdo->quote($package->packagistUrl),
             $pdo->quote($package->repository),
             (int) $package->abandoned,
             $pdo->quote($package->description),
-            $pdo->quote($package->license),
+            $pdo->quote($package->usage->value),
             $package->created->getTimestamp(),
             $package->updated->getTimestamp(),
             $pdo->quote($package->category->value),
             ! empty($package->keywords)
                 ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $package->keywords))))
-                : '',
-            ! empty($package->tags)
-                ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $package->tags))))
                 : '',
             $pdo->quote($package->website),
             $package->downloads,

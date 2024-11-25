@@ -14,20 +14,17 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function array_values;
 use function assert;
 use function base64_decode;
 use function curl_exec;
 use function curl_init;
 use function curl_setopt;
 use function explode;
-use function implode;
 use function is_array;
 use function is_string;
 use function json_decode;
 use function realpath;
 use function sprintf;
-use function strtolower;
 
 use const CURLOPT_FOLLOWLOCATION;
 use const CURLOPT_HTTPHEADER;
@@ -50,9 +47,7 @@ class SeedEcosystemDatabase extends Command
             repository = %s,
             abandoned = %d,
             description = %s,
-            license = %s,
             updated = %d,
-            tags = %s,
             downloads = %d,
             stars = %d,
             issues = %d,
@@ -181,13 +176,10 @@ class SeedEcosystemDatabase extends Command
          *     stars: int,
          *     issues: int,
          *     downloads: array{total: int, monthly: int, daily: int},
-         *     license: string,
-         *     tags: array<string>|string,
          *     id: string
          *  } $packageData
          */
-        $packageData     = $packagistResult['package'];
-        $lastVersionData = array_values($packageData['versions'])[0];
+        $packageData = $packagistResult['package'];
 
         return [
             'name'        => $packageData['name'],
@@ -198,8 +190,6 @@ class SeedEcosystemDatabase extends Command
             'stars'       => (int) $packageData['github_stars'],
             'issues'      => (int) $packageData['github_open_issues'],
             'downloads'   => (int) $packageData['downloads']['total'],
-            'license'     => ! empty($lastVersionData['license']) ? $lastVersionData['license'][0] : '',
-            'tags'        => ! empty($lastVersionData['keywords']) ? $lastVersionData['keywords'] : '',
             'image'       => $this->getSocialPreview($packageData['name']),
             'id'          => $package['id'],
         ];
@@ -237,8 +227,6 @@ class SeedEcosystemDatabase extends Command
      *     stars: int,
      *     issues: int,
      *     downloads: array{total: int, monthly: int, daily: int},
-     *     license: string,
-     *     tags: array<string>|string,
      *     image: string|null
      *     id: string
      *    } $packageData
@@ -251,11 +239,7 @@ class SeedEcosystemDatabase extends Command
             $pdo->quote($packageData['repository']),
             $packageData['abandoned'],
             $pdo->quote($packageData['description']),
-            $pdo->quote($packageData['license']),
             $packageData['updated'],
-            ! empty($packageData['tags'])
-                ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $packageData['tags']))))
-                : $pdo->quote(''),
             $packageData['downloads'],
             $packageData['stars'],
             $packageData['issues'],
