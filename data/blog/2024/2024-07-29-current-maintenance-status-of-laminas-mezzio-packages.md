@@ -7,7 +7,7 @@ public: true
 created: '2024-07-29T11:00:00-01:00'
 updated: '2024-07-29T11:00:00-01:00'
 tags:
-  - maintenance status
+    - maintenance status
 ---
 
 The Laminas Project has created a large number of packages to serve the needs of the PHP community.
