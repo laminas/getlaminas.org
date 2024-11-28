@@ -1,5 +1,5 @@
 ---
-id: 2024-08-05-using-laminas-continuous-integration
+id: 2024-08-05-using-laminas-continuous-integration.md
 author: julian
 title: 'Using Laminas Continuous Integration'
 draft: false
