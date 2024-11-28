@@ -20,7 +20,7 @@ A brief summary of decisions follows.
 
 <!--- EXTENDED -->
 
-- The TSC voted to accept four new members to the committee: 
+- The TSC voted to accept four new members to the committee:
   [Abdul Malik Ikhsan (@samsonasik)](https://github.com/samsonasik),
   [Luís Cobucci (@lcobucci)](https://github.com/lcobucci),
   [Maximilian Bösing (@boesing)](https://github.com/boesing), and
