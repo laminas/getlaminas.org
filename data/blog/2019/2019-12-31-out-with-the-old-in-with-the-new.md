@@ -7,7 +7,7 @@ public: true
 created: '2019-12-31T17:30:00-05:00'
 updated: '2020-01-13T13:30:00-05:00'
 tags:
-    - laminas
+  - laminas
 ---
 
 As the year and decade wrap up, we have some exciting news: we've just completed
@@ -26,21 +26,21 @@ can find the code in the following locations:
 
 We still have a few things to iron out:
 
-- <del>The Packagist API, while it claimed to work and did not return errors, did not
+- ~~The Packagist API, while it claimed to work and did not return errors, did not
   always abandon the old packages; we'll be auditing those later this
-  week.</del>
+  week.~~
 
-- <del>We will be renaming our Slack workspace later this week to reflect the
-  change.</del>
+- ~~We will be renaming our Slack workspace later this week to reflect the
+  change.~~
 
-- <del>Likewise, we'll be renaming our Discourse and re-pointing it.</del>
+- ~~Likewise, we'll be renaming our Discourse and re-pointing it.~~
 
 - Our bot will need some changes to work with the new repos, and we will likely
   be moving tasks such as building documentation to GitHub Actions. (Update:
   documentation is now built via GitHub Actions.)
 
 - We need to rebuild the former Apigility site to reflect the name change, and
-  plan to eventually push it to https://api-tools.getlaminas.org.
+  plan to eventually push it to [api-tools.getlaminas.org](https://api-tools.getlaminas.org).
 
 - We need to update the Zend Framework, Apigility, and Expressive websites to
   indicate the changes.
@@ -73,7 +73,7 @@ To migrate a project, first install the laminas/laminas-migration package.
 Install the library globally using [Composer](https://getcomposer.org):
 
 ```bash
-$ composer global require laminas/laminas-migration
+composer global require laminas/laminas-migration
 ```
 
 If you choose this option, you will need to ensure that the `vendor/bin/`
@@ -83,7 +83,7 @@ subdirectory of your > global Composer installation is in your environment
 You can find where the global Composer installation is by executing:
 
 ```bash
-$ composer global config home
+composer global config home
 ```
 
 On Linux and Mac operating systems, update your shell configuration to add
@@ -110,14 +110,14 @@ that path to your `$PATH` environment variable.
 Clone the repository somewhere:
 
 ```bash
-$ git clone https://github.com/laminas/laminas-migration.git
+git clone https://github.com/laminas/laminas-migration.git
 ```
 
 Install dependencies:
 
 ```bash
-$ cd laminas-migration
-$ composer install
+cd laminas-migration
+composer install
 ```
 
 From there, either add the `bin/` directory to your `$PATH` (see the [note on
@@ -127,11 +127,11 @@ alias to the `bin/laminas-migration` script using your shell:
 
 ```bash
 # Adding to PATH:
-$ export PATH=/path/to/laminas-migration/bin:$PATH
+export PATH=/path/to/laminas-migration/bin:$PATH
 # Symlinking to a directory in your PATH:
-$ cd $HOME/bin && ln -s /path/to/laminas-migration/bin/laminas-migration .
+cd $HOME/bin && ln -s /path/to/laminas-migration/bin/laminas-migration .
 # creating an alias:
-$ alias laminas-migration=/path/to/laminas-migration/bin/laminas-migration
+alias laminas-migration=/path/to/laminas-migration/bin/laminas-migration
 ```
 
 ### 2. Run the migration command
@@ -139,7 +139,7 @@ $ alias laminas-migration=/path/to/laminas-migration/bin/laminas-migration
 From there, enter a project you wish to migrate, and run the following:
 
 ```bash
-$ laminas-migration migrate
+laminas-migration migrate
 ```
 
 You may want to use the `--exclude` or `-e` option one or more times for
@@ -147,7 +147,7 @@ directories to exclude from the rewrite; on the ZF website and my own, I used
 `-e data`, for instance:
 
 ```bash
-$ laminas-migration migrate -e data
+laminas-migration migrate -e data
 ```
 
 > #### Module and Config Post Processor injection
@@ -166,60 +166,60 @@ $ laminas-migration migrate -e data
 >   to the `ConfigAggregator` constructor. The `ConfigAggregator` constructor
 >   has the following signature:
 >
->   ```php
->   public function __construct(
->       array $providers = [],
->       ?string $cachedConfigFile = null,
->       array $postProcessors = []
->   )
->   ```
+> ```php
+> public function __construct(
+>     array $providers = [],
+>     ?string $cachedConfigFile = null,
+>     array $postProcessors = []
+> )
+> ```
 >
->   Typically, the structure of the `config/config.php` file in an Expressive
->   application looks like the following:
+> Typically, the structure of the `config/config.php` file in an Expressive
+> application looks like the following:
 >
->   ```php
->   $cacheConfig = [
->       'config_cache_path' => 'data/cache/app_config.php',
->   ];
+> ```php
+> $cacheConfig = [
+>     'config_cache_path' => 'data/cache/app_config.php',
+> ];
 >
->   $aggregator = new ConfigAggregator([
->       // config providers from 3rd party code
->       // ...
+> $aggregator = new ConfigAggregator([
+>     // config providers from 3rd party code
+>     // ...
 >
->       // App-specific modules
->       // ...
+>     // App-specific modules
+>     // ...
 >
->       // Include cache configuration
->       new ArrayProvider($cacheConfig),
+>     // Include cache configuration
+>     new ArrayProvider($cacheConfig),
 >
->       // Load application config in a pre-defined order in such a way that local settings
->       // overwrite global settings. (Loaded as first to last):
->       //   - `global.php`
->       //   - `*.global.php`
->       //   - `local.php`
->       //   - `*.local.php`
->       new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
+>     // Load application config in a pre-defined order in such a way that local settings
+>     // overwrite global settings. (Loaded as first to last):
+>     //   - `global.php`
+>     //   - `*.global.php`
+>     //   - `local.php`
+>     //   - `*.local.php`
+>     new PhpFileProvider('config/autoload/{{,*.}global,{,*.}local}.php'),
 >
->       // Load development config if it exists
->       new PhpFileProvider('config/development.config.php'),
->   ], $cacheConfig['config_cache_path']);
+>     // Load development config if it exists
+>     new PhpFileProvider('config/development.config.php'),
+> ], $cacheConfig['config_cache_path']);
 >
->   return $aggregator->getMergedConfig();
->   ```
+> return $aggregator->getMergedConfig();
+> ```
 >
->   As such, the migration tooling rewrites the second to last line to read:
+> As such, the migration tooling rewrites the second to last line to read:
 >
->   ```php
->   ], $cacheConfig['config_cache_path'], [\Laminas\ZendFrameworkBridge\ConfigPostProcessor::class]);
->   ```
+> ```php
+> ], $cacheConfig['config_cache_path'], [\Laminas\ZendFrameworkBridge\ConfigPostProcessor::class]);
+> ```
 >
->   In most cases, failure to inject means that the individual arguments have
->   been pushed to their own line. In such cases, add the third argument as
->   detailed above.
+> In most cases, failure to inject means that the individual arguments have
+> been pushed to their own line. In such cases, add the third argument as
+> detailed above.
 >
->   In other cases, applications may already be using post processors. If so,
->   add `\Laminas\ZendFrameworkBridge\ConfigPostProcessor::class` to the list of
->   post processors.
+> In other cases, applications may already be using post processors. If so,
+> add `\Laminas\ZendFrameworkBridge\ConfigPostProcessor::class` to the list of
+> post processors.
 
 ### 3. Install dependencies
 
@@ -227,7 +227,7 @@ Once migration is done and you've added the repository, you can install
 dependencies:
 
 ```bash
-$ composer install
+composer install
 ```
 
 From there, run tests, and report any issues to the [Laminas

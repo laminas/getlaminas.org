@@ -28,7 +28,7 @@ as `security-only`, primarily because the resources to continue the project were
 
 [Extended discussion about Laminas Api Tools retirement](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2023-01-09-TSC-Minutes.md)
 
-### How to move forward? Choose Dotkernel API!
+### How to move forward? Choose Dotkernel API
 
 The TSC recommendation as a replacement for current Laminas API Tools is [Dotkernel API](https://www.dotkernel.org/),
 mostly because it is built on top of Mezzio and uses Laminas components.
@@ -81,4 +81,3 @@ fast, reliable solution for any project, from entry-level to enterprise.
 - Documentation for the API and all components and libraries: [docs.dotkernel.org](https://docs.dotkernel.org/).
 
 [You can find the minutes in the TSC repository.](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2024-05-06-TSC-Minutes.md)
-
