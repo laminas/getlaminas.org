@@ -4,9 +4,9 @@ Blog entries can be added by following these steps:
 
 - If submitting for the first time, an [author](#blog-author) YAML file must be added to the `data/blog/authors` directory.
 - Add an MD file containing the [blog post's metadata and body](#blog-post-content).
-  - blog post files are named following a `yyyy-mm-dd-title` convention, e.g., `2024-10-24-blog-title.md`
-  - each file must be added to the appropriate year's directory, found in `data/blog/`
-  - use the following command to make sure your submission will be correctly built:
+    - blog post files are named following a `yyyy-mm-dd-title` convention, e.g., `2024-10-24-blog-title.md`
+    - each file must be added to the appropriate year's directory, found in `data/blog/`
+    - use the following command to make sure your submission will be correctly built:
 
 ```bash
 composer build-blog
