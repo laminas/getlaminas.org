@@ -23,53 +23,70 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
     <div class="mt-5">
         <div>
             <h1>Laminas Ecosystem</h1>
+            <h5>Third party packages which provide explicit support for Laminas packages</h5>
         </div>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div id="ecosystem-navbar" class="container-fluid">
-                <div id="ecosystem-search-container">
+                <div class="d-flex justify-content-between" id="ecosystem-search-container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#packageNavbarToggle" aria-controls="packageNavbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <input id="ecosystem-search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="<?= $search ?>">
                     <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
                 </div>
+                <div class="collapse navbar-collapse" id="packageNavbarToggle">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-success">Type</button>
+                        <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><?= $type ?? '' ?></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <?php foreach (EcosystemTypeEnum::cases() as $case): ?>
+                                <?php if ($case->name === $type): ?>
+                                    <li><a class="package-button type dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
+                                <?php else : ?>
+                                    <li><a class="package-button type dropdown-item" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
+                                <?php endif; ?>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-success">Type</button>
-                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class=""><?= $type ?? '' ?></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <?php foreach (EcosystemTypeEnum::cases() as $case): ?>
-                            <li><a class="package-button type dropdown-item <?php if ($case->name === $type): ?> active <?php endif; ?>" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
-                        <?php endforeach ?>
-                    </ul>
-                </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-success">Usage</button>
+                        <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><?= $usage ?? '' ?></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <?php foreach (EcosystemUsageEnum::cases() as $case): ?>
+                                <?php if ($case->name === $usage): ?>
+                                    <li><a class="package-button usage dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
+                                <?php else : ?>
+                                    <li><a class="package-button usage dropdown-item" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
+                                <?php endif; ?>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-success">Usage</button>
-                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class=""><?= $usage ?? '' ?></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <?php foreach (EcosystemUsageEnum::cases() as $case): ?>
-                            <li><a class="package-button usage dropdown-item <?php if ($case->name === $usage): ?> active <?php endif; ?>" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
-                        <?php endforeach ?>
-                    </ul>
-                </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-success">Category</button>
+                        <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><?= $category ?? '' ?></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <?php foreach (EcosystemCategoryEnum::cases() as $case): ?>
+                                <?php if ($case->name === $category): ?>
+                                    <li><a class="package-button category dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
+                                <?php else : ?>
+                                    <li><a class="package-button category dropdown-item" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
+                                <?php endif; ?>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-success">Category</button>
-                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class=""><?= $category ?? '' ?></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <?php foreach (EcosystemCategoryEnum::cases() as $case): ?>
-                            <li><a class="package-button category dropdown-item <?php if ($case->name === $category): ?> active <?php endif; ?>" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
-                        <?php endforeach ?>
-                    </ul>
-                </div>
-
-                <div class="btn-group">
-                    <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear filters <i class="bi bi-x-circle"></i></button>
+                    <div class="btn-group">
+                        <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear filters <i class="bi bi-x-circle"></i></button>
+                    </div>
                 </div>
             </div>
         </nav>
