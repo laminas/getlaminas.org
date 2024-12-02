@@ -34,6 +34,7 @@ use function json_decode;
 use function preg_match;
 use function realpath;
 use function sprintf;
+use function str_replace;
 use function strtolower;
 use function uniqid;
 use function unlink;
@@ -400,7 +401,12 @@ class CreateEcosystemDatabase extends Command
          *  } $packageData
          */
         $packageData = $packagistResult['package'];
-        $timestamp   = (new DateTimeImmutable())->getTimestamp();
+
+        if (isset($packageData['abandoned'])) {
+            return null;
+        }
+
+        $timestamp = (new DateTimeImmutable())->getTimestamp();
 
         return [
             'id'           => uniqid($packageData['name']),
@@ -419,7 +425,9 @@ class CreateEcosystemDatabase extends Command
             'packagistUrl' => $userData['packagistUrl'],
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
             'website'      => isset($userData['homepage']) && $userData['homepage'] !== '' ? $userData['homepage'] : '',
-            'image'        => $this->getSocialPreview($matches[1]),
+            'image'        => $this->getSocialPreview(
+                str_replace('https://github.com/', '', $packageData['repository']) ?? $matches[1]
+            ),
         ];
     }
 
