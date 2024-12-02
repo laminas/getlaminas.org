@@ -532,8 +532,14 @@ article {
     .keyword {
         --filter-button-color: #678799;
     }
+
     #ecosystem-pagination {
         margin-top: 1em;
+    }
+
+    a.package-button {
+        display: flex;
+        justify-content: space-between;
     }
 
     .card {
@@ -655,6 +661,7 @@ article {
     display: flex;
     flex-direction: row;
     gap: .5em;
+    margin: .5em 0;
 
     .ecosystem-filter {
         border-radius: 5px;
@@ -665,7 +672,26 @@ article {
 }
 
 #ecosystem-search-container {
-    display: flex;
     margin: .5em 0;
-    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    input {
+        margin-left: 1em;
+    }
+}
+
+#packageNavbarToggle {
+    margin-left: 1em;
+    justify-content: space-between;
+}
+
+#packageNavbarToggle.show, #packageNavbarToggle.collapsing {
+    @media(max-width:768px) {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        align-items: baseline;
+    }
 }

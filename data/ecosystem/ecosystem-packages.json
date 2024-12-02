@@ -66,5 +66,19 @@
     "homepage": "www.dotkernel.com",
     "category": "skeleton",
     "usage":  "mezzio"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-rbac-mvc",
+    "keywords": ["mvc", "rbac", "permissions"],
+    "homepage": "",
+    "category": "tool",
+    "usage":  "mvc"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-cors",
+    "keywords": ["mvc", "cors"],
+    "homepage": "",
+    "category": "tool",
+    "usage":  "mvc"
   }
 ]

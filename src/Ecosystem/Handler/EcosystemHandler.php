@@ -43,16 +43,13 @@ class EcosystemHandler implements RequestHandlerInterface
 
         $keywords = $queryParams['keywords'] ?? [];
         assert(is_array($keywords));
-        $type = $queryParams['type'] ?? '';
-        assert(is_string($type));
+        $type     = $queryParams['type'] ?? '';
         $type     = EcosystemTypeEnum::tryFrom($type)?->name;
         $category = $queryParams['category'] ?? '';
-        assert(is_string($category));
         $category = EcosystemCategoryEnum::tryFrom($category)?->name;
         $usage    = $queryParams['usage'] ?? '';
-        assert(is_string($usage));
-        $usage  = EcosystemUsageEnum::tryFrom($usage)?->name;
-        $search = $queryParams['q'] ?? '';
+        $usage    = EcosystemUsageEnum::tryFrom($usage)?->name;
+        $search   = $queryParams['q'] ?? '';
         assert(is_string($search));
 
         $packages = $this->ecosystemMapper->fetchAllByFilters(
@@ -72,7 +69,7 @@ class EcosystemHandler implements RequestHandlerInterface
         $path = $request->getAttribute('originalRequest', $request)->getUri()->getPath();
         assert(is_string($path));
         $page = $this->getPageFromRequest($request);
-        $packages->setItemCountPerPage(15);
+        $packages->setItemCountPerPage(9);
 
         // If the requested page is later than the last, redirect to the last
         // keep set keyword and search queries
@@ -84,22 +81,22 @@ class EcosystemHandler implements RequestHandlerInterface
 
             $searchQuery = '';
             if ($search !== '') {
-                $searchQuery = '&q=' . $search;
+                $searchQuery = '&q=' . strtolower($search);
             }
 
             $typeQuery = '';
-            if ($type !== '') {
-                $typeQuery = '&type=' . $type;
+            if ($type !== null) {
+                $typeQuery = '&type=' . strtolower($type);
             }
 
             $categoryQuery = '';
-            if ($category !== '') {
-                $categoryQuery = '&category=' . $category;
+            if ($category !== null) {
+                $categoryQuery = '&category=' . strtolower($category);
             }
 
             $usageQuery = '';
-            if ($usage !== '') {
-                $usageQuery = '&usage=' . $usage;
+            if ($usage !== null) {
+                $usageQuery = '&usage=' . strtolower($usage);
             }
 
             return new RedirectResponse(
