@@ -73,7 +73,7 @@ To migrate a project, first install the laminas/laminas-migration package.
 Install the library globally using [Composer](https://getcomposer.org):
 
 ```bash
-composer global require laminas/laminas-migration
+$ composer global require laminas/laminas-migration
 ```
 
 If you choose this option, you will need to ensure that the `vendor/bin/`
@@ -83,7 +83,7 @@ subdirectory of your > global Composer installation is in your environment
 You can find where the global Composer installation is by executing:
 
 ```bash
-composer global config home
+$ composer global config home
 ```
 
 On Linux and Mac operating systems, update your shell configuration to add
@@ -110,14 +110,14 @@ that path to your `$PATH` environment variable.
 Clone the repository somewhere:
 
 ```bash
-git clone https://github.com/laminas/laminas-migration.git
+$ git clone https://github.com/laminas/laminas-migration.git
 ```
 
 Install dependencies:
 
 ```bash
-cd laminas-migration
-composer install
+$ cd laminas-migration
+$ composer install
 ```
 
 From there, either add the `bin/` directory to your `$PATH` (see the [note on
@@ -127,11 +127,11 @@ alias to the `bin/laminas-migration` script using your shell:
 
 ```bash
 # Adding to PATH:
-export PATH=/path/to/laminas-migration/bin:$PATH
+$ export PATH=/path/to/laminas-migration/bin:$PATH
 # Symlinking to a directory in your PATH:
-cd $HOME/bin && ln -s /path/to/laminas-migration/bin/laminas-migration .
+$ cd $HOME/bin && ln -s /path/to/laminas-migration/bin/laminas-migration .
 # creating an alias:
-alias laminas-migration=/path/to/laminas-migration/bin/laminas-migration
+$ alias laminas-migration=/path/to/laminas-migration/bin/laminas-migration
 ```
 
 ### 2. Run the migration command
@@ -139,7 +139,7 @@ alias laminas-migration=/path/to/laminas-migration/bin/laminas-migration
 From there, enter a project you wish to migrate, and run the following:
 
 ```bash
-laminas-migration migrate
+$ laminas-migration migrate
 ```
 
 You may want to use the `--exclude` or `-e` option one or more times for
@@ -147,7 +147,7 @@ directories to exclude from the rewrite; on the ZF website and my own, I used
 `-e data`, for instance:
 
 ```bash
-laminas-migration migrate -e data
+$ laminas-migration migrate -e data
 ```
 
 > #### Module and Config Post Processor injection
@@ -227,7 +227,7 @@ Once migration is done and you've added the repository, you can install
 dependencies:
 
 ```bash
-composer install
+$ composer install
 ```
 
 From there, run tests, and report any issues to the [Laminas
