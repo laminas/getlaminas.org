@@ -9,7 +9,7 @@ Blog entries can be added by following these steps:
     - use the following command to make sure your submission will be correctly built:
 
 ```bash
-composer build-blog
+$ composer build-blog
 ```
 
 - When ready, submit the blog post for review via pull request to the default branch.

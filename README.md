@@ -30,28 +30,28 @@ RELEASE_FEED_TOKEN=aaaabbbbccccddddeeeeffffgggg0000
 Second, install dependencies:
 
 ```bash
-composer install
+$ composer install
 ```
 
 Third, put the application in development mode:
 
 ```bash
-./vendor/bin/laminas-development-mode enable
+$ ./vendor/bin/laminas-development-mode enable
 ```
 
 Fourth, prepare the blog and security announcements:
 
 ```bash
-mkdir -p var/blog/feeds
-mkdir -p public/js
-composer build
+$ mkdir -p var/blog/feeds
+$ mkdir -p public/js
+$ composer build
 ```
 
 Finally, use the provided [docker-compose configuration](docker-compose.yml):
 
 ```bash
-docker-compose build
-docker-compose up
+$ docker-compose build
+$ docker-compose up
 # browse to http://localhost:8080
 ```
 
@@ -63,11 +63,11 @@ host machine. Once they are:
 
 ```bash
 # Because files are copied from the container, we need to make them writable:
-sudo chmod a+rw data/assets.json public/css/*.css
+$ sudo chmod a+rw data/assets.json public/css/*.css
 # Now we can install dependencies and start watching for changes:
-cd bootstrap
-npm i
-gulp
+$ cd bootstrap
+$ npm i
+$ gulp
 ```
 
 From there, any changes to CSS will be propagated to the application, and
@@ -77,7 +77,7 @@ Alternately, you can use the following command to rebuild the base docker
 container:
 
 ```bash
-docker-compose build php
+$ docker-compose build php
 ```
 
 ## Adding blog entries
