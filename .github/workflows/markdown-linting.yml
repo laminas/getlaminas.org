@@ -17,5 +17,7 @@ jobs:
             globs: |
               **/*.md
               !README.md
+              !LICENSE.md
+              !COPYRIGHT.md
               !bootstrap
               !public
