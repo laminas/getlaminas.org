@@ -1,0 +1,23 @@
+name: "Markdown files linting"
+
+on:
+  pull_request:
+  push:
+    branches:
+    tags:
+
+jobs:
+  linting:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: DavidAnson/markdownlint-cli2-action@v18
+          with:
+            config: '.markdownlint.json'
+            globs: |
+              **/*.md
+              !README.md
+              !LICENSE.md
+              !COPYRIGHT.md
+              !bootstrap
+              !public

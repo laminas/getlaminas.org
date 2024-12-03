@@ -7,9 +7,9 @@ public: true
 created: '2020-03-09T11:05:00-05:00'
 updated: '2020-03-09T11:05:00-05:00'
 tags:
-    - laminas
-    - transfer
-    - zend-framework
+   - laminas
+   - transfer
+   - zend-framework
 ---
 
 Back in October 2018, Rogue Wave Software
@@ -75,8 +75,7 @@ As such, we now have the following GitHub organisations representing the
 Laminas Project:
 
 - [laminas](https://github.com/laminas), representing components and the MVC.
-- [laminas-api-tools](https://github.com/laminas-api-tools), representing the
-  Laminas API Tools components (formerly Apigility).
+- [laminas-api-tools](https://github.com/laminas-api-tools), representing the Laminas API Tools components (formerly Apigility).
 - [mezzio](https://github.com/mezzio), representing the Mezzio middleware
   runtime and components (formerly Expressive).
 
@@ -115,7 +114,7 @@ components.
 Hard as the decision was, we also decided to abandon some packages. These
 include:
 
-- [`ZendService\Amazon`](https://github.com/zendframework/ZendService_Amazon): 
+- [`ZendService\Amazon`](https://github.com/zendframework/ZendService_Amazon):
   we suggest using the official [AWS PHP SDK](https://github.com/aws/aws-sdk-php)
 
 - [`ZendService\Google\Gcm`](https://github.com/zendframework/ZendService_Google_Gcm)
@@ -173,11 +172,11 @@ interface MyInterface
 }
 ```
 
-   We wanted to ensure code such as this works when the Laminas component
-   replacing the ZF component is installed. To accomplish this, we created an
-   [additional autoloader](https://github.com/laminas/laminas-zendframework-bridge/blob/master/src/Autoloader.php#L111-L155),
-   that creates a `class_alias` of the legacy class to the Laminas equivalent
-   any time a Laminas class is autoloaded.
+We wanted to ensure code such as this works when the Laminas component
+replacing the ZF component is installed. To accomplish this, we created an
+[additional autoloader](https://github.com/laminas/laminas-zendframework-bridge/blob/master/src/Autoloader.php#L111-L155),
+that creates a `class_alias` of the legacy class to the Laminas equivalent
+any time a Laminas class is autoloaded.
 
 There was also additional difficulty: we had some integration classes
 with "Zend" in the name (see for example [`LaminasRouter`](https://github.com/mezzio/mezzio-laminasrouter/blob/master/src/LaminasRouter.php#L38)).
@@ -203,10 +202,10 @@ For a more complete examples:
 
 - The rewritten [`create_uploaded_file.php`](https://github.com/laminas/laminas-diactoros/blob/master/src/functions/create_uploaded_file.php)
 - Its legacy
-[`create_uploaded_file.legacy.php`](https://github.com/laminas/laminas-diactoros/blob/master/src/functions/create_uploaded_file.legacy.php) file,
+  [`create_uploaded_file.legacy.php`](https://github.com/laminas/laminas-diactoros/blob/master/src/functions/create_uploaded_file.legacy.php) file,
 - And an updated [`composer.json`](https://github.com/laminas/laminas-diactoros/blob/master/composer.json#L53-L70).
 
-> See the transfer tool code: [FunctionAliasFixture](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Fixture/FunctionAliasFixture.php). 
+> See the transfer tool code: [FunctionAliasFixture](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Fixture/FunctionAliasFixture.php).
 
 ### Custom constants
 
@@ -281,7 +280,7 @@ rewritten.
 > If a library provides a delegator for `\Zend\ClassName` but you are using
 > `\Laminas\ClassName`, the legacy delegator will not be triggered. You will need
 > to update your own configuration to add it.
-
+>
 > See the transfer tool code: [DIAliasFixture](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Fixture/DIAliasFixture.php).
 
 ### Plugin Managers
@@ -303,7 +302,7 @@ For an example, you can inspect the additional aliases in the
 > changed from their first introduction to their latest release, particularly as
 > they were updated to target the version 3 release of our service manager. Our
 > tool had to accommodate these changes!
-
+>
 > See the transfer tool code: [PluginManagerFixture](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Fixture/PluginManagerFixture.php).
 
 ### Factories
@@ -389,7 +388,7 @@ to see how complicated it got!
 While we don't like nesting ternaries, in many cases, it was the
 most consistent way to accomplish our ends.
 
-> See the transfer tool code: [LegacyFactoriesFixture](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Fixture/LegacyFactoriesFixture.php). 
+> See the transfer tool code: [LegacyFactoriesFixture](https://github.com/michalbundyra/laminas-transfer/blob/master/src/Fixture/LegacyFactoriesFixture.php).
 
 ### Configuration keys - config postprocessor and configuration merge listener
 
@@ -744,7 +743,7 @@ The first and most serious issue was with [namespaced function](#custom-function
 We somehow missed including a "return" statement in the legacy functions when
 calling then new variants.
 
-Because of that we had to issue patch versions for: 
+Because of that we had to issue patch versions for:
 
 - [laminas-diactoros](https://github.com/laminas/laminas-diactoros),
 - [laminas-stratigility](https://github.com/laminas/laminas-stratigility),

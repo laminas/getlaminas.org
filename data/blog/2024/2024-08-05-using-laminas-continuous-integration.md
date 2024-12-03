@@ -103,14 +103,14 @@ It usually takes less than a minute to receive the feedback that turns iterating
 Its high value is guaranteed by the authors of the Mezzio microframework and Laminas components, the people who best understand the ins and outs of those code bases.
 They expanded their initial CI workflow multiple times, based on their needs, while ensuring that the flow has universal application for any PHP project.
 
-- **The CI pipeline can be optimized for PHP-specific tasks** because Laminas is designed specifically for PHP applications. 
+- **The CI pipeline can be optimized for PHP-specific tasks** because Laminas is designed specifically for PHP applications.
   The tasks range from dependency management with Composer, to code style checks, to running PHPUnit tests.
 - Seamless integration with GitHub Actions
 - **Composer integration** ensures consistent dependency management across different environments, from development to production, which is crucial for maintaining stability and reliability.
 - Laminas encourages **modern PHP practices** by enforcing PSR (PHP Standard Recommendation) compliance and the use of dependency injection.
 - Extensive **Documentation and Community Support**
 
-### More on the topic:
+### More on the topic
 
 - [Blog post by Matthew Weier O'Phinney: "Laminas CI Automation"](https://mwop.net/blog/2021-03-12-laminas-ci.html)
 - [Repository of Laminas Continuous Integration Action on GitHub](https://github.com/laminas/laminas-continuous-integration-action)
