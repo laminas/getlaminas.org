@@ -1,7 +1,6 @@
 [
   {
     "packagistUrl": "https://packagist.org/packages/akrabat/ip-address-middleware",
-    "githubUrl":  "https://github.com/akrabat/ip-address-middleware",
     "keywords": ["ip", "address", "middleware"],
     "homepage": "",
     "category": "tool",
@@ -9,7 +8,6 @@
   },
   {
     "packagistUrl": "https://packagist.org/packages/netglue/laminas-messenger",
-    "githubUrl":  "https://github.com/netglue/laminas-messenger",
     "keywords": ["laminas", "messenger"],
     "homepage": "",
     "category": "tool",
@@ -17,7 +15,6 @@
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
-    "githubUrl":  "https://github.com/dotkernel/dot-errorhandler",
     "keywords": ["error-handling"],
     "homepage": "https://dotkernel.com",
     "category": "integration",
@@ -25,7 +22,6 @@
   },
   {
     "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
-    "githubUrl":  "",
     "keywords": ["middleware", "doctrine"],
     "homepage": "",
     "category": "integration",
@@ -33,7 +29,6 @@
   },
   {
     "packagistUrl": "https://packagist.org/packages/asgrim/mini-mezzio",
-    "githubUrl":  "https://github.com/asgrim/mini-mezzio",
     "keywords": ["mezzio"],
     "homepage": "",
     "category": "skeleton",
