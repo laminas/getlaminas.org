@@ -1,0 +1,28 @@
+name: Validate ecosystem packages JSON file
+
+on:
+  pull_request:
+  push:
+    branches:
+    tags:
+
+jobs:
+  validate-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          packages=$(cat ./data/ecosystem/ecosystem-packages.json);
+          if [ ! -z "$packages" ] && [ $(echo $packages | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; then
+            for key in packagistUrl keywords homepage category usage; do
+              if ! $(echo $packages | jq ".[]" | jq "has(\"$key\")" | jq 'select(. == false)'); then
+                echo "Invalid JSON. Missing key \"$key\"."
+                exit 1;
+              fi
+            done
+            echo "Valid JSON."
+            exit 0;
+          else
+            echo "Invalid JSON."
+            exit 1;
+          fi
