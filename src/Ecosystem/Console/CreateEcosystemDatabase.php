@@ -18,6 +18,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+use function array_key_first;
 use function assert;
 use function base64_decode;
 use function curl_exec;
@@ -26,6 +27,7 @@ use function curl_setopt;
 use function explode;
 use function file_exists;
 use function file_get_contents;
+use function filter_var;
 use function getcwd;
 use function implode;
 use function is_array;
@@ -45,6 +47,7 @@ use const CURLOPT_POST;
 use const CURLOPT_POSTFIELDS;
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
+use const FILTER_VALIDATE_URL;
 
 class CreateEcosystemDatabase extends Command
 {
@@ -407,6 +410,12 @@ class CreateEcosystemDatabase extends Command
         }
 
         $timestamp = (new DateTimeImmutable())->getTimestamp();
+        if (! $userData['homepage'] || ! filter_var($userData['homepage'], FILTER_VALIDATE_URL)) {
+            $lastVersionData = $packageData['versions'][array_key_first($packageData['versions'])];
+            $website         = $lastVersionData['homepage'] ?? '';
+        } else {
+            $website = $userData['homepage'];
+        }
 
         return [
             'id'           => uniqid($packageData['name']),
@@ -424,7 +433,7 @@ class CreateEcosystemDatabase extends Command
             'category'     => $userData['category'],
             'packagistUrl' => $userData['packagistUrl'],
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
-            'website'      => isset($userData['homepage']) && $userData['homepage'] !== '' ? $userData['homepage'] : '',
+            'website'      => $website,
             'image'        => $this->getSocialPreview(
                 str_replace('https://github.com/', '', $packageData['repository']) ?? $matches[1]
             ),
