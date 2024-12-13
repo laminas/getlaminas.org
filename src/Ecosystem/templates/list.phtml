@@ -32,8 +32,11 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#packageNavbarToggle" aria-controls="packageNavbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <input id="ecosystem-search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="<?= $search ?>">
-                    <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
+
+                    <div class="input-group">
+                        <input type="text" id="ecosystem-search" class="form-control mr-sm-2" aria-label="Search" aria-describedby="ecosystem-search-btn" value="<?= $search ?>">
+                        <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
+                    </div>
                 </div>
                 <div class="collapse navbar-collapse" id="packageNavbarToggle">
                     <div class="btn-group">
@@ -84,9 +87,11 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                         </ul>
                     </div>
 
-                    <div class="btn-group">
-                        <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear filters <i class="bi bi-x-circle"></i></button>
-                    </div>
+                    <?php if ($type || $usage || $category || $search) : ?>
+                        <div class="btn-group">
+                            <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear filters <i class="bi bi-x-circle"></i></button>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
