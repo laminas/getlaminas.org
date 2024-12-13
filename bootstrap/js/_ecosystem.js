@@ -1,114 +1,102 @@
 'use strict';
 
-$(document).ready(function () {
-    $('.package-button').click(function (e) {
-        e.preventDefault();
+document.querySelectorAll('.package-button.type, .package-button.category, .package-button.usage').forEach(button => {
+    button.addEventListener('click', handleFilters);
+})
 
-        const url = new URL(window.location.href);
-        const params = new URLSearchParams(url.search);
-        const entry = $(this).data('value');
+document.querySelectorAll('.package-button.keyword').forEach(button => {
+    button.addEventListener('click', handleKeywords);
+})
 
-        if ($(this).hasClass('keyword')) {
-            if (! params.has("keywords[]", entry)) {
-                params.append("keywords[]", entry);
-                url.search = params.toString();
+document.querySelectorAll('.ecosystem-filter').forEach(button => {
+    button.addEventListener('click', removeKeyword);
+})
 
-                window.location.replace(url.toString());
-            }
+document.querySelectorAll('#ecosystem-pagination a').forEach(a => {
+    const url = new URL(a.href)
+    for (let [k,v] of new URLSearchParams(window.location.search).entries()) {
+        if (k === 'keywords[]' || k === 'q' || k === 'type' || k === 'category' || k === 'usage') {
+            url.searchParams.set(k,v);
         }
+    }
+    a.href = url.toString();
+})
 
-        if ($(this).hasClass('type')) {
-            if (! params.has("type", entry)) {
-                url.searchParams.set('type', entry);
+document.querySelector('#clear-filters-button')?.addEventListener('click', function () {
+    const url = new URL(window.location.href);
 
-                window.location.replace(url.toString());
-            } else if (params.get("type") === entry) {
-                url.searchParams.delete("type");
-
-                window.location.replace(url.toString());
-            }
+    for (let [k,v] of new URLSearchParams(window.location.search).entries()) {
+        if (k !== 'page') {
+            url.searchParams.delete(k);
         }
-
-        if ($(this).hasClass('category')) {
-            if (! params.has("category", entry)) {
-                url.searchParams.set('category', entry);
-
-                window.location.replace(url.toString());
-            } else if (params.get("category") === entry) {
-                url.searchParams.delete("category");
-
-                window.location.replace(url.toString());
-            }
-        }
-
-        if ($(this).hasClass('usage')) {
-            if (! params.has("usage", entry)) {
-                url.searchParams.set('usage', entry);
-
-                window.location.replace(url.toString());
-            } else if (params.get("usage") === entry) {
-                url.searchParams.delete("usage");
-
-                window.location.replace(url.toString());
-            }
-        }
-    });
-
-    $('.ecosystem-filter').click(function (e) {
-        e.preventDefault();
-
-        const url = new URL(window.location.href);
-        const params = new URLSearchParams(url.search);
-        const entry = $(this).data('value');
-
-        if ($(this).hasClass('keyword')) {
-            if (params.has("keywords[]", entry)) {
-                params.delete("keywords[]", entry);
-                url.search = params.toString();
-
-                window.location.replace(url.toString());
-            }
-        }
-    });
-
-    [...$('#ecosystem-pagination a')].forEach(a => {
-        const url = new URL(a.href)
-        for (let [k,v] of new URLSearchParams(window.location.search).entries()) {
-            if (k === 'keywords[]' || k === 'q' || k === 'type' || k === 'category' || k === 'usage') {
-                url.searchParams.set(k,v)
-            }
-        }
-        a.href = url.toString();
-    })
-
-    $('#ecosystem-search').keypress(function (e) {
-        const search = $(this).val();
-        if (e.which === 13) {
-            setSearchQuery(search);
-        }
-    });
-
-    $('#ecosystem-search-btn').click(function (e) {
-        const search = $('#ecosystem-search').val();
-        setSearchQuery(search);
-    });
-
-    function setSearchQuery(search) {
-        const url = new URL(window.location.href);
-
-        url.searchParams.set('q', search);
-        window.location.replace(url.toString());
     }
 
-    $('#clear-filters-button').click(function (e) {
-        const url = new URL(window.location.href);
+    window.location.replace(url.toString());
+});
 
-        for (let [k,v] of new URLSearchParams(window.location.search).entries()) {
-            if (k === 'type' || k === 'category' || k === 'usage') {
-                url.searchParams.delete(k)
-            }
+document.querySelector('#ecosystem-search-btn').addEventListener('click', function () {
+    setSearchQuery(document.querySelector('#ecosystem-search').value);
+});
+
+document.querySelector('#ecosystem-search').addEventListener('keypress', function (e) {
+    const search = this.value;
+    if (e.which === 13) {
+        setSearchQuery(search);
+    }
+})
+
+function handleFilters() {
+    for (const filter of ['type', 'category', 'usage']) {
+        if (this.classList.contains(filter)) {
+            handleParams(filter, this.dataset.value);
         }
+    }
+}
+
+function handleParams(filterKey, filterValue) {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+
+    if (! params.has(filterKey, filterValue)) {
+        url.searchParams.set(filterKey, filterValue);
 
         window.location.replace(url.toString());
-    });
-});
+    } else if (params.get(filterKey) === filterValue) {
+        url.searchParams.delete(filterKey);
+
+        window.location.replace(url.toString());
+    }
+}
+
+function handleKeywords() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const keyword = this.dataset.value;
+
+    if (! params.has("keywords[]", keyword)) {
+        params.append("keywords[]", keyword);
+        url.search = params.toString();
+
+        window.location.replace(url.toString());
+    }
+}
+
+function removeKeyword() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const keyword = this.dataset.value;
+
+    if (params.has("keywords[]", keyword)) {
+        params.delete("keywords[]", keyword);
+        url.search = params.toString();
+
+        window.location.replace(url.toString());
+    }
+}
+
+function setSearchQuery(search) {
+    const url = new URL(window.location.href);
+
+    url.searchParams.set('q', search);
+    window.location.replace(url.toString());
+}
