@@ -7,6 +7,7 @@ namespace App\Handler;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mezzio\Router\RouteResult;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -15,14 +16,11 @@ use function str_replace;
 
 class StaticPageHandler implements RequestHandlerInterface
 {
-    /** @var TemplateRendererInterface */
-    private $renderer;
-
-    public function __construct(TemplateRendererInterface $renderer)
+    public function __construct(private readonly TemplateRendererInterface $renderer)
     {
-        $this->renderer = $renderer;
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         /** @var RouteResult $routeResult */

@@ -7,6 +7,7 @@ namespace GetLaminas\Blog\Mapper;
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
 use Laminas\Paginator\Paginator;
+use Override;
 use PDO;
 
 use function sprintf;
@@ -15,14 +16,11 @@ class PdoMapper implements MapperInterface
 {
     use CreateBlogPostFromDataArray;
 
-    /** @var PDO */
-    private $pdo;
-
-    public function __construct(PDO $pdo)
+    public function __construct(private PDO $pdo)
     {
-        $this->pdo = $pdo;
     }
 
+    #[Override]
     public function fetch(string $id): ?BlogPost
     {
         $select = $this->pdo->prepare('SELECT * from posts WHERE id = :id');
@@ -34,6 +32,7 @@ class PdoMapper implements MapperInterface
         return $post ? $this->createBlogPostFromDataArray($post) : null;
     }
 
+    #[Override]
     public function fetchAll(): Paginator
     {
         $select = 'SELECT * FROM posts WHERE draft = 0 AND public = 1 ORDER BY created DESC LIMIT :offset, :limit';
@@ -41,6 +40,7 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count);
     }
 
+    #[Override]
     public function fetchAllByAuthor(string $author): Paginator
     {
         $select = 'SELECT * FROM posts '
@@ -51,6 +51,7 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count, [':author' => $author]);
     }
 
+    #[Override]
     public function fetchAllByTag(string $tag): Paginator
     {
         $select = 'SELECT * FROM posts '
@@ -61,6 +62,7 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $tag)]);
     }
 
+    #[Override]
     public function search(string $toMatch): ?array
     {
         $select = $this->pdo->prepare('SELECT id, title from search WHERE search MATCH :query');
