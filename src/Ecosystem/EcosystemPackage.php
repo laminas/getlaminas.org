@@ -11,6 +11,9 @@ use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 
 class EcosystemPackage
 {
+    /**
+     * @param array<array-key, string> $keywords
+     */
     public function __construct(
         public string $id,
         public string $name,

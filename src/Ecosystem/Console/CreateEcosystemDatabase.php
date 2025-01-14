@@ -8,6 +8,7 @@ use CurlHandle;
 use DateTimeImmutable;
 use Exception;
 use GetLaminas\Ecosystem\CreateEcosystemPackageFromArrayTrait;
+use GetLaminas\Ecosystem\EcosystemConnectionTrait;
 use GetLaminas\Ecosystem\EcosystemPackage;
 use GetLaminas\Ecosystem\Handler\EcosystemHandler;
 use GetLaminas\Ecosystem\Mapper\PdoMapper;
@@ -18,13 +19,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+use function array_diff;
 use function array_key_first;
 use function assert;
-use function base64_decode;
 use function curl_exec;
-use function curl_init;
 use function curl_setopt;
-use function explode;
 use function file_exists;
 use function file_get_contents;
 use function filter_var;
@@ -41,30 +40,30 @@ use function strtolower;
 use function uniqid;
 use function unlink;
 
-use const CURLOPT_FOLLOWLOCATION;
-use const CURLOPT_HTTPHEADER;
-use const CURLOPT_POST;
-use const CURLOPT_POSTFIELDS;
-use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 use const FILTER_VALIDATE_URL;
 
 class CreateEcosystemDatabase extends Command
 {
     use CreateEcosystemPackageFromArrayTrait;
+    use EcosystemConnectionTrait;
 
     public const string PACKAGES_DB_PATH = 'data/ecosystem/database';
     public const string PACKAGES_DB_FILE = 'packages.db';
 
     private CurlHandle $curl;
     private CurlHandle $githubCurl;
-    private ?string $ghToken   = null;
-    private bool $forceRebuild = false;
+    private ?string $ghToken     = null;
+    private bool $forceRebuild   = false;
+    private array $validPackages = [];
     public PdoMapper $mapper;
 
     /** @var string[] */
     private array $indices = [
         'CREATE INDEX keywords ON packages ( keywords )',
+        'CREATE INDEX category ON packages ( category )',
+        'CREATE INDEX "type" ON packages ( type )',
+        'CREATE INDEX "usage" ON packages ( usage )',
         'CREATE INDEX package_name ON packages ( name )',
     ];
 
@@ -77,7 +76,7 @@ class CreateEcosystemDatabase extends Command
             %s AS repository,
             %d AS abandoned,
             %s AS description,
-            %s AS usage,
+            %s AS "usage",
             %d AS created,
             %d AS updated,
             %s AS category,
@@ -109,47 +108,6 @@ class CreateEcosystemDatabase extends Command
         %d,
         %s';
 
-    private string $searchTable = 'CREATE VIRTUAL TABLE search_packages USING FTS4(
-            id,
-            created,
-            updated,
-            name,
-            keywords
-        )';
-
-    private string $searchTrigger = 'CREATE TRIGGER after_packages_insert
-            AFTER INSERT ON packages
-            BEGIN
-                INSERT INTO search_packages (
-                    id,
-                    created,
-                    updated,
-                    name,
-                    keywords
-                )
-                VALUES (
-                    new.id,
-                    new.created,
-                    new.updated,
-                    new.name,
-                    new.keywords
-                );
-            END
-        ';
-
-    private string $searchTriggerPostUpdate = 'CREATE TRIGGER after_packages_update
-            AFTER UPDATE ON packages
-            BEGIN
-                UPDATE search_packages
-                 SET 
-                 id = new.id,
-                 updated = new.updated,
-                 name = new.name,
-                 keywords = new.keywords
-                 WHERE id = new.id;
-            END
-        ';
-
     private string $table = 'CREATE TABLE "packages" (
             id VARCHAR(255) NOT NULL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
@@ -162,7 +120,7 @@ class CreateEcosystemDatabase extends Command
             created UNSIGNED INTEGER NOT NULL,
             updated UNSIGNED INTEGER NOT NULL,
             category VARCHAR(255) NOT NULL,
-            keywords VARCHAR(255),
+            keywords TEXT,
             website VARCHAR(255),
             downloads UNSIGNED INTEGER,
             stars UNSIGNED INTEGER,
@@ -244,14 +202,6 @@ class CreateEcosystemDatabase extends Command
         $dbFile = $input->getOption('db-path');
         assert(is_string($dbFile));
         $this->ghToken = $input->getOption('github-token');
-        if (! $this->ghToken) {
-            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
-            assert(is_array($variables));
-            assert(isset($variables['REPO_TOKEN']));
-
-            $this->ghToken = $variables['REPO_TOKEN'];
-        }
-        assert(is_string($this->ghToken));
 
         $this->forceRebuild = $input->getOption('force-rebuild') !== false;
 
@@ -270,10 +220,9 @@ class CreateEcosystemDatabase extends Command
         assert(is_array($userDataArray));
 
         $pdo = $this->createDatabase($dbFile);
-
         $this->initCurl();
 
-        /** @var array{packagistUrl: string, githubUrl: string, categories: array, homepage: string} $userData */
+        /** @var array{packagistUrl: string, keywords: array<string>, homepage: string, category: string, usage: string} $userData */
         foreach ($userDataArray as $userData) {
             $curlResult = $this->getPackageData($userData);
             if ($curlResult === null) {
@@ -288,18 +237,26 @@ class CreateEcosystemDatabase extends Command
             $this->insertPackageInDatabase($package, $pdo);
         }
 
+        if (! $this->forceRebuild) {
+            $currentPackages = $this->mapper->getPackagesTitles();
+            $removedPackages = array_diff($currentPackages, $this->validPackages);
+            /** @var string $package */
+            foreach ($removedPackages as $package) {
+                $this->mapper->deletePackageByName($package);
+            }
+        }
+
         $io->success('Created ecosystem packages database');
 
         return 0;
     }
 
-    private function createDatabase(string $path): PDO
+    public function createDatabase(string $path): PDO
     {
         if (file_exists($path) && file_get_contents($path) !== '') {
             if ($this->forceRebuild) {
                 unlink($path);
             } else {
-                $path = realpath($path);
                 return new PDO('sqlite:' . $path);
             }
         }
@@ -315,66 +272,38 @@ class CreateEcosystemDatabase extends Command
         foreach ($this->indices as $index) {
             $pdo->exec($index);
         }
-        $pdo->exec($this->searchTable);
-        $pdo->exec($this->searchTrigger);
-        $pdo->exec($this->searchTriggerPostUpdate);
 
         $pdo->commit();
 
         return $pdo;
     }
 
-    private function initCurl(): void
-    {
-        $headers = [
-            'Accept: application/vnd.github+json',
-            'X-GitHub-Api-Version: 2022-11-28',
-            'User-Agent: getlaminas.org',
-        ];
-
-        $this->curl = curl_init();
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
-
-        $githubHeaders = [
-            'Accept: application/vnd.github+json',
-            'Authorization: Bearer ' . $this->ghToken,
-            'X-GitHub-Api-Version: 2022-11-28',
-            'User-Agent: getlaminas.org',
-        ];
-
-        $this->githubCurl = curl_init();
-        curl_setopt($this->githubCurl, CURLOPT_HTTPHEADER, $githubHeaders);
-        curl_setopt($this->githubCurl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($this->githubCurl, CURLOPT_RETURNTRANSFER, 1);
-    }
-
     /**
      * @phpcs:ignore
      * @param array{
      *     packagistUrl: string,
-     *     githubUrl: string,
-     *     keywords: array<string>,
-     *     homepage: string,
-     *     category: string,
-     *     usage: string
+     *      keywords: array<string>,
+     *      homepage: string,
+     *      category: string,
+     *      usage: string
      * } $userData
      */
     private function getPackageData(array $userData): ?array
     {
-        $matches = [];
-        preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $matches);
+        $urlComponents = [];
+        preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $urlComponents);
 
         if (! $this->forceRebuild) {
-            if (! isset($matches[1]) || ! empty($this->mapper->searchPackage($matches[1]))) {
+            $this->validPackages[] = $urlComponents[1];
+            $existingPackage       = $this->mapper->searchPackage($urlComponents[1]);
+            if ($existingPackage !== null && $existingPackage !== []) {
                 return null;
             }
         }
 
         $packagistUrl = sprintf(
             'https://repo.packagist.org/packages/%s.json',
-            $matches[1]
+            $urlComponents[1]
         );
         curl_setopt($this->curl, CURLOPT_URL, $packagistUrl);
         $rawResult = curl_exec($this->curl);
@@ -409,13 +338,20 @@ class CreateEcosystemDatabase extends Command
             return null;
         }
 
-        $timestamp = (new DateTimeImmutable())->getTimestamp();
         if (! $userData['homepage'] || ! filter_var($userData['homepage'], FILTER_VALIDATE_URL)) {
-            $lastVersionData = $packageData['versions'][array_key_first($packageData['versions'])];
-            $website         = $lastVersionData['homepage'] ?? '';
+            $lastVersion = array_key_first($packageData['versions']);
+            if ($lastVersion === null) {
+                $website = '';
+            } else {
+                $lastVersionData = $packageData['versions'][$lastVersion];
+                /** @var array<array-key, string> $lastVersionData */
+                $website = $lastVersionData['homepage'] ?? '';
+            }
         } else {
             $website = $userData['homepage'];
         }
+
+        $timestamp = (new DateTimeImmutable())->getTimestamp();
 
         return [
             'id'           => uniqid($packageData['name']),
@@ -434,30 +370,9 @@ class CreateEcosystemDatabase extends Command
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
             'website'      => $website,
             'image'        => $this->getSocialPreview(
-                str_replace('https://github.com/', '', $packageData['repository']) ?? $matches[1]
+                str_replace('https://github.com/', '', $packageData['repository'])
             ),
         ];
-    }
-
-    private function getSocialPreview(string $package): ?string
-    {
-        $packageId    = explode('/', $package);
-        $graphQlUrl   = 'https://api.github.com/graphql';
-        $graphQlQuery = sprintf(
-            '{"query": "query {repository(owner: \"%s\", name: \"%s\"){openGraphImageUrl}}"}',
-            $packageId[0],
-            $packageId[1]
-        );
-        curl_setopt($this->githubCurl, CURLOPT_URL, $graphQlUrl);
-        curl_setopt($this->githubCurl, CURLOPT_POST, true);
-        curl_setopt($this->githubCurl, CURLOPT_POSTFIELDS, $graphQlQuery);
-
-        $rawResult = curl_exec($this->githubCurl);
-        assert(is_string($rawResult));
-
-        $githubResult = json_decode($rawResult, true);
-
-        return $githubResult['data']['repository']['openGraphImageUrl'] ?? null;
     }
 
     private function insertPackageInDatabase(EcosystemPackage $package, PDO $pdo): void
@@ -482,9 +397,8 @@ class CreateEcosystemDatabase extends Command
             $package->downloads,
             $package->stars,
             $package->issues,
-            $package->image !== null ? $pdo->quote($package->image) : 0,
+            $pdo->quote($package->image),
         );
-
         $pdo->exec($statement);
     }
 }
