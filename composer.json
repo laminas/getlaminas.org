@@ -37,6 +37,7 @@
         "php": "~8.3.0",
         "ext-curl": "*",
         "ext-pdo": "*",
+        "ext-sqlite3": "*",
         "dflydev/fig-cookies": "^3.1.0",
         "laminas/laminas-cli": "^1.11.0",
         "laminas/laminas-component-installer": "^3.5.0",
@@ -83,6 +84,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "LaminasTest\\Unit\\": "test/Unit"
         }
     },
     "scripts": {
