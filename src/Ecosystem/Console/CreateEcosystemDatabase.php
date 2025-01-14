@@ -356,6 +356,7 @@ class CreateEcosystemDatabase extends Command
         return [
             'id'           => uniqid($packageData['name']),
             'name'         => $packageData['name'],
+            'type'         => $packageData['type'],
             'repository'   => $packageData['repository'],
             'description'  => $packageData['description'],
             'created'      => $timestamp,
