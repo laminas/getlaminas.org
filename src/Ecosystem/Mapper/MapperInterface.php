@@ -19,7 +19,9 @@ interface MapperInterface
     /** @return Paginator<int, EcosystemPackage> */
     public function fetchAllByKeyword(string $keyword): Paginator;
 
-    public function search(string $toMatch): ?array;
+    public function getPackagesTitles(): array;
+
+    public function deletePackageByName(string $package): bool;
 
     public function fetchPackagesDueUpdates(DateTimeImmutable $updated): ?array;
 }

@@ -19,12 +19,12 @@ use function trim;
 trait CreateEcosystemPackageFromArrayTrait
 {
     /**
-     * @throws Exception
      * @phpcs:ignore
      * @param array{
      *     id: string,
      *     name: string,
      *     type: string,
+     *     packagistUrl: string,
      *     repository: string,
      *     description: string,
      *     usage: string,
@@ -35,27 +35,27 @@ trait CreateEcosystemPackageFromArrayTrait
      *     issues: int,
      *     downloads: int,
      *     abandoned: int,
-     *     packagistUrl: string,
      *     keywords: string|array<string>,
      *     website: string,
      *     license: string,
      *     image: string|null
      * } $packageData
+     * @throws Exception
      */
-    private function createEcosystemPackageFromArray(array $packageData): ?EcosystemPackage
+    protected function createEcosystemPackageFromArray(array $packageData): ?EcosystemPackage
     {
-        $created = $this->createDateTimeFromString((string) $packageData['created']);
-        $updated = $packageData['updated'] && $packageData['updated'] !== $packageData['created']
-            ? $this->createDateTimeFromString((string) $packageData['updated'])
-            : $created;
-
         $category = EcosystemCategoryEnum::tryFrom(trim($packageData['category']));
         $type     = EcosystemTypeEnum::tryFrom(trim($packageData['type']));
         $usage    = EcosystemUsageEnum::tryFrom(trim($packageData['usage']));
 
-        if ($category === null) {
+        if ($category === null || $type === null || $usage === null) {
             return null;
         }
+
+        $created = $this->createDateTimeFromString((string) $packageData['created']);
+        $updated = $packageData['updated'] && $packageData['updated'] !== $packageData['created']
+            ? $this->createDateTimeFromString((string) $packageData['updated'])
+            : $created;
 
         return new EcosystemPackage(
             $packageData['id'],
@@ -83,7 +83,7 @@ trait CreateEcosystemPackageFromArrayTrait
     /**
      * @throws Exception
      */
-    private function createDateTimeFromString(string $dateString): DateTimeImmutable
+    protected function createDateTimeFromString(string $dateString): DateTimeImmutable
     {
         return is_numeric($dateString)
             ? new DateTimeImmutable('@' . $dateString, new DateTimeZone('America/Chicago'))
