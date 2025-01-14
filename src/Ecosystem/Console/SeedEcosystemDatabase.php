@@ -6,6 +6,7 @@ namespace GetLaminas\Ecosystem\Console;
 
 use CurlHandle;
 use DateTimeImmutable;
+use GetLaminas\Ecosystem\EcosystemConnectionTrait;
 use GetLaminas\Ecosystem\Mapper\PdoMapper;
 use PDO;
 use Symfony\Component\Console\Command\Command;
@@ -15,26 +16,21 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function assert;
-use function base64_decode;
 use function curl_exec;
-use function curl_init;
 use function curl_setopt;
-use function explode;
 use function is_array;
 use function is_string;
 use function json_decode;
 use function realpath;
 use function sprintf;
+use function str_replace;
 
-use const CURLOPT_FOLLOWLOCATION;
-use const CURLOPT_HTTPHEADER;
-use const CURLOPT_POST;
-use const CURLOPT_POSTFIELDS;
-use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 
 class SeedEcosystemDatabase extends Command
 {
+    use EcosystemConnectionTrait;
+
     public const string PACKAGE_UPDATE_TIME = '6 hours ago';
 
     private CurlHandle $curl;
@@ -87,14 +83,6 @@ class SeedEcosystemDatabase extends Command
         $dbFile = $input->getOption('db-path');
         assert(is_string($dbFile));
         $this->ghToken = $input->getOption('github-token');
-        if (! $this->ghToken) {
-            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
-            assert(is_array($variables));
-            assert(isset($variables['REPO_TOKEN']));
-
-            $this->ghToken = $variables['REPO_TOKEN'];
-        }
-        assert(is_string($this->ghToken));
 
         /** @var array{id: string, name: string, updated: int}|null $packagesDueUpdates */
         $packagesDueUpdates = $this->mapper->fetchPackagesDueUpdates(
@@ -116,7 +104,29 @@ class SeedEcosystemDatabase extends Command
         $pdo->beginTransaction();
         $this->initCurl();
 
+        /**
+         * @var array{
+         *     id: string,
+         *     name: string,
+         *     updated: int
+         * } $package
+         */
         foreach ($packagesDueUpdates as $package) {
+            /**
+             * @phpcs:ignore
+             * @param array{
+             *     name: string,
+             *     repository: string,
+             *     abandoned: string,
+             *     description: string,
+             *     updated: int,
+             *     stars: int,
+             *     issues: int,
+             *     downloads: int,
+             *     image: string,
+             *     id: string
+             *    } $packageData
+             */
             $packageData = $this->getPackageData($package);
             $this->updatePackage($packageData, $pdo);
         }
@@ -128,32 +138,14 @@ class SeedEcosystemDatabase extends Command
         return 0;
     }
 
-    private function initCurl(): void
-    {
-        $headers = [
-            'Accept: application/vnd.github+json',
-            'X-GitHub-Api-Version: 2022-11-28',
-            'User-Agent: getlaminas.org',
-        ];
-
-        $this->curl = curl_init();
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
-
-        $githubHeaders = [
-            'Accept: application/vnd.github+json',
-            'Authorization: Bearer ' . $this->ghToken,
-            'X-GitHub-Api-Version: 2022-11-28',
-            'User-Agent: getlaminas.org',
-        ];
-
-        $this->githubCurl = curl_init();
-        curl_setopt($this->githubCurl, CURLOPT_HTTPHEADER, $githubHeaders);
-        curl_setopt($this->githubCurl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($this->githubCurl, CURLOPT_RETURNTRANSFER, 1);
-    }
-
+    /**
+     * @phpcs:ignore
+     * @param array{
+     *     id: string,
+     *     name: string,
+     *     updated: int
+     * } $package
+     */
     private function getPackageData(array $package): array
     {
         $packagistUrl = sprintf(
@@ -169,14 +161,22 @@ class SeedEcosystemDatabase extends Command
         /**
          * @var array{
          *     name: string,
-         *     repository: string,
-         *     abandoned: string,
          *     description: string,
-         *     updated: int,
-         *     stars: int,
-         *     issues: int,
+         *     time: string,
+         *     maintainers: array<string>,
+         *     versions: array<array>,
+         *     type: string,
+         *     repository: string,
+         *     github_stars: int,
+         *     github_watchers: int,
+         *     github_forks: int,
+         *     github_open_issues: int,
+         *     language: string,
+         *     abandoned: string,
+         *     dependents: int,
+         *     suggesters: int,
          *     downloads: array{total: int, monthly: int, daily: int},
-         *     id: string
+         *     favers: int
          *  } $packageData
          */
         $packageData = $packagistResult['package'];
@@ -187,33 +187,14 @@ class SeedEcosystemDatabase extends Command
             'abandoned'   => (int) isset($packageData['abandoned']),
             'description' => $packageData['description'],
             'updated'     => (new DateTimeImmutable())->getTimestamp(),
-            'stars'       => (int) $packageData['github_stars'],
-            'issues'      => (int) $packageData['github_open_issues'],
-            'downloads'   => (int) $packageData['downloads']['total'],
-            'image'       => $this->getSocialPreview($packageData['name']),
+            'stars'       => $packageData['github_stars'],
+            'issues'      => $packageData['github_open_issues'],
+            'downloads'   => $packageData['downloads']['total'],
+            'image'       => $this->getSocialPreview(
+                str_replace('https://github.com/', '', $packageData['repository'])
+            ),
             'id'          => $package['id'],
         ];
-    }
-
-    private function getSocialPreview(string $package): ?string
-    {
-        $packageId    = explode('/', $package);
-        $graphQlQuery = sprintf(
-            '{"query": "query {repository(owner: \"%s\", name: \"%s\"){openGraphImageUrl}}"}',
-            $packageId[0],
-            $packageId[1]
-        );
-
-        curl_setopt($this->githubCurl, CURLOPT_URL, 'https://api.github.com/graphql');
-        curl_setopt($this->githubCurl, CURLOPT_POST, true);
-        curl_setopt($this->githubCurl, CURLOPT_POSTFIELDS, $graphQlQuery);
-
-        $rawResult = curl_exec($this->githubCurl);
-        assert(is_string($rawResult));
-
-        $githubResult = json_decode($rawResult, true);
-
-        return $githubResult['data']['repository']['openGraphImageUrl'] ?? null;
     }
 
     /**
@@ -221,13 +202,13 @@ class SeedEcosystemDatabase extends Command
      * @param array{
      *     name: string,
      *     repository: string,
-     *     abandoned: string,
+     *     abandoned: int,
      *     description: string,
      *     updated: int,
      *     stars: int,
      *     issues: int,
-     *     downloads: array{total: int, monthly: int, daily: int},
-     *     image: string|null
+     *     downloads: int,
+     *     image: string,
      *     id: string
      *    } $packageData
      */
@@ -243,7 +224,7 @@ class SeedEcosystemDatabase extends Command
             $packageData['downloads'],
             $packageData['stars'],
             $packageData['issues'],
-            $packageData['image'] !== null ? $pdo->quote($packageData['image']) : '0',
+            $pdo->quote($packageData['image']),
             $pdo->quote($packageData['id'])
         );
 

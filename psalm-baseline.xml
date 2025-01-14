@@ -219,6 +219,62 @@
       <code><![CDATA[$this->template->url('blog.post', ['id' => $post->id])]]></code>
     </MixedReturnStatement>
   </file>
+  <file src="src/Ecosystem/Console/CreateEcosystemDatabase.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$curlResult]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$this->ghToken]]></code>
+    </MixedAssignment>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$curl]]></code>
+      <code><![CDATA[$githubCurl]]></code>
+      <code><![CDATA[$mapper]]></code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Ecosystem/Console/SeedEcosystemDatabase.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$packageData]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$this->ghToken]]></code>
+    </MixedAssignment>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$curl]]></code>
+      <code><![CDATA[$githubCurl]]></code>
+      <code><![CDATA[$mapper]]></code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Ecosystem/EcosystemConnectionTrait.php">
+    <MixedAssignment>
+      <code><![CDATA[$this->ghToken]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[string]]></code>
+    </MixedInferredReturnType>
+  </file>
+  <file src="src/Ecosystem/Handler/EcosystemHandler.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$keywords]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment>
+      <code><![CDATA[$page]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[getPath]]></code>
+      <code><![CDATA[getUri]]></code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/Ecosystem/Mapper/MapperFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$config['db'] ?? '']]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Ecosystem/Mapper/PdoPaginator.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->CreateEcosystemPackageFromArray(...)]]></code>
+    </ArgumentTypeCoercion>
+  </file>
   <file src="src/ReleaseFeed/ReceiveFeedItemHandler.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$latest]]></code>
@@ -292,5 +348,42 @@
       <code><![CDATA[$action]]></code>
       <code><![CDATA[$first]]></code>
     </MixedAssignment>
+  </file>
+  <file src="test/Unit/Ecosystem/ConfigProviderTest.php">
+    <MixedArgument>
+      <code><![CDATA[$this->config['dependencies']]]></code>
+      <code><![CDATA[$this->config['dependencies']]]></code>
+      <code><![CDATA[$this->config['dependencies']]]></code>
+      <code><![CDATA[$this->config['ecosystem']]]></code>
+      <code><![CDATA[$this->config['laminas-cli']]]></code>
+      <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
+      <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
+      <code><![CDATA[$this->config['templates']]]></code>
+      <code><![CDATA[$this->config['templates']['paths']['ecosystem'][0]]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$this->config['dependencies']['delegators']]]></code>
+      <code><![CDATA[$this->config['dependencies']['factories']]]></code>
+      <code><![CDATA[$this->config['dependencies']['invokables']]]></code>
+      <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
+      <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
+      <code><![CDATA[$this->config['templates']['paths']]]></code>
+      <code><![CDATA[$this->config['templates']['paths']['ecosystem'][0]]]></code>
+    </MixedArrayAccess>
+  </file>
+  <file src="test/Unit/Ecosystem/Console/CreateEcosystemDatabaseTest.php">
+    <PossiblyUndefinedMethod>
+      <code><![CDATA[createDatabase]]></code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="test/Unit/Ecosystem/CreateEcosystemPackageFromArrayTraitTest.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$data]]></code>
+    </MixedArgumentTypeCoercion>
+  </file>
+  <file src="vendor/symfony/console/Command/Command.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$name]]></code>
+    </PossiblyNullArgument>
   </file>
 </files>

@@ -20,9 +20,9 @@ class PdoPaginator implements AdapterInterface
 {
     use CreateEcosystemPackageFromArrayTrait;
 
+    /** @param array<string, mixed> $params */
     protected array $params;
 
-    /** @param array<string, mixed> $params */
     public function __construct(
         protected PDOStatement $select,
         protected PDOStatement $count,

@@ -14,13 +14,15 @@ composer build
 > The following command can be run individually for testing:
 
 ```bash
-./vendor/bin/laminas ecosystem:create-db
+./vendor/bin/laminas ecosystem:create-db  --github-token=<github_token> [--force-rebuild]
 ```
+
+> the optional "--force-rebuild" flag will regenerate the database completely, not only add and/or remove packages
 
 *Used for creating the database.*
 
 ```bash
-./vendor/bin/laminas ecosystem:seed-db
+./vendor/bin/laminas ecosystem:seed-db  --github-token=<github_token>
 ```
 
 *Used for updating the package data every X hours.*
@@ -30,20 +32,17 @@ composer build
 ```json
 {
   "packagistUrl": "",
-  "githubUrl": "",
   "keywords": [],
   "homepage": "",
-  "category": ""
+  "category": "",
+  "usage": ""
 }
 ```
 
 ### New entry fields description
 
-- `packagistUrl` **required**
+- `packagistUrl`
   **string** - the packagist URL of the entry, with no query parameters
-
-- `githubUrl`
-  **string** - optional link to be displayed on the package card
 
 - `keywords`
   **array of strings** - user defined keywords used for filtering results
@@ -53,3 +52,6 @@ composer build
 
 - `category`
   **string** - package category must be one of "skeleton", "integration", "tool"
+
+- `usage`
+  **string** - package usage must be one of "mezzio" or "mvc"

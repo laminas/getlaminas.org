@@ -23,6 +23,7 @@ use function count;
 use function implode;
 use function is_array;
 use function is_string;
+use function max;
 use function sprintf;
 use function strtolower;
 
@@ -43,13 +44,16 @@ class EcosystemHandler implements RequestHandlerInterface
 
         $keywords = $queryParams['keywords'] ?? [];
         assert(is_array($keywords));
-        $type     = $queryParams['type'] ?? '';
+        $type = $queryParams['type'] ?? '';
+        assert(is_string($type));
         $type     = EcosystemTypeEnum::tryFrom($type)?->name;
         $category = $queryParams['category'] ?? '';
+        assert(is_string($category));
         $category = EcosystemCategoryEnum::tryFrom($category)?->name;
         $usage    = $queryParams['usage'] ?? '';
-        $usage    = EcosystemUsageEnum::tryFrom($usage)?->name;
-        $search   = $queryParams['q'] ?? '';
+        assert(is_string($usage));
+        $usage  = EcosystemUsageEnum::tryFrom($usage)?->name;
+        $search = $queryParams['q'] ?? '';
         assert(is_string($search));
 
         $packages = $this->ecosystemMapper->fetchAllByFilters(
@@ -75,7 +79,7 @@ class EcosystemHandler implements RequestHandlerInterface
         // keep set keyword and search queries
         if (count($packages) && $page > count($packages)) {
             $keywordsQuery = '';
-            if (! empty($keywords)) {
+            if ($keywords !== []) {
                 $keywordsQuery = '&keywords[]=' . implode("&keywords[]=", $keywords);
             }
 
@@ -133,7 +137,7 @@ class EcosystemHandler implements RequestHandlerInterface
     {
         $page = $request->getQueryParams()['page'] ?? 1;
         $page = (int) $page;
-        return $page < 1 ? 1 : $page;
+        return max($page, 1);
     }
 
     private function preparePagination(string $path, int $page, object $pagination): object

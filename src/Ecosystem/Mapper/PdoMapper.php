@@ -80,14 +80,24 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $keyword)]);
     }
 
-    public function search(string $toMatch): ?array
+    public function getPackagesTitles(): array
     {
-        $select = $this->pdo->prepare('SELECT id, title from search_packages WHERE search MATCH :query');
-        if (! $select->execute([':query' => $toMatch])) {
-            return null;
+        $select = $this->pdo->prepare('SELECT name from packages;');
+        if (! $select->execute()) {
+            return [];
         }
 
-        return $select->fetchAll();
+        return $select->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    public function deletePackageByName(string $package): bool
+    {
+        $select = $this->pdo->prepare('DELETE from packages WHERE name = :name;');
+        if (! $select->execute([':name' => $package])) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
