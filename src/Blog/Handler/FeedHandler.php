@@ -6,6 +6,7 @@ namespace GetLaminas\Blog\Handler;
 
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\Stream;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -17,18 +18,13 @@ use function str_replace;
 
 class FeedHandler implements RequestHandlerInterface
 {
-    /** @var string */
-    private $feedPath;
-
-    /** @var RequestHandlerInterface */
-    private $notFoundHandler;
-
-    public function __construct(RequestHandlerInterface $notFoundHandler, string $feedPath = 'var/blog/feeds')
-    {
-        $this->notFoundHandler = $notFoundHandler;
-        $this->feedPath        = $feedPath;
+    public function __construct(
+        private readonly RequestHandlerInterface $notFoundHandler,
+        private readonly string $feedPath = 'var/blog/feeds'
+    ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tag  = $request->getAttribute('tag');

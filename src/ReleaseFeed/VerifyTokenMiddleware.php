@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GetLaminas\ReleaseFeed;
 
 use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -15,11 +16,12 @@ use function preg_match;
 class VerifyTokenMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private string $token,
-        private ProblemDetailsResponseFactory $problemFactory
+        private readonly string $token,
+        private readonly ProblemDetailsResponseFactory $problemFactory
     ) {
     }
 
+    #[Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $header = $request->getHeaderLine('Authorization');

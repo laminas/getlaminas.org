@@ -10,6 +10,7 @@ use Laminas\Feed\Reader\Reader;
 use Laminas\Feed\Writer\Feed;
 use League\CommonMark\ConverterInterface;
 use Mezzio\ProblemDetails\ProblemDetailsResponseFactory;
+use Override;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,13 +29,14 @@ use const PHP_URL_PATH;
 class ReceiveFeedItemHandler implements RequestHandlerInterface
 {
     public function __construct(
-        private string $feedFile,
-        private ConverterInterface $markdown,
-        private ResponseFactoryInterface $responseFactory,
-        private ProblemDetailsResponseFactory $problemFactory
+        private readonly string $feedFile,
+        private readonly ConverterInterface $markdown,
+        private readonly ResponseFactoryInterface $responseFactory,
+        private readonly ProblemDetailsResponseFactory $problemFactory
     ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data = $request->getParsedBody();

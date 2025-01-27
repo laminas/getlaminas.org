@@ -8,6 +8,7 @@ use Closure;
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
 use Laminas\Paginator\Adapter\AdapterInterface;
+use Override;
 use PDO;
 use PDOStatement;
 use RuntimeException;
@@ -33,6 +34,7 @@ class PdoPaginator implements AdapterInterface
     }
 
     /** @inheritDoc */
+    #[Override]
     public function getItems($offset, $itemCountPerPage): array
     {
         $params = array_merge($this->params, [
@@ -52,6 +54,7 @@ class PdoPaginator implements AdapterInterface
         );
     }
 
+    #[Override]
     public function count(): int
     {
         $result = $this->count->execute($this->params);

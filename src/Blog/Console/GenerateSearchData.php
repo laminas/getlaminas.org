@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GetLaminas\Blog\Console;
 
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
+use Override;
 use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -27,6 +28,7 @@ class GenerateSearchData extends Command
 {
     use CreateBlogPostFromDataArray;
 
+    #[Override]
     protected function configure(): void
     {
         $this->setName('blog:generate-search-data');
@@ -43,6 +45,7 @@ class GenerateSearchData extends Command
         );
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io       = new SymfonyStyle($input, $output);
