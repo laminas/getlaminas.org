@@ -28,10 +28,10 @@ class PlatesFunctionsDelegator implements ExtensionInterface
     #[Override]
     public function register(Engine $engine): void
     {
-        $engine->registerFunction('formatDate', $this->formatDate(...));
-        $engine->registerFunction('formatDateRfc', $this->formatDateRfc(...));
-        $engine->registerFunction('postAuthor', $this->postAuthor(...));
-        $engine->registerFunction('postUrl', $this->postUrl(...));
+        $engine->registerFunction('formatDate', [$this, 'formatDate']);
+        $engine->registerFunction('formatDateRfc', [$this, 'formatDateRfc']);
+        $engine->registerFunction('postAuthor', [$this, 'postAuthor']);
+        $engine->registerFunction('postUrl', [$this, 'postUrl']);
     }
 
     public function formatDate(DateTimeInterface $date, string $format = 'j F Y'): string
