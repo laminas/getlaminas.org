@@ -45,7 +45,7 @@ It would also keep up to date with other frameworks that employ them.
 
 Ultimately, the support for PHP version 8.1 will be kept in Laminas packages for now, because PHP 8.1 will still receive security fixes until January 1st 2026.
 This has the added benefit of minimizing the impact on users of Laminas packages.
-The only limitation right now is for PHPUnit which stays at version 10. 
+The only limitation right now is for PHPUnit which stays at version 10.
 
 # New design and layout for [getlaminas.org](getlaminas.org)
 
