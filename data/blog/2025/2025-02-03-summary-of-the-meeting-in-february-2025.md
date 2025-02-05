@@ -13,22 +13,22 @@ tags:
 On Monday, 3 February 2025, the Technical Steering Committee for the Laminas Project held its monthly meeting.
 The topics discussed included:
 
-- Creating a major release for laminas/laminas-session.
+- Creating a major release for [laminas-session](https://github.com/laminas/laminas-session).
 - Setting up email accounts for @getlaminas.org.
 - Dropping Support for PHP 8.1 in future releases for Laminas packages.
-- New design and layout for getlaminas.org.
+- New design and layout for [getlaminas.org](getlaminas.org).
 
 <!--- EXTENDED -->
-# Creating a major release for [laminas/laminas-session](https://github.com/laminas/laminas-session)
+# Creating a major release for laminas-session
 
 Backward compatibility among dependencies is desirable to maintain support for as many versions as is reasonable.
 Removing dependencies or limiting them to more recent versions has direct impact on all applications that use the older version.
 Releasing a backward incompatible version means some users may not be able to update to it without reworking the whole list of 3rd party packages.
 Eventually, releases that break compatibility are inevitable to benefit from new features, bugfixes and security updates.
 
-The TSC members agreed that a major release is needed for `laminas/laminas-session` because the update breaks backward compatibility.
-The `laminas/laminas-session` package currently prevents other packages from being updated, because of its dependency for [laminas/laminas-servicemanager](https://github.com/laminas/laminas-servicemanager) version 3.
-Updating the dependency to `laminas/laminas-servicemanager` version 4 would allow packages that depend on laminas-session to also benefit from the newer servicemanager.
+The TSC members agreed that a major release is needed for `laminas-session` because the update breaks backward compatibility.
+The `laminas-session` package currently prevents other packages from being updated, because of its dependency for [laminas-servicemanager](https://github.com/laminas/laminas-servicemanager) version 3.
+Updating the dependency to `laminas-servicemanager` version 4 would allow packages that depend on laminas-session to also benefit from the newer servicemanager.
 
 # Setting up email accounts for @getlaminas.org
 
@@ -47,7 +47,7 @@ Ultimately, the support for PHP version 8.1 will be kept in Laminas packages for
 This has the added benefit of minimizing the impact on users of Laminas packages.
 The only limitation right now is for PHPUnit which stays at version 10.
 
-# New design and layout for [getlaminas.org](getlaminas.org)
+# New design and layout for getlaminas.org
 
 The design of a homepage is an important element in creating a positive first impression of a company's image.
 It is the first thing most visitors see, so it is vital to include some essentials related to your company in an efficient and attractive format.
