@@ -15,7 +15,7 @@ The topics discussed included:
 
 - Creating a major release for [laminas-session](https://github.com/laminas/laminas-session).
 - Setting up email accounts for @getlaminas.org.
-- Dropping Support for PHP 8.1 in future releases for Laminas packages.
+- Dropping support for PHP 8.1 in future releases for Laminas packages.
 - New design and layout for [getlaminas.org](getlaminas.org).
 
 <!--- EXTENDED -->
@@ -26,9 +26,9 @@ Removing dependencies or limiting them to more recent versions has direct impact
 Releasing a backward incompatible version means some users may not be able to update to it without reworking the whole list of 3rd party packages.
 Eventually, releases that break compatibility are inevitable to benefit from new features, bugfixes and security updates.
 
-The TSC members agreed that a major release is needed for `laminas-session` because the update breaks backward compatibility.
-The `laminas-session` package currently prevents other packages from being updated, because of its dependency for [laminas-servicemanager](https://github.com/laminas/laminas-servicemanager) version 3.
-Updating the dependency to `laminas-servicemanager` version 4 would allow packages that depend on laminas-session to also benefit from the newer servicemanager.
+The TSC members agreed that a major release is needed for laminas-session because the update breaks backward compatibility.
+The laminas-session package currently prevents other packages from being updated, because of its dependency for [laminas-servicemanager](https://github.com/laminas/laminas-servicemanager) version 3.
+Updating the dependency to laminas-servicemanager version 4 would allow packages that depend on laminas-session to also benefit from the newer servicemanager.
 
 # Setting up email accounts for @getlaminas.org
 
@@ -36,10 +36,10 @@ Updating the dependency to `laminas-servicemanager` version 4 would allow packag
 There are multiple benefits to using Tuta, but the Laminas TSC members didn't find any use care that would justify setting it up for getlaminas.org.
 An alternative is already in use within the Laminas organization for security and marketing concerns, so using Tuta was put on hold.
 
-# Dropping Support for PHP 8.1 in future releases for Laminas packages
+# Dropping support for PHP 8.1 in future releases for Laminas packages
 
 [Psalm](https://github.com/vimeo/psalm) version 6 has support for PHP from versions 8.1.17 to 8.4, so updating it in Laminas components is feasible.
-On the other hand, [PHPUnit](https://github.com/sebastianbergmann/phpunit) version 11 has support only for PHP version >=8.2, so it needs to be kept at version 10 which requests PHP version >=8.1.
+On the other hand, [PHPUnit](https://github.com/sebastianbergmann/phpunit) version 11 has support only for PHP version `>=8.2`, so it needs to be kept at version 10 which requests PHP version `>=8.1`.
 Updating the Laminas packages to use the newer versions of these development tools would be convenient.
 It would also keep up to date with other frameworks that employ them.
 
