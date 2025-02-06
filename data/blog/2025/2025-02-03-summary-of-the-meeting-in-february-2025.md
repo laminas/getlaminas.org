@@ -19,7 +19,7 @@ The topics discussed included:
 - New design and layout for [getlaminas.org](getlaminas.org).
 
 <!--- EXTENDED -->
-# Creating a major release for laminas-session
+### Creating a major release for laminas-session
 
 Backward compatibility among dependencies is desirable to maintain support for as many versions as is reasonable.
 Removing dependencies or limiting them to more recent versions has direct impact on all applications that use the older version.
@@ -30,13 +30,13 @@ The TSC members agreed that a major release is needed for laminas-session becaus
 The laminas-session package currently prevents other packages from being updated, because of its dependency for [laminas-servicemanager](https://github.com/laminas/laminas-servicemanager) version 3.
 Updating the dependency to laminas-servicemanager version 4 would allow packages that depend on laminas-session to also benefit from the newer servicemanager.
 
-# Setting up email accounts for @getlaminas.org
+### Setting up email accounts for @getlaminas.org
 
 [Tuta](https://tuta.com/blog/tutanota-for-open-source-teams) offers a free plan for setting up secure emails for a custom domain.
 There are multiple benefits to using Tuta, but the Laminas TSC members didn't find any use care that would justify setting it up for getlaminas.org.
 An alternative is already in use within the Laminas organization for security and marketing concerns, so using Tuta was put on hold.
 
-# Dropping support for PHP 8.1 in future releases for Laminas packages
+### Dropping support for PHP 8.1 in future releases for Laminas packages
 
 [Psalm](https://github.com/vimeo/psalm) version 6 has support for PHP from versions 8.1.17 to 8.4, so updating it in Laminas components is feasible.
 On the other hand, [PHPUnit](https://github.com/sebastianbergmann/phpunit) version 11 has support only for PHP version `>=8.2`, so it needs to be kept at version 10 which requests PHP version `>=8.1`.
@@ -47,7 +47,7 @@ Ultimately, the support for PHP version 8.1 will be kept in Laminas packages for
 This has the added benefit of minimizing the impact on users of Laminas packages.
 The only limitation right now is for PHPUnit which stays at version 10.
 
-# New design and layout for getlaminas.org
+### New design and layout for getlaminas.org
 
 The design of a homepage is an important element in creating a positive first impression of a company's image.
 It is the first thing most visitors see, so it is vital to include some essentials related to your company in an efficient and attractive format.
