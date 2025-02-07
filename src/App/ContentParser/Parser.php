@@ -44,7 +44,7 @@ final readonly class Parser implements ParserInterface
                 'heading_permalink'  => [
                     'insert'            => 'after',
                     'min_heading_level' => 1,
-                    'max_heading_level' => 2,
+                    'max_heading_level' => 3,
                 ],
             ]
         );
@@ -62,7 +62,7 @@ final readonly class Parser implements ParserInterface
             [
                 'table_of_contents' => [
                     'min_heading_level' => 2,
-                    'max_heading_level' => 2,
+                    'max_heading_level' => 3,
                 ],
             ]
         );

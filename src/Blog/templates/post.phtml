@@ -53,6 +53,10 @@ $this->end();
                 <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
                 <?php endif ?>
             </p>
+            <?php if ($post->toc): ?>
+                <h5>Table of Contents</h5>
+                <?= $post->toc ?>
+            <?php endif ?>
         </aside>
     </div>
 </div>

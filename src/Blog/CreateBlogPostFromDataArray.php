@@ -55,6 +55,7 @@ trait CreateBlogPostFromDataArray
 
         $document = $this->getContentParser()->parse($post['path']);
         $post     = $document->getFrontMatter();
+        $toc      = $document->getTableOfContents();
         $parts    = explode($this->postDelimiter, $document->getContent(), 2);
         $created  = $this->createDateTimeFromString($post['created']);
         $updated  = $post['updated'] && $post['updated'] !== $post['created']
@@ -72,6 +73,7 @@ trait CreateBlogPostFromDataArray
                 : explode('|', trim((string) $post['tags'], '|')),
             $parts[0],
             $parts[1] ?? '',
+            $toc,
             (bool) $post['draft'],
             (bool) $post['public']
         );
