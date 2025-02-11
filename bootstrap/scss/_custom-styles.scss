@@ -168,6 +168,12 @@ pre[class*=language-] {
     font-size: smaller;
 }
 
+article {
+    img {
+        max-width: 100%;
+    }
+}
+
 .dropdown-item {
     &.active,
     &:active {
