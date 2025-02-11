@@ -9,7 +9,6 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "@popperjs/core": "^2.11.8",
-    "anchor-js": "^5.0.0",
     "autoprefixer": "^10.4.14",
     "bootstrap": "^5.3.3",
     "gulp": "^5.0.0",
