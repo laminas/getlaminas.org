@@ -1,7 +1,7 @@
 ---
-id: 2025-02-13-creating-pages-and-modules
+id: 2025-02-13-mezzio101-creating-pages-and-modules
 author: bidi
-title: 'Creating Pages and Modules'
+title: 'Mezzio 101: Creating Pages and Modules'
 draft: false
 public: true
 created: '2025-02-13T11:00:00-01:00'
@@ -19,6 +19,8 @@ Let's explore what we can do with it right away.
 
 The current components allow us to build a presentation site with static pages.
 It may not be much to speak of yet, but we can already create new pages and organize them in multiple modules.
+
+<!--- EXTENDED -->
 
 ### Creating a new page
 
