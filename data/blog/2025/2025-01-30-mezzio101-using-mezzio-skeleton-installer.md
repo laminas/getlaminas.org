@@ -152,6 +152,11 @@ You can then visit the recommended links to learn more about using the component
 
 ![step-9-installation-complete](/images/blog/mezzio101/mezzio101-use-skeleton-09.jpg "step-9")
 
+#### Coming up in the Mezzio101 series
+
+With our base application set up, the next article will detail how to create new pages and modules to organize your content.
+For this purpose we will create new files, update the application configuration and also use the command line interface.
+
 ### Additional Resources
 
 - Learn more about [Laminas](https://docs.laminas.dev/).
