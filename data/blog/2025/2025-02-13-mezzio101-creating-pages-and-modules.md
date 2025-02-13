@@ -29,7 +29,7 @@ Feel free to edit that page however you see fit.
 Don't worry about any dynamic twig elements for now.
 
 What if you want a new page, like an 'About Us' page?
-Let's see how we can do this using this Mezzio CLI command. 
+Let's see how we can do this using this Mezzio CLI command.
 
 ```php
 composer mezzio mezzio:handler:create "App\Handler\AboutHandler"
