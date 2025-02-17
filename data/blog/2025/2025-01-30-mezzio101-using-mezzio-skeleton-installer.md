@@ -108,6 +108,7 @@ Submit `1` for `fastroute`.
 
 We chose `Twig` as the templating engine because of its concise syntax, extensibility and well-written documentation.
 The Mezzio Skeleton Installer does offer several alternatives for the templating engines:
+
 - `Plates` is a simple templating engine that sees the templates themselves as PHP files.
 - `Twig` is reliable, actively-developed and well-known in the PHP community.
 - `laminas-view` is related to Laminas MVC.
