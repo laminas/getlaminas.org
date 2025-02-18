@@ -198,7 +198,7 @@ To visit your new page, type this url in the browser `http://localhost:8080/abou
 ### Creating a new module
 
 It is recommended to create new Modules for handlers that have shared goals.
-You can split your custom code into e.g. `Autorization`, `Admin` or `Billing` modules to keep everything properly structured.
+You can split your custom code into e.g. `Authorization`, `Admin` or `Billing` modules to keep everything properly structured.
 It helps to have functionality contained in a single module when you intend to use it in multiple applications.
 
 If you want to organize your pages in several modules, Mezzio Tooling provides an easy method to create the basic folder structure for a module.
