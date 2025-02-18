@@ -35,7 +35,16 @@ Let's see how we can do this using this Mezzio CLI command.
 composer mezzio mezzio:handler:create "App\Handler\AboutHandler"
 ```
 
-Below we run through the new files and edits the command above has performed.
+Below are the new files created by the command:
+
+- `src/App/src/Handler/AboutHandler.php`
+- `src/App/src/Handler/AboutHandlerFactory.php`
+- `config/autoload/mezzio-tooling-factories.global.php` (unless it already exists)
+- `src/App/templates/app/about.html.twig`
+
+The only thing left for us to do manually is set up the routing for our new page at `http://localhost:8080/about`.
+
+Let's look at these changes in detail.
 
 #### The new handler
 
@@ -130,6 +139,8 @@ return [
 ];
 ```
 
+All future handlers created using the CLI will update this file with more dependencies.
+
 #### The new template
 
 The handler returns a `HtmlResponse` with the template file `app::about`.
@@ -163,12 +174,12 @@ The `about` template now extends the `default` template, meaning it uses its lay
 
 #### The routing
 
-Finally, we need to add the new handler to the `config/routes.php` file.
+Finally, we need to add the new handler to the `config/routes.php` file by hand.
 On the bottom of the file we already have 2 entries created by the Mezzio Skeleton Installer.
 You can check the Handler names to tell what each of them is for.
 
 For the new page, we need to append the line for the `AboutHandler` to that list, like we have done below.
-Feel free to replace the return statement with this one:
+Below is what the return statement should look like:
 
 ```php
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
