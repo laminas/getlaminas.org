@@ -249,9 +249,6 @@
     <MixedAssignment>
       <code><![CDATA[$this->ghToken]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code><![CDATA[string]]></code>
-    </MixedInferredReturnType>
   </file>
   <file src="src/Ecosystem/Handler/EcosystemHandler.php">
     <MixedArgumentTypeCoercion>

@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace GetLaminas\Ecosystem;
 
+use Exception;
+
 use function assert;
 use function base64_decode;
+use function curl_close;
 use function curl_exec;
 use function curl_init;
 use function curl_setopt;
 use function explode;
+use function fclose;
+use function fopen;
 use function is_array;
 use function is_string;
 use function json_decode;
 use function sprintf;
 
+use const CURLOPT_FILE;
 use const CURLOPT_FOLLOWLOCATION;
+use const CURLOPT_HEADER;
 use const CURLOPT_HTTPHEADER;
 use const CURLOPT_POST;
 use const CURLOPT_POSTFIELDS;
@@ -59,11 +66,11 @@ trait EcosystemConnectionTrait
         curl_setopt($this->githubCurl, CURLOPT_RETURNTRANSFER, 1);
     }
 
-    private function getSocialPreview(string $package): string
+    private function getPackageImage(string $package): string
     {
         $packageId    = explode('/', $package);
         $graphQlQuery = sprintf(
-            '{"query": "query {repository(owner: \"%s\", name: \"%s\"){openGraphImageUrl}}"}',
+            '{"query": "query {repository(owner: \"%s\", name: \"%s\"){owner{avatarUrl}}}"}',
             $packageId[0],
             $packageId[1]
         );
@@ -75,9 +82,34 @@ trait EcosystemConnectionTrait
         $rawResult = curl_exec($this->githubCurl);
         assert(is_string($rawResult));
 
-        /** @var array{data: array{repository: array{openGraphImageUrl: string}}} | array{data: array} $githubResult */
+        /** @var array{data: array{repository: array{owner: array{avatarUrl: string}}}}|null $githubResult */
         $githubResult = json_decode($rawResult, true);
+        $image        = '';
 
-        return $githubResult['data']['repository']['openGraphImageUrl'] ?? '';
+        if ($githubResult === null) {
+            return $image;
+        }
+
+        return $this->cachePackageOwnerAvatar(
+            $githubResult['data']['repository']['owner']['avatarUrl'],
+            sprintf('%s-%s.png', $packageId[0], $packageId[1])
+        );
+    }
+
+    private function cachePackageOwnerAvatar(string $avatarUrl, string $file): string
+    {
+        try {
+            $ch = curl_init($avatarUrl);
+            $fp = fopen('public/images/packages/' . $file, 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+        } catch (Exception $exception) {
+            return '';
+        }
+
+        return $file;
     }
 }

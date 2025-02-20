@@ -543,8 +543,7 @@ article {
     }
 
     .card {
-        height: 500px;
-        transition: all .2s ease-in-out;
+        height: 400px;
 
         .abandoned-package {
             position: absolute;
@@ -554,46 +553,42 @@ article {
             width: 100%;
         }
 
-        .package-image-container {
-            display: grid;
-            align-items: center;
-            text-align: center;
-            height: 200px;
+        .package-image {
+            width: 4em;
+            aspect-ratio: 1;
+            border-radius: 5%;
+        }
+
+        .default-package-image {
+            font-size: 4em;
+            border-radius: 5%;
+        }
+
+        .card-header {
+            display: flex;
+            flex-direction: row;
+            padding: .33em;
+            justify-content: space-between;
+
+            .card-title {
+                display: flex;
+                align-items: center;
+            }
         }
 
         .card-body {
-            height: 200px;
             overflow: hidden;
         }
 
         .card-footer {
+            padding-top: .33em;
+            padding-bottom: .33em;
             .card-homepage {
                 float: left;
             }
             .card-updated {
                 float: right;
             }
-        }
-
-        .default-package-image {
-            font-size: 100px;
-            padding: 50px
-        }
-    }
-
-    .card:hover {
-        transform: scale(1.05);
-        .package-image-container {
-            height: 100px;
-            overflow: hidden;
-            text-align: center;
-            transition: height 0.3s;
-        }
-
-        .card-body {
-            height: 300px;
-            transition: height 0.3s;
-            overflow: scroll;
         }
     }
 }

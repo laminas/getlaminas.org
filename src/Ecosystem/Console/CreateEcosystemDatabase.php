@@ -370,7 +370,7 @@ class CreateEcosystemDatabase extends Command
             'packagistUrl' => $userData['packagistUrl'],
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
             'website'      => $website,
-            'image'        => $this->getSocialPreview(
+            'image'        => $this->getPackageImage(
                 str_replace('https://github.com/', '', $packageData['repository'])
             ),
         ];
