@@ -31,7 +31,10 @@ class SeedEcosystemDatabase extends Command
 {
     use EcosystemConnectionTrait;
 
-    public const string PACKAGE_UPDATE_TIME = '6 hours ago';
+    /**
+     * Packagist's API caches the response for 12 hours
+     */
+    public const string PACKAGE_UPDATE_TIME = '12 hours ago';
 
     private CurlHandle $curl;
     private CurlHandle $githubCurl;
@@ -190,7 +193,7 @@ class SeedEcosystemDatabase extends Command
             'stars'       => $packageData['github_stars'],
             'issues'      => $packageData['github_open_issues'],
             'downloads'   => $packageData['downloads']['total'],
-            'image'       => $this->getSocialPreview(
+            'image'       => $this->getPackageImage(
                 str_replace('https://github.com/', '', $packageData['repository'])
             ),
             'id'          => $package['id'],

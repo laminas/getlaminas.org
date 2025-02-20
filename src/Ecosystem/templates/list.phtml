@@ -107,31 +107,29 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
         <?php foreach($ecosystemPackages as $package): ?>
         <div class="card-group col-sm-12 col-md-6 col-xl-4">
             <div class="card">
-                <div class="package-image-container">
+                <div class="card-body">
                     <?php if ($package->abandoned) : ?>
                         <p class="card-text details-item abandoned-package rounded-top fw-bold">
                             <i class="bi bi-exclamation-triangle"></i> This package has been abandoned
                         </p>
                     <?php endif?>
-                    <?php if (! empty($package->image)) :?>
-                        <img src="<?= $package->image ?>" class="package-image card-img-top" alt="...">
-                    <?php else : ?>
-                        <?php if ($package->category === EcosystemCategoryEnum::Skeleton) : ?>
-                            <i class="default-package-image bi bi-stack"></i>
-                        <?php elseif ($package->category === EcosystemCategoryEnum::Integration) : ?>
-                            <i class="default-package-image bi bi-plug"></i>
-                        <?php elseif ($package->category === EcosystemCategoryEnum::Tool) : ?>
-                            <i class="default-package-image bi bi-wrench"></i>
-                        <?php endif ?>
-                    <?php endif ?>
-                </div>
-                <div class="card-body">
-                    <div class="card-header row">
-                        <h5 class="card-title">
+                    <div class="card-header">
+                        <h5 class="card-title col-md-9">
                             <a href="<?= $package->packagistUrl ?>" target="_blank">
                                 <p class="details-item"><?= $package->name ?></p>
                             </a>
                         </h5>
+                        <?php if (! empty($package->image)) :?>
+                            <img src="<?="/images/packages/" . $package->image ?>" class="col-md-3 package-image" alt="...">
+                        <?php else : ?>
+                            <?php if ($package->category === EcosystemCategoryEnum::Skeleton) : ?>
+                                <i class="col-md-3 default-package-image bi bi-stack"></i>
+                            <?php elseif ($package->category === EcosystemCategoryEnum::Integration) : ?>
+                                <i class="col-md-3 default-package-image bi bi-plug"></i>
+                            <?php elseif ($package->category === EcosystemCategoryEnum::Tool) : ?>
+                                <i class="col-md-3 default-package-image bi bi-wrench"></i>
+                            <?php endif ?>
+                        <?php endif ?>
                     </div>
                     <div class="row justify-content-between">
                         <p class="col card-text fw-bold">Type: <?= $package->type->value ?></p>
