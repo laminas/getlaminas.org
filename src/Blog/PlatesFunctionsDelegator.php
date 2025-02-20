@@ -8,6 +8,7 @@ use DateTimeInterface;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 use League\Plates\Template\Template;
+use Override;
 use Psr\Container\ContainerInterface;
 
 use function sprintf;
@@ -24,6 +25,7 @@ class PlatesFunctionsDelegator implements ExtensionInterface
         return $engine;
     }
 
+    #[Override]
     public function register(Engine $engine): void
     {
         $engine->registerFunction('formatDate', [$this, 'formatDate']);

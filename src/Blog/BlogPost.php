@@ -20,6 +20,8 @@ class BlogPost
     /** @var string */
     public $extended;
 
+    public ?string $toc;
+
     /** @var string */
     public $id;
 
@@ -47,6 +49,7 @@ class BlogPost
         array $tags,
         string $body,
         string $extended,
+        ?string $toc,
         bool $isDraft,
         bool $isPublic
     ) {
@@ -58,6 +61,7 @@ class BlogPost
         $this->tags     = $tags;
         $this->body     = $body;
         $this->extended = $extended;
+        $this->toc      = $toc;
         $this->isDraft  = $isDraft;
         $this->isPublic = $isPublic;
     }

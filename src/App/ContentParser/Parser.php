@@ -19,16 +19,17 @@ use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Node\Query;
 use League\CommonMark\Parser\MarkdownParser;
 use League\CommonMark\Renderer\HtmlRenderer;
+use Override;
 
 use function file_get_contents;
 
-final class Parser implements ParserInterface
+final readonly class Parser implements ParserInterface
 {
-    private readonly MarkdownConverter $converter;
+    private MarkdownConverter $converter;
 
-    private readonly MarkdownParser $parser;
+    private MarkdownParser $parser;
 
-    private readonly HtmlRenderer $renderer;
+    private HtmlRenderer $renderer;
 
     public function __construct()
     {
@@ -43,7 +44,7 @@ final class Parser implements ParserInterface
                 'heading_permalink'  => [
                     'insert'            => 'after',
                     'min_heading_level' => 1,
-                    'max_heading_level' => 2,
+                    'max_heading_level' => 3,
                 ],
             ]
         );
@@ -61,7 +62,7 @@ final class Parser implements ParserInterface
             [
                 'table_of_contents' => [
                     'min_heading_level' => 2,
-                    'max_heading_level' => 2,
+                    'max_heading_level' => 3,
                 ],
             ]
         );
@@ -74,6 +75,7 @@ final class Parser implements ParserInterface
         $this->renderer = new HtmlRenderer($environment);
     }
 
+    #[Override]
     public function parse(string $file): DocumentInterface
     {
         $markdown = file_get_contents($file);

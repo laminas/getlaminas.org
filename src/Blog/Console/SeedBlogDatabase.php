@@ -6,6 +6,7 @@ namespace GetLaminas\Blog\Console;
 
 use DateTimeImmutable;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
+use Override;
 use PDO;
 use SplFileInfo;
 use Symfony\Component\Console\Command\Command;
@@ -106,6 +107,7 @@ class SeedBlogDatabase extends Command
             tags VARCHAR(255)
         )';
 
+    #[Override]
     protected function configure(): void
     {
         $this->setName('blog:seed-db');
@@ -145,6 +147,7 @@ class SeedBlogDatabase extends Command
         );
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io                       = new SymfonyStyle($input, $output);

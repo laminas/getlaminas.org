@@ -168,22 +168,6 @@ pre[class*=language-] {
     font-size: smaller;
 }
 
-/*
- * anchor-js, sticky header fix
- * @see https://www.bryanbraun.com/anchorjs/#pages-with-a-sticky-navbar
- */
-article {
-    h1, h2, h3, h4, h5 {
-        &::before {
-            content: '';
-            display: block;
-            margin-top: -100px;
-            height: 100px;
-            width: 1px;
-        }
-    }
-}
-
 .dropdown-item {
     &.active,
     &:active {
