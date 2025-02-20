@@ -19,9 +19,9 @@ declare(strict_types=1);
     <title><?= $this->e($title) ?> - Laminas Project - Enterprise PHP Framework</title>
 
     <!-- OpenGraph card -->
-    <meta property="og:title" content="Laminas Project, the enterprise-ready PHP Framework and components"/>
+    <meta property="og:title" content="Laminas Project - <?= $this->e($title) ?>"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://getlaminas.org/">
+    <meta property="og:url" content="<?= $this->serverurl() ?>">
     <meta property="og:image" content="/images/opengraph/default.png"/>
     <meta property="og:description" content="Laminas Project, the enterprise-ready PHP Framework and components, a community-supported, open source continuation of Zend Framework."/>
 
