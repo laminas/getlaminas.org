@@ -22,12 +22,15 @@ mounts:
   'data/cache':
     source: local
     source_path: data/cache
-  'public/share':
-    source: local
-    source_path: public/share
   'data/ecosystem/database':
     source: local
     source_path: data/ecosystem/database
+  'public/images/packages':
+    source: local
+    source_path: public/images/packages
+  'public/share':
+    source: local
+    source_path: public/share
 
 hooks:
   build: |
