@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ed74b4fb82d276ddf9c7aa5b58a3dbb",
+    "content-hash": "45c5ce90d02879c1d4167a25da55c77c",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -387,20 +387,20 @@
         },
         {
             "name": "laminas/laminas-config-aggregator",
-            "version": "1.17.0",
+            "version": "1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-config-aggregator.git",
-                "reference": "0a70bfa21225c7c7075d1dac4a441a76b2ac49e7"
+                "reference": "a5cc009f58daa4e1b968abd65972fa3a481c22c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/0a70bfa21225c7c7075d1dac4a441a76b2ac49e7",
-                "reference": "0a70bfa21225c7c7075d1dac4a441a76b2ac49e7",
+                "url": "https://api.github.com/repos/laminas/laminas-config-aggregator/zipball/a5cc009f58daa4e1b968abd65972fa3a481c22c5",
+                "reference": "a5cc009f58daa4e1b968abd65972fa3a481c22c5",
                 "shasum": ""
             },
             "require": {
-                "brick/varexporter": "^0.5.0 || ^0.4.0",
+                "brick/varexporter": "^0.5.0 || ^0.4.0 || ^0.6.0",
                 "laminas/laminas-stdlib": "^3.18.0",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "webimpress/safe-writer": "^2.2.0"
@@ -410,11 +410,11 @@
                 "zendframework/zend-config-aggregator": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~3.0.0",
-                "laminas/laminas-config": "^3.9.0",
-                "phpunit/phpunit": "^10.5.38",
-                "psalm/plugin-phpunit": "^0.19.0",
-                "vimeo/psalm": "^5.22.2"
+                "laminas/laminas-coding-standard": "~3.0.1",
+                "laminas/laminas-config": "^3.10.1",
+                "phpunit/phpunit": "^10.5.45",
+                "psalm/plugin-phpunit": "^0.19.2",
+                "vimeo/psalm": "^6.8.6"
             },
             "suggest": {
                 "laminas/laminas-config": "Allows loading configuration from XML, INI, YAML, and JSON files",
@@ -451,7 +451,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-11-17T10:16:45+00:00"
+            "time": "2025-02-21T18:18:40+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
