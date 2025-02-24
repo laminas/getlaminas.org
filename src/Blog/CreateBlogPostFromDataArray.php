@@ -23,6 +23,8 @@ trait CreateBlogPostFromDataArray
 {
     private string $authorDataRootPath = 'data/blog/authors';
 
+    public string $customOpengraphImagePath = '/images/opengraph/blog';
+
     private ?ParserInterface $contentParser = null;
 
     /**
@@ -61,6 +63,17 @@ trait CreateBlogPostFromDataArray
         $updated  = $post['updated'] && $post['updated'] !== $post['created']
             ? $this->createDateTimeFromString($post['updated'])
             : $created;
+        $image    = isset($post['openGraphImage']) && file_exists(
+            sprintf(
+                'public%s/%s',
+                $this->customOpengraphImagePath,
+                $post['openGraphImage']
+            )
+        ) ? sprintf(
+            '%s/%s',
+            $this->customOpengraphImagePath,
+            $post['openGraphImage']
+        ) : null;
 
         return new BlogPost(
             $post['id'],
@@ -75,7 +88,9 @@ trait CreateBlogPostFromDataArray
             $parts[1] ?? '',
             $toc,
             (bool) $post['draft'],
-            (bool) $post['public']
+            (bool) $post['public'],
+            $image,
+            $post['openGraphDescription'] ?? null
         );
     }
 

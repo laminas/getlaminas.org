@@ -4,9 +4,9 @@ Blog entries can be added by following these steps:
 
 - If submitting for the first time, an [author](#blog-author) YAML file must be added to the `data/blog/authors` directory.
 - Add an MD file containing the [blog post's metadata and body](#blog-post-content).
-    - blog post files are named following a `yyyy-mm-dd-title` convention, e.g., `2024-10-24-blog-title.md`
-    - each file must be added to the appropriate year's directory, found in `data/blog/`
-    - use the following command to make sure your submission will be correctly built:
+  - blog post files are named following a `yyyy-mm-dd-title` convention, e.g., `2024-10-24-blog-title.md`
+  - each file must be added to the appropriate year's directory, found in `data/blog/`
+  - use the following command to make sure your submission will be correctly built:
 
 ```bash
 $ composer build-blog
@@ -57,6 +57,8 @@ draft: true
 public: true
 created: '2024-10-22T11:00:00-01:00'
 updated: '2024-10-22T11:00:00-01:00'
+openGraphImage: '2024-10-22-custom-image.png'
+openGraphDescription: 'Custom description'
 tags:
   - example tag
   - second example tag
@@ -85,6 +87,15 @@ All the following fields are **required**:
 
 - `tags` **(array of strings)** - used to filter blog posts by tag
 
+The Open Graph preview card has a default image and description which can be **optionally** overwritten using the following fields:
+
+- `openGraphImage` **string** - custom image to replace the default in the Open Graph preview
+  - given value **must** be the same as the file name and extension
+  - the corresponding image file **must** be added in the `public\images\opengraph\blog` directory
+  - to maintain cohesion, the image file **should** be named after the blog post itself (`yyyy-mm-dd-title.extension`)
+
+- `openGraphDescription` **string** - custom text to be displayed in the Open Graph preview, replacing the default.
+
 ### File examples
 
 #### author.yml
@@ -108,6 +119,8 @@ draft: false
 public: true
 created: '2024-10-24'
 updated: '2024-10-24'
+openGraphImage: '2024-10-24-custom-image.png'
+openGraphDescription: 'Custom description'
 tags:
   - example tag
 ---

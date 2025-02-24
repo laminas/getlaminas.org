@@ -15,6 +15,8 @@ interface DocumentInterface
      *     public: bool,
      *     created: string,
      *     updated: string,
+     *     openGraphImage: string,
+     *     openGraphDescription: string,
      *     tags: list<string>
      * }
      */

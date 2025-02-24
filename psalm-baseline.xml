@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="bin/clear-config-cache.php">
     <MixedArgument>
       <code><![CDATA[$config['config_cache_path']]]></code>
@@ -73,11 +73,6 @@
       <code><![CDATA[$revisions]]></code>
     </MixedAssignment>
   </file>
-  <file src="src/Blog/BlogPost.php">
-    <MixedPropertyTypeCoercion>
-      <code><![CDATA[$tags]]></code>
-    </MixedPropertyTypeCoercion>
-  </file>
   <file src="src/Blog/Console/FeedGenerator.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$latest->updated]]></code>
@@ -108,9 +103,6 @@
     </ArgumentTypeCoercion>
   </file>
   <file src="src/Blog/Console/SeedBlogDatabase.php">
-    <DocblockTypeContradiction>
-      <code><![CDATA[(new DateTimeImmutable('now'))->getTimestamp()]]></code>
-    </DocblockTypeContradiction>
     <MixedArgument>
       <code><![CDATA[$basePath]]></code>
       <code><![CDATA[$dbPath]]></code>
@@ -122,9 +114,6 @@
       <code><![CDATA[$postsPath]]></code>
       <code><![CDATA[$this->authorDataRootPath]]></code>
     </MixedAssignment>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[$post->created]]></code>
-    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Blog/CreateBlogPostFromDataArray.php">
     <ArgumentTypeCoercion>
