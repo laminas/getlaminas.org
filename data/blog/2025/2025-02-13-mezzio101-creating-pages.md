@@ -1,7 +1,7 @@
 ---
-id: 2025-02-13-mezzio101-creating-pages-and-modules
+id: 2025-02-13-mezzio101-creating-pages
 author: bidi
-title: 'Mezzio 101: Creating Pages and Modules'
+title: 'Mezzio 101: Creating Pages'
 draft: false
 public: true
 created: '2025-02-13T11:00:00-01:00'
@@ -18,7 +18,7 @@ In the previous article we used the Mezzio Skeleton Installer to build a very ba
 Let's explore what we can do with it right away.
 
 The current components allow us to build a presentation site with static pages.
-It may not be much to speak of yet, but we can already create new pages and organize them in multiple modules.
+It may not be much to speak of yet, but we can already create new pages.
 
 <!--- EXTENDED -->
 
@@ -139,7 +139,7 @@ return [
 ];
 ```
 
-All future handlers created using the CLI will update this file with more dependencies.
+All future handlers created using the CLI will update this file with the required dependencies.
 
 #### The new template
 
@@ -194,29 +194,6 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
 You are done!
 Next make sure to have your web server started by running this command in your project folder `php -S 0.0.0.0:8080 -t public`.
 To visit your new page, type this url in the browser `http://localhost:8080/about`.
-
-### Creating a new module
-
-It is recommended to create new Modules for handlers that have shared goals.
-You can split your custom code into e.g. `Authorization`, `Admin` or `Billing` modules to keep everything properly structured.
-It helps to have functionality contained in a single module when you intend to use it in multiple applications.
-
-If you want to organize your pages in several modules, Mezzio Tooling provides an easy method to create the basic folder structure for a module.
-Run this command to create and register the module named `Page`.
-Obviously, you can use whatever name is relevant for your module.
-
-```shell
-composer mezzio mezzio:module:create Page
-```
-
-The command will perform the following actions:
-
-- Create the folders `src/Page/src` and `src/Page/templates`.
-- Create the file `src/Page/src/ConfigProvider.php` with a basic configuration for templates.
-- Add the above ConfigProvider in the aggregator in `config/config.php`.
-- Register the module in `composer.json`, under the `autoload` key.
-
-This module can now have handlers, factories and templates created like we explored in the first part of this article.
 
 ### Additional Resources
 
