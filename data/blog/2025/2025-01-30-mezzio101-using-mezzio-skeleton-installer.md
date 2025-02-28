@@ -107,13 +107,15 @@ Submit `1` for `fastroute`.
 ![step-4-templating](/images/blog/mezzio101/mezzio101-use-skeleton-04.jpg "step-4")
 
 We chose `Twig` as the templating engine because of its concise syntax, extensibility and well-written documentation.
+laminas-view is a good choice if you're familiar with Laminas MVC, but we've approached this article on the assumption that more people will have prior experience of Twig.
+
 The Mezzio Skeleton Installer does offer several alternatives for the templating engines:
 
 - `Plates` is a simple templating engine that sees the templates themselves as PHP files.
 - `Twig` is reliable, actively-developed and well-known in the PHP community.
-- `laminas-view` is related to Laminas MVC.
+- `laminas-view` has a long history of being coupled to the Laminas MVC framework.
 
-The default option for this step doesn't install any templating engine, but we only recommend this option if you want to build a CLI or API.
+The default option for this step doesn't install any templating engine which is only relevant if you are building an API.
 
 Submit `2` for `Twig`.
 
