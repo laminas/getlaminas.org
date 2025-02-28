@@ -42,6 +42,7 @@ final readonly class Parser implements ParserInterface
                     ],
                 ],
                 'heading_permalink'  => [
+                    'symbol'            => '',
                     'insert'            => 'after',
                     'min_heading_level' => 1,
                     'max_heading_level' => 3,

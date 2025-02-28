@@ -24,9 +24,214 @@ main {
     background-color: $white;
 }
 
+#main-section {
+    background-image: url(/images/laminas.svg), url(/images/laminas.svg);
+    background-repeat: repeat-y;
+    background-position: 0 0, right 3em top 8em;
+}
+
+#homepage-section {
+    max-width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.homepage-card {
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    padding: 1.5em;
+}
+
+.homepage-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    img {
+        max-width: 250px;
+        min-width: 150px;
+    }
+}
+
+.homepage-card-image {
+    border-radius: 20px;
+    aspect-ratio: 1;
+    width: 100%;
+}
+
+.homepage-card-button {
+    width: fit-content;
+    padding: 5px 15px;
+}
+
+.homepage-card-info {
+    width: 60%;
+}
+
+.homepage-card-image-container {
+    width: 30%;
+}
+
+
+@media(max-width:1150px) {
+    .homepage-card {
+        justify-content: space-evenly;
+    }
+    .homepage-card-image-container {
+        display: none;
+    }
+}
+
+
+.homepage-title-container {
+    width: 75%;
+    margin: 1em auto;
+}
+
+.page-header, .page-text {
+    color: #{map-get($laminas-colors, laminas)};
+}
+
+.page-header {
+    font-weight: bolder;
+}
+
+.homepage-support-card {
+    width: 80%;
+    position: relative;
+    margin: 2.5em auto;
+    padding: 1em;
+    background: linear-gradient(#8ABDB5, #F1F1F1);
+    border-radius: 10px;
+    font-size: 125%;
+
+    .homepage-card-info {
+        width: 50%;
+    }
+
+    .homepage-card-image-container {
+        width: 30%;
+        display: flex;
+
+        .homepage-card-image {
+            flex-shrink: 0;
+            aspect-ratio: unset;
+            width: 100%;
+        }
+    }
+
+    #crowdfunding-logo {
+        max-width: 300px;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+    }
+}
+
+#support-button {
+    background: linear-gradient(to right top, #21D4FD, #0A2432);
+    i {
+        padding: .2em;
+        border-radius: 50%;
+        color: #013755;
+        background: #FFFFFF;
+    }
+}
+
+.commercial-vendor-card {
+    max-width: 350px !important;
+    border-radius: 25px !important;
+
+    .card-title {
+        color: #{map-get($laminas-colors, components)};
+        font-weight: bolder;
+    }
+
+    .homepage-card-button {
+        width: 80%;
+    }
+}
+
+.blog-listing {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.blog-card {
+    max-width: 400px;
+    max-height: 400px;
+
+    .blog-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        .body {
+            max-height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-continue-reading:before {
+            content:'';
+            width:100%;
+            height:100%;
+            position:absolute;
+            left:0;
+            bottom: 1.5em;
+            background:linear-gradient(transparent 85%, white);
+        }
+    }
+}
+
+.blog-background-gradient {
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #00000000, #740E8080, #E81CFF, #40C9FF);
+}
+
+.blog-post-content, .blog-card-content {
+    margin: 2px;
+    padding: 1em 1em .1em 1em;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.blog-post {
+    width: fit-content;
+    margin: 2em auto;
+}
+
+.blog-post-content {
+    h1, h2, h3, h4, h5, h6 {
+        color: #{map-get($laminas-colors, mezzio)};
+    }
+}
+
+#blog-pagination {
+    margin-top: 1em;
+    nav {
+        width: fit-content;
+    }
+}
+
+.blog-header {
+    color: #{map-get($laminas-colors, mezzio)}
+}
+
 footer {
     padding-top: 1em;
     padding-bottom: 1em;
+
+    .footer-col {
+        max-width: 150px;
+        flex: 0 0 auto;
+    }
 
     a {
         color: $white;
@@ -239,16 +444,27 @@ article {
 
 .repository-organization {
     border: 1px solid var(--org-color);
-    border-radius: .25rem;
-    height: fit-content;
+    border-radius: 20px;
+    height: 600px;
     flex: 1 1 0px;
+    overflow: scroll;
+
+    p {
+        margin-bottom: 8px;
+    }
 
     h1 {
-        color: white;
+        width: fit-content;
+        margin: 0 auto;
+        color: var(--org-color);
         font-size: 1.5rem;
+        font-weight: bolder;
         border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-        background-color: var(--org-color);
         padding: .75rem 1.25rem;
+    }
+
+    .card-title {
+        margin-bottom: 5px;
     }
 
     .card-body {
@@ -265,9 +481,10 @@ article {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid rgba(0,0,0,.125);
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-    padding: .5rem;
+    padding: .5rem 0;
     margin-bottom: .5rem;
 
     :last-child * {
@@ -299,7 +516,7 @@ article {
     background-color: #4e4e4e;
     color: #fff;
     border-radius: .25rem 0 0 .25rem;
-    padding: 0 .15rem
+    padding: 0 .15rem;
 }
 
 .repo-property-value {
@@ -314,7 +531,7 @@ article {
 .repository-data-text {
     font-size: .8rem;
     line-height: normal;
-    margin-bottom: .5rem;
+    margin-bottom: 8px;
 }
 
 #repository-last-updated {
@@ -329,38 +546,47 @@ article {
 }
 
 .homepage-listing {
-    .card {
-        margin-bottom: 1.5rem;
-    }
+    display: flex;
+    flex-direction: column;
 
-    .card-title, .card-text {
-        margin-bottom: 1rem;
-    }
-
-    .listing-icon {
-        font-size: 1.5rem;
-    }
-
-    .card-footer {
-        p {
-            color: rgba(0,0,0,.7);
-            font-weight: bold;
-        }
+    .vendor-item {
+        height: 100px;
     }
 
     .sponsor-item {
-        margin: 1rem 0;
+        width: 200px;
+        height: 100px;
+        border: 1px solid #B9B9B9;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: #FFFFFF;
 
         img {
-            max-height: 2.5rem;
+            flex-shrink: 0;
+            max-width: 80%;
+            max-height: 80%
         }
     }
 
     .project-item {
-        margin: 1rem 0;
+        width: 200px;
+        height: 100px;
+        border: 1px solid #B9B9B9;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: #FFFFFF;
 
         img {
-            max-height: 2.5rem;
+            flex-shrink: 0;
+            max-width: 80%;
+            max-height: 80%;
+            filter: grayscale(1);
         }
     }
 }
