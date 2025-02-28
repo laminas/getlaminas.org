@@ -9,11 +9,12 @@ $laminas-colors: (
   "mvc":        #009EE3,
   "api-tools":  #E5007D,
   "mezzio":     #009655,
+  "essentials": #DEAA3F,
 );
 
 // Colors
 $header-footer-font-color: #fff;
-$footer-bg-color: hsl(201, 98%, 6%);
+$footer-bg-color: #0A3E5C;
 $separater-color: #efefef;
 $text-color-secondary: rgb(119, 119, 119);
 $text-color-reduced: rgb(150, 152, 154);
@@ -30,11 +31,12 @@ $warning:       #f7a600;
 $danger:        #e64010;
 
 $custom-theme-colors: (
-  "cool":       #4d3fa3,
-  "components": map-get($laminas-colors, components),
-  "mvc":        map-get($laminas-colors, mvc),
-  "mezzio":     map-get($laminas-colors, mezzio),
+  "cool":        #4d3fa3,
+  "components":  map-get($laminas-colors, components),
+  "mvc":         map-get($laminas-colors, mvc),
+  "mezzio":      map-get($laminas-colors, mezzio),
   "api-tools":  map-get($laminas-colors, api-tools),
+  "essentials":  map-get($laminas-colors, essentials),
 );
 
 // Enabling shadows, gradients, responsive font
