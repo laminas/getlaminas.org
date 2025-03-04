@@ -12,93 +12,91 @@ declare(strict_types=1);
 $this->layout('layout::default', ['title' => 'Home']);
 ?>
 
-<div class="mb-4 homepage-title-container text-center">
-    <h1 class="page-header">Laminas Project, the enterprise-ready PHP Framework and components</h1>
-    <h2 class="page-header">A community-supported, open source continuation of Zend Framework.</h2>
+<div class="homepage-title-container text-center">
+    <h1 class="page-header">Laminas & Mezzio: enterprise-ready, open source PHP components and middleware microframework.</h1>
+    <h2 class="page-header">A community-supported, open source continuation of Zend Framework</h2>
 </div>
 
 <div id="homepage-section">
     <div class="container">
-        <div>
-            <div class="col mb-4">
-                <div class="homepage-card row h-100 border border-mezzio rounded">
-                    <div class="homepage-card-info">
-                        <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
-                        <h5 class="page-header">PHP Middleware in Minutes</h5>
-                        <p class="page-text">
-                            Build PHP middleware applications, using the
-                            PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
-                            specifications, using a variety of routing and
-                            templating options, and the dependency injection
-                            container you prefer.
-                        </p>
-                        <div class="row gap-3">
-                            <a class="homepage-card-button btn btn-outline-mezzio mt-auto text-mezzio fw-bolder" href="https://docs.mezzio.dev" target="_blank">
-                                <i class="bi bi-file-earmark"></i>
-                                Documentation
-                            </a>
-                            <a class="homepage-card-button btn btn-mezzio mt-auto text-white fw-bolder" href="https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/" target="_blank">
-                                <i class="bi bi-rocket-takeoff"></i>
-                                Getting started with Mezzio
-                            </a>
-                        </div>
+        <div class="col">
+            <div class="homepage-card row h-100 border border-mezzio rounded">
+                <div class="homepage-card-info">
+                    <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
+                    <h5 class="page-header">PHP Middleware in Minutes</h5>
+                    <p class="page-text">
+                        Build PHP middleware applications, using the
+                        PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
+                        specifications, using a variety of routing and
+                        templating options, and the dependency injection
+                        container you prefer.
+                    </p>
+                    <div class="row gap-3">
+                        <a class="homepage-card-button btn btn-outline-mezzio mt-auto text-mezzio fw-bolder" href="https://docs.mezzio.dev" target="_blank">
+                            <i class="bi bi-file-earmark"></i>
+                            Documentation
+                        </a>
+                        <a class="homepage-card-button btn btn-mezzio mt-auto text-white fw-bolder" href="https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/" target="_blank">
+                            <i class="bi bi-rocket-takeoff"></i>
+                            Getting started with Mezzio
+                        </a>
                     </div>
+                </div>
 
-                    <div class="homepage-card-image-container">
-                        <img class="homepage-card-image" src="/images/laminas-mezzio-capture.svg" alt="Laminas-Mezzio">
+                <div class="homepage-card-image-container">
+                    <img class="homepage-card-image" src="/images/laminas-mezzio-capture.svg" alt="Laminas-Mezzio">
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="homepage-card row h-100 border border-essentials rounded">
+                <div class="homepage-card-image-container">
+                    <img class="homepage-card-image" src="/images/mezzio-essentials.svg" alt="Mezzio-essentials">
+                </div>
+                <div class="homepage-card-info">
+                    <h5 class="page-header">Learn the Mezzio Framework's Fundamentals and Start Creating Great Apps - Today!</h5>
+
+                    <p class="page-text">
+                        "Mezzio Essentials" is a comprehensive introduction to developing
+                        applications with the Mezzio Framework, a micro-framework for PHP.
+                        It gets you started right away with a minimum of background theory and concepts.
+                    </p>
+                    <div class="row gap-3">
+                        <a class="homepage-card-button btn btn-essentials mt-auto text-white" href="https://mezzioessentials.com" target="_blank">
+                            <i class="bi-book-half"></i>
+                            mezzioessentials.com
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col mb-4">
-                <div class="homepage-card row h-100 border border-essentials rounded">
-                    <div class="homepage-card-image-container">
-                        <img class="homepage-card-image" src="/images/mezzio-essentials.svg" alt="Mezzio-essentials">
-                    </div>
-                    <div class="homepage-card-info">
-                        <h5 class="page-header">Learn the Mezzio Framework's Fundamentals and Start Creating Great Apps - Today!</h5>
+        <div class="col">
+            <div class="homepage-card row h-100 border border-components rounded">
+                <div class="homepage-card-info">
+                    <img src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
+                    <h5 class="page-header">Enterprise-ready PHP components and MVC framework</h5>
 
-                        <p class="page-text">
-                            "Mezzio Essentials" is a comprehensive introduction to developing
-                            applications with the Mezzio Framework, a micro-framework for PHP.
-                            It gets you started right away with a minimum of background theory and concepts.
-                        </p>
-                        <div class="row gap-3">
-                            <a class="homepage-card-button btn btn-essentials mt-auto text-white" href="https://mezzioessentials.com" target="_blank">
-                                <i class="bi-book-half"></i>
-                                mezzioessentials.com
-                            </a>
-                        </div>
+                    <p class="page-text">
+                        Components for any PHP application, including dependency injection,
+                        event dispatchers, input validation and filtering, pagination and
+                        navigation, feed generation and parsing, and much, much more.
+                    </p>
+                    <div class="row gap-3">
+                        <a class="homepage-card-button btn btn-outline-components mt-auto text-components fw-bolder" href="https://docs.mezzio.dev" target="_blank">
+                            <i class="bi bi-file-earmark"></i>
+                            Documentation
+                        </a>
+                        <a class="homepage-card-button btn btn-components mt-auto text-white fw-bolder" href="https://docs.laminas.dev/tutorials/" target="_blank">
+                            <i class="bi bi-mortarboard"></i>
+                            Tutorials
+                        </a>
                     </div>
                 </div>
-            </div>
 
-            <div class="col mb-4">
-                <div class="homepage-card row h-100 border border-components rounded">
-                    <div class="homepage-card-info">
-                        <img src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
-                        <h5 class="page-header">Enterprise-ready PHP components and MVC framework</h5>
-
-                        <p class="page-text">
-                            Components for any PHP application, including dependency injection,
-                            event dispatchers, input validation and filtering, pagination and
-                            navigation, feed generation and parsing, and much, much more.
-                        </p>
-                        <div class="row gap-3">
-                            <a class="homepage-card-button btn btn-outline-components mt-auto text-components fw-bolder" href="https://docs.mezzio.dev" target="_blank">
-                                <i class="bi bi-file-earmark"></i>
-                                Documentation
-                            </a>
-                            <a class="homepage-card-button btn btn-components mt-auto text-white fw-bolder" href="https://docs.laminas.dev/tutorials/" target="_blank">
-                                <i class="bi bi-mortarboard"></i>
-                                Tutorials
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="homepage-card-image-container">
-                        <img class="homepage-card-image" src="/images/laminas-components-capture.svg" alt="Laminas-components">
-                    </div>
+                <div class="homepage-card-image-container">
+                    <img class="homepage-card-image" src="/images/laminas-components-capture.svg" alt="Laminas-components">
                 </div>
             </div>
         </div>
@@ -175,5 +173,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                 </div>
             <?php endforeach ?>
         </div>
+
+        <p class="page-text">All rights to the logos belong to their respective owners.</p>
     </div>
 </div>
