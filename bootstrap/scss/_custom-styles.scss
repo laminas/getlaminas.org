@@ -32,11 +32,16 @@ main {
 
 #homepage-section {
     max-width: 75%;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 4em auto;
     display: flex;
     flex-direction: column;
     gap: 1em;
+
+    .container {
+        .col {
+            margin-bottom: 4em;
+        }
+    }
 }
 
 .homepage-card {
