@@ -10,6 +10,8 @@ tags:
   - mezzio
   - skeleton
   - tutorial
+openGraphImage: '2025-01-30-mezzio101-using-mezzio-skeleton-installer.png'
+openGraphDescription: 'Mezzio 101:  Create an Application Using the Mezzio Skeleton Installer'
 ---
 
 Creating a site from scratch has always been a daunting task for developers.
