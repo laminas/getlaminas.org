@@ -48,10 +48,10 @@ class PlatesFunctionsDelegator implements ExtensionInterface
     {
         $author = $post->author;
         if ($author->url === '') {
-            return $author->fullname ?: $author->username;
+            return $author->fullName ?: $author->username;
         }
 
-        return sprintf('<a href="%s" target="_blank">%s</a>', $author->url, $author->fullname ?: $author->username);
+        return sprintf('<a href="%s" target="_blank">%s</a>', $author->url, $author->fullName ?: $author->username);
     }
 
     public function postUrl(BlogPost $post): string

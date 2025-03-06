@@ -186,7 +186,7 @@ class FeedGenerator extends Command
     private function getAuthor(BlogAuthor $author): array
     {
         return [
-            'name'  => $author->fullname ?: $author->username,
+            'name'  => $author->fullName ?: $author->username,
             'email' => $author->email,
             'uri'   => $author->url,
         ];

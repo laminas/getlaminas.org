@@ -5,7 +5,12 @@ declare(strict_types=1);
 /**
  * @var League\Plates\Template\Template $this
  * @var string                          $title
+ * @var string|null                     $opengraphImage
+ * @var string|null                     $opengraphDescription
  */
+
+$opengraphImage       =  $opengraphImage ?? "/images/opengraph/default.png";
+$opengraphDescription =  $opengraphDescription ?? "Laminas Project, the enterprise-ready PHP Framework and components, a community-supported, open source continuation of Zend Framework.";
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +27,8 @@ declare(strict_types=1);
     <meta property="og:title" content="Laminas Project - <?= $this->e($title) ?>"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="<?= $this->serverurl() ?>">
-    <meta property="og:image" content="/images/opengraph/default.png"/>
-    <meta property="og:description" content="Laminas Project, the enterprise-ready PHP Framework and components, a community-supported, open source continuation of Zend Framework."/>
+    <meta property="og:image" content="<?= $opengraphImage ?>"/>
+    <meta property="og:description" content="<?= $opengraphDescription ?>"/>
 
     <link rel="stylesheet" href="/<?= $this->assets('css/laminas.css') ?>">
     <?= $this->section('stylesheets') ?>

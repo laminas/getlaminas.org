@@ -174,7 +174,7 @@ class SeedBlogDatabase extends Command
                 $template,
                 $pdo->quote($post->id),
                 $pdo->quote(substr($path, $trim)),
-                $post->created ? $post->created->getTimestamp() : (new DateTimeImmutable('now'))->getTimestamp(),
+                $post->created->getTimestamp(),
                 $post->updated ? $post->updated->getTimestamp() : (new DateTimeImmutable('now'))->getTimestamp(),
                 $pdo->quote($post->title),
                 $pdo->quote($post->author->username),

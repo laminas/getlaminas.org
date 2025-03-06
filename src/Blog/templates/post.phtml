@@ -8,7 +8,9 @@ declare(strict_types=1);
  */
 
 $this->layout('layout::default', [
-    'title' => $this->escapeHtml($post->title),
+    'title'                => $this->escapeHtml($post->title),
+    'opengraphImage'       => $post->openGraphImage,
+    'opengraphDescription' => $post->openGraphDescription,
 ]);
 
 $this->start('styles');
