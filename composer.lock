@@ -4953,16 +4953,16 @@
         },
         {
             "name": "mezzio/mezzio-tooling",
-            "version": "2.9.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-tooling.git",
-                "reference": "6108df988eb6f7d977d870a2ab7af035cbe8a0ae"
+                "reference": "4fcc2d4ebe5c99685b73920b6ec7259c46d4a3e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-tooling/zipball/6108df988eb6f7d977d870a2ab7af035cbe8a0ae",
-                "reference": "6108df988eb6f7d977d870a2ab7af035cbe8a0ae",
+                "url": "https://api.github.com/repos/mezzio/mezzio-tooling/zipball/4fcc2d4ebe5c99685b73920b6ec7259c46d4a3e0",
+                "reference": "4fcc2d4ebe5c99685b73920b6ec7259c46d4a3e0",
                 "shasum": ""
             },
             "require": {
@@ -4973,17 +4973,22 @@
                 "laminas/laminas-stratigility": "^3.9.0",
                 "mezzio/mezzio": "^3.13.0",
                 "mezzio/mezzio-router": "^3.9.0",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.1",
                 "symfony/process": "^6.0.11"
+            },
+            "conflict": {
+                "amphp/amp": "<2.6.4",
+                "symfony/console": "<5.4.45",
+                "symfony/string": "<5.4.45"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.5.0",
                 "laminas/laminas-diactoros": "^3.3",
-                "mikey179/vfsstream": "^1.6.11",
-                "mockery/mockery": "^1.6.7",
+                "mikey179/vfsstream": "^1.6.12",
+                "mockery/mockery": "^1.6.10",
                 "php-mock/php-mock-phpunit": "^2.9.0",
                 "phpdocumentor/reflection-docblock": "^5.3.0",
-                "phpunit/phpunit": "^9.6.15",
+                "phpunit/phpunit": "^10.5.35",
                 "psalm/plugin-mockery": "^0.11.0",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "vimeo/psalm": "^5.17.0"
@@ -5027,7 +5032,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-12-12T16:13:23+00:00"
+            "time": "2025-03-05T09:37:20+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5955,12 +5960,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "80b1c8ff865073edb25e919bf53b779898062760"
+                "reference": "4da22c240293fcf0fe72fc0b1f2f265efeb44e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/80b1c8ff865073edb25e919bf53b779898062760",
-                "reference": "80b1c8ff865073edb25e919bf53b779898062760",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4da22c240293fcf0fe72fc0b1f2f265efeb44e2e",
+                "reference": "4da22c240293fcf0fe72fc0b1f2f265efeb44e2e",
                 "shasum": ""
             },
             "conflict": {
@@ -6288,7 +6293,7 @@
                 "lara-zeus/artemis": ">=1,<=1.0.6",
                 "lara-zeus/dynamic-dashboard": ">=3,<=3.0.1",
                 "laravel/fortify": "<1.11.1",
-                "laravel/framework": "<6.20.45|>=7,<7.30.7|>=8,<8.83.28|>=9,<9.52.17|>=10,<10.48.23|>=11,<11.31",
+                "laravel/framework": "<11.44.1|>=12,<12.1.1",
                 "laravel/laravel": ">=5.4,<5.4.22",
                 "laravel/pulse": "<1.3.1",
                 "laravel/reverb": "<1.4",
@@ -6308,6 +6313,7 @@
                 "limesurvey/limesurvey": "<6.5.12",
                 "livehelperchat/livehelperchat": "<=3.91",
                 "livewire/livewire": "<2.12.7|>=3.0.0.0-beta1,<3.5.2",
+                "livewire/volt": "<1.7",
                 "lms/routes": "<2.1.1",
                 "localizationteam/l10nmgr": "<7.4|>=8,<8.7|>=9,<9.2",
                 "luyadev/yii-helpers": "<1.2.1",
@@ -6399,7 +6405,7 @@
                 "open-web-analytics/open-web-analytics": "<1.7.4",
                 "opencart/opencart": ">=0",
                 "openid/php-openid": "<2.3",
-                "openmage/magento-lts": "<20.10.1",
+                "openmage/magento-lts": "<20.12.3",
                 "opensolutions/vimbadmin": "<=3.0.15",
                 "opensource-workshop/connect-cms": "<1.8.7|>=2,<2.4.7",
                 "orchid/platform": ">=8,<14.43",
@@ -6441,7 +6447,7 @@
                 "phpmyadmin/phpmyadmin": "<5.2.2",
                 "phpmyfaq/phpmyfaq": "<3.2.5|==3.2.5|>=3.2.10,<=4.0.1",
                 "phpoffice/common": "<0.2.9",
-                "phpoffice/phpexcel": "<1.8.1",
+                "phpoffice/phpexcel": "<=1.8.2",
                 "phpoffice/phpspreadsheet": "<1.29.9|>=2,<2.1.8|>=2.2,<2.3.7|>=3,<3.9",
                 "phpseclib/phpseclib": "<2.0.47|>=3,<3.0.36",
                 "phpservermon/phpservermon": "<3.6",
@@ -6497,7 +6503,7 @@
                 "rap2hpoutre/laravel-log-viewer": "<0.13",
                 "react/http": ">=0.7,<1.9",
                 "really-simple-plugins/complianz-gdpr": "<6.4.2",
-                "redaxo/source": "<=5.18.1",
+                "redaxo/source": "<5.18.3",
                 "remdex/livehelperchat": "<4.29",
                 "reportico-web/reportico": "<=8.1",
                 "rhukster/dom-sanitizer": "<1.0.7",
@@ -6822,7 +6828,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-01T00:21:40+00:00"
+            "time": "2025-03-06T18:06:13+00:00"
         },
         {
             "name": "sebastian/cli-parser",
