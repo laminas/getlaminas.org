@@ -1,17 +1,19 @@
 ---
-id: 2025-02-13-mezzio101-creating-pages
+id: 2025-03-01-mezzio101-creating-pages
 author: bidi
 title: 'Mezzio 101: Creating Pages'
 draft: false
 public: true
-created: '2025-02-13T11:00:00-01:00'
-updated: '2025-02-13T11:00:00-01:00'
+created: '2025-03-01T11:00:00-01:00'
+updated: '2025-03-01T11:00:00-01:00'
 tags:
     - mezzio
     - skeleton
     - tutorial
     - content-management
     - cli
+openGraphImage: '2025-03-01-mezzio101-creating-pages.png'
+openGraphDescription: 'Mezzio 101: Creating Pages'
 ---
 
 In the previous article we used the Mezzio Skeleton Installer to build a very basic application.
@@ -198,3 +200,5 @@ To visit your new page, type this url in the browser `http://localhost:8080/abou
 ### Additional Resources
 
 Learn more about [Command Line Tooling](https://docs.mezzio.dev/mezzio/v3/reference/cli-tooling/)
+
+[Mezzio 101: Create an Application Using the Mezzio Skeleton Installer](https://getlaminas.org/blog/2025-01-30-mezzio101-using-mezzio-skeleton-installer.html)
