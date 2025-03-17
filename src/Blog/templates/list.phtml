@@ -20,7 +20,7 @@ $this->end();
 <section class="blog container">
     <div class="row align-items-start mt-5">
         <div class="col">
-            <h1>
+            <h1 class="page-header">
                 Blog
                 <?php if (isset($tag)) : ?>
                     <small>Tag: <?= $this->escapeHtml($tag) ?></small>
@@ -33,36 +33,27 @@ $this->end();
     <div class="row mt-5"><p class="col text-center">No posts found.</p></div>
 
     <?php else : ?>
-    <?php /** @var GetLaminas\Blog\BlogPost $post */
-        foreach ($posts as $post) : ?>
-    <div class="row mt-3 h-entry">
-        <?php /*
-        <aside class="col-md-2 d-none d-sm-block alpha sidebar blog">
-            <p>
-                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
-            <?php if ($post->updated) : ?>
-                <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
-            <?php endif ?>
-            </p>
-        </aside>
+    <div class="blog-listing">
+        <?php /** @var GetLaminas\Blog\BlogPost $post */
+            foreach ($posts as $post) : ?>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 h-entry blog-background-gradient blog-card card">
+                <div class="blog-card-content">
+                    <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
 
-         */ ?>
-        <section class="col-md-8 omega post-list">
-            <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
+                    <div class="entry body p-summary"><?= $post->body ?></div>
 
-            <div class="entry body p-summary"><?= $post->body ?></div>
-
-            <p>
-                <a href="<?= $this->postUrl($post) ?>">
-                    Continue reading
-                    <i class="bi-arrow-right"></i>
-                </a>
-            </p>
-        </section>
+                    <a class="blog-continue-reading" href="<?= $this->postUrl($post) ?>">
+                        Continue reading
+                        <i class="bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        <?php endforeach ?>
     </div>
-    <?php endforeach ?>
 
-    <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
+    <div id="blog-pagination">
+        <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
+    </div>
 
     <?php endif ?>
     <a href="https://github.com/laminas/getlaminas.org/blob/master/ADD_BLOG_ENTRY.md" target="_blank">
