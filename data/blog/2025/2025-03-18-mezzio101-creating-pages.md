@@ -1,19 +1,19 @@
 ---
-id: 2025-03-01-mezzio101-creating-pages
+id: 2025-03-18-mezzio101-creating-pages-for-a-presentation-site
 author: bidi
-title: 'Mezzio 101: Creating Pages'
+title: 'Mezzio 101: Creating Pages for a Presentation Site'
 draft: false
 public: true
-created: '2025-03-01T11:00:00-01:00'
-updated: '2025-03-01T11:00:00-01:00'
+created: '2025-03-18T11:00:00-01:00'
+updated: '2025-03-18T11:00:00-01:00'
 tags:
     - mezzio
     - skeleton
     - tutorial
     - content-management
     - cli
-openGraphImage: '2025-03-01-mezzio101-creating-pages.png'
-openGraphDescription: 'Mezzio 101: Creating Pages'
+openGraphImage: '2025-03-18-mezzio101-creating-pages-for-a-presentation-site.png'
+openGraphDescription: 'Mezzio 101: Creating Pages for a Presentation Site'
 ---
 
 In the previous article we used the Mezzio Skeleton Installer to build a very basic application.
@@ -48,7 +48,7 @@ The only thing left for us to do manually is set up the routing for our new page
 
 Let's look at these changes in detail.
 
-#### The new handler
+### The new handler
 
 A new file is created under `src/App/src/Handler/AboutHandler.php`.
 So far the only functionality it contains is to render the new template file.
@@ -90,7 +90,7 @@ class AboutHandler implements RequestHandlerInterface
 }
 ```
 
-#### The new factory
+### The new factory
 
 The new handler has a Factory created here `src/App/src/Handler/AboutHandlerFactory.php`.
 Its basically returns the `AboutHandler` class with a template renderer as a dependency.
@@ -114,7 +114,7 @@ class AboutHandlerFactory
 }
 ```
 
-#### The ConfigProvider file
+### The ConfigProvider file
 
 The Factory must be registered in order to work, but this is also done automatically.
 The file `config/autoload/mezzio-tooling-factories.global.php` is created with this content:
@@ -143,7 +143,7 @@ return [
 
 All future handlers created using the CLI will update this file with the required dependencies.
 
-#### The new template
+### The new template
 
 The handler returns a `HtmlResponse` with the template file `app::about`.
 If you check `src/App/src/ConfigProvider.php`, you can see what that string means under the `getTemplates` method:
@@ -174,7 +174,7 @@ We can replace that content to make use of the `default` template by overwriting
 
 The `about` template now extends the `default` template, meaning it uses its layout and populates its `title` and `content` blocks.
 
-#### The routing
+### The routing
 
 Finally, we need to add the new handler to the `config/routes.php` file by hand.
 On the bottom of the file we already have 2 entries created by the Mezzio Skeleton Installer.
@@ -191,7 +191,7 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
 };
 ```
 
-#### The result
+### The result
 
 You are done!
 Next make sure to have your web server started by running this command in your project folder `php -S 0.0.0.0:8080 -t public`.
