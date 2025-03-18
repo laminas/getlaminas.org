@@ -1,7 +1,7 @@
 ---
-id: 2025-03-18-mezzio101-creating-pages-for-a-presentation-site
+id: 2025-03-18-mezzio101-adding-pages-to-a-mezzio-basic-application
 author: bidi
-title: 'Mezzio 101: Creating Pages for a Presentation Site'
+title: 'Mezzio 101: Adding Pages to a Mezzio Basic Application'
 draft: false
 public: true
 created: '2025-03-18T11:00:00-01:00'
@@ -12,11 +12,11 @@ tags:
     - tutorial
     - content-management
     - cli
-openGraphImage: '2025-03-18-mezzio101-creating-pages-for-a-presentation-site.png'
-openGraphDescription: 'Mezzio 101: Creating Pages for a Presentation Site'
+openGraphImage: '2025-03-18-mezzio101-adding-pages-to-a-mezzio-basic-application.png'
+openGraphDescription: 'Mezzio 101: Adding Pages to a Mezzio Basic Application'
 ---
 
-In the previous article we used the Mezzio Skeleton Installer to build a very basic application.
+In the [previous article](https://getlaminas.org/blog/2025-01-30-mezzio101-using-mezzio-skeleton-installer.html) we used the Mezzio Skeleton Installer to build a very basic application.
 Let's explore what we can do with it right away.
 
 The current components allow us to build a presentation site with static pages.
@@ -201,4 +201,4 @@ To visit your new page, type this url in the browser `http://localhost:8080/abou
 
 Learn more about [Command Line Tooling](https://docs.mezzio.dev/mezzio/v3/reference/cli-tooling/)
 
-[Mezzio 101: Create an Application Using the Mezzio Skeleton Installer](https://getlaminas.org/blog/2025-01-30-mezzio101-using-mezzio-skeleton-installer.html)
+Read the previous article in the series: [Mezzio 101: Create an Application Using the Mezzio Skeleton Installer](https://getlaminas.org/blog/2025-01-30-mezzio101-using-mezzio-skeleton-installer.html)
