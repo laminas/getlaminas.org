@@ -1,7 +1,7 @@
 # DOCKER-VERSION        1.3.2
 
 # Build UI assets
-FROM node:22-alpine as assets
+FROM node:23-alpine as assets
 RUN apk add git
 RUN npm install --location=global gulp-cli
 RUN mkdir -p /work
