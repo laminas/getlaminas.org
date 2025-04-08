@@ -1,16 +1,16 @@
 ---
-id: 2025-03-18-mezzio101-what-defines-a-middleware-architecture
+id: 2025-04-08-mezzio101-what-defines-a-middleware-architecture
 author: bidi
 title: 'Mezzio101: What Defines a Middleware Architecture?'
 draft: false
 public: true
-created: '2025-03-18T11:00:00-01:00'
-updated: '2025-03-18T11:00:00-01:00'
+created: '2025-04-08T11:00:00-01:00'
+updated: '2025-04-08T11:00:00-01:00'
 tags:
   - middleware
   - software architecture
   - framework
-openGraphImage: '2025-03-18-mezzio101-what-defines-a-middleware-architecture.png'
+openGraphImage: '2025-04-08-mezzio101-what-defines-a-middleware-architecture.png'
 openGraphDescription: 'Mezzio101: What Defines a Middleware Architecture?'
 ---
 
@@ -71,7 +71,7 @@ Consider this practical example:
 Your main focus is on templating and displaying mostly-static pages.
 - Later on, you expand your application with a blog that allows user comments.
 You suddenly require authentication, so you add it as a new layer in the middleware pipeline.
-- Later still, you define different level of access to your users via authorization.
+- Later still, you define different levels of access to your users via authorization.
 Again, this works best as a separate middleware that must be added to the pipeline.
 - An influx of bugs reported by users creates the need for additional logging, so that too can be accommodated by an update in the pipeline.
 You are free to use the same middleware, in this case for logging request-response pairs for debugging, in multiple locations in your pipeline with little impact on the existing logic.
@@ -89,7 +89,6 @@ Resolving these issues is second nature to middleware, which tends to use abstra
 
 Like the name suggests, **middleware are executed between the request and the server response** handled by your main codebase.
 The classic way of handling a request meant running through a sequence of code that is less adaptive.
-That is, unless you add a bunch of `if-else` statements for all the cases where the execution needs to exit prematurely.
 
 And here is where middleware shines.
 There are two main ways the middleware handles its input:
