@@ -46,7 +46,7 @@
         "laminas/laminas-paginator": "^2.19.0",
         "laminas/laminas-servicemanager": "^3.23.0",
         "laminas/laminas-stdlib": "^3.20.0",
-        "league/commonmark": "^2.5.1",
+        "league/commonmark": "^2.7.0",
         "mezzio/mezzio": "^3.21.0",
         "mezzio/mezzio-fastroute": "^3.13.0",
         "mezzio/mezzio-helpers": "^5.18.0",
