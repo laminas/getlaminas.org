@@ -30,30 +30,30 @@ $this->end();
     </div>
 
     <?php if (empty($posts)) : ?>
-    <div class="row mt-5"><p class="col text-center">No posts found.</p></div>
+        <div class="row mt-5"><p class="col text-center">No posts found.</p></div>
 
     <?php else : ?>
-    <div class="blog-listing">
-        <?php /** @var GetLaminas\Blog\BlogPost $post */
+        <div class="blog-listing">
+            <?php /** @var GetLaminas\Blog\BlogPost $post */
             foreach ($posts as $post) : ?>
-            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 h-entry blog-background-gradient blog-card card">
-                <div class="blog-card-content">
-                    <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-3 h-entry blog-card card">
+                    <div class="blog-card-content">
+                        <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
 
-                    <div class="entry body p-summary"><?= $post->body ?></div>
+                        <div class="entry body p-summary"><?= $post->body ?></div>
 
-                    <a class="blog-continue-reading" href="<?= $this->postUrl($post) ?>">
-                        Continue reading
-                        <i class="bi-arrow-right"></i>
-                    </a>
+                        <a class="blog-continue-reading" href="<?= $this->postUrl($post) ?>">
+                            Continue reading
+                            <i class="bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach ?>
-    </div>
+            <?php endforeach ?>
+        </div>
 
-    <div id="blog-pagination">
-        <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
-    </div>
+        <div id="blog-pagination">
+            <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
+        </div>
 
     <?php endif ?>
     <a href="https://github.com/laminas/getlaminas.org/blob/master/ADD_BLOG_ENTRY.md" target="_blank">
