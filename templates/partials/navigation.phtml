@@ -19,7 +19,7 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
 };
 ?>
 <nav class="navbar navbar-expand-md bg-body fixed-top shadow">
-    <div class="container">
+    <div id="main-navbar" class="container">
         <a class="navbar-brand" href="/">
             <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project"/>
         </a>
@@ -48,7 +48,7 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
                        href="<?= $this->url('blog') ?>">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://docs.laminas.dev" target="_blank">Docs</a>
+                    <a class="nav-link" href="https://docs.laminas.dev" target="_blank" >Docs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link<?= $isRouteSubpath('community.participate') ? ' active' : '' ?>"
