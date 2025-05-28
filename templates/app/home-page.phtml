@@ -12,168 +12,166 @@ declare(strict_types=1);
 $this->layout('layout::default', ['title' => 'Home']);
 ?>
 
-<div id="homepage">
+<div class="container">
     <div class="homepage-title-container text-center">
         <h1 class="page-header">Laminas & Mezzio: enterprise-ready, open source PHP components and middleware microframework.</h1>
         <h2 class="page-header">A community-supported, open source continuation of Zend Framework</h2>
     </div>
 
-    <div id="homepage-section">
-        <div class="container">
-            <div class="col">
-                <div class="homepage-card row h-100 border border-mezzio rounded">
-                    <div class="homepage-card-info">
-                        <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
-                        <h5 class="page-header">PHP Middleware in Minutes</h5>
-                        <p class="page-text">
-                            Build PHP middleware applications, using the
-                            PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
-                            specifications, using a variety of routing and
-                            templating options, and the dependency injection
-                            container you prefer.
-                        </p>
-                        <div class="row gap-3">
-                            <a class="homepage-card-button btn btn-outline-mezzio mt-auto text-mezzio fw-bolder" href="https://docs.mezzio.dev" target="_blank">
-                                <i class="bi bi-file-earmark"></i>
-                                Documentation
-                            </a>
-                            <a class="homepage-card-button btn btn-mezzio mt-auto text-white fw-bolder" href="https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/" target="_blank">
-                                <i class="bi bi-rocket-takeoff"></i>
-                                Getting started with Mezzio
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="homepage-card-image-container">
-                        <img class="homepage-card-image" src="/images/laminas-mezzio-capture.svg" alt="Laminas-Mezzio">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="homepage-card row h-100 border border-essentials rounded">
-                    <div class="homepage-card-image-container">
-                        <img id="mezzio-essentials-book" src="/images/mezzio-essentials.png" alt="Mezzio-essentials">
-                    </div>
-                    <div class="homepage-card-info">
-                        <h5 class="page-header">Learn the Mezzio Framework's Fundamentals and Start Creating Great Apps - Today!</h5>
-
-                        <p class="page-text">
-                            "Mezzio Essentials" is a comprehensive introduction to developing
-                            applications with the Mezzio Framework, a micro-framework for PHP.
-                            It gets you started right away with a minimum of background theory and concepts.
-                        </p>
-                        <div class="row gap-3">
-                            <a class="homepage-card-button btn btn-essentials mt-auto text-white" href="https://mezzioessentials.com" target="_blank">
-                                <i class="bi-book-half"></i>
-                                mezzioessentials.com
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="homepage-card row h-100 border border-components rounded">
-                    <div class="homepage-card-info">
-                        <img src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
-                        <h5 class="page-header">Enterprise-ready PHP components and MVC framework</h5>
-
-                        <p class="page-text">
-                            Components for any PHP application, including dependency injection,
-                            event dispatchers, input validation and filtering, pagination and
-                            navigation, feed generation and parsing, and much, much more.
-                        </p>
-                        <div class="row gap-3">
-                            <a class="homepage-card-button btn btn-outline-components mt-auto text-components fw-bolder" href="https://docs.mezzio.dev" target="_blank">
-                                <i class="bi bi-file-earmark"></i>
-                                Documentation
-                            </a>
-                            <a class="homepage-card-button btn btn-components mt-auto text-white fw-bolder" href="https://docs.laminas.dev/tutorials/" target="_blank">
-                                <i class="bi bi-mortarboard"></i>
-                                Tutorials
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="homepage-card-image-container">
-                        <img class="homepage-card-image" src="/images/laminas-components-capture.svg" alt="Laminas-components">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="homepage-listing position-relative mb-3 mt-3">
-            <h4 class="page-header">Our Sponsors</h4>
-            <p class="page-text">
-                The projects of Laminas are free, open source software made possible by many sponsors.
-            </p>
-
-            <div id="sponsor-listing" class="pt-1 pb-1">
-                <?php foreach ($sponsors as $sponsor): ?>
-                    <a class="page-text sponsor-item col-12 col-sm-6 col-md-4 col-lg-4" href="<?= $sponsor['url'] ?>" target="_blank">
-                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
-                    </a>
-                <?php endforeach ?>
-            </div>
-
-            <a class="page-text ms-auto" href="<?= $this->url('app.support') ?>" target="_blank">
-                See the other sponsors <i class="bi bi-arrow-right"></i>
-            </a>
-        </div>
-
-        <div class="homepage-support-card row justify-content-between mb-3 mt-3">
-            <div class="homepage-card-info">
-                <h1 class="page-header">Donate</h1>
-                <p class="page-text">
-                    You can actively support development by donations.
-                    This allows us to develop and maintain new features
-                    for the project and your own applications.
-                </p>
-                <a href="<?= $this->url('app.support') ?>" id="support-button" class="homepage-card-button btn btn-secondary">
-                    Support Laminas
-                    <i class="bi-arrow-right"></i>
-                </a>
-            </div>
-            <div class="homepage-card-image-container">
-                <img class="homepage-card-image" src="/images/laminas-white.svg" alt="Laminas">
-                <img id="crowdfunding-logo" src="/images/lxf-crowdfunding.svg" alt="lnx-crowdfunding">
-            </div>
-        </div>
-
-        <div class="position-relative homepage-listing commercial-vendors mb-3 mt-3">
-            <h4 class="page-header">Commercial Vendors</h4>
-            <p class="page-text">
-                Laminas Projects are supported by these commercial vendors.
-            </p>
-
-            <div id="commercial-vendors-listing">
-                <?php foreach ($commercialVendors as $commercialVendor): ?>
-                    <div class="vendor-item">
-                        <a href="<?= $commercialVendor['url'] ?>" target="_blank">
-                            <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+    <div class="d-flex flex-column justify-content-between gap-5 pb-5">
+        <div class="col">
+            <div class="homepage-card row h-100 border border-mezzio rounded">
+                <div class="homepage-card-info">
+                    <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
+                    <h5 class="page-header">PHP Middleware in Minutes</h5>
+                    <p class="page-text">
+                        Build PHP middleware applications, using the
+                        PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
+                        specifications, using a variety of routing and
+                        templating options, and the dependency injection
+                        container you prefer.
+                    </p>
+                    <div class="row gap-3">
+                        <a class="homepage-card-button btn btn-outline-mezzio mt-auto text-mezzio fw-bolder" href="https://docs.mezzio.dev" target="_blank">
+                            <i class="bi bi-file-earmark"></i>
+                            Documentation
+                        </a>
+                        <a class="homepage-card-button btn btn-mezzio mt-auto text-white fw-bolder" href="https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/" target="_blank">
+                            <i class="bi bi-rocket-takeoff"></i>
+                            Getting started with Mezzio
                         </a>
                     </div>
-                <?php endforeach ?>
-            </div>
+                </div>
 
-            <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="page-text ms-auto">
-                Find out more! <i class="bi bi-arrow-right"></i>
+                <div class="homepage-card-image-container">
+                    <img class="homepage-card-image" src="/images/mezzio-capture.png" alt="Mezzio">
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="homepage-card row h-100 border border-essentials rounded">
+                <div class="homepage-card-image-container">
+                    <img id="mezzio-essentials-book" src="/images/mezzio-essentials.png" alt="Mezzio-essentials">
+                </div>
+                <div class="homepage-card-info">
+                    <h5 class="page-header">Learn the Mezzio Framework's Fundamentals and Start Creating Great Apps - Today!</h5>
+
+                    <p class="page-text">
+                        "Mezzio Essentials" is a comprehensive introduction to developing
+                        applications with the Mezzio Framework, a micro-framework for PHP.
+                        It gets you started right away with a minimum of background theory and concepts.
+                    </p>
+                    <div class="row gap-3">
+                        <a class="homepage-card-button btn btn-essentials mt-auto text-white" href="https://mezzioessentials.com" target="_blank">
+                            <i class="bi-book-half"></i>
+                            mezzioessentials.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="homepage-card row h-100 border border-components rounded">
+                <div class="homepage-card-info">
+                    <img id="components-logo" src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
+                    <h5 class="page-header">Enterprise-ready PHP components and MVC framework</h5>
+
+                    <p class="page-text">
+                        Components for any PHP application, including dependency injection,
+                        event dispatchers, input validation and filtering, pagination and
+                        navigation, feed generation and parsing, and much, much more.
+                    </p>
+                    <div class="row gap-3">
+                        <a class="homepage-card-button btn btn-outline-components mt-auto text-components fw-bolder" href="https://docs.mezzio.dev" target="_blank">
+                            <i class="bi bi-file-earmark"></i>
+                            Documentation
+                        </a>
+                        <a class="homepage-card-button btn btn-components mt-auto text-white fw-bolder" href="https://docs.laminas.dev/tutorials/" target="_blank">
+                            <i class="bi bi-mortarboard"></i>
+                            Tutorials
+                        </a>
+                    </div>
+                </div>
+
+                <div class="homepage-card-image-container">
+                    <img class="homepage-card-image" src="/images/components-capture.png" alt="Laminas-components">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="homepage-listing position-relative mb-3 mt-3 pb-5">
+        <h4 class="page-header">Our Sponsors</h4>
+        <p class="page-text">
+            The projects of Laminas are free, open source software made possible by many sponsors.
+        </p>
+
+        <div id="sponsor-listing" class="pt-1 pb-1">
+            <?php foreach ($sponsors as $sponsor): ?>
+                <a class="page-text sponsor-item col-12 col-sm-6 col-md-4 col-lg-4" href="<?= $sponsor['url'] ?>" target="_blank">
+                    <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
+                </a>
+            <?php endforeach ?>
+        </div>
+
+        <a class="page-text ms-auto" href="<?= $this->url('app.support') ?>" target="_blank">
+            See the other sponsors <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="homepage-support-card row justify-content-between mb-5 mt-3 pb-4">
+        <div class="homepage-card-info">
+            <h1 class="page-header">Donate</h1>
+            <p class="page-text">
+                You can actively support development by donations.
+                This allows us to develop and maintain new features
+                for the project and your own applications.
+            </p>
+            <a href="<?= $this->url('app.support') ?>" id="support-button" class="homepage-card-button btn btn-secondary">
+                Support Laminas
+                <i class="bi-arrow-right"></i>
             </a>
         </div>
-
-        <div class="homepage-listing mb-3 mt-3">
-            <h4 class="page-header">Popular Projects Which Use Components of Laminas</h4>
-
-            <div id="projects-listing" class="pt-1 pb-1">
-                <?php foreach ($projects as $project): ?>
-                    <div class="project-item col-12 col-sm-6 col-md-4 col-lg-2">
-                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($project['logo']) ?>" alt="<?= $this->escapeHtmlAttr($project['name']) ?>">
-                    </div>
-                <?php endforeach ?>
-            </div>
-
-            <p class="page-text">All rights to the logos belong to their respective owners.</p>
+        <div class="homepage-card-image-container">
+            <img class="homepage-card-image" src="/images/laminas-white.svg" alt="Laminas">
+            <img id="crowdfunding-logo" src="/images/lxf-crowdfunding.svg" alt="lnx-crowdfunding">
         </div>
+    </div>
+
+    <div class="position-relative homepage-listing commercial-vendors mb-5 mt-3">
+        <h4 class="page-header">Commercial Vendors</h4>
+        <p class="page-text">
+            Laminas Projects are supported by these commercial vendors.
+        </p>
+
+        <div id="commercial-vendors-listing">
+            <?php foreach ($commercialVendors as $commercialVendor): ?>
+                <div class="vendor-item">
+                    <a href="<?= $commercialVendor['url'] ?>" target="_blank">
+                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                    </a>
+                </div>
+            <?php endforeach ?>
+        </div>
+
+        <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="page-text ms-auto">
+            Find out more! <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="homepage-listing mb-3 mt-3">
+        <h4 class="page-header">Popular Projects Which Use Components of Laminas</h4>
+
+        <div id="projects-listing" class="pt-1 pb-1">
+            <?php foreach ($projects as $project): ?>
+                <div class="project-item col-12 col-sm-6 col-md-4 col-lg-2">
+                    <img class="img-fluid" src="<?= $this->escapeHtmlAttr($project['logo']) ?>" alt="<?= $this->escapeHtmlAttr($project['name']) ?>">
+                </div>
+            <?php endforeach ?>
+        </div>
+
+        <p class="text-center fs-6 page-text">All rights to the logos belong to their respective owners.</p>
     </div>
 </div>

@@ -24,49 +24,15 @@ body {
 main {
     color:            $black;
     background-color: $white;
-}
-
-#main-section {
-    background-image: url(/images/laminas.svg), url(/images/laminas.svg);
-    background-repeat: repeat-y;
-    background-position: 0 0, right 3em top 8em;
-
     .container {
         max-width: $max-section-width;
-    }
-}
-
-#homepage {
-    max-width: $max-section-width;
-    margin: 0 auto;
-
-    > * {
-        width: 100%;
-        //width: 95%;
-    }
-}
-
-#homepage-section {
-    margin: 4em auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    .container {
-        .col {
-            margin-bottom: 4em;
-        }
-    }
-
-    > * {
-        width: 100%;
     }
 }
 
 .homepage-card {
     background-color: #FFFFFF;
     justify-content: space-between;
-    padding: 1.5em;
+    padding: 2em 1.5em;
 }
 
 .homepage-card-info {
@@ -77,6 +43,10 @@ main {
     img {
         max-width: 250px;
         min-width: 150px;
+    }
+
+    #components-logo {
+        max-width: 300px;
     }
 }
 
@@ -94,6 +64,10 @@ main {
 .homepage-card-button {
     width: fit-content;
     padding: 5px 15px;
+
+    &:hover{
+        color: white !important;
+    }
 }
 
 .homepage-card-info {
@@ -110,7 +84,15 @@ main {
 @media(max-width:1150px) {
     .homepage-card {
         justify-content: space-evenly;
+        max-width: 90%;
+        margin: 0 auto;
     }
+
+    .homepage-card-info {
+        width: 100%;
+        padding: 0;
+    }
+
     .homepage-card-image-container {
         display: none;
     }
@@ -158,6 +140,34 @@ main {
         position: absolute;
         top: 1em;
         right: 1em;
+    }
+}
+
+@media(max-width:576px) {
+    .homepage-support-card .homepage-card-image {
+        display: none;
+    }
+
+    .homepage-support-card {
+        max-width: 90%;
+        display: flex;
+        flex-direction: column-reverse;
+        * {
+            width: 100% !important;
+        }
+    }
+
+    .homepage-card-info {
+        .page-header {
+            width: fit-content !important;
+            margin: .25em auto;
+        }
+    }
+
+    #crowdfunding-logo {
+        position: relative !important;
+        top: unset !important;
+        right: unset !important;
     }
 }
 
@@ -245,13 +255,6 @@ main {
     }
 }
 
-#blog-pagination {
-    margin-top: 1em;
-    nav {
-        width: fit-content;
-    }
-}
-
 .blog-header {
     color: #{map-get($laminas-colors, mezzio)}
 }
@@ -264,7 +267,6 @@ footer {
 
     .footer-col {
         max-width: 150px;
-        flex: 0 0 auto;
     }
 
     a {
@@ -634,7 +636,8 @@ article {
     }
 
     .sponsor-item, .project-item {
-        max-width: 212px;
+        max-width: calc(20% - 10px);
+        min-width: 170px;
         height: 100px;
         border: 1px solid #B9B9B9;
         border-radius: 10px;
@@ -643,7 +646,7 @@ article {
         align-items: center;
         overflow: hidden;
         background-color: #FFFFFF;
-        flex: 1 1 auto;
+        flex: 1 1 calc(20% - 10px);
 
         img {
             flex-shrink: 0;
