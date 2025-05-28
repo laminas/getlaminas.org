@@ -8,21 +8,21 @@ declare(strict_types=1);
 ?>
 
 <footer class="footer">
-    <div class="row">
+    <div class="row g-0">
         <div class="col-md-12 text-center">
             <a class="footer__button" href="#page-top">
                 <i class="bi-arrow-up-square-fill" aria-hidden="true"></i>
             </a>
         </div>
     </div>
-    <div id="footer-section" class="m-auto row">
+    <div id="footer-section" class="m-auto row g-0">
         <div class="col-md-6">
             <h5>Laminas</h5>
             <ul>
-                <li>Maintenance Overview <a href="<?= $this->url('app.packages-maintenance-status') ?>">Current maintenance status of Laminas & Mezzio packages</a></li>
-                <li>Components <a href="https://docs.laminas.dev/components" target="_blank">Components for enterprise applications</a></li>
-                <li>Mezzio <a href="https://docs.mezzio.dev/" target="_blank">PSR-15 middleware in minutes</a></li>
-                <li>MVC <a href="https://docs.laminas.dev/mvc" target="_blank">MVC for enterprise applications</a></li>
+                <li>Maintenance Overview <a href="<?= $this->url('app.packages-maintenance-status') ?>">Current maintenance status of Laminas &amp; Mezzio packages</a></li>
+                <li>Components <a href="https://docs.laminas.dev/components">Components for enterprise applications</a></li>
+                <li>Mezzio <a href="https://docs.mezzio.dev/">PSR-15 middleware in minutes</a></li>
+                <li>MVC <a href="https://docs.laminas.dev/mvc">MVC for enterprise applications</a></li>
             </ul>
         </div>
 
@@ -34,32 +34,34 @@ declare(strict_types=1);
                 <div class="fw-bolder">The Linux Foundation's only PHP project.</div>
             </div>
 
-            <div class="row">
-                <div class="footer-col">
+            <div class="row g-0">
+                <div class="col col-md-3">
                     <h4 class="footer__headline">Support</h4>
                     <ul class="support__list">
                         <li class="support__list-item col-md-4">
-                            <a href="https://discourse.laminas.dev" class="support__link" title="Forum" target="_blank"><i class="bi-chat-text-fill"></i></a>
+                            <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="bi-chat-text-fill"></i></a>
                         </li>
                         <li class="support__list-item col-md-4">
-                            <a href="https://laminas.dev/chat" class="support__link" title="Chat" target="_blank"><i class="bi-slack"></i></a>
+                            <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="bi-slack"></i></a>
                         </li>
                         <li class="support__list-item col-md-4">
-                            <a href="https://github.com/laminas" class="support__link" title="Github" target="_blank"><i class="bi-github"></i></a>
+                            <a href="https://github.com/laminas" class="support__link" title="Github"><i class="bi-github"></i></a>
                         </li>
                         <li class="support__list-item col-md-4">
-                            <a href="https://phpc.social/@getlaminas" class="support__link" title="Mastodon" target="_blank"><i class="bi-mastodon"></i></a>
+                            <a href="https://phpc.social/@getlaminas" class="support__link" title="Mastodon"><i class="bi-mastodon"></i><span class="visually-hidden">Laminas on Mastodon</span></a>
                         </li>
                         <li class="support__list-item col-md-4">
-                            <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed" target="_blank"><i class="bi-rss"></i></a>
+                            <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed"><i class="bi-rss"></i><span class="visually-hidden">Blog article RSS Feed</span></a>
                         </li>
                         <li class="support__list-item col-md-4">
-                            <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed" target="_blank"><i class="bi-rss-fill"></i></a>
+                            <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed">
+                                <i class="bi-rss-fill"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="col col-md-4">
                     <h4 class="footer__headline">License</h4>
                     <p>Code licensed under BSD 3-Clause.</p>
                 </div>
@@ -67,7 +69,7 @@ declare(strict_types=1);
         </div>
     </div>
 
-    <div class="row">
+    <div class="row g-0">
         <div class="col-md-12 text-center">
             &copy; <?= date('Y') ?> by <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.
         </div>
