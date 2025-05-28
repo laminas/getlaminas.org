@@ -52,7 +52,6 @@ main {
 
 .homepage-card-image {
     border-radius: 20px;
-    aspect-ratio: 1;
     width: 100%;
 }
 
@@ -75,7 +74,7 @@ main {
 }
 
 .homepage-card-image-container {
-    width: 30%;
+    width: 37%;
     display: flex;
     justify-content: center;
 }
@@ -125,13 +124,14 @@ main {
     }
 
     .homepage-card-image-container {
-        width: 30%;
+        width: 37%;
         display: flex;
 
         .homepage-card-image {
             flex-shrink: 0;
             aspect-ratio: unset;
             width: 100%;
+            height: fit-content;
         }
     }
 
@@ -269,12 +269,12 @@ footer {
         max-width: 150px;
     }
 
-    a {
-        color: $white;
+    a, a:visited {
+        color: $white !important;
         text-decoration: underline;
     }
 
-    a:visited, a:hover {
+    a:hover {
         color: $gray-300;
         text-decoration: underline;
     }
