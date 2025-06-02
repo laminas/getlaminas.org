@@ -74,10 +74,10 @@ Marketing takes many forms:
 
 - The professional (and expensive) approach.
 - Keeping the community engaged with
-  - Regular updates,
-  - New features,
-  - Discussions,
-  - Articles and the like.
+    - Regular updates,
+    - New features,
+    - Discussions,
+    - Articles and the like.
 
 ## Reasons to keep the code up-to-date
 
