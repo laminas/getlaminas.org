@@ -14,6 +14,12 @@
 
 $max-section-width: 1100px;
 
+@media(max-width:1100px) {
+    .navbar, .footer, main {
+        padding: 0 1em !important;
+    }
+}
+
 body {
     padding-top: 98px;
     font-family: 'Quicksand', sans-serif;
@@ -26,6 +32,8 @@ main {
     background-color: $white;
     .container {
         max-width: $max-section-width;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -46,7 +54,7 @@ main {
     }
 
     #components-logo {
-        max-width: 300px;
+        max-width: 285px;
     }
 }
 
@@ -83,7 +91,6 @@ main {
 @media(max-width:1150px) {
     .homepage-card {
         justify-content: space-evenly;
-        max-width: 90%;
         margin: 0 auto;
     }
 
@@ -97,7 +104,7 @@ main {
     }
 }
 
-.homepage-title-container {
+.title-container {
     margin: 130px auto;
 }
 
@@ -149,7 +156,6 @@ main {
     }
 
     .homepage-support-card {
-        max-width: 90%;
         display: flex;
         flex-direction: column-reverse;
         * {
@@ -251,12 +257,12 @@ main {
 
 .blog-post-content {
     h1, h2, h3, h4, h5, h6 {
-        color: #{map-get($laminas-colors, mezzio)};
+        color: $primary;
     }
 }
 
 .blog-header {
-    color: #{map-get($laminas-colors, mezzio)}
+    color: $primary;
 }
 
 // Footer section
@@ -631,13 +637,13 @@ article {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
         flex-wrap: wrap;
     }
 
     .sponsor-item, .project-item {
         max-width: calc(20% - 10px);
-        min-width: 170px;
+        min-width: 160px;
         height: 100px;
         border: 1px solid #B9B9B9;
         border-radius: 10px;

@@ -13,14 +13,14 @@ $this->layout('layout::default', ['title' => 'Home']);
 ?>
 
 <div class="container">
-    <div class="homepage-title-container text-center">
+    <div class="title-container text-center">
         <h1 class="page-header">Laminas & Mezzio: enterprise-ready, open source PHP components and middleware microframework.</h1>
         <h2 class="page-header">A community-supported, open source continuation of Zend Framework</h2>
     </div>
 
     <div class="d-flex flex-column justify-content-between gap-5 pb-5">
         <div class="col">
-            <div class="homepage-card row h-100 border border-mezzio rounded">
+            <div class="homepage-card row g-0 h-100 border border-mezzio rounded">
                 <div class="homepage-card-info">
                     <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
                     <h5 class="page-header">PHP Middleware in Minutes</h5>
@@ -31,7 +31,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                         templating options, and the dependency injection
                         container you prefer.
                     </p>
-                    <div class="row gap-3">
+                    <div class="row g-0 gap-3">
                         <a class="homepage-card-button btn btn-outline-mezzio mt-auto text-mezzio fw-bolder" href="https://docs.mezzio.dev" target="_blank">
                             <i class="bi bi-file-earmark"></i>
                             Documentation
@@ -50,7 +50,7 @@ $this->layout('layout::default', ['title' => 'Home']);
         </div>
 
         <div class="col">
-            <div class="homepage-card row h-100 border border-essentials rounded">
+            <div class="homepage-card row g-0 h-100 border border-essentials rounded">
                 <div class="homepage-card-image-container">
                     <img id="mezzio-essentials-book" src="/images/mezzio-essentials.png" alt="Mezzio-essentials">
                 </div>
@@ -62,7 +62,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                         applications with the Mezzio Framework, a micro-framework for PHP.
                         It gets you started right away with a minimum of background theory and concepts.
                     </p>
-                    <div class="row gap-3">
+                    <div class="row g-0 gap-3">
                         <a class="homepage-card-button btn btn-essentials mt-auto text-white" href="https://mezzioessentials.com" target="_blank">
                             <i class="bi-book-half"></i>
                             mezzioessentials.com
@@ -73,7 +73,7 @@ $this->layout('layout::default', ['title' => 'Home']);
         </div>
 
         <div class="col">
-            <div class="homepage-card row h-100 border border-components rounded">
+            <div class="homepage-card row g-0 h-100 border border-components rounded">
                 <div class="homepage-card-info">
                     <img id="components-logo" src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
                     <h5 class="page-header">Enterprise-ready PHP components</h5>
@@ -83,7 +83,7 @@ $this->layout('layout::default', ['title' => 'Home']);
                         event dispatchers, input validation and filtering, pagination and
                         navigation, feed generation and parsing, and much, much more.
                     </p>
-                    <div class="row gap-3">
+                    <div class="row g-0 gap-3">
                         <a class="homepage-card-button btn btn-outline-components mt-auto text-components fw-bolder" href="https://docs.mezzio.dev" target="_blank">
                             <i class="bi bi-file-earmark"></i>
                             Documentation
@@ -110,7 +110,7 @@ $this->layout('layout::default', ['title' => 'Home']);
 
         <div id="sponsor-listing" class="pt-1 pb-1">
             <?php foreach ($sponsors as $sponsor): ?>
-                <a class="page-text sponsor-item col-12 col-sm-6 col-md-4 col-lg-4" href="<?= $sponsor['url'] ?>" target="_blank">
+                <a class="page-text sponsor-item col-sm-6 col-md-4 col-lg-4" href="<?= $sponsor['url'] ?>" target="_blank">
                     <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
                 </a>
             <?php endforeach ?>
