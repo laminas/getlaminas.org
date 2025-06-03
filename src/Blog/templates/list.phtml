@@ -38,7 +38,7 @@ $this->end();
             foreach ($posts as $post) : ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 mt-3 h-entry blog-card card">
                     <div class="blog-card-content">
-                        <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
+                        <h4 class="blog-header"><?= $this->escapeHtml($post->title) ?></h4>
 
                         <div class="entry body p-summary"><?= $post->body ?></div>
 
