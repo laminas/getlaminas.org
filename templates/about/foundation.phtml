@@ -9,15 +9,12 @@ declare(strict_types=1);
 $this->layout('layout::default', ['title' => 'About the Foundation']);
 ?>
 
-<div class="hero-container mb-4">
-    <div class="hero-box text-center">
-        <h1>The Laminas Project</h1>
-
-        <h2>A community-supported, open source continuation of Zend Framework.</h2>
-    </div>
-</div>
-
 <div class="container">
+    <div class="title-container text-center">
+        <h1 class="page-header">The Laminas Project</h1>
+        <h2 class="page-header">A community-supported, open source continuation of Zend Framework</h2>
+    </div>
+
     <div class="row align-items-start">
         <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
             <p>
@@ -63,8 +60,8 @@ $this->layout('layout::default', ['title' => 'About the Foundation']);
             </blockquote>
         </div>
 
-        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="teardrop card text-bg-primary">
-            <h2 class="card-header">Become a Founding Member of the Governing Board</h2>
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="card border-primary">
+            <h2 class="card-header text-primary">Become a Founding Member of the Governing Board</h2>
             <div class="card-body">
                 <p class="card-text">
                     As noted, we are hoping to adopt a funded project model to help
