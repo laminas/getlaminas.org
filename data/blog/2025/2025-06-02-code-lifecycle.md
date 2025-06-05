@@ -24,9 +24,9 @@ In this article we will explore the reasons why software becomes abandoned, from
 
 Some of the factors that impact software lifecycle are:
 
-- Number of features
-- User experience
-- Maintenance schedule
+- Number of features.
+- User experience.
+- Maintenance schedule.
 
 Buzzwords are sometimes responsible for the popularity of software going up, but if the developers don't have the resources to keep the ball rolling, the users can get unhappy.
 Closed source software is one thing, but the **open source** scene is not far behind in pushing the developers to make impactful decisions related to the application.
@@ -73,7 +73,7 @@ The **go-to option** will too often be the more **popular package** with an **ac
 Marketing takes many forms:
 
 - The professional (and expensive) approach.
-- Keeping the community engaged with
+- Keeping the community engaged with:
     - Regular updates,
     - New features,
     - Discussions,
@@ -94,7 +94,7 @@ During the [TSC meeting on 2024-11-04](https://github.com/laminas/technical-stee
 
 A similar decision was made for [Laminas MVC](https://github.com/laminas/laminas-mvc), though the decision is much more impactful.
 There are many projects that still use Laminas MVC and are actively supported by teams that still receive feature requests.
-Most of the recent development effort from the Laminas members has shifted to [Laminas ServiceManager 4](https://github.com/laminas/laminas-servicemanager) (which implement [PSR-11 Container version 2](https://github.com/php-fig/container)) and the middleware architecture.
+Most of the recent development effort from the Laminas members has shifted to [Laminas ServiceManager 4](https://github.com/laminas/laminas-servicemanager) (which implements [PSR-11 Container version 2](https://github.com/php-fig/container)) and the middleware architecture.
 For this reason, it's unreasonable to keep Laminas MVC up to date which requires a great deal of attention from TSC members who simply have no more time for it.
 **Archiving Laminas MVC** will be a **slow process** to make sure that its users have plenty of time to move to an alternative, like the recommended middleware architecture.
 
