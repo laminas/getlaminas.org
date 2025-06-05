@@ -19,33 +19,35 @@ $this->end();
 ?>
 <section class="blog container p-0">
     <div class="row align-items-start mt-5">
-        <div class="col">
-            <h1 class="page-header">
-                Blog
-                <?php if (isset($tag)) : ?>
-                    <small>Tag: <?= $this->escapeHtml($tag) ?></small>
-                <?php endif ?>
-            </h1>
-        </div>
+        <h1 class="page-header">
+            Blog
+            <?php if (isset($tag)) : ?>
+                <small>Tag: <?= $this->escapeHtml($tag) ?></small>
+            <?php endif ?>
+        </h1>
     </div>
 
     <?php if (empty($posts)) : ?>
         <div class="row mt-5"><p class="col text-center">No posts found.</p></div>
 
     <?php else : ?>
-        <div class="blog-listing">
+        <div class="row">
             <?php /** @var GetLaminas\Blog\BlogPost $post */
             foreach ($posts as $post) : ?>
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3 h-entry blog-card card">
-                    <div class="blog-card-content">
-                        <h4 class="blog-header"><?= $this->escapeHtml($post->title) ?></h4>
+                <div class="col-lg-4 col-sm-6 col-xs-12 mt-3 h-entry">
+                    <div class="card blog-card h-100 border-primary">
+                        <div class="card-body">
+                            <a class="text-primary link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= $this->postUrl($post) ?>">
+                                <h4 class="card-title"><?= $this->escapeHtml($post->title) ?></h4>
+                            </a>
+                            <div class="card-text"><?= $post->body ?></div>
+                        </div>
 
-                        <div class="entry body p-summary"><?= $post->body ?></div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-body-secondary"><?= $post->author->fullName ?></small>
+                            <small class="text-body-secondary"><?= $post->created->format('d M, Y') ?></small>
+                        </div>
 
-                        <a class="blog-continue-reading" href="<?= $this->postUrl($post) ?>">
-                            Continue reading
-                            <i class="bi-arrow-right"></i>
-                        </a>
                     </div>
                 </div>
             <?php endforeach ?>

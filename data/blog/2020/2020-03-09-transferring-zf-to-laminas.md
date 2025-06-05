@@ -21,6 +21,8 @@ transferring the project](https://framework.zend.com/blog/2019-04-17-announcing-
 to the [Linux Foundation](https://www.linuxfoundation.org/) as the Laminas
 Project.
 
+<!--- EXTENDED -->
+
 A couple months before this announcement, in February 2019,
 [we started working](https://github.com/michalbundyra/laminas-transfer/commit/3e253840eafee73af20768567ae7f8bdd7ec4d7d)
 on a [tool for transferring the project repositories to their new homes](https://github.com/michalbundyra/laminas-transfer).
@@ -31,8 +33,6 @@ wanted our new components to **replace** legacy components (yes, we wanted to
 use [`replace` in `composer.json`](https://getcomposer.org/doc/04-schema.md#replace)).
 
 We needed a tool capable of much more than just "rewriting namespaces".
-
-<!--- EXTENDED -->
 
 ## Lifetime decisions
 
