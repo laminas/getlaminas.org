@@ -1,18 +1,18 @@
 ---
-id: 2025-06-02-code-lifecycle
+id: 2025-06-16-code-lifecycle
 author: bidi
 title: 'Code Lifecycle'
 draft: false
 public: true
-created: '2025-06-02T11:00:00-01:00'
-updated: '2025-06-02T11:00:00-01:00'
+created: '2025-06-16T11:00:00-01:00'
+updated: '2025-06-16T11:00:00-01:00'
 tags:
   - software lifecycle
   - open source
   - maintainability
   - abandoning code
   - middleware
-openGraphImage: '2025-06-02-code-lifecycle.png'
+openGraphImage: '2025-06-16-code-lifecycle.png'
 openGraphDescription: 'Code Lifecycle'
 ---
 
