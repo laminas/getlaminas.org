@@ -32,7 +32,7 @@ This is reinforced by the **little activity on Laminas MVC** in the past few mon
 Many TSC members are seeing Laminas MVC as a legacy code that is more difficult to work with.
 Some have expressed a lack of desire to return to Laminas MVC after using **Mezzio** middleware.
 
-TSC members have shifted their focus to [Mezzio](https://github.com/mezzio/mezzio) which is a good alternative, a worthy successor to MVC and the **second reason** for their decision regading MVC.
+TSC members have shifted their focus to [Mezzio](https://github.com/mezzio/mezzio) which is a good alternative, a worthy successor to MVC and the **second reason** for their decision regarding MVC.
 Having the **Mezzio alternative** ready to use makes letting go of MVC a lot easier.
 Mezzio and its dependencies are already a handful to maintain, but this framework has become the de facto solution for new projects of late.
 
@@ -54,7 +54,7 @@ As we have already mentioned, **Mezzio** is the recommended alternative to repla
 - The long list of **Laminas packages** that can be easily integrated into your project also implement PSRs.
 - The **middleware architecture** has some key characteristics:
     - It is minimalist, flexible and more decoupled.
-    - It uses dependency injection which makes.
+    - It uses dependency injection which improves maintainability and development speed.
 
 Basically, anything you can do with Laminas MVC can be done better with Mezzio.
 
