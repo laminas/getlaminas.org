@@ -72,8 +72,10 @@ Basically, anything you can do with Laminas MVC can be done easier and better wi
 
 A laminas-mvc based application can be prepared to make the migration to Mezzio easier.
 The middleware and request handlers can already be used in the existing laminas-mvc application, which can then be adapted.
-The best course of action is to **consult a TSC member** for advice on moving forward.
-Alternatively, you can contact a commercial vendor to analyze your application and figure out a customized solution.
+The second step in the migration concerns the aging dependencies in legacy projects, some of which may already be discontinued, so their functionality needs to be replaced.
+
+The best course of action is to open a topic of discussion on the [Laminas discourse forum](https://discourse.laminas.dev/) or [Laminas github discussions](https://github.com/orgs/laminas/discussions).
+More often than not your application needs to be analyzed to figure out a customized solution.
 
 ### Additional resources
 
