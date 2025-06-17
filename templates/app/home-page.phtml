@@ -14,17 +14,17 @@ $this->layout('layout::default', ['title' => 'Home']);
 
 <div class="container">
     <div class="title-container text-center">
-        <h1 class="page-header">Laminas & Mezzio: enterprise-ready, open source PHP components and middleware microframework.</h1>
-        <h2 class="page-header">A community-supported, open source continuation of Zend Framework</h2>
+        <h1 class="fw-bolder mb-5">Laminas & Mezzio: enterprise-ready, open source PHP components and middleware microframework.</h1>
+        <h2 class="fw-bolder mb-5">A community-supported, open source continuation of Zend Framework</h2>
     </div>
 
-    <div class="d-flex flex-column justify-content-between gap-5 pb-5">
+    <div class="d-flex flex-column justify-content-between gap-5 mb-5">
         <div class="col">
-            <div class="homepage-card row g-0 h-100 border border-mezzio rounded">
+            <div class="homepage-card row g-0 h-100 border border-mezzio rounded-4">
                 <div class="homepage-card-info">
                     <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
-                    <h5 class="page-header">PHP Middleware in Minutes</h5>
-                    <p class="page-text">
+                    <h5 class="fw-bolder mb-5">PHP Middleware in Minutes</h5>
+                    <p class="text-primary">
                         Build PHP middleware applications, using the
                         PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
                         specifications, using a variety of routing and
@@ -44,20 +44,20 @@ $this->layout('layout::default', ['title' => 'Home']);
                 </div>
 
                 <div class="homepage-card-image-container">
-                    <img class="homepage-card-image" src="/images/mezzio-capture.png" alt="Mezzio">
+                    <img class="homepage-card-image rounded-4" src="/images/mezzio-capture.png" alt="Mezzio">
                 </div>
             </div>
         </div>
 
         <div class="col">
-            <div class="homepage-card row g-0 h-100 border border-essentials rounded">
+            <div class="homepage-card row g-0 h-100 border border-essentials rounded-4">
                 <div class="homepage-card-image-container">
                     <img id="mezzio-essentials-book" src="/images/mezzio-essentials.png" alt="Mezzio-essentials">
                 </div>
                 <div class="homepage-card-info">
-                    <h5 class="page-header">Learn the Mezzio Framework's Fundamentals and Start Creating Great Apps - Today!</h5>
+                    <h5 class="fw-bolder mb-5">Learn the Mezzio Framework's Fundamentals and Start Creating Great Apps - Today!</h5>
 
-                    <p class="page-text">
+                    <p class="text-primary">
                         "Mezzio Essentials" is a comprehensive introduction to developing
                         applications with the Mezzio Framework, a micro-framework for PHP.
                         It gets you started right away with a minimum of background theory and concepts.
@@ -73,12 +73,12 @@ $this->layout('layout::default', ['title' => 'Home']);
         </div>
 
         <div class="col">
-            <div class="homepage-card row g-0 h-100 border border-components rounded">
+            <div class="homepage-card row g-0 h-100 border border-components rounded-4">
                 <div class="homepage-card-info">
                     <img id="components-logo" src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
-                    <h5 class="page-header">Enterprise-ready PHP components</h5>
+                    <h5 class="fw-bolder mb-5">Enterprise-ready PHP components</h5>
 
-                    <p class="page-text">
+                    <p class="text-primary">
                         Components for any PHP application, including dependency injection,
                         event dispatchers, input validation and filtering, pagination and
                         navigation, feed generation and parsing, and much, much more.
@@ -96,35 +96,35 @@ $this->layout('layout::default', ['title' => 'Home']);
                 </div>
 
                 <div class="homepage-card-image-container">
-                    <img class="homepage-card-image" src="/images/components-capture.png" alt="Laminas-components">
+                    <img class="homepage-card-image rounded-4" src="/images/components-capture.png" alt="Laminas-components">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="homepage-listing position-relative mb-3 mt-3 pb-5">
-        <h4 class="page-header">Our Sponsors</h4>
-        <p class="page-text">
+    <div class="homepage-listing position-relative mb-5">
+        <h4 class="fw-bolder mb-5">Our Sponsors</h4>
+        <p class="text-primary">
             The projects of Laminas are free, open source software made possible by many sponsors.
         </p>
 
         <div id="sponsor-listing" class="pt-1 pb-1">
             <?php foreach ($sponsors as $sponsor): ?>
-                <a class="page-text sponsor-item col-sm-6 col-md-4 col-lg-4" href="<?= $sponsor['url'] ?>" target="_blank">
+                <a class="sponsor-item col-sm-6 col-md-4 col-lg-4 rounded-4" href="<?= $sponsor['url'] ?>" target="_blank">
                     <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
                 </a>
             <?php endforeach ?>
         </div>
 
-        <a class="page-text ms-auto" href="<?= $this->url('app.support') ?>" target="_blank">
+        <a class="text-primary ms-auto" href="<?= $this->url('app.support') ?>" target="_blank">
             See the other sponsors <i class="bi bi-arrow-right"></i>
         </a>
     </div>
 
-    <div class="homepage-support-card row justify-content-between mb-5 mt-3 pb-4">
+    <div class="homepage-support-card row justify-content-between mb-5 rounded-4">
         <div class="homepage-card-info">
-            <h1 class="page-header">Donate</h1>
-            <p class="page-text">
+            <h1 class="fw-bolder mb-5">Donate</h1>
+            <p class="text-primary">
                 You can actively support development by donations.
                 This allows us to develop and maintain new features
                 for the project and your own applications.
@@ -140,9 +140,9 @@ $this->layout('layout::default', ['title' => 'Home']);
         </div>
     </div>
 
-    <div class="position-relative homepage-listing commercial-vendors mb-5 mt-3">
-        <h4 class="page-header">Commercial Vendors</h4>
-        <p class="page-text">
+    <div class="position-relative homepage-listing commercial-vendors mb-5">
+        <h4 class="fw-bolder mb-5">Commercial Vendors</h4>
+        <p class="text-primary">
             Laminas Projects are supported by these commercial vendors.
         </p>
 
@@ -156,22 +156,22 @@ $this->layout('layout::default', ['title' => 'Home']);
             <?php endforeach ?>
         </div>
 
-        <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="page-text ms-auto">
+        <a href="<?= $this->url('app.commercial-vendor-program') ?>" class="text-primary ms-auto">
             Find out more! <i class="bi bi-arrow-right"></i>
         </a>
     </div>
 
     <div class="homepage-listing mb-3 mt-3">
-        <h4 class="page-header">Popular Projects Which Use Components of Laminas</h4>
+        <h4 class="fw-bolder mb-5">Popular Projects Which Use Components of Laminas</h4>
 
         <div id="projects-listing" class="pt-1 pb-1">
             <?php foreach ($projects as $project): ?>
-                <div class="project-item col-12 col-sm-6 col-md-4 col-lg-2">
+                <div class="project-item col-12 col-sm-6 col-md-4 col-lg-2 rounded-4">
                     <img class="img-fluid" src="<?= $this->escapeHtmlAttr($project['logo']) ?>" alt="<?= $this->escapeHtmlAttr($project['name']) ?>">
                 </div>
             <?php endforeach ?>
         </div>
 
-        <p class="text-center fs-6 page-text">All rights to the logos belong to their respective owners.</p>
+        <p class="text-center fs-6 text-primary">All rights to the logos belong to their respective owners.</p>
     </div>
 </div>

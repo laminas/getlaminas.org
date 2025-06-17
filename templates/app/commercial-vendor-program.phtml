@@ -13,19 +13,19 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
 <div id="commercial-vendor-section" class="container-lg">
     <div class="row mt-5">
         <div class="col">
-            <h1 class="page-header">Commercial Vendor Program</h1>
+            <h1 class="fw-bolder mb-5">Commercial Vendor Program</h1>
         </div>
     </div>
-    <div class="row align-items-start mt-5">
+    <div class="row align-items-start">
         <div class="col-12">
-            <h2 class="page-header">Existing Members</h2>
+            <h2 class="fw-bolder mb-5">Existing Members</h2>
         </div>
     </div>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         <?php foreach($commercialVendors as $commercialVendor): ?>
             <div class="col mb-4">
-                <div class="commercial-vendor-card card h-100">
+                <div class="commercial-vendor-card card h-100 rounded-4">
                     <div class="card-body">
                         <h5 class="card-title"><?= $this->escapeHtml($commercialVendor['name']) ?></h5>
                         <p class="card-text"><?= $this->escapeHtml($commercialVendor['text']) ?></p>
@@ -40,13 +40,13 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
         <?php endforeach ?>
     </div>
 
-    <h2 class="page-header mt-5">Benefits</h2>
+    <h2 class="fw-bolder my-5">Benefits</h2>
     <p>
         When you join the Commercial Vendor Program, you will be recognised as one of the key supporters of Laminas.
         You will be helping to fund and ensure the success of the project.
     </p>
 
-    <h2 class="page-header">About the Program</h2>
+    <h2 class="fw-bolder mb-5">About the Program</h2>
     <p>
         Your organisation can join the Commercial Vendor Program to help fund the ongoing maintenance and development costs of the Laminas Projects.
     </p>
@@ -65,7 +65,7 @@ $this->layout('layout::default', ['title' => 'Commercial Vendor Program']);
         </li>
     </ul>
 
-    <h2 class="page-header">How to Apply</h2>
+    <h2 class="fw-bolder mb-5">How to Apply</h2>
     <ol>
         <li>
             First, contact <a href="mailto:<?= CVP_CONTACT_EMAIL ?>"><?= CVP_CONTACT_EMAIL ?></a> to apply for membership.

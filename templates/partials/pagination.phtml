@@ -16,30 +16,19 @@ declare(strict_types=1);
 ?>
 <?php if (count($pagination->pages) > 1): ?>
 <div class="row justify-content-start">
-  <nav class="col-md-6">
-    <ul class="pagination">
+  <nav>
         <?php if (! $pagination->is_first) : ?>
-        <li class="page-item"><a href="<?= $pagination->base_path ?>" class="page-link">&lt;&lt;<span class="sr-only">First</span></a></li>
+            <ul class="pagination justify-content-between">
+        <?php else: ?>
+                <ul class="pagination justify-content-end">
         <?php endif ?>
 
         <?php if (isset($pagination->previous)) : ?>
-        <li class="page-item"><a href="<?= $pagination->base_path ?>?page=<?= $pagination->previous ?>" class="page-link">&lt;<span class="sr-only">Previous</span></a></li>
+            <li class="page-item"><a href="<?= $pagination->base_path ?>?page=<?= $pagination->previous ?>" class="page-link rounded-4 border-primary"><i class="bi bi-arrow-left"></i><span class="sr-only">Previous</span></a></li>
         <?php endif ?>
-
-        <?php foreach ($pagination->pages as $page) : ?>
-            <?php if ($page['current']) : ?>
-        <li class="page-item active"><a href="#" class="page-link"><?= $page['number'] ?></a></li>
-            <?php else : ?>
-        <li class="page-item"><a href="<?= $pagination->base_path ?>?page=<?= $page['number'] ?>" class="page-link"><?= $page['number'] ?></a></li>
-            <?php endif ?>
-        <?php endforeach ?>
 
         <?php if (isset($pagination->next)) : ?>
-        <li class="page-item"><a href="<?= $pagination->base_path ?>?page=<?= $pagination->next ?>" class="page-link"><span class="sr-only">Next</span>&gt;</a></li>
-        <?php endif ?>
-
-        <?php if (! $pagination->is_last) : ?>
-        <li class="page-item"><a href="<?= $pagination->base_path ?>?page=<?= $pagination->last ?>" class="page-link"><span class="sr-only">Last</span>&gt;&gt</a></li>
+            <li class="page-item"><a href="<?= $pagination->base_path ?>?page=<?= $pagination->next ?>" class="page-link rounded-4 border-primary"><span class="sr-only">Next</span><i class="bi bi-arrow-right"></i></a></li>
         <?php endif ?>
     </ul>
   </nav>

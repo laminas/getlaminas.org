@@ -55,7 +55,7 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
                        href="<?= $this->url('community.participate') ?>">Community</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle<?= $isRouteSubpath('app.support') || $isRouteSubpath('app.commercial-vendor-program') ? ' active' : '' ?>"
+                    <a class="nav-link pe-0 dropdown-toggle<?= $isRouteSubpath('app.support') || $isRouteSubpath('app.commercial-vendor-program') ? ' active' : '' ?>"
                        href="<?= $this->url('app.support') ?>"
                        role="button"
                        data-bs-toggle="dropdown"

@@ -19,7 +19,7 @@ $this->end();
 ?>
 <section class="blog container p-0">
     <div class="row align-items-start mt-5">
-        <h1 class="page-header">
+        <h1 class="fw-bolder mb-5">
             Blog
             <?php if (isset($tag)) : ?>
                 <small>Tag: <?= $this->escapeHtml($tag) ?></small>
@@ -28,26 +28,22 @@ $this->end();
     </div>
 
     <?php if (empty($posts)) : ?>
-        <div class="row mt-5"><p class="col text-center">No posts found.</p></div>
+        <div class="row"><p class="col text-center">No posts found.</p></div>
 
     <?php else : ?>
         <div class="row">
             <?php /** @var GetLaminas\Blog\BlogPost $post */
             foreach ($posts as $post) : ?>
-                <div class="col-lg-4 col-sm-6 col-xs-12 mt-3 h-entry">
-                    <div class="card blog-card h-100 border-primary">
+                <div class="col-lg-4 col-sm-6 col-xs-12 mb-3 h-entry">
+                    <div class="card blog-card h-100 border-primary rounded-4">
                         <div class="card-body">
+                            <small class="text-body-secondary"><?= $post->created->format('d M, Y') ?></small>
+
                             <a class="text-primary link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= $this->postUrl($post) ?>">
                                 <h4 class="card-title"><?= $this->escapeHtml($post->title) ?></h4>
                             </a>
                             <div class="card-text"><?= $post->body ?></div>
                         </div>
-
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-body-secondary"><?= $post->author->fullName ?></small>
-                            <small class="text-body-secondary"><?= $post->created->format('d M, Y') ?></small>
-                        </div>
-
                     </div>
                 </div>
             <?php endforeach ?>

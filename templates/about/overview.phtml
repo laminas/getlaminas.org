@@ -12,11 +12,11 @@ $this->layout('layout::default', ['title' => 'About the Laminas Project']);
 <div class="container">
     <div class="row mt-5">
         <div class="col">
-            <h1 class="page-header">About</h1>
+            <h1 class="fw-bolder mb-5">About</h1>
         </div>
     </div>
 
-    <div class="row align-items-start mt-5">
+    <div class="row align-items-start">
         <div class="col-md-8 col-sm-12 order-2 order-sm-1 mt-5 mt-s-0 mt-md-0 mt-lg-0 mt-xl-0">
             <p>
                 The Laminas Project is an open-source continuation of
@@ -36,7 +36,7 @@ $this->layout('layout::default', ['title' => 'About the Laminas Project']);
         </div>
 
         <div class="col-md-4 col-sm-12 order-1 order-sm-2">
-            <div class="card border-primary">
+            <div class="card border-primary rounded-4">
                 <ul class="nav flex-column card-body">
                     <li class="nav-item"><a href="<?= $this->url('about.tsc') ?>">Technical Steering Committee</a>
                     <li class="nav-item"><a href="<?= $this->url('about.foundation') ?>">About the Foundation</a>
