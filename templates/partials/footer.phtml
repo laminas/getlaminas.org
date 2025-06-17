@@ -11,68 +11,67 @@ declare(strict_types=1);
     <div class="row g-0">
         <div class="col-md-12 text-center">
             <a class="footer__button" href="#page-top">
-                <i class="bi-arrow-up-square-fill" aria-hidden="true"></i>
+                <i class="bi bi-chevron-up" aria-hidden="true"></i>
             </a>
         </div>
     </div>
     <div id="footer-section" class="m-auto row g-0">
         <div class="col-md-6">
-            <h5>Laminas</h5>
+            <h5 class="fw-bolder text-white">Laminas</h5>
             <ul>
-                <li><a href="<?= $this->url('app.packages-maintenance-status') ?>">Current maintenance status of Laminas &amp; Mezzio packages</a></li>
-                <li><a href="https://docs.laminas.dev/components">Components for enterprise applications</a></li>
                 <li><a href="https://docs.mezzio.dev/">Mezzio: PSR-15 middleware in minutes</a></li>
-                <li><a href="https://github.com/orgs/laminas/discussions/">Laminas project discussions</a></li>
-                <li><a href="https://docs.laminas.dev/mvc">MVC for enterprise applications</a></li>
+                <li><a href="https://docs.laminas.dev/components">Components for enterprise applications</a></li>
+                <li><a href="<?= $this->url('app.packages-maintenance-status') ?>">Current maintenance status of Laminas &amp; Mezzio packages</a></li>
             </ul>
         </div>
 
         <div class="col-md-6">
             <div>
+                <h5 class="fw-bolder text-white">The Linux Foundation's only PHP project.</h5>
                 <div>
                     Hosting sponsored by the <a title="platform.sh" href="https://platform.sh/?medium=referral&utm_campaign=sponsored_sites&utm_source=laminas_getlaminas_org"><img class="platformsh-logo" src="https://platform.sh/logos/redesign/Platformsh_logo_white@2x.png" alt="platform.sh logo" style="padding: 0 3px 0 3px;height: 1.1em; vertical-align: text-bottom;"/></a> <a href="https://platform.sh/?medium=referral&utm_campaign=sponsored_sites&utm_source=laminas_getlaminas_org">PHP Cloud Hosting</a> Service
                 </div>
-                <div class="fw-bolder">The Linux Foundation's only PHP project.</div>
-            </div>
-
-            <div class="row g-0 mt-4">
-                <div class="col-12 col-md-6">
-                    <h5 class="footer__headline">Support</h5>
-                    <ul class="support__list">
-                        <li class="support__list-item col-md-4">
-                            <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="bi-chat-text-fill"></i><span class="visually-hidden">Laminas &amp; Mezzio Forum</span></a>
-                        </li>
-                        <li class="support__list-item col-md-4">
-                            <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="bi-slack"></i><span class="visually-hidden">Laminas Community Slack</span></a>
-                        </li>
-                        <li class="support__list-item col-md-4">
-                            <a href="https://github.com/laminas" class="support__link" title="Github"><i class="bi-github"></i><span class="visually-hidden">Laminas GitHub Organisation Page</span></a>
-                        </li>
-                        <li class="support__list-item col-md-4">
-                            <a href="https://phpc.social/@getlaminas" class="support__link" title="Mastodon"><i class="bi-mastodon"></i><span class="visually-hidden">Laminas on Mastodon</span></a>
-                        </li>
-                        <li class="support__list-item col-md-4">
-                            <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed"><i class="bi-rss"></i><span class="visually-hidden">Blog article RSS Feed</span></a>
-                        </li>
-                        <li class="support__list-item col-md-4">
-                            <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed">
-                                <i class="bi-rss-fill"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-12 col-md-6">
-                    <h5 class="footer__headline">License</h5>
-                    <p>Code licensed under BSD 3-Clause.</p>
-                </div>
             </div>
         </div>
-    </div>
 
-    <div class="row g-0">
-        <div class="col-md-12 text-center">
-            &copy; <?= date('Y') ?> by <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="footer__headline text-white">Support</h5>
+                        <ul class="support__list">
+                            <li class="support__list-item">
+                                <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="bi-chat-text-fill"></i><span class="visually-hidden">Laminas &amp; Mezzio Forum</span></a>
+                            </li>
+                            <li class="support__list-item">
+                                <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="bi-slack"></i><span class="visually-hidden">Laminas Community Slack</span></a>
+                            </li>
+                            <li class="support__list-item">
+                                <a href="https://github.com/laminas" class="support__link" title="Github"><i class="bi-github"></i><span class="visually-hidden">Laminas GitHub Organisation Page</span></a>
+                            </li>
+                            <li class="support__list-item">
+                                <a href="https://phpc.social/@getlaminas" class="support__link" title="Mastodon"><i class="bi-mastodon"></i><span class="visually-hidden">Laminas on Mastodon</span></a>
+                            </li>
+                            <li class="support__list-item">
+                                <a href="<?= $this->url('blog.feed', ['type' => 'rss']) ?>" class="support__link" title="Blog feed"><i class="bi-rss"></i><span class="visually-hidden">Blog article RSS Feed</span></a>
+                            </li>
+                            <li class="support__list-item">
+                                <a href="<?= $this->url('security.pages', ['action' => 'feed']) ?>" class="support__link" title="Security feed">
+                                    <i class="bi-rss-fill"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="footer__headline text-white">License</h5>
+                        <p>Code licensed under BSD 3-Clause.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="footer__headline text-white">Copyright</h5>
+                        <p>&copy; <?= date('Y') ?> by <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

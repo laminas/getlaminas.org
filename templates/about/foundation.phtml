@@ -11,8 +11,8 @@ $this->layout('layout::default', ['title' => 'About the Foundation']);
 
 <div class="container">
     <div class="title-container text-center">
-        <h1 class="page-header">The Laminas Project</h1>
-        <h2 class="page-header">A community-supported, open source continuation of Zend Framework</h2>
+        <h1 class="fw-bolder mb-5">The Laminas Project</h1>
+        <h2 class="fw-bolder mb-5">A community-supported, open source continuation of Zend Framework</h2>
     </div>
 
     <div class="row align-items-start">
@@ -60,37 +60,39 @@ $this->layout('layout::default', ['title' => 'About the Foundation']);
             </blockquote>
         </div>
 
-        <div class="col-md-4 col-sm-12 order-1 order-sm-2"><div class="card border-primary">
-            <h2 class="card-header text-primary">Become a Founding Member of the Governing Board</h2>
-            <div class="card-body">
-                <p class="card-text">
-                    As noted, we are hoping to adopt a funded project model to help
-                    grow the ecosystem through marketing efforts, monetarily
-                    sponsoring targeted development projects, and providing
-                    maintainer stipends. These efforts would be funded through
-                    membership dues and contributed engineering resources. Contact
-                    us if you are interested in becoming a founding member of
-                    the Governing Board.
-                </p>
+        <div class="col-md-4 col-sm-12 order-1 order-sm-2">
+            <div class="card border-primary rounded-4">
+                <h2 class="card-header text-primary">Become a Founding Member of the Governing Board</h2>
+                <div class="card-body">
+                    <p class="card-text">
+                        As noted, we are hoping to adopt a funded project model to help
+                        grow the ecosystem through marketing efforts, monetarily
+                        sponsoring targeted development projects, and providing
+                        maintainer stipends. These efforts would be funded through
+                        membership dues and contributed engineering resources. Contact
+                        us if you are interested in becoming a founding member of
+                        the Governing Board.
+                    </p>
 
-                <p class="card-text text-center">
-                    <a class="btn btn-success" href="<?= $this->url('about.join') ?>">Join</a>
-                </p>
+                    <p class="card-text text-center">
+                        <a class="btn btn-success" href="<?= $this->url('about.join') ?>">Join</a>
+                    </p>
+                </div>
             </div>
-        </div></div>
+        </div>
     </div>
 </div>
 
 <div class="bg-body-secondary text-center my-4">
     <div class="container py-5">
-        <h1 class="text-primary">FAQ</h1>
+        <h1>FAQ</h1>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-sm-12">
-            <h2 class="text-primary">About Laminas and its governance</h2>
+            <h2>About Laminas and its governance</h2>
             
             <p>
                 In spinning the project into its own foundation, we needed to differentiate the
@@ -119,7 +121,7 @@ $this->layout('layout::default', ['title' => 'About the Foundation']);
                 <li>The Expressive subproject, which becomes <strong>Mezzio</strong>.</li>
             </ul>
 
-            <h2 class="text-primary">Governance</h2>
+            <h2>Governance</h2>
 
             <p>
                 The project is currently led by its <a href="<?= $this->url('about.tsc') ?>">
@@ -164,7 +166,7 @@ $this->layout('layout::default', ['title' => 'About the Foundation']);
         </div>
 
         <div class="col-md-6 col-sm-12">
-            <h2 class="text-primary">What has happened to Zend Framework?</h2>
+            <h2>What has happened to Zend Framework?</h2>
 
             <p>
                 All Zend Framework components, including the MVC runtime, has

@@ -26,7 +26,7 @@ $this->end();
 <div id="maintenance-overview" class="container">
     <div class="row mt-5">
         <div class="col">
-            <h1 class="page-header">Current Maintenance Status of Laminas & Mezzio Packages</h1>
+            <h1 class="fw-bolder mb-5">Current Maintenance Status of Laminas & Mezzio Packages</h1>
         </div>
     </div>
 
@@ -76,7 +76,7 @@ $this->end();
     </div>
     <div class="repository-container">
         <?php foreach($repositoryData as $organization => $orgData): ?>
-            <div class="repository-organization <?= $organization ?>">
+            <div class="repository-organization <?= $organization ?> rounded-4">
                 <h1><?= MaintenanceOverviewHandler::GITHUB_ORGANIZATIONS[$organization] ?? $organization ?></h1>
                 <div class="repository-card-container">
                     <?php
