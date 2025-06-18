@@ -18,36 +18,47 @@ openGraphDescription: 'Laminas MVC Is Retiring'
 
 The Laminas MVC (Model-View-Controller) framework has proven itself over the years as a viable solution for enterprise applications.
 Given its versatility, it was seen as a good starting point by many professional PHP developers.
-Still, a number of reasons have determined the members of the Laminas Technical Steering Committee (TSC) to discontinue Laminas MVC.
+However, the Laminas Technical Steering Committee (TSC) have decided to discontinue active development of Laminas MVC.
 
 <!--- EXTENDED -->
 
-In the first stage, which lasts until PHP 8.5 is released (estimated at November 2025), MVC will be marked as `security-only` (fixing security vulnerabilities) and after that it will be `archived` (no longer supported).
-In this article we will explore the reasoning behind the decision taken by the Laminas TCS members.
+Laminas MVC will be marked as `security-only` until PHP 8.5 is released _(This is likely to be around November 2025)_, and abandoned in packagist after this date.
+Projects in `security-only` mode only receive fixes for security vulnerabilities.
+Once MVC is abandoned, no additional releases will be made.
+In this article we will explore the reasoning behind the decision taken by the Laminas TSC members.
 
-### Why discontinue Laminas MVC?
+### Why Discontinue Laminas MVC?
 
-The **main reason** why MVC is set to be discontinued is that there is simply **no time and resources** to maintain it.
-This is reinforced by the **little activity on Laminas MVC** in the past few months - by users, contributors and maintainers.
-Many TSC members are seeing Laminas MVC as a legacy code that is more difficult to work with.
-Some have expressed a lack of desire to return to Laminas MVC after using **Mezzio** middleware.
+The **main reason** for the discontinuation of MVC is that there is simply **no time and resources** to maintain it.
+This is reinforced by the fact that **MVC has had little activity** in the past year - by users, contributors and maintainers.
+Many of the TSC members consider [Mezzio](https://github.com/mezzio/mezzio) and PSR-15 as a superior paradigm for web-based software development to the MVC pattern with its event driven mutable state.
+Quite simply, most TSC members moved to Mezzio a number of years ago and never looked back.
 
-TSC members have shifted their focus to [Mezzio](https://github.com/mezzio/mezzio) which is the better alternative, a worthy successor to MVC and the **second reason** for their decision regarding MVC.
+TSC members have shifted their focus to [Mezzio](https://github.com/mezzio/mezzio) as the better alternative, a worthy successor to MVC and the **second reason** for their decision regarding MVC.
 Having the **Mezzio alternative** ready to use makes letting go of MVC a lot easier.
-Mezzio and its dependencies are already a handful to maintain, but this framework has become the de facto solution for new projects of late.
+Mezzio and its dependencies are much easier to maintain, and this framework has become the de facto solution for new projects of late.
 
-### The steps leading to the discontinuation on MVC
+### The Steps Leading to the Eventual Discontinuation of MVC
 
 A major decision like discontinuing a central product cannot be taken lightly.
 The TSC members agree that Laminas MVC **cannot be archived** just yet, because it is **still in use** by many active applications.
 Instead it's going to be put in `security-only` mode until PHP 8.5 is released, to allow developers of legacy applications to update their code by the time MVC is fully abandoned and archived.
 The shift of focus toward **middleware**, PSR-7, PSR-15 and PSR-17 will be **actively publicized** as a collective effort by TSC members moving forward.
 
-### The middleware alternative
+### The Middleware Alternative
 
 As we have already mentioned, **Mezzio** is the recommended alternative to replace MVC.
 
-- Mezzio implements **PSRs** defined by the PHP Framework Interop Group to promote code consistency that leads to better code readability and maintainability:
+Some of the main selling points of Mezzio include:
+
+- Better and easier testability.
+- Easy entry with a flat learning curve.
+- Less framework coupling.
+- Improved interoperability with the wider ecosystem.
+- Better performance.
+- Less complexity.
+- Much improved long-term maintainability.
+- Mezzio implements **PSRs** defined by the PHP Framework Interop Group to promote code consistency, leading to better readability, testability and maintainability:
     - [PSR-7: HTTP message interfaces](https://www.php-fig.org/psr/psr-7/).
     - [PSR-15: HTTP Server Request Handlers](https://www.php-fig.org/psr/psr-15/).
 - Mezzio supports several **[PSR-11 Container](https://github.com/php-fig/container)** implementations:
@@ -55,9 +66,7 @@ As we have already mentioned, **Mezzio** is the recommended alternative to repla
     - Symfony DI Container.
     - PHP-DI.
     - chubbyphp-container.
-- There is a long list of **Laminas packages** that can be easily integrated into your project.
-They also implement PSRs.
-You decide what you want components to include in your application.
+- There is a long list of Laminas and third-party packages that can be integrated into your project: _You decide_ which components to include in your application.
 - The **Mezzio microframework** has a minimalist structure with 5 core components, which makes it easier to work with than MVC:
     - DI container.
     - Router.
@@ -68,14 +77,18 @@ You decide what you want components to include in your application.
 
 Basically, anything you can do with Laminas MVC can be done easier and better with Mezzio.
 
-### How to migrate from Laminas MVC to Mezzio
+### How to Migrate from Laminas MVC to Mezzio
 
-A laminas-mvc based application can be prepared to make the migration to Mezzio easier.
-The middleware and request handlers can already be used in the existing laminas-mvc application, which can then be adapted.
-The second step in the migration concerns the aging dependencies in legacy projects, some of which may already be discontinued, so their functionality needs to be replaced.
+There is no "One-size-fits-all" approach to migrating an MVC application to Mezzio.
+Some of the possible approaches include:
 
-The best course of action is to open a topic of discussion on the [Laminas discourse forum](https://discourse.laminas.dev/) or [Laminas github discussions](https://github.com/orgs/laminas/discussions).
-More often than not your application needs to be analyzed to figure out a customized solution.
+- Slowly migrating controllers to middleware pipelines using [laminas-mvc-middleware](https://docs.laminas.dev/laminas-mvc-middleware/).
+- Wrapping the entire application in middleware to implement the strangler pattern.
+- Performing a complete re-write of the application layer.
+
+The approach chosen depends on many factors such as how much coupling to framework code exists in your codebase and whether you have practiced dependency injection as your application has evolved.
+
+The [Laminas discourse forum](https://discourse.laminas.dev/) is always available for community Q and A.
 
 ### Additional resources
 
