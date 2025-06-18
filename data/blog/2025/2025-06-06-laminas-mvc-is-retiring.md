@@ -22,7 +22,7 @@ However, the Laminas Technical Steering Committee (TSC) have decided to disconti
 
 <!--- EXTENDED -->
 
-Laminas MVC will be marked as `security-only` until PHP 8.5 is released _(This is likely to be around November 2025)_, and abandoned in packagist after this date.
+Laminas MVC will be marked as `security-only` until PHP 8.5 is released _(This is likely to be around November 2025)_, and abandoned in Packagist after this date.
 Projects in `security-only` mode only receive fixes for security vulnerabilities.
 Once MVC is abandoned, no additional releases will be made.
 In this article we will explore the reasoning behind the decision taken by the Laminas TSC members.
