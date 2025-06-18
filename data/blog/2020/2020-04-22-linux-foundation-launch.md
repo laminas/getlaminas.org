@@ -22,6 +22,8 @@ CommunityBridge](https://funding.communitybridge.org/projects/laminas-project).
 Our goal is to raise enough money initially to help fund somebody to work
 part-time on the project.
 
+<!--- EXTENDED -->
+
 As our various worldwide economies begin opening up following the COVID-19
 outbreak, we will also renew our search for entities interested in funding via a
 corporate membership model, which will help provide funding longevity to the
