@@ -31,10 +31,11 @@ In this article we will explore the reasoning behind the decision taken by the L
 
 The **main reason** for the discontinuation of MVC is that there is simply **no time and resources** to maintain it.
 This is reinforced by the fact that **MVC has had little activity** in the past year - by users, contributors and maintainers.
+
 Many of the TSC members consider [Mezzio](https://github.com/mezzio/mezzio) and PSR-15 as a superior paradigm for web-based software development to the MVC pattern with its event driven mutable state.
 Quite simply, most TSC members moved to Mezzio a number of years ago and never looked back.
 
-TSC members have shifted their focus to [Mezzio](https://github.com/mezzio/mezzio) as the better alternative, a worthy successor to MVC and the **second reason** for their decision regarding MVC.
+TSC members have shifted their focus to [Mezzio](https://github.com/mezzio/mezzio) as the better alternative and modern successor to MVC and the **second reason** for their decision regarding MVC.
 Having the **Mezzio alternative** ready to use makes letting go of MVC a lot easier.
 Mezzio and its dependencies are much easier to maintain, and this framework has become the de facto solution for new projects of late.
 
@@ -75,7 +76,7 @@ Some of the main selling points of Mezzio include:
     - Handlers (based on PSR-7 and PSR-15 interfaces).
 - Mezzio can be used to **build any type of application**, whether it be an API or an HTML-based frontend.
 
-Basically, anything you can do with Laminas MVC can be done easier and better with Mezzio.
+Anything you can do with Laminas MVC can be done easier and better with Mezzio.
 
 ### How to Migrate from Laminas MVC to Mezzio
 
