@@ -1,18 +1,18 @@
 ---
-id: 2025-06-16-code-lifecycle
+id: 2025-06-20-code-lifecycle
 author: bidi
 title: 'Code Lifecycle'
 draft: false
 public: true
-created: '2025-06-16T11:00:00-01:00'
-updated: '2025-06-16T11:00:00-01:00'
+created: '2025-06-20T11:00:00-01:00'
+updated: '2025-06-20T11:00:00-01:00'
 tags:
   - software lifecycle
   - open source
   - maintainability
   - abandoning code
   - middleware
-openGraphImage: '2025-06-16-code-lifecycle.png'
+openGraphImage: '2025-06-20-code-lifecycle.png'
 openGraphDescription: 'Code Lifecycle'
 ---
 
@@ -100,10 +100,8 @@ For this reason, it's unreasonable to keep Laminas MVC up to date which requires
 
 ### Additional resources
 
-[TSC Minutes 2024-11-04](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2024-11-04-TSC-Minutes.md)
-
-[TSC Minutes 2025-05-05](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2025-05-05-TSC-Minutes.md)
-
-[Laminas MVC](https://github.com/laminas/laminas-mvc)
-
-[Laminas Service Manager](https://github.com/laminas/laminas-servicemanager)
+- [TSC Minutes 2024-11-04](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2024-11-04-TSC-Minutes.md)
+- [TSC Minutes 2025-05-05](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2025-05-05-TSC-Minutes.md)
+- [Laminas MVC](https://github.com/laminas/laminas-mvc)
+- [Laminas MVC Is Retiring](https://getlaminas.org/blog/2025-06-06-laminas-mvc-is-retiring.html)
+- [Laminas Service Manager](https://github.com/laminas/laminas-servicemanager)
