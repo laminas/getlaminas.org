@@ -58,12 +58,12 @@ $this->end();
                 </div>
             </article>
 
-            <aside class="col-md-4 d-sm-block sidebar blog gradient-background rounded-4">
-                <?php if ($post->toc): ?>
+            <?php if ($post->toc): ?>
+                <aside class="col-md-4 d-sm-block sidebar blog gradient-background rounded-4 p-2">
                     <h5>Table of Contents</h5>
                     <?= $post->toc ?>
-                <?php endif ?>
-            </aside>
+                </aside>
+            <?php endif ?>
         </div>
     </div>
 </div>
