@@ -23,7 +23,7 @@ $this->layout('layout::default', ['title' => 'Home']);
             <div class="homepage-card row g-0 h-100 border border-mezzio rounded-4">
                 <div class="homepage-card-info">
                     <img src="/images/laminas-mezzio-logo.svg" alt="Laminas-Mezzio-logo">
-                    <h5 class="fw-bolder mb-5">PHP Middleware in Minutes</h5>
+                    <h5 class="fw-bolder mb-5 mt-3">PHP Middleware in Minutes</h5>
                     <p class="text-primary">
                         Build PHP middleware applications, using the
                         PSR-7 (HTTP Messages) and PSR-15 (HTTP Request Handlers)
@@ -76,7 +76,7 @@ $this->layout('layout::default', ['title' => 'Home']);
             <div class="homepage-card row g-0 h-100 border border-components rounded-4">
                 <div class="homepage-card-info">
                     <img id="components-logo" src="/images/laminas-components-logo.svg" alt="Laminas-components-logo">
-                    <h5 class="fw-bolder mb-5">Enterprise-ready PHP components</h5>
+                    <h5 class="fw-bolder mb-5 mt-3">Enterprise-ready PHP components</h5>
 
                     <p class="text-primary">
                         Components for any PHP application, including dependency injection,
@@ -148,7 +148,7 @@ $this->layout('layout::default', ['title' => 'Home']);
 
         <div id="commercial-vendors-listing">
             <?php foreach ($commercialVendors as $commercialVendor): ?>
-                <div class="vendor-item">
+                <div class="vendor-item d-flex align-items-center">
                     <a href="<?= $commercialVendor['url'] ?>" target="_blank">
                         <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
                     </a>

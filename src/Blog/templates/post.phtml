@@ -23,15 +23,15 @@ $this->end();
 
 ?>
 
-<div class="row justify-content-center">
-    <div class="single-entry h-entry container blog-post-content">
+<div class="row g-0 justify-content-center">
+    <div class="single-entry h-entry container blog-post-content gradient-background rounded-4 p-2">
         <div class="row align-items-start my-5">
             <div class="col">
                 <h1>Blog</h1>
             </div>
         </div>
 
-        <div class="row align-items-start">
+        <div class="row g-0 align-items-start">
             <article class="col-md-8 blog">
                 <p>
                     <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>
@@ -58,7 +58,7 @@ $this->end();
                 </div>
             </article>
 
-            <aside class="col-md-4 d-sm-block sidebar blog">
+            <aside class="col-md-4 d-sm-block sidebar blog gradient-background rounded-4">
                 <?php if ($post->toc): ?>
                     <h5>Table of Contents</h5>
                     <?= $post->toc ?>

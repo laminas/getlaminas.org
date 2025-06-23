@@ -188,6 +188,14 @@ main {
 
 // Blog section
 
+.gradient-background {
+    border: 2px solid transparent !important;
+    background:
+        linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(to bottom right, #e7e5e7 25%, #740E8080 45%, #E81CFF 65%, #40C9FF 100%) !important;
+    background-origin: border-box !important;
+}
+
 .blog-post-content, .blog-card-content {
     margin: 2px;
     padding: .75em .75em .1em .75em;

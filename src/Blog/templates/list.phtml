@@ -35,8 +35,8 @@ $this->end();
             <?php /** @var GetLaminas\Blog\BlogPost $post */
             foreach ($posts as $post) : ?>
                 <div class="col-lg-4 col-sm-6 col-xs-12 mb-3 h-entry">
-                    <div class="card blog-card h-100 border-primary rounded-4">
-                        <div class="card-body">
+                    <div class="card h-100 rounded-4 gradient-background">
+                        <div class="card-body rounded-4">
                             <small class="text-body-secondary"><?= $post->created->format('d M, Y') ?></small>
 
                             <a class="text-primary link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= $this->postUrl($post) ?>">
