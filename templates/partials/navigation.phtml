@@ -19,7 +19,7 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
 };
 ?>
 <nav class="navbar navbar-expand-md bg-body fixed-top shadow">
-    <div class="container">
+    <div id="main-navbar" class="container">
         <a class="navbar-brand" href="/">
             <img src="/images/logo/laminas-foundation-rgb.svg" alt="Laminas Project"/>
         </a>
@@ -48,14 +48,14 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
                        href="<?= $this->url('blog') ?>">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://docs.laminas.dev">Docs</a>
+                    <a class="nav-link" href="https://docs.laminas.dev" target="_blank" >Docs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link<?= $isRouteSubpath('community.participate') ? ' active' : '' ?>"
                        href="<?= $this->url('community.participate') ?>">Community</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle<?= $isRouteSubpath('app.support') || $isRouteSubpath('app.commercial-vendor-program') ? ' active' : '' ?>"
+                    <a class="nav-link pe-0 dropdown-toggle<?= $isRouteSubpath('app.support') || $isRouteSubpath('app.commercial-vendor-program') ? ' active' : '' ?>"
                        href="<?= $this->url('app.support') ?>"
                        role="button"
                        data-bs-toggle="dropdown"

@@ -14,10 +14,11 @@ We detailed the meaning and some inner workings of Continuous Integration (**CI*
 
 CI is followed by **Continuous Delivery** (**CD**) which gets the code ready for deployment to the production or staging environment.
 This ensures that the code is ready to be released manually.
-**Continuous Deployment** goes one step further and automates the release itself.
-The development team has to decide on what CD is right for them, but in both cases the end result is more frequent and reliable software updates.
 
 <!--- EXTENDED -->
+
+**Continuous Deployment** goes one step further and automates the release itself.
+The development team has to decide on what CD is right for them, but in both cases the end result is more frequent and reliable software updates.
 
 ### Continuous Delivery vs. Continuous Deployment
 

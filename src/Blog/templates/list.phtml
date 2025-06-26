@@ -17,52 +17,41 @@ $this->push('scripts');
 echo $this->fetch('blog::scripts');
 $this->end();
 ?>
-<section class="blog container">
+<section class="blog container p-0">
     <div class="row align-items-start mt-5">
-        <div class="col">
-            <h1>
-                Blog
-                <?php if (isset($tag)) : ?>
-                    <small>Tag: <?= $this->escapeHtml($tag) ?></small>
-                <?php endif ?>
-            </h1>
-        </div>
+        <h1 class="fw-bolder mb-5">
+            Blog
+            <?php if (isset($tag)) : ?>
+                <small>Tag: <?= $this->escapeHtml($tag) ?></small>
+            <?php endif ?>
+        </h1>
     </div>
 
     <?php if (empty($posts)) : ?>
-    <div class="row mt-5"><p class="col text-center">No posts found.</p></div>
+        <div class="row"><p class="col text-center">No posts found.</p></div>
 
     <?php else : ?>
-    <?php /** @var GetLaminas\Blog\BlogPost $post */
-        foreach ($posts as $post) : ?>
-    <div class="row mt-3 h-entry">
-        <?php /*
-        <aside class="col-md-2 d-none d-sm-block alpha sidebar blog">
-            <p>
-                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>.
-            <?php if ($post->updated) : ?>
-                <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
-            <?php endif ?>
-            </p>
-        </aside>
+        <div class="row">
+            <?php /** @var GetLaminas\Blog\BlogPost $post */
+            foreach ($posts as $post) : ?>
+                <div class="col-lg-4 col-sm-6 col-xs-12 mb-3 h-entry">
+                    <div class="card h-100 rounded-4 gradient-background">
+                        <div class="card-body rounded-4">
+                            <small class="text-body-secondary"><?= $post->created->format('d M, Y') ?></small>
 
-         */ ?>
-        <section class="col-md-8 omega post-list">
-            <h4 class="entry"><a class="u-url u-uid" href="<?= $this->postUrl($post) ?>"><?= $this->escapeHtml($post->title) ?></a></h4>
+                            <a class="text-primary link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= $this->postUrl($post) ?>">
+                                <h4 class="card-title"><?= $this->escapeHtml($post->title) ?></h4>
+                            </a>
+                            <div class="card-text"><?= $post->body ?></div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
 
-            <div class="entry body p-summary"><?= $post->body ?></div>
-
-            <p>
-                <a href="<?= $this->postUrl($post) ?>">
-                    Continue reading
-                    <i class="bi-arrow-right"></i>
-                </a>
-            </p>
-        </section>
-    </div>
-    <?php endforeach ?>
-
-    <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
+        <div class="mt-4">
+            <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
+        </div>
 
     <?php endif ?>
     <a href="https://github.com/laminas/getlaminas.org/blob/master/ADD_BLOG_ENTRY.md" target="_blank">
