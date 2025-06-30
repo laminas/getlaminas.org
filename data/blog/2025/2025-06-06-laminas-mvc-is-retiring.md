@@ -16,9 +16,12 @@ openGraphImage: '2025-06-06-laminas-mvc-is-retiring.png'
 openGraphDescription: 'Laminas MVC Is Retiring'
 ---
 
-The Laminas MVC (Model-View-Controller) framework has proven itself over the years as a viable solution for enterprise applications.
+The **Laminas MVC (Model-View-Controller)** framework has proven itself over the years as a viable solution for enterprise applications.
 Given its versatility, it was seen as a good starting point by many professional PHP developers.
 However, the Laminas Technical Steering Committee (TSC) have decided to discontinue active development of Laminas MVC.
+
+> Laminas MVC is just one item in the Laminas toolbelt.
+> The [Laminas components](https://docs.laminas.dev/components/) and [Mezzio](https://docs.mezzio.dev/) are still in active development.
 
 <!--- EXTENDED -->
 
@@ -93,6 +96,7 @@ The [Laminas discourse forum](https://discourse.laminas.dev/) is always availabl
 
 ### Additional resources
 
+- [Laminas components](https://docs.laminas.dev/components/)
 - [Mezzio](https://github.com/mezzio/mezzio)
 - [What Is Mezzio? Why Would I Use It?](https://www.zend.com/resources/what-mezzio-why-would-i-use-it)
 - [Laminas ServiceManager 4](https://github.com/laminas/laminas-servicemanager)
