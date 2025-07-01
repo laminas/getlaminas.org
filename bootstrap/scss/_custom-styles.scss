@@ -210,6 +210,12 @@ main {
     }
 }
 
+.blog {
+    blockquote {
+        border-left: 2px solid grey;
+    }
+}
+
 // Footer section
 
 footer {
@@ -247,8 +253,8 @@ footer {
     }
 }
 
-.blockquote {
-    border-left: 2px solid $primary;
+blockquote {
+    border-left: 5px solid $primary;
     margin-left: 0.5em;
     padding-left: 0.5em;
 }
@@ -316,10 +322,6 @@ footer {
 
 .btn.btn-social:hover {
     color: #ffffff;
-}
-
-.blockquote {
-    border-left: 5px solid #013755;
 }
 
 a {
