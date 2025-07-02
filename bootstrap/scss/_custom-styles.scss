@@ -12,6 +12,14 @@
 //  }
 //}
 
+$max-section-width: 1100px;
+
+@media(max-width:1100px) {
+    .navbar, .footer, main {
+        padding: 0 1em !important;
+    }
+}
+
 body {
     padding-top: 98px;
     font-family: 'Quicksand', sans-serif;
@@ -22,18 +30,208 @@ body {
 main {
     color:            $black;
     background-color: $white;
+    .container {
+        max-width: $max-section-width;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
+
+.homepage-card {
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    padding: 2em 1.5em;
+}
+
+.homepage-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    img {
+        max-width: 250px;
+        min-width: 150px;
+    }
+
+    #components-logo {
+        max-width: 285px;
+    }
+}
+
+.homepage-card-image {
+    width: 100%;
+}
+
+#mezzio-essentials-book {
+    max-height: 290px;
+    transform: rotate(-5deg);
+}
+
+.homepage-card-button {
+    width: fit-content;
+    padding: 5px 15px;
+
+    &:hover{
+        color: white !important;
+    }
+}
+
+.homepage-card-info {
+    width: 60%;
+}
+
+.homepage-card-image-container {
+    width: 37%;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media(max-width:1150px) {
+    .homepage-card {
+        justify-content: space-evenly;
+        margin: 0 auto;
+    }
+
+    .homepage-card-info {
+        width: 100%;
+        padding: 0;
+    }
+
+    .homepage-card-image-container {
+        display: none;
+    }
+}
+
+.title-container {
+    margin: 130px auto;
+}
+
+.homepage-support-card {
+    width: 100%;
+    position: relative;
+    margin: 2.5em auto;
+    padding: 1em;
+    background: linear-gradient(#8ABDB5, #F1F1F1);
+    font-size: 125%;
+
+    .homepage-card-info {
+        width: 50%;
+    }
+
+    .homepage-card-image-container {
+        width: 37%;
+        display: flex;
+
+        .homepage-card-image {
+            flex-shrink: 0;
+            aspect-ratio: unset;
+            width: 100%;
+            height: fit-content;
+        }
+    }
+
+    #crowdfunding-logo {
+        max-width: 300px;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+    }
+}
+
+@media(max-width:576px) {
+    .homepage-support-card .homepage-card-image {
+        display: none;
+    }
+
+    .homepage-support-card {
+        display: flex;
+        flex-direction: column-reverse;
+        * {
+            width: 100% !important;
+        }
+    }
+
+    #crowdfunding-logo {
+        position: relative !important;
+        top: unset !important;
+        right: unset !important;
+    }
+}
+
+#support-button {
+    background: linear-gradient(to right top, #21D4FD, #0A2432);
+    i {
+        padding: .2em;
+        border-radius: 50%;
+        color: #013755;
+        background: #FFFFFF;
+    }
+}
+
+#commercial-vendor-section {
+    max-width: $max-section-width;
+}
+
+.commercial-vendor-card {
+    max-width: 350px !important;
+
+    .card-title {
+        color: #{map-get($laminas-colors, components)};
+        font-weight: bolder;
+    }
+
+    .homepage-card-button {
+        width: 80%;
+    }
+}
+
+// Blog section
+
+.gradient-background {
+    border: 2px solid transparent !important;
+    background:
+        linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(to bottom right, #e7e5e7 25%, #740E8080 45%, #E81CFF 65%, #40C9FF 100%) !important;
+    background-origin: border-box !important;
+}
+
+.blog-post-content, .blog-card-content {
+    margin: 2px;
+    padding: .75em .75em .1em .75em;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.blog-post-content {
+    h1, h2, h3, h4, h5, h6 {
+        color: $primary;
+    }
+}
+
+.blog {
+    blockquote {
+        border-left: 2px solid grey;
+    }
+}
+
+// Footer section
 
 footer {
     padding-top: 1em;
     padding-bottom: 1em;
 
-    a {
-        color: $white;
+    .footer-col {
+        max-width: 150px;
+    }
+
+    a, a:visited {
+        color: $white !important;
         text-decoration: underline;
     }
 
-    a:visited, a:hover {
+    a:hover {
         color: $gray-300;
         text-decoration: underline;
     }
@@ -48,6 +246,10 @@ footer {
             font-size: 2em;
             padding: map-get($spacers, 3) * 0.375;
         }
+    }
+
+    #footer-section {
+        max-width: $max-section-width;
     }
 }
 
@@ -146,6 +348,14 @@ html body {
     height: 100vh; /* 1 */
 }
 
+#main-navbar {
+    max-width: $max-section-width;
+    padding: 0;
+    .nav-item, .nav-link {
+        color: #090909 !important;
+    }
+}
+
 nav, footer {
     flex-shrink: 0; /* 2 */
 }
@@ -178,19 +388,11 @@ article {
 }
 
 /*
- * Repository data section
+ * Maintenance overview section
  */
-.repository-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1rem;
-}
 
-@media(max-width:600px) {
-    .repository-container {
-        flex-direction: column;
-    }
+#maintenance-overview {
+    max-width: $max-section-width;
 }
 
 .repo-property-value.active, {
@@ -233,18 +435,55 @@ article {
     --org-color: #{map-get($laminas-colors, api-tools)};
 }
 
+.repository-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+@media(max-width: 992px) {
+    .repository-organization {
+        flex: 0 0 calc(50% - 1em) !important;
+    }
+}
+
+@media(max-width:600px) {
+    .repository-container {
+        flex-direction: column;
+    }
+
+    .repository-organization {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
+
 .repository-organization {
     border: 1px solid var(--org-color);
-    border-radius: .25rem;
-    height: fit-content;
-    flex: 1 1 0px;
+    max-height: 600px;
+    min-height: 400px;
+    flex: 0 0 calc(25% - 1em);
+    overflow: scroll;
+    overflow-x: auto;
+
+    p {
+        margin-bottom: 8px;
+    }
 
     h1 {
-        color: white;
+        width: fit-content;
+        margin: 0 auto;
+        color: var(--org-color);
         font-size: 1.5rem;
+        font-weight: bolder;
         border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-        background-color: var(--org-color);
         padding: .75rem 1.25rem;
+    }
+
+    .card-title {
+        margin-bottom: 5px;
     }
 
     .card-body {
@@ -261,9 +500,10 @@ article {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid rgba(0,0,0,.125);
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-    padding: .5rem;
+    padding: .5rem 0;
     margin-bottom: .5rem;
 
     :last-child * {
@@ -295,7 +535,7 @@ article {
     background-color: #4e4e4e;
     color: #fff;
     border-radius: .25rem 0 0 .25rem;
-    padding: 0 .15rem
+    padding: 0 .15rem;
 }
 
 .repo-property-value {
@@ -310,7 +550,7 @@ article {
 .repository-data-text {
     font-size: .8rem;
     line-height: normal;
-    margin-bottom: .5rem;
+    margin-bottom: 8px;
 }
 
 #repository-last-updated {
@@ -325,38 +565,50 @@ article {
 }
 
 .homepage-listing {
-    .card {
-        margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    #commercial-vendors-listing {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
-    .card-title, .card-text {
-        margin-bottom: 1rem;
+    .vendor-item {
+        max-width: 25%;
+        height: 100px;
     }
 
-    .listing-icon {
-        font-size: 1.5rem;
+    #projects-listing, #sponsor-listing {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
     }
 
-    .card-footer {
-        p {
-            color: rgba(0,0,0,.7);
-            font-weight: bold;
-        }
-    }
-
-    .sponsor-item {
-        margin: 1rem 0;
+    .sponsor-item, .project-item {
+        max-width: calc(20% - 10px);
+        min-width: 160px;
+        height: 100px;
+        border: 1px solid #B9B9B9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: #FFFFFF;
+        flex: 1 1 calc(20% - 10px);
 
         img {
-            max-height: 2.5rem;
+            flex-shrink: 0;
+            max-width: 80%;
+            max-height: 80%
         }
     }
 
     .project-item {
-        margin: 1rem 0;
-
         img {
-            max-height: 2.5rem;
+            filter: grayscale(1);
         }
     }
 }

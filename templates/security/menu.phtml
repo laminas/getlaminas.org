@@ -14,7 +14,7 @@ $links = [
 $path = parse_url($this->serverurl(), PHP_URL_PATH);
 ?>
 
-<div class="card border border-primary rounded">
+<div class="card border border-primary rounded-4">
     <ul class="card-body nav flex-column">
     <?php foreach ($links as $url => $title) : ?>
         <li class="nav-item<?= ($path === $url) ? ' active' : '' ?>">
@@ -31,7 +31,7 @@ $path = parse_url($this->serverurl(), PHP_URL_PATH);
     </ul>
 </div>
 
-<div class="card border border-primary rounded mt-5">
+<div class="card border border-primary rounded-4 mt-5">
     <div class="card-body">
         <p class="card-text"><i class="bi-bug-fill"></i> Have you identified a security vulnerability?</p>
 

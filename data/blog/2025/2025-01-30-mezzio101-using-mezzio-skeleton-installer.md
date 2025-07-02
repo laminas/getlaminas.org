@@ -19,13 +19,13 @@ The difficulty doesn't come so much from the complex coding, but from the imprec
 Even if you start with clear goals in mind, the project can grow exponentially in complexity as time goes by.
 New technical requirements, new features, bug fixes and refactoring all get in the way of the developer resting on his laurels.
 
+<!--- EXTENDED -->
+
 One might argue the above are only possible in the programming world.
 We aren't building bridges here.
 
 We need a reliable, well-maintained starting point for our projects.
 This scaffolding should be a basis that allows us to expand as needed in the future.
-
-<!--- EXTENDED -->
 
 > This will be the first article of a series meant to showcase how to build a fully-operational application using Mezzio.
 

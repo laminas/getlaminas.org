@@ -22,43 +22,48 @@ $this->insert('blog::scripts');
 $this->end();
 
 ?>
-<div class="single-entry h-entry container">
-    <div class="row align-items-start mt-5">
-        <div class="col">
-            <h1><a href="<?= $this->url('blog') ?>">Blog</a></h1>
-        </div>
-    </div>
 
-    <div class="row align-items-start mt-5">
-        <article class="col-md-8 blog">
-            <h2 class="p-name"><?= $this->escapeHtml($post->title) ?></h2>
-
-            <div class="e-content">
-            <?= $post->body ?>
-
-            <?= $post->extended ?>
+<div class="row g-0 justify-content-center">
+    <div class="single-entry h-entry container blog-post-content gradient-background rounded-4 p-2">
+        <div class="row align-items-start my-5">
+            <div class="col">
+                <h1>Blog</h1>
             </div>
+        </div>
 
-            <p>
-                <a href="<?= $this->url('blog') ?>">
-                    <i class="bi-arrow-left"></i>
-                    Back to blog posts
-                </a>
-            </p>
-        </article>
+        <div class="row g-0 align-items-start">
+            <article class="col-md-8 blog">
+                <p>
+                    <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>
+                    <?= sprintf(' by %s', $this->postAuthor($post)) ?>
+                </p>
+                <h2 class="p-name"><?= $this->escapeHtml($post->title) ?></h2>
 
-        <aside class="col-md-4 d-sm-block sidebar blog">
-            <p>
-                Written on <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time><?= $post->author ? sprintf(' by %s', $this->postAuthor($post)) : '' ?>.
+                <div class="e-content">
+                    <?= $post->body ?>
 
-                <?php if ($post->updated) : ?>
-                <br />Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.
-                <?php endif ?>
-            </p>
+                    <?= $post->extended ?>
+                </div>
+
+                <div class="row justify-content-between">
+                    <p>
+                        <a href="<?= $this->url('blog') ?>">
+                            <i class="bi-arrow-left"></i>
+                            Back to blog posts
+                        </a>
+                    </p>
+                    <?php if ($post->updated) : ?>
+                        <p>Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.</p>
+                    <?php endif ?>
+                </div>
+            </article>
+
             <?php if ($post->toc): ?>
-                <h5>Table of Contents</h5>
-                <?= $post->toc ?>
+                <aside class="col-md-4 d-sm-block sidebar blog gradient-background rounded-4 p-2">
+                    <h5>Table of Contents</h5>
+                    <?= $post->toc ?>
+                </aside>
             <?php endif ?>
-        </aside>
+        </div>
     </div>
 </div>
