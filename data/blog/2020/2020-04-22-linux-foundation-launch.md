@@ -12,7 +12,7 @@ tags:
 ---
 
 Today, the [Linux Foundation formally announced that it now hosts the Laminas
-Project](https://www.linuxfoundation.org/blog/2020/04/linux-foundation-fosters-laminas-community/)!
+Project](https://www.linuxfoundation.org/blog/blog/linux-foundation-fosters-laminas-community)!
 
 [Our charter](https://github.com/laminas/technical-steering-committee/blob/master/CHARTER.md)
 became effective on March 24, 2020.
