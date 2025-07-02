@@ -6,6 +6,8 @@ draft: false
 public: true
 created: '2025-02-04T11:00:00-01:00'
 updated: '2025-02-04T11:00:00-01:00'
+opengraph-image:  2025-01.png
+opengraph-descritption: 'specific description for this page'
 tags:
     - meeting summary
 ---
@@ -16,9 +18,9 @@ The topics discussed included:
 - Creating a major release for [laminas-session](https://github.com/laminas/laminas-session).
 - Setting up email accounts for @getlaminas.org.
 - Dropping support for PHP 8.1 in future releases for Laminas packages.
-- New design and layout for [getlaminas.org](getlaminas.org).
+- New design and layout for [getlaminas.org](https://getlaminas.org).
 
-<!--- EXTENDED -->
+<!--- EXTENDED -->****
 ### Creating a major release for laminas-session
 
 Backward compatibility among dependencies is desirable to maintain support for as many versions as is reasonable.
