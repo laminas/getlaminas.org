@@ -21,6 +21,7 @@ The topics discussed included:
 - New design and layout for [getlaminas.org](https://getlaminas.org).
 
 <!--- EXTENDED -->****
+
 ### Creating a major release for laminas-session
 
 Backward compatibility among dependencies is desirable to maintain support for as many versions as is reasonable.
