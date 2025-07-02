@@ -92,7 +92,7 @@ return [
         [
             'name' => 'diasyst',
             'logo' => '/images/sponsors/diasyst.png',
-            'url'  => '',
+            'url'  => '#',
         ],
         [
             'name' => 'Webador',
