@@ -110,9 +110,15 @@ $this->layout('layout::default', ['title' => 'Home']);
 
         <div id="sponsor-listing" class="pt-1 pb-1">
             <?php foreach ($sponsors as $sponsor): ?>
-                <a class="sponsor-item col-sm-6 col-md-4 col-lg-4 rounded-4" href="<?= $sponsor['url'] ?>" target="_blank">
-                    <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
-                </a>
+                <?php if (isset($sponsor['url']) && filter_var($sponsor['url'], FILTER_VALIDATE_URL)  ): ?>
+                    <a class="sponsor-item col-sm-6 col-md-4 col-lg-4 rounded-4" href="<?= $sponsor['url'] ?>" target="_blank">
+                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
+                    </a>
+                <?php else : ?>
+                    <div class="sponsor-item col-sm-6 col-md-4 col-lg-4 rounded-4">
+                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($sponsor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($sponsor['name']) ?>">
+                    </div>
+                <?php endif ?>
             <?php endforeach ?>
         </div>
 
@@ -148,11 +154,15 @@ $this->layout('layout::default', ['title' => 'Home']);
 
         <div id="commercial-vendors-listing">
             <?php foreach ($commercialVendors as $commercialVendor): ?>
-                <div class="vendor-item d-flex align-items-center">
-                    <a href="<?= $commercialVendor['url'] ?>" target="_blank">
+                <?php if (isset($commercialVendor['url']) && filter_var($commercialVendor['url'], FILTER_VALIDATE_URL)  ): ?>
+                    <a class="vendor-item d-flex align-items-center" href="<?= $commercialVendor['url'] ?>" target="_blank">
                         <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
                     </a>
-                </div>
+                <?php else : ?>
+                    <div class="vendor-item d-flex align-items-center">
+                        <img class="img-fluid" src="<?= $this->escapeHtmlAttr($commercialVendor['logo']) ?>" alt="<?= $this->escapeHtmlAttr($commercialVendor['name']) ?>">
+                    </div>
+                <?php endif ?>
             <?php endforeach ?>
         </div>
 
