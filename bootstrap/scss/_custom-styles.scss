@@ -312,20 +312,12 @@ blockquote {
     padding-top: 2rem;
 }
 
-.btn {
-    color: #dee2e6;
-}
-
-.btn.btn-social {
-    color: $success;
-}
-
-.btn.btn-social:hover {
-    color: #ffffff;
-}
-
 a {
     color: $success;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 footer a {
