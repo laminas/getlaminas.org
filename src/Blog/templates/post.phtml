@@ -23,47 +23,51 @@ $this->end();
 
 ?>
 
-<div class="row g-0 justify-content-center">
-    <div class="single-entry h-entry container blog-post-content gradient-background rounded-4 p-2">
-        <div class="row align-items-start my-5">
-            <div class="col">
-                <h1>Blog</h1>
-            </div>
+<div class="blog container p-0">
+    <div class="row align-items-start mt-5">
+        <div class="col">
+            <h1 class="fw-bolder mb-5">Blog</h1>
         </div>
+    </div>
 
-        <div class="row g-0 align-items-start">
-            <article class="col-md-8 blog">
-                <p>
-                    <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>
-                    <?= sprintf(' by %s', $this->postAuthor($post)) ?>
-                </p>
-                <h2 class="p-name"><?= $this->escapeHtml($post->title) ?></h2>
+    <div class="row g-0 align-items-start gradient-background rounded-4 p-4">
+        <article class="col-md-8 blog">
+            <p>
+                <time class="dt-published" datetime="<?= $this->formatDateRfc($post->created) ?>"><?= $this->formatDate($post->created) ?></time>
+                <?= sprintf(' by %s', $this->postAuthor($post)) ?>
+            </p>
+            <h2 class="p-name"><?= $this->escapeHtml($post->title) ?></h2>
 
-                <div class="e-content">
-                    <?= $post->body ?>
+            <div class="e-content">
+                <?= $post->body ?>
 
-                    <?= $post->extended ?>
-                </div>
+                <?= $post->extended ?>
+            </div>
+        </article>
 
-                <div class="row justify-content-between">
+        <?php if ($post->toc): ?>
+            <aside class="col-md-4 d-sm-block sidebar blog px-4 mt-5">
+                <h5>Table of Contents</h5>
+                <?= $post->toc ?>
+
+                <?php if ($post->updated) : ?>
                     <p>
-                        <a href="<?= $this->url('blog') ?>">
-                            <i class="bi-arrow-left"></i>
-                            Back to blog posts
-                        </a>
+                        Last updated on
+                        <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>">
+                            <?= $this->formatDate($post->updated) ?>
+                        </time>.
                     </p>
-                    <?php if ($post->updated) : ?>
-                        <p>Last updated on <time class="dt-updated" datetime="<?= $this->formatDateRfc($post->updated) ?>"><?= $this->formatDate($post->updated) ?></time>.</p>
-                    <?php endif ?>
-                </div>
-            </article>
+                <?php endif ?>
+            </aside>
+        <?php endif ?>
+    </div>
 
-            <?php if ($post->toc): ?>
-                <aside class="col-md-4 d-sm-block sidebar blog gradient-background rounded-4 p-2">
-                    <h5>Table of Contents</h5>
-                    <?= $post->toc ?>
-                </aside>
-            <?php endif ?>
+    <div class="pagination mt-4">
+        <div class="page-item">
+            <a href="<?= $this->url('blog') ?>" class="page-link rounded-4 gradient-background">
+                <i class="bi bi-arrow-left"></i>
+                <span class="sr-only">Back to blog posts</span>
+            </a>
         </div>
     </div>
 </div>
