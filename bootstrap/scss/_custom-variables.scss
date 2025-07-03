@@ -39,9 +39,7 @@ $custom-theme-colors: (
   "essentials":  map-get($laminas-colors, essentials),
 );
 
-// Enabling shadows, gradients, responsive font
-$enable-shadows: true;
-$enable-gradients: true;
+// Enabling responsive font
 $enable-responsive-font-sizes: true;
 
 // Colors
