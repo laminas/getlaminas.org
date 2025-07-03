@@ -28,8 +28,6 @@ body {
 }
 
 main {
-    color:            $black;
-    background-color: $white;
     .container {
         max-width: $max-section-width;
         padding-left: 0;
@@ -375,6 +373,8 @@ pre[class*=language-] {
 }
 
 article {
+    background-color: $white;
+
     img {
         max-width: 100%;
     }

@@ -14,13 +14,14 @@ $laminas-colors: (
 
 // Colors
 $header-footer-font-color: #fff;
-$footer-bg-color: #0A3E5C;
+$footer-bg-color: hsl(201, 98%, 6%);
 $separater-color: #efefef;
 $text-color-secondary: rgb(119, 119, 119);
 $text-color-reduced: rgb(150, 152, 154);
 $overiew-body-bg: #f9fafb;
 $code-sample-bg-color: rgb(60, 65, 70);
 $donation-color: rgb(14, 109, 212);
+$card-bg: #fff;
 
 // Changing the theme colors
 $primary:       map-get($laminas-colors, laminas);
@@ -51,7 +52,7 @@ $link-color: $brand-primary;
 $primary: $brand-primary;
 
 // Changing the body background and text
-$body-bg: #ffffff;
+$body-bg: #f9fafb;
 $body-color: #000000;
 
 // Changing the border radius of buttons
