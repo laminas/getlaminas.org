@@ -378,4 +378,29 @@
       <code><![CDATA[$data]]></code>
     </MixedArgumentTypeCoercion>
   </file>
+  <file src="vendor/symfony/console/Command/Command.php">
+    <DeprecatedMethod>
+      <code><![CDATA[static::getDefaultDescription()]]></code>
+      <code><![CDATA[static::getDefaultName()]]></code>
+    </DeprecatedMethod>
+    <InvalidFunctionCall>
+      <code><![CDATA[$this(...)]]></code>
+    </InvalidFunctionCall>
+    <InvalidPropertyAssignment>
+      <code><![CDATA[$this]]></code>
+    </InvalidPropertyAssignment>
+    <MixedArgument>
+      <code><![CDATA[$name]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$name]]></code>
+    </MixedAssignment>
+    <NoValue>
+      <code><![CDATA[$this]]></code>
+      <code><![CDATA[$this]]></code>
+    </NoValue>
+    <PossiblyUndefinedVariable>
+      <code><![CDATA[$defaultName]]></code>
+    </PossiblyUndefinedVariable>
+  </file>
 </files>
