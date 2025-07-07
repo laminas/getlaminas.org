@@ -557,11 +557,19 @@ article {
             width: 4em;
             aspect-ratio: 1;
             border-radius: 5%;
+
+            @media(max-width:350px) {
+                display: none;
+            }
         }
 
         .default-package-image {
             font-size: 4em;
             border-radius: 5%;
+
+            @media(max-width:350px) {
+                display: none;
+            }
         }
 
         .card-header {
@@ -597,10 +605,6 @@ article {
     display: flex;
     flex-direction: column;
     gap: 1em;
-}
-
-#ecosystem-navbar button {
-    color: #00131e
 }
 
 .ecosystem-package {
@@ -667,14 +671,9 @@ article {
 }
 
 #ecosystem-search-container {
-    margin: .5em 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    input {
-        margin-left: 1em;
-    }
 }
 
 #packageNavbarToggle {

@@ -378,9 +378,4 @@
       <code><![CDATA[$data]]></code>
     </MixedArgumentTypeCoercion>
   </file>
-  <file src="vendor/symfony/console/Command/Command.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[$name]]></code>
-    </PossiblyNullArgument>
-  </file>
 </files>

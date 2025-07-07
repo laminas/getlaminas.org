@@ -57,12 +57,12 @@ function handleParams(filterKey, filterValue) {
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
 
-    if (! params.has(filterKey, filterValue)) {
-        url.searchParams.set(filterKey, filterValue);
+    if (filterValue === 'all' || params.get(filterKey) === filterValue) {
+        url.searchParams.delete(filterKey);
 
         window.location.replace(url.toString());
-    } else if (params.get(filterKey) === filterValue) {
-        url.searchParams.delete(filterKey);
+    } else if (! params.has(filterKey, filterValue)) {
+        url.searchParams.set(filterKey, filterValue);
 
         window.location.replace(url.toString());
     }
