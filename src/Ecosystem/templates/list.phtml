@@ -26,25 +26,26 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
             <h5>Third party packages which provide explicit support for Laminas packages</h5>
         </div>
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div id="ecosystem-navbar" class="container-fluid">
-                <div class="d-flex justify-content-between" id="ecosystem-search-container">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#packageNavbarToggle" aria-controls="packageNavbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+        <div class="container">
+            <div class="row flex-lg-row">
+                <div class="col-lg-4 d-flex justify-content-between" id="ecosystem-search-container">
+                    <button class="btn border-primary d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#packageSearchBar" aria-controls="packageSearchBar" aria-expanded="true" aria-label="Toggle search bar">
+                        <span><i class="bi bi-list"></i></span>
                     </button>
 
                     <div class="input-group">
                         <input type="text" id="ecosystem-search" class="form-control mr-sm-2" aria-label="Search" aria-describedby="ecosystem-search-btn" value="<?= $search ?>">
-                        <button id="ecosystem-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button"><i class="bi bi-search"></i></button>
+                        <button id="ecosystem-search-btn" class="btn border-primary my-sm-0" type="button"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse" id="packageNavbarToggle">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-success">Type</button>
-                        <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class=""><?= $type ?? '' ?></span>
+                <div class="col-lg-8 collapse d-lg-flex gap-2" data-bs-parent="#packageSearchBar" id="packageSearchBar">
+                    <div class="btn-group mt-2 mt-lg-0">
+                        <button type="button" class="btn border-primary pe-none">Type</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><?= $type ?? 'All' ?></span>
                         </button>
                         <ul class="dropdown-menu">
+                            <li><button type="button" class="package-button type dropdown-item<?php if (! isset($type)) : ?> active<?php endif; ?>" data-value="all" href="#">All</button></li>
                             <?php foreach (EcosystemTypeEnum::cases() as $case): ?>
                                 <?php if ($case->name === $type): ?>
                                     <li><a class="package-button type dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
@@ -55,12 +56,14 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                         </ul>
                     </div>
 
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-success">Usage</button>
-                        <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class=""><?= $usage ?? '' ?></span>
+                    <div class="btn-group mt-2 mt-lg-0">
+                        <button type="button" class="btn border-primary pe-none">Usage</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><?= $usage ?? 'All' ?></span>
                         </button>
                         <ul class="dropdown-menu">
+                            <li><button type="button" class="package-button usage dropdown-item<?php if (! isset($usage)) : ?> active<?php endif; ?>" data-value="all" href="#">All</button></li>
+
                             <?php foreach (EcosystemUsageEnum::cases() as $case): ?>
                                 <?php if ($case->name === $usage): ?>
                                     <li><a class="package-button usage dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
@@ -71,12 +74,14 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                         </ul>
                     </div>
 
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-success">Category</button>
-                        <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class=""><?= $category ?? '' ?></span>
+                    <div class="btn-group mt-2 mt-lg-0">
+                        <button type="button" class="btn border-primary pe-none">Category</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><?= $category ?? 'All' ?></span>
                         </button>
                         <ul class="dropdown-menu">
+                            <li><button type="button" class="package-button category dropdown-item<?php if (! isset($category)) : ?> active<?php endif; ?>" data-value="all" href="#">All</button></li>
+
                             <?php foreach (EcosystemCategoryEnum::cases() as $case): ?>
                                 <?php if ($case->name === $category): ?>
                                     <li><a class="package-button category dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
@@ -88,17 +93,16 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                     </div>
 
                     <?php if ($type || $usage || $category || $search) : ?>
-                        <div class="btn-group">
-                            <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear filters <i class="bi bi-x-circle"></i></button>
+                        <div class="btn-group mt-2 mt-lg-0">
+                            <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear <i class="bi bi-x-circle"></i></button>
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
-        </nav>
-
+        </div>
         <div id="ecosystem-filter-container">
             <?php foreach($keywords as $keyword) : ?>
-                <p class="ecosystem-filter keyword" data-value="<?= $keyword ?>"><?= $keyword ?> <i class="bi bi-x-circle"></i></p>
+                <button type="button" class="ecosystem-filter keyword" data-value="<?= $keyword ?>"><?= $keyword ?> <i class="bi bi-x-circle"></i></button>
             <?php endforeach?>
         </div>
     </div>
@@ -106,7 +110,7 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
     <div class="row gy-5">
         <?php foreach($ecosystemPackages as $package): ?>
         <div class="card-group col-sm-12 col-md-6 col-xl-4">
-            <div class="card">
+            <div class="card gradient-background rounded-4">
                 <div class="card-body">
                     <?php if ($package->abandoned) : ?>
                         <p class="card-text details-item abandoned-package rounded-top fw-bold">

@@ -302,7 +302,7 @@ class CreateEcosystemDatabase extends Command
         }
 
         $packagistUrl = sprintf(
-            'https://repo.packagist.org/packages/%s.json',
+            'https://packagist.org/packages/%s.json',
             $urlComponents[1]
         );
         curl_setopt($this->curl, CURLOPT_URL, $packagistUrl);
