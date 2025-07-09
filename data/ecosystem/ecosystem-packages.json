@@ -61,7 +61,7 @@
   },
   {
     "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
-    "keywords": ["middleware", "doctrine", "psr"],
+    "keywords": ["intentional-duplicate"],
     "homepage": "",
     "category": "integration"
   },

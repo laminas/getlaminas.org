@@ -29,6 +29,7 @@ use function file_get_contents;
 use function filter_var;
 use function getcwd;
 use function implode;
+use function in_array;
 use function is_array;
 use function is_string;
 use function json_decode;
@@ -53,9 +54,8 @@ class CreateEcosystemDatabase extends Command
 
     private CurlHandle $curl;
     private CurlHandle $githubCurl;
-    private ?string $ghToken     = null;
-    private bool $forceRebuild   = false;
-    private array $validPackages = [];
+    private ?string $ghToken   = null;
+    private bool $forceRebuild = false;
     public PdoMapper $mapper;
 
     /** @var string[] */
@@ -218,8 +218,27 @@ class CreateEcosystemDatabase extends Command
         $pdo = $this->createDatabase($dbFile);
         $this->initCurl();
 
+        $validPackages = [];
         /** @var array{packagistUrl: string, keywords: array<string>, homepage: string, category: string} $userData */
         foreach ($userDataArray as $userData) {
+            $urlComponents = [];
+            preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $urlComponents);
+
+            if (in_array($urlComponents[1], $validPackages)) {
+                continue;
+            }
+
+            $validPackages[] = $urlComponents[1];
+
+            if (! $this->forceRebuild) {
+                $existingPackage = $this->mapper->searchPackage($urlComponents[1]);
+                if ($existingPackage !== null && $existingPackage !== []) {
+                    continue;
+                }
+            }
+
+            $userData['packagistUrl'] = $urlComponents[1];
+
             $curlResult = $this->getPackageData($userData);
             if ($curlResult === null) {
                 continue;
@@ -235,7 +254,7 @@ class CreateEcosystemDatabase extends Command
 
         if (! $this->forceRebuild) {
             $currentPackages = $this->mapper->getPackagesTitles();
-            $removedPackages = array_diff($currentPackages, $this->validPackages);
+            $removedPackages = array_diff($currentPackages, $validPackages);
             /** @var string $package */
             foreach ($removedPackages as $package) {
                 $this->mapper->deletePackageByName($package);
@@ -285,20 +304,9 @@ class CreateEcosystemDatabase extends Command
      */
     private function getPackageData(array $userData): ?array
     {
-        $urlComponents = [];
-        preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $urlComponents);
-
-        if (! $this->forceRebuild) {
-            $this->validPackages[] = $urlComponents[1];
-            $existingPackage       = $this->mapper->searchPackage($urlComponents[1]);
-            if ($existingPackage !== null && $existingPackage !== []) {
-                return null;
-            }
-        }
-
         $packagistUrl = sprintf(
             'https://packagist.org/packages/%s.json',
-            $urlComponents[1]
+            $userData['packagistUrl']
         );
         curl_setopt($this->curl, CURLOPT_URL, $packagistUrl);
         $rawResult = curl_exec($this->curl);

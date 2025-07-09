@@ -152,7 +152,7 @@ class SeedEcosystemDatabase extends Command
     private function getPackageData(array $package): array
     {
         $packagistUrl = sprintf(
-            'https://repo.packagist.org/packages/%s.json',
+            'https://packagist.org/packages/%s.json',
             $package['name'],
         );
         curl_setopt($this->curl, CURLOPT_URL, $packagistUrl);
