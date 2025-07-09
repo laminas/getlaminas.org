@@ -149,13 +149,13 @@ function formatDownloads(int $downloads): string {
                     <div class="container">
                         <div class="row justify-content-between">
                             <?php if ($package->repository) : ?>
-                                <p class="col mb-2">
+                                <p class="col-auto mb-2">
                                     <i class="bi-github"></i>
                                     <a href="<?= $package->repository ?>" target="_blank">Source</a>
                                 </p>
                             <?php endif; ?>
-                            <p class="col mb-3"><i class="bi bi-download"></i> <?= formatDownloads($package->downloads) ?></p>
-                            <p class="col mb-3"><i class="bi bi-star"></i> <?= $package->stars ?></p>
+                            <p class="col-auto mb-3"><i class="bi bi-download"></i> <?= formatDownloads($package->downloads) ?></p>
+                            <p class="col-auto mb-3"><i class="bi bi-star"></i> <?= $package->stars ?></p>
                         </div>
                         <p class="card-text"><?= $package->description ?></p>
                     </div>
