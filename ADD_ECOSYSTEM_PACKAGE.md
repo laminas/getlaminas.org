@@ -34,8 +34,7 @@ composer build
   "packagistUrl": "",
   "keywords": [],
   "homepage": "",
-  "category": "",
-  "usage": ""
+  "category": ""
 }
 ```
 
@@ -52,6 +51,3 @@ composer build
 
 - `category`
   **string** - package category must be one of "skeleton", "integration", "tool"
-
-- `usage`
-  **string** - package usage must be one of "mezzio" or "mvc"

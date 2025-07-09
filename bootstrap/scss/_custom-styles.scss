@@ -540,8 +540,6 @@ article {
     }
 
     .card {
-        height: 400px;
-
         .abandoned-package {
             position: absolute;
             top: 0;
@@ -627,9 +625,6 @@ article {
         flex: 1;
         border-left: 1px solid grey;
         padding-left: 1em;
-    }
-    .statistics-item {
-        margin-bottom: .5em;
     }
 }
 
