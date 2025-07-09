@@ -63,7 +63,6 @@ class CreateEcosystemDatabase extends Command
         'CREATE INDEX keywords ON packages ( keywords )',
         'CREATE INDEX category ON packages ( category )',
         'CREATE INDEX "type" ON packages ( type )',
-        'CREATE INDEX "usage" ON packages ( usage )',
         'CREATE INDEX package_name ON packages ( name )',
     ];
 
@@ -76,7 +75,6 @@ class CreateEcosystemDatabase extends Command
             %s AS repository,
             %d AS abandoned,
             %s AS description,
-            %s AS "usage",
             %d AS created,
             %d AS updated,
             %s AS category,
@@ -97,7 +95,6 @@ class CreateEcosystemDatabase extends Command
         %d,
         %s,
         %s,
-        %s,
         %d,
         %d,
         %s,
@@ -116,7 +113,6 @@ class CreateEcosystemDatabase extends Command
             repository VARCHAR(255) NOT NULL,
             abandoned TINYINT NOT NULL,
             description TEXT NOT NULL,
-            usage VARCHAR(255) NOT NULL,
             created UNSIGNED INTEGER NOT NULL,
             updated UNSIGNED INTEGER NOT NULL,
             category VARCHAR(255) NOT NULL,
@@ -222,7 +218,7 @@ class CreateEcosystemDatabase extends Command
         $pdo = $this->createDatabase($dbFile);
         $this->initCurl();
 
-        /** @var array{packagistUrl: string, keywords: array<string>, homepage: string, category: string, usage: string} $userData */
+        /** @var array{packagistUrl: string, keywords: array<string>, homepage: string, category: string} $userData */
         foreach ($userDataArray as $userData) {
             $curlResult = $this->getPackageData($userData);
             if ($curlResult === null) {
@@ -284,8 +280,7 @@ class CreateEcosystemDatabase extends Command
      *     packagistUrl: string,
      *      keywords: array<string>,
      *      homepage: string,
-     *      category: string,
-     *      usage: string
+     *      category: string
      * } $userData
      */
     private function getPackageData(array $userData): ?array
@@ -365,7 +360,6 @@ class CreateEcosystemDatabase extends Command
             'issues'       => $packageData['github_open_issues'],
             'downloads'    => $packageData['downloads']['total'],
             'abandoned'    => (int) isset($packageData['abandoned']),
-            'usage'        => $userData['usage'],
             'category'     => $userData['category'],
             'packagistUrl' => $userData['packagistUrl'],
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
@@ -387,7 +381,6 @@ class CreateEcosystemDatabase extends Command
             $pdo->quote($package->repository),
             (int) $package->abandoned,
             $pdo->quote($package->description),
-            $pdo->quote($package->usage->value),
             $package->created->getTimestamp(),
             $package->updated->getTimestamp(),
             $pdo->quote($package->category->value),

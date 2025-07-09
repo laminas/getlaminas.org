@@ -14,7 +14,7 @@ jobs:
       - run: |
           packages=$(cat ./data/ecosystem/ecosystem-packages.json);
           if [ ! -z "$packages" ] && [ $(echo $packages | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; then
-            for key in packagistUrl keywords homepage category usage; do
+            for key in packagistUrl keywords homepage category; do
               if ! $(echo $packages | jq ".[]" | jq "has(\"$key\")" | jq 'select(. == false)'); then
                 echo "Invalid JSON. Missing key \"$key\"."
                 exit 1;

@@ -7,7 +7,6 @@ namespace GetLaminas\Ecosystem;
 use DateTimeInterface;
 use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
 use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
-use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 
 class EcosystemPackage
 {
@@ -22,7 +21,6 @@ class EcosystemPackage
         public string $repository,
         public bool $abandoned,
         public string $description,
-        public EcosystemUsageEnum $usage,
         public DateTimeInterface $created,
         public DateTimeInterface $updated,
         public EcosystemCategoryEnum $category,

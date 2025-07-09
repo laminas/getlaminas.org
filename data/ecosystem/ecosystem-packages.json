@@ -3,77 +3,78 @@
     "packagistUrl": "https://packagist.org/packages/akrabat/ip-address-middleware",
     "keywords": ["ip", "address", "middleware"],
     "homepage": "",
-    "category": "tool",
-    "usage": "mezzio"
+    "category": "tool"
   },
   {
     "packagistUrl": "https://packagist.org/packages/netglue/laminas-messenger",
     "keywords": ["laminas", "messenger"],
     "homepage": "",
-    "category": "tool",
-    "usage":  "mezzio"
+    "category": "tool"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
     "keywords": ["error-handling"],
     "homepage": "https://dotkernel.com",
-    "category": "integration",
-    "usage":  "mezzio"
+    "category": "integration"
   },
   {
     "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
     "keywords": ["middleware", "doctrine"],
     "homepage": "",
-    "category": "integration",
-    "usage":  "mezzio"
+    "category": "integration"
   },
   {
     "packagistUrl": "https://packagist.org/packages/asgrim/mini-mezzio",
     "keywords": ["mezzio"],
     "homepage": "",
-    "category": "skeleton",
-    "usage":  "mezzio"
-  },
-  {
-    "packagistUrl": "https://packagist.org/packages/phly/phly-simple-page",
-    "keywords": ["mvc"],
-    "homepage": "https://github.com/phly/PhlySimplePage",
-    "category": "tool",
-    "usage":  "mvc"
+    "category": "skeleton"
   },
   {
     "packagistUrl": "https://packagist.org/packages/mezzio/mezzio-aurarouter",
     "keywords": ["middleware", "http"],
     "homepage": "",
-    "category": "tool",
-    "usage":  "mezzio"
+    "category": "tool"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/api",
     "keywords": ["rest", "api"],
     "homepage": "",
-    "category": "skeleton",
-    "usage":  "mezzio"
+    "category": "skeleton"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/frontend",
     "keywords": ["frontend-application"],
     "homepage": "www.dotkernel.com",
-    "category": "skeleton",
-    "usage":  "mezzio"
+    "category": "skeleton"
   },
   {
-    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-rbac-mvc",
-    "keywords": ["mvc", "rbac", "permissions"],
+    "packagistUrl": "https://packagist.org/packages/ramsey/uuid",
+    "keywords": ["uuid", "guid"],
     "homepage": "",
-    "category": "tool",
-    "usage":  "mvc"
+    "category": "tool"
   },
   {
-    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-cors",
-    "keywords": ["mvc", "cors"],
+    "packagistUrl": "https://packagist.org/packages/ramsey/uuid-doctrine",
+    "keywords": ["doctrine" ,"uuid", "guid"],
     "homepage": "",
-    "category": "tool",
-    "usage":  "mvc"
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
+    "keywords": ["middleware", "doctrine", "psr"],
+    "homepage": "",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/league/commonmark",
+    "keywords": ["markdown", "parser"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/filp/whoops",
+    "keywords": ["middleware", "error-handling"],
+    "homepage": "",
+    "category": "tool"
   }
 ]

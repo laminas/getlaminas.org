@@ -7,7 +7,6 @@ namespace GetLaminas\Ecosystem\Handler;
 use GetLaminas\Ecosystem\EcosystemPackage;
 use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
 use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
-use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 use GetLaminas\Ecosystem\Mapper\MapperInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -50,10 +49,7 @@ class EcosystemHandler implements RequestHandlerInterface
         $category = $queryParams['category'] ?? '';
         assert(is_string($category));
         $category = EcosystemCategoryEnum::tryFrom($category)?->name;
-        $usage    = $queryParams['usage'] ?? '';
-        assert(is_string($usage));
-        $usage  = EcosystemUsageEnum::tryFrom($usage)?->name;
-        $search = $queryParams['q'] ?? '';
+        $search   = $queryParams['q'] ?? '';
         assert(is_string($search));
 
         $packages = $this->ecosystemMapper->fetchAllByFilters(
@@ -65,7 +61,6 @@ class EcosystemHandler implements RequestHandlerInterface
                     ) : null,
                 'type'     => [$type],
                 'category' => [$category],
-                'usage'    => [$usage],
             ],
             $search
         );
@@ -98,21 +93,15 @@ class EcosystemHandler implements RequestHandlerInterface
                 $categoryQuery = '&category=' . strtolower($category);
             }
 
-            $usageQuery = '';
-            if ($usage !== null) {
-                $usageQuery = '&usage=' . strtolower($usage);
-            }
-
             return new RedirectResponse(
                 sprintf(
-                    '%s?page=%d%s%s%s%s%s',
+                    '%s?page=%d%s%s%s%s',
                     $path,
                     count($packages),
                     $keywordsQuery,
                     $searchQuery,
                     $typeQuery,
                     $categoryQuery,
-                    $usageQuery
                 )
             );
         }
@@ -127,8 +116,7 @@ class EcosystemHandler implements RequestHandlerInterface
                 $keywords,
                 $search,
                 $type,
-                $category,
-                $usage
+                $category
             ),
         ));
     }
@@ -169,8 +157,7 @@ class EcosystemHandler implements RequestHandlerInterface
         array $keywords,
         string $search,
         ?string $typeQuery,
-        ?string $categoryQuery,
-        ?string $usageQuery
+        ?string $categoryQuery
     ): array {
         return [
             ...[
@@ -180,7 +167,6 @@ class EcosystemHandler implements RequestHandlerInterface
                 'search'            => $search,
                 'type'              => $typeQuery,
                 'category'          => $categoryQuery,
-                'usage'             => $usageQuery,
             ],
         ];
     }
