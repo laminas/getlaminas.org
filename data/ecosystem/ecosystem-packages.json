@@ -76,5 +76,11 @@
     "keywords": ["middleware", "error-handling"],
     "homepage": "",
     "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/light",
+    "keywords": ["middleware", "skeleton"],
+    "homepage": "",
+    "category": "skeleton"
   }
 ]
