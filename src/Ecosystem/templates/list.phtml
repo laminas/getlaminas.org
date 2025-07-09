@@ -10,14 +10,26 @@ declare(strict_types=1);
  * @var string $search
  * @var string $type
  * @var string $category
- * @var string $usage
  */
 
 use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
 use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
-use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 
 $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
+
+function formatDownloads(int $downloads): string {
+    if ($downloads >= 1_000_000_000) {
+        $downloads = number_format($downloads / 1_000_000_000) . 'B+';
+    } elseif ($downloads >= 1_000_000) {
+        $downloads = number_format($downloads / 1_000_000) . 'M+';
+    } elseif ($downloads >= 100_000) {
+        $downloads = number_format($downloads / 1000) . 'K+';
+    } else {
+        $downloads = number_format(num: $downloads, thousands_separator: ' ');
+    }
+
+    return $downloads;
+}
 ?>
 <section id="ecosystem-section" class="container">
     <div class="mt-5">
@@ -57,24 +69,6 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                     </div>
 
                     <div class="btn-group mt-2 mt-lg-0">
-                        <button type="button" class="btn border-primary pe-none">Usage</button>
-                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class=""><?= $usage ?? 'All' ?></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button type="button" class="package-button usage dropdown-item<?php if (! isset($usage)) : ?> active<?php endif; ?>" data-value="all" href="#">All</button></li>
-
-                            <?php foreach (EcosystemUsageEnum::cases() as $case): ?>
-                                <?php if ($case->name === $usage): ?>
-                                    <li><a class="package-button usage dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
-                                <?php else : ?>
-                                    <li><a class="package-button usage dropdown-item" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
-                                <?php endif; ?>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
-
-                    <div class="btn-group mt-2 mt-lg-0">
                         <button type="button" class="btn border-primary pe-none">Category</button>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class=""><?= $category ?? 'All' ?></span>
@@ -92,7 +86,7 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                         </ul>
                     </div>
 
-                    <?php if ($type || $usage || $category || $search) : ?>
+                    <?php if ($type || $category || $search) : ?>
                         <div class="btn-group mt-2 mt-lg-0">
                             <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear <i class="bi bi-x-circle"></i></button>
                         </div>
@@ -136,9 +130,8 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                         <?php endif ?>
                     </div>
                     <div class="row justify-content-between">
-                        <p class="col card-text fw-bold">Type: <?= $package->type->value ?></p>
-                        <p class="col card-text fw-bold">Usage: <?= $package->usage->value ?></p>
-                        <p class="col card-text fw-bolder">Category: <?= $package->category->value ?></p>
+                        <p class="col-auto card-text fw-bold">Type: <?= $package->type->value ?></p>
+                        <p class="col-auto card-text fw-bolder">Category: <?= $package->category->value ?></p>
                     </div>
 
                     <?php if (! empty($package->keywords)) :?>
@@ -156,13 +149,13 @@ $this->layout('layout::default', ['title' => 'Laminas Ecosystem']);
                     <div class="container">
                         <div class="row justify-content-between">
                             <?php if ($package->repository) : ?>
-                                <p class="col statistics-item">
+                                <p class="col mb-2">
                                     <i class="bi-github"></i>
                                     <a href="<?= $package->repository ?>" target="_blank">Source</a>
                                 </p>
                             <?php endif; ?>
-                            <p class="col statistics-item"><i class="bi bi-download"></i> <?= $package->downloads ?></p>
-                            <p class="col statistics-item"><i class="bi bi-star"></i> <?= $package->stars ?></p>
+                            <p class="col mb-3"><i class="bi bi-download"></i> <?= formatDownloads($package->downloads) ?></p>
+                            <p class="col mb-3"><i class="bi bi-star"></i> <?= $package->stars ?></p>
                         </div>
                         <p class="card-text"><?= $package->description ?></p>
                     </div>

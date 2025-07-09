@@ -9,7 +9,6 @@ use DateTimeZone;
 use Exception;
 use GetLaminas\Ecosystem\Enums\EcosystemCategoryEnum;
 use GetLaminas\Ecosystem\Enums\EcosystemTypeEnum;
-use GetLaminas\Ecosystem\Enums\EcosystemUsageEnum;
 
 use function explode;
 use function is_array;
@@ -27,7 +26,6 @@ trait CreateEcosystemPackageFromArrayTrait
      *     packagistUrl: string,
      *     repository: string,
      *     description: string,
-     *     usage: string,
      *     created: int,
      *     updated: int,
      *     category: string,
@@ -46,9 +44,8 @@ trait CreateEcosystemPackageFromArrayTrait
     {
         $category = EcosystemCategoryEnum::tryFrom(trim($packageData['category']));
         $type     = EcosystemTypeEnum::tryFrom(trim($packageData['type']));
-        $usage    = EcosystemUsageEnum::tryFrom(trim($packageData['usage']));
 
-        if ($category === null || $type === null || $usage === null) {
+        if ($category === null || $type === null) {
             return null;
         }
 
@@ -65,7 +62,6 @@ trait CreateEcosystemPackageFromArrayTrait
             $packageData['repository'],
             (bool) $packageData['abandoned'],
             $packageData['description'],
-            $usage,
             $created,
             $updated,
             $category,
