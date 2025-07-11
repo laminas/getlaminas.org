@@ -86,3 +86,7 @@ Everyone is welcome to post a blog entry. Once submitted, it will be reviewed by
 If it's rejected, the reason for the rejection will be included, so you can update it and resubmit the post if applicable.
 
 The submission process is described in the [ADD_BLOG_ENTRY](ADD_BLOG_ENTRY.md) file.
+
+## Adding packages to the Laminas Ecosystem
+
+The [ADD ECOSYSTEM PACKAGE](ADD_ECOSYSTEM_PACKAGE.md) file describes the process of adding packages to the [Laminas Ecosystem](https://getlaminas.org/ecosystem)
