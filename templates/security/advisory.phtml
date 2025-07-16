@@ -20,13 +20,14 @@ $this->layout('layout::default', ['title' => 'Security Advisories']);
             <div class="hline"></div>
 
             <p>Released <?= (new DateTimeImmutable($date))->format('Y-m-d') ?></p>
-            <p>
-                <a href="<?= $this->url('security.pages', ['action' => 'advisories']) ?>">
-                    <i class="bi-arrow-left-square-fill"></i>
-                    Back to advisories
-                </a>
-            </p>
-
+            <div class="pagination mt-4">
+                <div class="page-item">
+                    <a href="<?= $this->url('security.pages', ['action' => 'advisories']) ?>" class="page-link rounded-4 gradient-background">
+                        <i class="bi bi-arrow-left"></i>
+                        <span class="sr-only">Back to advisories</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4 col-sm-12 order-1 order-sm-2">
