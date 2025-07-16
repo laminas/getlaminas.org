@@ -12,27 +12,11 @@
 //  }
 //}
 
-$max-section-width: 1100px;
-
-@media(max-width:1100px) {
-    .navbar, .footer, main {
-        padding: 0 1em !important;
-    }
-}
-
 body {
     padding-top: 98px;
     font-family: 'Quicksand', sans-serif;
     line-height: 1.8rem;
     letter-spacing: 0.5px;
-}
-
-main {
-    .container {
-        max-width: $max-section-width;
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
 
 .homepage-card {
@@ -167,10 +151,6 @@ main {
     }
 }
 
-#commercial-vendor-section {
-    max-width: $max-section-width;
-}
-
 .commercial-vendor-card {
     max-width: 350px !important;
 
@@ -205,43 +185,6 @@ main {
 .blog-post-content {
     h1, h2, h3, h4, h5, h6 {
         color: $primary;
-    }
-}
-
-// Footer section
-
-footer {
-    padding-top: 1em;
-    padding-bottom: 1em;
-
-    .footer-col {
-        max-width: 150px;
-    }
-
-    a, a:visited {
-        color: $white !important;
-        text-decoration: underline;
-    }
-
-    a:hover {
-        color: $gray-300;
-        text-decoration: underline;
-    }
-
-    a:active {
-        color: $gray-200;
-        text-decoration: none;
-    }
-
-    .social {
-        a {
-            font-size: 2em;
-            padding: map-get($spacers, 3) * 0.375;
-        }
-    }
-
-    #footer-section {
-        max-width: $max-section-width;
     }
 }
 
@@ -313,18 +256,6 @@ a {
     }
 }
 
-footer a {
-    color: $success;
-}
-
-footer a:visited {
-    color: $success;
-}
-
-footer a:hover {
-    color: #ffffff;
-}
-
 /* fix footer for ie11 */
 
 html body {
@@ -334,8 +265,6 @@ html body {
 }
 
 #main-navbar {
-    max-width: $max-section-width;
-    padding: 0;
     .nav-item, .nav-link {
         color: #090909 !important;
     }
@@ -377,10 +306,6 @@ article {
 /*
  * Maintenance overview section
  */
-
-#maintenance-overview {
-    max-width: $max-section-width;
-}
 
 .repo-property-value.active, {
     --prop-value-color: #4cc61e;
