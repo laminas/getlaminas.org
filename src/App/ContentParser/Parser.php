@@ -7,6 +7,7 @@ namespace App\ContentParser;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Block\BlockQuote;
 use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
 use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
@@ -37,8 +38,11 @@ final readonly class Parser implements ParserInterface
         $environment = new Environment(
             [
                 'default_attributes' => [
-                    Table::class => [
+                    Table::class      => [
                         'class' => 'table table-striped table-bordered table-hover',
+                    ],
+                    BlockQuote::class => [
+                        'class' => 'blockquote',
                     ],
                 ],
                 'heading_permalink'  => [
