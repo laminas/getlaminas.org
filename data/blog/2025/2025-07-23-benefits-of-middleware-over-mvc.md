@@ -105,6 +105,22 @@ It's a technique used to gradually replace a legacy system with a new one withou
 A complex migration is thus turned into a **series of manageable tasks** that can be handled by **smaller teams of developers**.
 Its costs can be more easily controlled and spread out over a more reasonable period, which is likely going to be appreciated by investors.
 
+## When Is a Migration Mandatory?
+
+More often than not, the migration to a newer architecture is optional, especially if you have the resources to keep your legacy system functional.
+But what if you must conform to a security framework that details how to secure customer data from various vulnerabilities?
+Security frameworks may reject old architectures once they are no longer maintained or at the very least will promote the adoption of more modern and robust approaches.
+
+Modern approaches tend to include:
+
+- **Continuous verification** for all requests, whether internal or external.
+- **Least privilege**, meaning the users are allowed the minimum level of access for their specific tasks.
+- **Microsegmentation** to isolate components with the aim to limit the impact of breaches.
+- **Strong authentication and authorization** using robust methods.
+
+Normally, it's a task in itself to adapt systems to conform to security frameworks like [SOC 2](https://soc2.co.uk/) by being well-maintained, flexible and by implementing secure coding practices.
+These tasks are often easier to perform on newer systems built on active components.
+
 ## Conclusions
 
 In summary, while MVC is still a powerful and proven architecture currently in use by many web applications, the middleware alternative offers additional advantages for modularity, scalability and performance in specific application requirements.
