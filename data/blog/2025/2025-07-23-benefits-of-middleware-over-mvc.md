@@ -25,7 +25,7 @@ PHP works with request and response combos since it's based on the HTTP protocol
 Similarly, middleware perform actions based on the request and either completes the response or passes delegation on to the next middleware in the queue (middleware pipeline).
 Below we will explore several aspects where **middleware is superior to MVC** and why it's a good idea to migrate to it.
 
-## Flexibility and Modularity:
+## Flexibility and Modularity
 
 - The middleware architecture is built on a modular approach, since each middleware is designed to handle a specific task, often independent of others.
 - It is easier to modify or extend the request/response flow than for MVC.
@@ -33,43 +33,43 @@ Below we will explore several aspects where **middleware is superior to MVC** an
 
 All of these lead to building a code base that is cleaner and more easily maintainable in the long run.
 
-## Scalability:
+## Scalability
 
 The modularity of the middleware architecture **promotes scalability**.
 Middleware code can be executed by using load balancers, reverse proxies and edge servers.
 Modern middleware stacks often support asynchronous execution which can be used for concurrent requests while reducing the number of threads or resources per request.
 For this reason, middleware is recommended for microservices or serverless architectures, where different middleware components can be deployed independently of one another.
 
-## Reduced Complexity:
+## Reduced Complexity
 
 Again, due to the modularity of middleware, the **complexity of the codebase can be reduced** compared to MVC.
 Middleware components can be simpler and more focused on a given task, which promotes readability and maintenance even in complex platforms.
 
-## Performance:
+## Performance
 
 While MVC expects each step of its flow to return something because of its controller/action flow, middleware can **finish a request-response task faster** in certain conditions.
 For example, if a certain middleware can fully handle a request, it can return the response early, reducing execution time and lowering hardware requirements.
 The **optional view rendering** also helps execution time for middleware, while MVC loads e.g. controller factories, view helpers, translation services and plugins even if you only need a JSON response.
 
-## Enhanced Control Over Request Handling:
+## Enhanced Control Over Request Handling
 
 The **flow** of your application (pipeline) can be much **easier to edit** without rewriting a bunch of code.
 You can **inspect, modify or reject requests** at various points in the pipeline.
 This is particularly handy when processing a request that is dependent on logging, authentication and authorization.
 
-## Middleware Chains:
+## Middleware Chains
 
 Middleware chains are additional benefits resulting from middleware modularity and enhanced control.
 They can **process a request in a predefined sequence**.
 This is useful for **implementing complex processing logic**, like data processing, logging and authentication in a clean and manageable way.
 
-## Asynchronous Processing:
+## Asynchronous Processing
 
 Middleware architectures can help you handle asynchronous processing, which is nowadays increasingly important for **building high-performance web applications**.
 A good example for this scenario is when you need to manage many concurrent connections, while allowing other parts of the application to run in the meantime.
 The downside is that this adds complexity and overhead in the code logic and error handling, making it harder to debug and test, but it can provide benefits in specific cases.
 
-## Better Suited for API-First Development:
+## Better Suited for API-First Development
 
 **MVC is tightly coupled** to the web/MVC context which **difficult to reuse or test** your logic in CLI scripts, workers or other applications.
 **Middleware** can often be a **better fit for API-first development**, where the main interaction with the application is through APIs rather than traditional web pages.
