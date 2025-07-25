@@ -530,13 +530,13 @@ article {
 
 $filter-color: #678799;
 
-#ecosystem-section {
+#integration-section {
 
     #clear-filters-button:hover {
         color: white;
     }
 
-    #ecosystem-pagination {
+    #integration-pagination {
         margin-top: 1em;
         min-height: 60px;
     }
@@ -603,13 +603,13 @@ $filter-color: #678799;
     }
 }
 
-.ecosystem-container {
+.integration-container {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-.ecosystem-package {
+.integration-package {
     display: flex;
     gap: 1em;
 
@@ -623,12 +623,12 @@ $filter-color: #678799;
         font-weight: bold;
     }
 
-    .ecosystem-package-details {
+    .integration-package-details {
         display: flex;
         flex-direction: column;
         flex: 3;
     }
-    .ecosystem-package-statistics {
+    .integration-package-statistics {
         flex: 1;
         border-left: 1px solid grey;
         padding-left: 1em;
@@ -660,14 +660,14 @@ $filter-color: #678799;
     }
 }
 
-#ecosystem-filter-container {
+#integration-filter-container {
     display: flex;
     flex-direction: row;
     gap: .5em;
     margin: .5em 0;
 }
 
-.ecosystem-filter {
+.integration-filter {
     color: white;
     background-color: $filter-color;
     border: 2px solid $filter-color;
@@ -680,7 +680,7 @@ $filter-color: #678799;
     }
 }
 
-#ecosystem-search-container {
+#integration-search-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -77,7 +77,7 @@
         "psr-4": {
             "App\\": "src/App/",
             "GetLaminas\\Blog\\": "src/Blog/",
-            "GetLaminas\\Ecosystem\\": "src/Ecosystem/",
+            "GetLaminas\\Integration\\": "src/Integration/",
             "GetLaminas\\ReleaseFeed\\": "src/ReleaseFeed/",
             "GetLaminas\\Security\\": "src/Security/"
         }

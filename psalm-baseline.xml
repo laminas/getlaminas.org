@@ -219,7 +219,7 @@
       <code><![CDATA[$this->template->url('blog.post', ['id' => $post->id])]]></code>
     </MixedReturnStatement>
   </file>
-  <file src="src/Ecosystem/Console/CreateEcosystemDatabase.php">
+  <file src="src/Integration/Console/CreateIntegrationDatabase.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$curlResult]]></code>
     </MixedArgumentTypeCoercion>
@@ -232,7 +232,7 @@
       <code><![CDATA[$mapper]]></code>
     </PropertyNotSetInConstructor>
   </file>
-  <file src="src/Ecosystem/Console/SeedEcosystemDatabase.php">
+  <file src="src/Integration/Console/SeedIntegrationDatabase.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$packageData]]></code>
     </MixedArgumentTypeCoercion>
@@ -245,12 +245,12 @@
       <code><![CDATA[$mapper]]></code>
     </PropertyNotSetInConstructor>
   </file>
-  <file src="src/Ecosystem/EcosystemConnectionTrait.php">
+  <file src="src/Integration/IntegrationConnectionTrait.php">
     <MixedAssignment>
       <code><![CDATA[$this->ghToken]]></code>
     </MixedAssignment>
   </file>
-  <file src="src/Ecosystem/Handler/EcosystemHandler.php">
+  <file src="src/Integration/Handler/IntegrationHandler.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$keywords]]></code>
     </MixedArgumentTypeCoercion>
@@ -262,14 +262,14 @@
       <code><![CDATA[getUri]]></code>
     </MixedMethodCall>
   </file>
-  <file src="src/Ecosystem/Mapper/MapperFactory.php">
+  <file src="src/Integration/Mapper/MapperFactory.php">
     <MixedArgument>
       <code><![CDATA[$config['db'] ?? '']]></code>
     </MixedArgument>
   </file>
-  <file src="src/Ecosystem/Mapper/PdoPaginator.php">
+  <file src="src/Integration/Mapper/PdoPaginator.php">
     <ArgumentTypeCoercion>
-      <code><![CDATA[$this->CreateEcosystemPackageFromArray(...)]]></code>
+      <code><![CDATA[$this->createIntegrationFromArray(...)]]></code>
     </ArgumentTypeCoercion>
   </file>
   <file src="src/ReleaseFeed/ReceiveFeedItemHandler.php">
@@ -346,17 +346,17 @@
       <code><![CDATA[$first]]></code>
     </MixedAssignment>
   </file>
-  <file src="test/Unit/Ecosystem/ConfigProviderTest.php">
+  <file src="test/Unit/Integration/ConfigProviderTest.php">
     <MixedArgument>
       <code><![CDATA[$this->config['dependencies']]]></code>
       <code><![CDATA[$this->config['dependencies']]]></code>
       <code><![CDATA[$this->config['dependencies']]]></code>
-      <code><![CDATA[$this->config['ecosystem']]]></code>
+      <code><![CDATA[$this->config['integration']]]></code>
       <code><![CDATA[$this->config['laminas-cli']]]></code>
       <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
       <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
       <code><![CDATA[$this->config['templates']]]></code>
-      <code><![CDATA[$this->config['templates']['paths']['ecosystem'][0]]]></code>
+      <code><![CDATA[$this->config['templates']['paths']['integration'][0]]]></code>
     </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$this->config['dependencies']['delegators']]]></code>
@@ -365,15 +365,15 @@
       <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
       <code><![CDATA[$this->config['laminas-cli']['commands']]]></code>
       <code><![CDATA[$this->config['templates']['paths']]]></code>
-      <code><![CDATA[$this->config['templates']['paths']['ecosystem'][0]]]></code>
+      <code><![CDATA[$this->config['templates']['paths']['integration'][0]]]></code>
     </MixedArrayAccess>
   </file>
-  <file src="test/Unit/Ecosystem/Console/CreateEcosystemDatabaseTest.php">
+  <file src="test/Unit/Integration/Console/CreateIntegrationDatabaseTest.php">
     <PossiblyUndefinedMethod>
       <code><![CDATA[createDatabase]]></code>
     </PossiblyUndefinedMethod>
   </file>
-  <file src="test/Unit/Ecosystem/CreateEcosystemPackageFromArrayTraitTest.php">
+  <file src="test/Unit/Integration/CreateIntegrationFromArrayTraitTest.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$data]]></code>
     </MixedArgumentTypeCoercion>

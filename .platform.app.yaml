@@ -22,9 +22,9 @@ mounts:
   'data/cache':
     source: local
     source_path: data/cache
-  'data/ecosystem/database':
+  'data/integration/database':
     source: local
-    source_path: data/ecosystem/database
+    source_path: data/integration/database
   'public/images/packages':
     source: local
     source_path: public/images/packages
@@ -60,7 +60,7 @@ hooks:
     rm -f data/cache/config-cache.php
     if [ ! -e data/cache/releases.rss ];then cp templates/releases.rss data/cache/ ;fi
     ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
-    ./vendor/bin/laminas ecosystem:create-db
+    ./vendor/bin/laminas integration:create-db
 
 crons:
   snapshot:
@@ -83,24 +83,24 @@ crons:
     commands :
       start: |
         if [ "$PLATFORM_BRANCH" = master ]; then
-           ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decode | jq '."REPO_TOKEN"'
+           ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decorede | jq '."REPO_TOKEN"'
         fi
     shutdown_timeout: 20
-  generateecosystem:
+  generateintegration:
     # Refresh repository data every 6 hours (UTC).
     spec: '0 */6 * * *'
     commands:
       start: |
         if [ "$PLATFORM_BRANCH" = master ]; then
-            ./vendor/bin/laminas ecosystem:seed-db
+            ./vendor/bin/laminas integration:seed-db
         fi
     shutdown_timeout: 20
 
 operations:
-  rebuildEcosystemDatabase:
+  rebuildIntegrationDatabase:
     role: admin
     commands:
-      start: ./vendor/bin/laminas ecosystem:create-db --force-rebuild
+      start: ./vendor/bin/laminas integration:create-db --force-rebuild
 
 web:
   locations:

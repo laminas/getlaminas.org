@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use GetLaminas\Ecosystem\Console\CreateEcosystemDatabase;
+use GetLaminas\Integration\Console\CreateIntegrationDatabase;
 
 return [
     'release-feed' => [
@@ -14,6 +14,6 @@ return [
     'packages'     => [
         'db' => 'sqlite:' . realpath(
             getcwd()
-        ) . sprintf('/%s/%s', CreateEcosystemDatabase::PACKAGES_DB_PATH, CreateEcosystemDatabase::PACKAGES_DB_FILE),
+        ) . sprintf('/%s/%s', CreateIntegrationDatabase::PACKAGES_DB_PATH, CreateIntegrationDatabase::PACKAGES_DB_FILE),
     ],
 ];
