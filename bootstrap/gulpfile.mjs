@@ -59,7 +59,7 @@ function js() {
             'node_modules/@popperjs/core/dist/umd/popper.min.js',
             'node_modules/bootstrap/dist/js/bootstrap.min.js',
             'js/base.js',
-            'js/_ecosystem.js'
+            'js/_integration.js'
         ]))
         .pipe(concat({path: 'laminas.js'}))
         .pipe(terser({mangle: false}).on('error', function (e) {

@@ -36,7 +36,7 @@ $aggregator = new ConfigAggregator([
 
     // Default App module config
     GetLaminas\Blog\ConfigProvider::class,
-    GetLaminas\Ecosystem\ConfigProvider::class,
+    GetLaminas\Integration\ConfigProvider::class,
     GetLaminas\ReleaseFeed\ConfigProvider::class,
     GetLaminas\Security\ConfigProvider::class,
     App\ConfigProvider::class,

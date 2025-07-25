@@ -1,4 +1,4 @@
-name: Validate ecosystem packages JSON file
+name: Validate integration packages JSON file
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          packages=$(cat ./data/ecosystem/ecosystem-packages.json);
+          packages=$(cat ./data/integration/integration-packages.json);
           if [ ! -z "$packages" ] && [ $(echo $packages | jq empty > /dev/null 2>&1; echo $?) -eq 0 ]; then
             for key in packagistUrl keywords homepage category; do
               if ! $(echo $packages | jq ".[]" | jq "has(\"$key\")" | jq 'select(. == false)'); then

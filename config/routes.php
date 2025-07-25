@@ -41,8 +41,8 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // Blog routes
     (new GetLaminas\Blog\ConfigProvider())->registerRoutes($app, '/blog');
 
-    // Laminas ecosystem routes
-    (new GetLaminas\Ecosystem\ConfigProvider())->registerRoutes($app);
+    // Laminas integration routes
+    (new GetLaminas\Integration\ConfigProvider())->registerRoutes($app);
 
     // Security advisory routes
     (new GetLaminas\Security\ConfigProvider())->registerRoutes($app, '/security');
