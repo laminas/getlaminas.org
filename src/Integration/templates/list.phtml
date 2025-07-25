@@ -15,7 +15,7 @@ declare(strict_types=1);
 use GetLaminas\Integration\Enums\IntegrationCategoryEnum;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
-$this->layout('layout::default', ['title' => 'Laminas Integrations']);
+$this->layout('layout::default', ['title' => 'Integrations']);
 
 function formatDownloads(int $downloads): string {
     if ($downloads >= 1_000_000_000) {
@@ -34,7 +34,7 @@ function formatDownloads(int $downloads): string {
 <section id="integration-section" class="container">
     <div>
         <div class="my-5">
-            <h1>Laminas Integrations</h1>
+            <h1>Integrations</h1>
             <h5>Third party packages which provide explicit support for Laminas packages</h5>
         </div>
 
