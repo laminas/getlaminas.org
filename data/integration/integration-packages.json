@@ -1,0 +1,86 @@
+[
+  {
+    "packagistUrl": "https://packagist.org/packages/akrabat/ip-address-middleware",
+    "keywords": ["ip", "address", "middleware"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/netglue/laminas-messenger",
+    "keywords": ["laminas", "messenger"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
+    "keywords": ["error-handling"],
+    "homepage": "https://dotkernel.com",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
+    "keywords": ["middleware", "doctrine"],
+    "homepage": "",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/asgrim/mini-mezzio",
+    "keywords": ["mezzio"],
+    "homepage": "",
+    "category": "skeleton"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mezzio/mezzio-aurarouter",
+    "keywords": ["middleware", "http"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/api",
+    "keywords": ["rest", "api"],
+    "homepage": "",
+    "category": "skeleton"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/frontend",
+    "keywords": ["frontend-application"],
+    "homepage": "www.dotkernel.com",
+    "category": "skeleton"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/ramsey/uuid",
+    "keywords": ["uuid", "guid"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/ramsey/uuid-doctrine",
+    "keywords": ["doctrine" ,"uuid", "guid"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
+    "keywords": ["intentional-duplicate"],
+    "homepage": "",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/league/commonmark",
+    "keywords": ["markdown", "parser"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/filp/whoops",
+    "keywords": ["middleware", "error-handling"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/light",
+    "keywords": ["middleware", "skeleton"],
+    "homepage": "",
+    "category": "skeleton"
+  }
+]
