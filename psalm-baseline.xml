@@ -58,6 +58,11 @@
       <code><![CDATA[array]]></code>
     </MixedReturnTypeCoercion>
   </file>
+  <file src="src/App/Handler/MaintenanceOverviewHandlerFactory.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$repositoryData]]></code>
+    </MixedArgumentTypeCoercion>
+  </file>
   <file src="src/App/Handler/StaticPageHandler.php">
     <PossiblyFalseArgument>
       <code><![CDATA[$routeResult->getMatchedRouteName()]]></code>

@@ -25,13 +25,14 @@ class MaintenanceOverviewHandlerFactory
      */
     public function __invoke(ContainerInterface $container): MaintenanceOverviewHandler
     {
-        $rawData        = file_get_contents(
+        $rawData = file_get_contents(
             sprintf(
                 '%s/%s',
                 getcwd() . MaintenanceOverviewHandler::CUSTOM_PROPERTIES_DIRECTORY,
                 MaintenanceOverviewHandler::CUSTOM_PROPERTIES_FILE
             )
         );
+
         $repositoryData = json_decode($rawData, true);
         assert(is_array($repositoryData));
 
