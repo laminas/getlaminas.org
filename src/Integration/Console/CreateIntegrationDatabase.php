@@ -224,7 +224,7 @@ class CreateIntegrationDatabase extends Command
             $urlComponents = [];
             preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $urlComponents);
 
-            if (in_array($urlComponents[1], $validPackages)) {
+            if ($urlComponents === [] || in_array($urlComponents[1], $validPackages)) {
                 continue;
             }
 

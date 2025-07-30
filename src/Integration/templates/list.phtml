@@ -50,7 +50,7 @@ function formatDownloads(int $downloads): string {
                         <button id="integration-search-btn" class="btn border-primary my-sm-0" type="button"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
-                <div class="col-lg-8 collapse d-lg-flex gap-2" data-bs-parent="#packageSearchBar" id="packageSearchBar">
+                <div class="col-lg-8 collapse d-lg-flex gap-2 <?php if ($type || $search || $category): ?>show<?php endif;?>" data-bs-parent="#packageSearchBar" id="packageSearchBar">
                     <div class="btn-group mt-2 mt-lg-0">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Type:
@@ -129,7 +129,7 @@ function formatDownloads(int $downloads): string {
                             <?php endif ?>
                         <?php endif ?>
                     </div>
-                    <div class="row justify-content-between">
+                    <div class="row g-0 justify-content-between">
                         <p class="col-auto card-text fw-bold">Type: <?= $integration->type->value ?></p>
                         <p class="col-auto card-text fw-bolder">Category: <?= $integration->category->value ?></p>
                     </div>

@@ -19,7 +19,7 @@
   },
   {
     "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
-    "keywords": ["middleware", "doctrine"],
+    "keywords": ["container", "doctrine"],
     "homepage": "",
     "category": "integration"
   },
@@ -28,12 +28,6 @@
     "keywords": ["mezzio"],
     "homepage": "",
     "category": "skeleton"
-  },
-  {
-    "packagistUrl": "https://packagist.org/packages/mezzio/mezzio-aurarouter",
-    "keywords": ["middleware", "http"],
-    "homepage": "",
-    "category": "tool"
   },
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/api",
@@ -54,26 +48,8 @@
     "category": "tool"
   },
   {
-    "packagistUrl": "https://packagist.org/packages/ramsey/uuid-doctrine",
-    "keywords": ["doctrine" ,"uuid", "guid"],
-    "homepage": "",
-    "category": "tool"
-  },
-  {
-    "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
-    "keywords": ["intentional-duplicate"],
-    "homepage": "",
-    "category": "integration"
-  },
-  {
-    "packagistUrl": "https://packagist.org/packages/league/commonmark",
-    "keywords": ["markdown", "parser"],
-    "homepage": "",
-    "category": "tool"
-  },
-  {
     "packagistUrl": "https://packagist.org/packages/filp/whoops",
-    "keywords": ["middleware", "error-handling"],
+    "keywords": ["error-handling"],
     "homepage": "",
     "category": "tool"
   },
@@ -82,5 +58,35 @@
     "keywords": ["middleware", "skeleton"],
     "homepage": "",
     "category": "skeleton"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/cherif/inertia-psr15",
+    "keywords": ["inertiajs", "adapter"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/reinfi/zf-dependency-injection",
+    "keywords": ["dependency", "injection"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/trinet/mezzio-test",
+    "keywords": ["testing", "helper"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/neilime/twbs-helper-module",
+    "keywords": ["module", "bootstrap"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mikemix/tactician-module",
+    "keywords": ["command-bus"],
+    "homepage": "",
+    "category": "integration"
   }
 ]
