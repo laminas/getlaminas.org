@@ -6,8 +6,11 @@ declare(strict_types=1);
  * @var League\Plates\Template\Template $this
  * @var string $lastUpdated
  * @var array $repositoryData
+ * @var string $search
+ * @var array<array-key, string>|null $status
  */
 
+use App\Enums\MaintenanceStatusEnum;
 use App\Handler\MaintenanceOverviewHandler;
 
 $this->layout('layout::default', ['title' => 'Current Maintenance Status of Laminas & Mezzio Packages']);
@@ -74,6 +77,32 @@ $this->end();
             <p class="repo-legend-text">The repository is no longer being supported</p>
         </div>
     </div>
+
+    <div class="container my-3 g-0">
+        <div class="row flex-lg-row">
+            <div class="col d-flex justify-content-between">
+                <button class="btn border-primary d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#statusSearchBar" aria-controls="statusSearchBar" aria-expanded="true" aria-label="Toggle search bar">
+                    <span><i class="bi bi-list"></i></span>
+                </button>
+
+                <div class="col-lg-3 d-flex input-group">
+                    <input type="text" id="package-search" class="form-control mr-sm-2" aria-label="Search" aria-describedby="package-search-btn" value="<?= $search ?>">
+                    <button id="package-search-btn" class="btn border-primary my-sm-0" type="button"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+
+            <div class="col-lg-9 d-lg-flex gap-2 collapse <?php if ($status) : ?>show<?php endif;?>" id="statusSearchBar">
+                <?php foreach (MaintenanceStatusEnum::cases() as $case): ?>
+                    <button class="btn btn-outline-primary mt-2 mt-lg-0 status-button<?php if ($status !== null && in_array($case->value, $status)) : ?> active<?php endif ?>" data-value="<?= $case->value ?>"><?= $case->label() ?></button>
+                <?php endforeach ?>
+
+                <?php if ($status || $search) : ?>
+                    <button id="clear-filters-button" type="button" class="btn btn-outline-danger mt-2 mt-lg-0">Clear <i class="bi bi-x-circle"></i></button>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
     <div class="repository-container">
         <?php foreach($repositoryData as $organization => $orgData): ?>
             <div class="repository-organization <?= $organization ?> rounded-4">

@@ -358,6 +358,8 @@ article {
 @media(max-width: 992px) {
     .repository-organization {
         flex: 0 0 calc(50% - 1em) !important;
+        min-width: calc(50% - 1em);
+
     }
 }
 
@@ -368,6 +370,7 @@ article {
 
     .repository-organization {
         max-width: 350px;
+        min-width: calc(100% - 1em);
         margin: 0 auto;
     }
 }
