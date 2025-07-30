@@ -88,5 +88,77 @@
     "keywords": ["command-bus"],
     "homepage": "",
     "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/samsonasik/error-hero-module",
+    "keywords": ["log", "error-handling"],
+    "homepage": "",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/samsonasik/force-https-module",
+    "keywords": ["https", "middleware", "redirect"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/articus/path-handler",
+    "keywords": ["routing", "middleware", "api"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mostafasy/mezzio-debugbar",
+    "keywords": ["debugbar", "middleware"],
+    "homepage": "",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/shlinkio/shlink",
+    "keywords": ["url", "rest", "api"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/kynx/mezzio-openapi",
+    "keywords": ["openapi", "api", "mezzio"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/league/openapi-psr7-validator",
+    "keywords": ["http", "openapi", "validation"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/http-authentication",
+    "keywords": ["http", "authentication", "middleware"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/client-ip",
+    "keywords": ["http", "ip", "middleware"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/negotiation",
+    "keywords": ["content", "encoding", "middleware"],
+    "homepage": "",
+    "category": "tool"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/whoops",
+    "keywords": ["error-handling", "middleware"],
+    "homepage": "",
+    "category": "integration"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/fast-route",
+    "keywords": ["router", "middleware"],
+    "homepage": "",
+    "category": "integration"
   }
 ]
