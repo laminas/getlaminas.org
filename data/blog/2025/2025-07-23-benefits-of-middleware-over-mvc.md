@@ -22,13 +22,13 @@ On the other hand, **middleware** is a high-level architecture that can offer se
 <!--- EXTENDED -->
 
 Because PHP works with the HTTP protocol, it consumes HTTP requests and produces HTTP responses.
-Similarly, middleware perform actions based on the request and either completes the response, or passes delegation on to the next middleware in the queue (middleware pipeline).
+Similarly, middleware perform actions based on the request and either completes the response or passes delegation on to the next middleware in the queue (middleware pipeline).
 Below we will explore several aspects where **middleware is superior to MVC** and why it's a good idea to migrate to it.
 
 ## Flexibility and Modularity
 
 - The middleware architecture is built on a modular approach, since each middleware is designed to handle a specific task, often independent of others.
-- It is easier to modify, or extend the request/response flow than for MVC and you can build workflows specific to any given route in your application.
+- It is easier to modify or extend the request/response flow than for MVC and you can build workflows specific to any given route in your application.
 - Middleware tends to adhere to PHP standards like PSR-7 (HTTP Message interfaces), PSR-15 (HTTP Request Handler interfaces), and PSR-17 (HTTP Message Factory interfaces), defined by the [PHP Framework Interop Group](https://www.php-fig.org/).
 
 All of these lead to your codebase becoming cleaner and more easily maintainable in the long run.
@@ -38,8 +38,8 @@ All of these lead to your codebase becoming cleaner and more easily maintainable
 The modularity of the middleware architecture **promotes scalability**.
 Middleware code can be executed by using load balancers, reverse proxies, and edge servers.
 
-Modern middleware stacks often support asynchronous execution which can be used for concurrent requests while reducing the number of threads, or resources per request.
-For this reason, middleware is recommended for microservices, or serverless architectures, where different middleware components can be deployed independently of one another.
+Modern middleware stacks often support asynchronous execution which can be used for concurrent requests while reducing the number of threads or resources per request.
+For this reason, middleware is recommended for microservices or serverless architectures, where different middleware components can be deployed independently of one another.
 
 ## Reduced Complexity
 
@@ -65,12 +65,12 @@ This comes from the fact that it's built as a pipeline of isolated, ordered unit
 You can **inspect, modify, or reject requests** at various points in the pipeline.
 This is particularly handy when processing a request that is dependent on logging, authentication, and authorization.
 
-When you're stepping through a trace, or using xdebug, you can identify exactly where you are in the workflow.
+When you're stepping through a trace or using xdebug, you can identify exactly where you are in the workflow.
 You can expect the same transparency when you're maintaining the application.
 You know exactly where you are in the request workflow and can identify if you might need to skip additional execution.
 
 In contrast, MVC has a **single entry point** and a **central dispatcher** that follows a strict request-response lifecycle.
-You can use the MVC **event system** to customize, or extend this rigid workflow without modifying core code.
+You can use the MVC **event system** to customize or extend this rigid workflow without modifying core code.
 Still, it's difficult to know who’s doing what and when without digging into registered event listeners.
 One event may trigger multiple listeners in different modules and the order of execution may be unclear.
 
@@ -85,7 +85,7 @@ For example, when dealing with a form:
 
 - You start with a handler processing form data.
 - Add logging middleware.
-- Add authentication, or authorization middleware.
+- Add authentication or authorization middleware.
 - Add validation middleware.
 
 A file upload route would use different middleware:
@@ -102,16 +102,16 @@ Middleware architectures can help you handle asynchronous processing, which is n
 
 A good example for this scenario is when you need to manage many concurrent connections, while allowing other parts of the application to run in the meantime.
 This implies that you need to structure your project's logic into independent, composable steps that naturally support non-blocking, async behavior, like when PHP is paired with async libraries.
-Your middleware has to be coded to await, or yield, thus handling its job asynchronously and passing control onto the next middleware.
+Your middleware has to be coded to await or yield, thus handling its job asynchronously and passing control onto the next middleware.
 
 The downside is that this adds complexity and overhead in the code logic and error handling, making it harder to debug and test, but it can provide benefits in specific cases.
 
 ## Better Suited for API-First Development
 
-**MVC is tightly coupled** to the web/MVC context which is **difficult to reuse, or test** your logic in CLI scripts, workers, or other applications.
+**MVC is tightly coupled** to the web/MVC context which is **difficult to reuse or test** your logic in CLI scripts, workers, or other applications.
 If you need to change one piece of code, it often means you need to change many other interconnected parts, like is the case for templating engines, routing, or service containers.
 Testing requires you to boot the full framework, because controllers and models are often built specifically for the framework.
-Controllers often perform multiple tasks, a pattern which violates separation of concerns and makes it harder to understand, or delegate logic.
+Controllers often perform multiple tasks, a pattern which violates separation of concerns and makes it harder to understand or delegate logic.
 
 Middleware can often be a **better fit for API-first development**, where the main interaction with the application is through APIs rather than traditional web pages.
 This is the recommended approach for handling different types of requests, such as RESTful APIs, GraphQL, and WebSocket connections.
@@ -132,16 +132,16 @@ MVC has multiple **components tied to the framework**:
 
 - Request & response classes.
 - Routing system.
-- Controllers, or service containers.
+- Controllers or service containers.
 - Lifecycle.
 
-Conversely, **middleware is reusable** across currently active frameworks with little, or no changes thanks to:
+Conversely, **middleware is reusable** across currently active frameworks with little or no changes thanks to:
 
 - **Implementing standards** like PSR-7 (HTTP Message interfaces) and PSR-11 (Container interface) which also helps **integrate with future PHP frameworks** that implement them.
 - **Decoupling of handlers** which means they **can be used by API, CLI, worker processes, or unit tests** without modification.
 The middleware handles web-only concerns (authentication, CORS), while the request handler handles business logic, since the latter is pure PHP with no knowledge of HTTP.
-- **View rendering is optional, or external**, since middleware cares about HTTP requests and responses, not about how they are rendered.
-- The **middleware pipeline**, like the ones provided in [Laminas Diactoros](https://docs.laminas.dev/laminas-diactoros/), or Slim Framework, **improves flexibility, customizability, and testability** for execution flows.
+- **View rendering is optional or external**, since middleware cares about HTTP requests and responses, not about how they are rendered.
+- The **middleware pipeline**, like the ones provided in [Laminas Diactoros](https://docs.laminas.dev/laminas-diactoros/) or Slim Framework, **improves flexibility, customizability, and testability** for execution flows.
 - **Easier unit testing** without bootstrapping the framework thanks to middleware being small, self-contained, and decoupled from the full framework environment.
 
 ## Implementing migrations
@@ -161,11 +161,11 @@ Its costs can be more easily controlled and spread out over a more reasonable pe
 
 More often than not, the migration to a newer architecture is optional, especially if you have the resources to keep your legacy system functional.
 But what if you must conform to a security framework that details how to secure customer data from various vulnerabilities?
-Security frameworks may reject old architectures once they are no longer maintained, or at the very least will promote the adoption of more modern and robust approaches.
+Security frameworks may reject old architectures once they are no longer maintained or at the very least will promote the adoption of more modern and robust approaches.
 
 Modern approaches tend to include:
 
-- **Continuous verification** for all requests, whether internal, or external.
+- **Continuous verification** for all requests, whether internal or external.
 - **Least privilege**, meaning the users are allowed the minimum level of access for their specific tasks.
 - **Microsegmentation** to isolate components with the aim to limit the impact of breaches.
 - **Strong authentication and authorization** using robust methods.
