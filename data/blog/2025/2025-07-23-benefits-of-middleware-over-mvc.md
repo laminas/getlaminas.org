@@ -123,7 +123,7 @@ The bottom line is that middleware:
 - Allows per-route customization.
 - Is stateless.
 - Supports async-friendly communication.
- 
+
 All the above are key items for modern APIs.
 
 ## Framework Lock-in
