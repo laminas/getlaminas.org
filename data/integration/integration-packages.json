@@ -145,6 +145,11 @@
     "homepage": ""
   },
   {
+    "packagistUrl": "https://packagist.org/packages/settermjd/laminas-twilio-phone-number-validator",
+    "keywords": ["validator", "twilio", "laminas"],
+    "homepage": ""
+  },
+  {
     "packagistUrl": "https://packagist.org/packages/mimmi20/mezzio-navigation",
     "keywords": ["mezzio", "navigation"],
     "homepage": ""
