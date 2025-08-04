@@ -58,7 +58,7 @@ class PdoMapper implements MapperInterface
 
         if ($search !== null) {
             $where             = (empty($values) ? ' WHERE (' : ' AND (')
-                . 'name LIKE :search OR description LIKE :search)';
+                . 'name LIKE :search OR description LIKE :search OR keywords LIKE :search)';
             $select           .= $where;
             $count            .= $where;
             $values[':search'] = '%' . $search . '%';
