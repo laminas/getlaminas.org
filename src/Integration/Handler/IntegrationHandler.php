@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace GetLaminas\Integration\Handler;
 
-use GetLaminas\Integration\Enums\IntegrationCategoryEnum;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 use GetLaminas\Integration\Integration;
 use GetLaminas\Integration\Mapper\MapperInterface;
@@ -45,25 +44,13 @@ class IntegrationHandler implements RequestHandlerInterface
         assert(is_array($keywords));
         $type = $queryParams['type'] ?? '';
         assert(is_string($type));
-        $type     = IntegrationTypeEnum::tryFrom($type)?->name;
-        $category = $queryParams['category'] ?? '';
-        assert(is_string($category));
-        $category = IntegrationCategoryEnum::tryFrom($category)?->name;
-        $search   = $queryParams['q'] ?? '';
-        assert(is_string($search));
+        $type   = IntegrationTypeEnum::tryFrom($type)?->name;
+        $search = $queryParams['q'] ?? null;
+        assert(is_string($search) || $search === null);
 
-        $packages = $this->integrationMapper->fetchAllByFilters(
-            [
-                'keywords' => $keywords !== []
-                    ? array_map(
-                        fn (string $keyword) => strtolower($keyword),
-                        $keywords
-                    ) : null,
-                'type'     => [$type],
-                'category' => [$category],
-            ],
-            $search
-        );
+        /** @var array<int, string> $data */
+        $data     = array_map(fn (string $keyword) => strtolower($keyword), $keywords);
+        $packages = $this->integrationMapper->fetchAllByFilters($data, $type, $search);
 
         $path = $request->getAttribute('originalRequest', $request)->getUri()->getPath();
         assert(is_string($path));
@@ -79,7 +66,7 @@ class IntegrationHandler implements RequestHandlerInterface
             }
 
             $searchQuery = '';
-            if ($search !== '') {
+            if ($search !== null) {
                 $searchQuery = '&q=' . strtolower($search);
             }
 
@@ -88,20 +75,14 @@ class IntegrationHandler implements RequestHandlerInterface
                 $typeQuery = '&type=' . strtolower($type);
             }
 
-            $categoryQuery = '';
-            if ($category !== null) {
-                $categoryQuery = '&category=' . strtolower($category);
-            }
-
             return new RedirectResponse(
                 sprintf(
-                    '%s?page=%d%s%s%s%s',
+                    '%s?page=%d%s%s%s',
                     $path,
                     count($packages),
                     $keywordsQuery,
                     $searchQuery,
                     $typeQuery,
-                    $categoryQuery,
                 )
             );
         }
@@ -115,8 +96,7 @@ class IntegrationHandler implements RequestHandlerInterface
                 $this->preparePagination($path, $page, $packages->getPages()),
                 $keywords,
                 $search,
-                $type,
-                $category
+                $type
             ),
         ));
     }
@@ -155,9 +135,8 @@ class IntegrationHandler implements RequestHandlerInterface
         iterable $entries,
         object $pagination,
         array $keywords,
-        string $search,
-        ?string $typeQuery,
-        ?string $categoryQuery
+        ?string $search,
+        ?string $typeQuery
     ): array {
         return [
             ...[
@@ -166,7 +145,6 @@ class IntegrationHandler implements RequestHandlerInterface
                 'keywords'     => $keywords,
                 'search'       => $search,
                 'type'         => $typeQuery,
-                'category'     => $categoryQuery,
             ],
         ];
     }

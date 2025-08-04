@@ -61,7 +61,6 @@ class CreateIntegrationDatabase extends Command
     /** @var string[] */
     private array $indices = [
         'CREATE INDEX keywords ON packages ( keywords )',
-        'CREATE INDEX category ON packages ( category )',
         'CREATE INDEX "type" ON packages ( type )',
         'CREATE INDEX package_name ON packages ( name )',
     ];
@@ -77,7 +76,6 @@ class CreateIntegrationDatabase extends Command
             %s AS description,
             %d AS created,
             %d AS updated,
-            %s AS category,
             %s AS keywords,
             %s AS website,
             %d AS downloads,
@@ -99,7 +97,6 @@ class CreateIntegrationDatabase extends Command
         %d,
         %s,
         %s,
-        %s,
         %d,
         %d,
         %d,
@@ -115,7 +112,6 @@ class CreateIntegrationDatabase extends Command
             description TEXT NOT NULL,
             created UNSIGNED INTEGER NOT NULL,
             updated UNSIGNED INTEGER NOT NULL,
-            category VARCHAR(255) NOT NULL,
             keywords TEXT,
             website VARCHAR(255),
             downloads UNSIGNED INTEGER,
@@ -133,7 +129,7 @@ class CreateIntegrationDatabase extends Command
     {
         $this->setName('integration:seed-db');
         $this->setDescription('Generate and seed the "integration packages" database.');
-        $this->setHelp('Re-create the blog post database from the post entities.');
+        $this->setHelp('Generate and populate the "integration" database from the "integration-packages.json" file.');
 
         $this->addOption(
             'path',
@@ -147,7 +143,7 @@ class CreateIntegrationDatabase extends Command
             'data-path',
             'd',
             InputOption::VALUE_REQUIRED,
-            'Path to the database file, relative to the --path.',
+            'Path to the integration directory, relative to the --path.',
             IntegrationHandler::INTEGRATION_DIRECTORY
         );
 
@@ -155,7 +151,7 @@ class CreateIntegrationDatabase extends Command
             'data-file',
             'f',
             InputOption::VALUE_REQUIRED,
-            'Path to the blog posts, relative to the --path.',
+            'Path to the integrations json file, relative to the --path.',
             IntegrationHandler::INTEGRATION_FILE
         );
 
@@ -178,7 +174,7 @@ class CreateIntegrationDatabase extends Command
             'force-rebuild',
             'fr',
             InputOption::VALUE_OPTIONAL,
-            'Regenerate database file from scratch',
+            'Regenerate database file from scratch, deleting the old database file if available',
             $this->forceRebuild
         );
     }
@@ -219,7 +215,7 @@ class CreateIntegrationDatabase extends Command
         $this->initCurl();
 
         $validPackages = [];
-        /** @var array{packagistUrl: string, keywords: array<string>, homepage: string, category: string} $userData */
+        /** @var array{packagistUrl: string, keywords: array<string>, homepage: string} $userData */
         foreach ($userDataArray as $userData) {
             $urlComponents = [];
             preg_match('/packagist.org\/packages\/((?>\w-?)+\/(?>\w-?)+)/i', $userData['packagistUrl'], $urlComponents);
@@ -298,8 +294,7 @@ class CreateIntegrationDatabase extends Command
      * @param array{
      *     packagistUrl: string,
      *      keywords: array<string>,
-     *      homepage: string,
-     *      category: string
+     *      homepage: string
      * } $userData
      */
     private function getPackageData(array $userData): ?array
@@ -368,7 +363,6 @@ class CreateIntegrationDatabase extends Command
             'issues'       => $packageData['github_open_issues'],
             'downloads'    => $packageData['downloads']['total'],
             'abandoned'    => (int) isset($packageData['abandoned']),
-            'category'     => $userData['category'],
             'packagistUrl' => $userData['packagistUrl'],
             'keywords'     => $userData['keywords'] !== [] ? $userData['keywords'] : '',
             'website'      => $website,
@@ -391,7 +385,6 @@ class CreateIntegrationDatabase extends Command
             $pdo->quote($package->description),
             $package->created->getTimestamp(),
             $package->updated->getTimestamp(),
-            $pdo->quote($package->category->value),
             ! empty($package->keywords)
                 ? $pdo->quote(strtolower(sprintf('|%s|', implode('|', $package->keywords))))
                 : '',

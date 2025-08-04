@@ -13,8 +13,11 @@ interface MapperInterface
     /** @return Paginator<int, Integration> */
     public function fetchAll(): Paginator;
 
-    /** @return Paginator<int, Integration> */
-    public function fetchAllByFilters(array $filters, string $search = ''): Paginator;
+    /**
+     * @param  array<int, string> $keywords
+     * @return Paginator<int, Integration>
+     */
+    public function fetchAllByFilters(array $keywords, ?string $type = null, ?string $search = null): Paginator;
 
     /** @return Paginator<int, Integration> */
     public function fetchAllByKeyword(string $keyword): Paginator;

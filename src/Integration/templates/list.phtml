@@ -9,10 +9,8 @@ declare(strict_types=1);
  * @var array $keywords
  * @var string $search
  * @var string $type
- * @var string $category
  */
 
-use GetLaminas\Integration\Enums\IntegrationCategoryEnum;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
 $this->layout('layout::default', ['title' => 'Integrations']);
@@ -50,7 +48,7 @@ function formatDownloads(int $downloads): string {
                         <button id="integration-search-btn" class="btn border-primary my-sm-0" type="button"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
-                <div class="col-lg-8 collapse d-lg-flex gap-2 <?php if ($type || $search || $category): ?>show<?php endif;?>" data-bs-parent="#packageSearchBar" id="packageSearchBar">
+                <div class="col-lg-8 collapse d-lg-flex gap-2 <?php if ($type || $search): ?>show<?php endif;?>" data-bs-parent="#packageSearchBar" id="packageSearchBar">
                     <div class="btn-group mt-2 mt-lg-0">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Type:
@@ -68,25 +66,7 @@ function formatDownloads(int $downloads): string {
                         </ul>
                     </div>
 
-                    <div class="btn-group mt-2 mt-lg-0">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Category:
-                            <span class=""><?= $category ?? 'All' ?></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button type="button" class="package-button category dropdown-item<?php if (! isset($category)) : ?> active<?php endif; ?>" data-value="all" href="#">All</button></li>
-
-                            <?php foreach (IntegrationCategoryEnum::cases() as $case): ?>
-                                <?php if ($case->name === $category): ?>
-                                    <li><a class="package-button category dropdown-item active" data-value="<?= $case->value ?>" href="#"><?= $case->name ?><i class="bi bi-x-circle"></i></a></li>
-                                <?php else : ?>
-                                    <li><a class="package-button category dropdown-item" data-value="<?= $case->value ?>" href="#"><?= $case->name ?></a></li>
-                                <?php endif; ?>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
-
-                    <?php if ($type || $category || $search || $keywords !== []) : ?>
+                    <?php if ($type || $search || $keywords !== []) : ?>
                         <div class="btn-group mt-2 mt-lg-0">
                             <button id="clear-filters-button" type="button" class="btn btn-outline-danger">Clear <i class="bi bi-x-circle"></i></button>
                         </div>
@@ -102,84 +82,81 @@ function formatDownloads(int $downloads): string {
     </div>
 
     <div class="row gy-5">
-        <?php foreach($integrations as $integration): ?>
-        <div class="card-group col-sm-12 col-md-6 col-xl-4">
-            <div class="card gradient-background rounded-4">
-                <div class="card-body">
-                    <?php if ($integration->abandoned) : ?>
-                        <p class="card-text details-item abandoned-package rounded-top fw-bold">
-                            <i class="bi bi-exclamation-triangle"></i> This package has been abandoned
-                        </p>
-                    <?php endif?>
-                    <div class="card-header">
-                        <h5 class="card-title col-md-9">
-                            <a href="https://packagist.org/packages/<?= $integration->packagistUrl ?>" target="_blank">
-                                <p class="details-item"><?= $integration->name ?></p>
-                            </a>
-                        </h5>
-                        <?php if (! empty($integration->image)) :?>
-                            <img src="<?="/images/packages/" . $integration->image ?>" class="col-md-3 package-image" alt="...">
-                        <?php else : ?>
-                            <?php if ($integration->category === IntegrationCategoryEnum::Skeleton) : ?>
-                                <i class="col-md-3 default-package-image bi bi-stack"></i>
-                            <?php elseif ($integration->category === IntegrationCategoryEnum::Integration) : ?>
-                                <i class="col-md-3 default-package-image bi bi-plug"></i>
-                            <?php elseif ($integration->category === IntegrationCategoryEnum::Tool) : ?>
-                                <i class="col-md-3 default-package-image bi bi-wrench"></i>
-                            <?php endif ?>
-                        <?php endif ?>
-                    </div>
-                    <div class="row g-0 justify-content-between">
-                        <p class="col-auto card-text fw-bold">Type: <?= $integration->type->value ?></p>
-                        <p class="col-auto card-text fw-bolder">Category: <?= $integration->category->value ?></p>
-                    </div>
+        <?php if ($integrations === []) : ?>
+            <h2 class="col text-center">No integrations found.</h2>
+        <?php else : ?>
+            <?php foreach($integrations as $integration): ?>
+                <div class="card-group col-sm-12 col-md-6 col-xl-4">
+                    <div class="card gradient-background rounded-4">
+                        <div class="card-body">
+                            <?php if ($integration->abandoned) : ?>
+                                <p class="card-text details-item abandoned-package rounded-top fw-bold">
+                                    <i class="bi bi-exclamation-triangle"></i> This package has been abandoned
+                                </p>
+                            <?php endif?>
+                            <div class="card-header">
+                                <h5 class="card-title col-md-9">
+                                    <a href="https://packagist.org/packages/<?= $integration->packagistUrl ?>" target="_blank">
+                                        <p class="details-item"><?= $integration->name ?></p>
+                                    </a>
+                                </h5>
+                                <?php if (! empty($integration->image)) :?>
+                                    <img src="<?="/images/packages/" . $integration->image ?>" class="col-md-3 package-image" alt="...">
+                                <?php else : ?>
+                                    <i class="col-md-3 default-package-image bi bi-stack"></i>
+                                <?php endif ?>
+                            </div>
+                            <div class="row g-0 justify-content-between">
+                                <p class="col-auto card-text fw-bold">Type: <?= $integration->type->value ?></p>
+                            </div>
 
-                    <?php if (! empty($integration->keywords)) :?>
-                        <div class="package-categories-container">
-                            <?php foreach ($integration->keywords as $keyword) :
-                                if (empty($keyword)) {
-                                    continue;
-                                }
-                                ?>
-                                <button type="button" class="package-button keyword" data-value="<?= $keyword ?>"><?= $keyword ?></button>
-                            <?php endforeach; ?>
+                            <?php if (! empty($integration->keywords)) :?>
+                                <div class="package-keywords-container">
+                                    <?php foreach ($integration->keywords as $keyword) :
+                                        if (empty($keyword)) {
+                                            continue;
+                                        }
+                                        ?>
+                                        <button type="button" class="package-button keyword" data-value="<?= $keyword ?>"><?= $keyword ?></button>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="container">
+                                <div class="row justify-content-between">
+                                    <?php if ($integration->repository) : ?>
+                                        <p class="col-auto mb-2">
+                                            <i class="bi-github"></i>
+                                            <a href="<?= $integration->repository ?>" target="_blank">Source</a>
+                                        </p>
+                                    <?php endif; ?>
+                                    <p class="col-auto mb-3"><i class="bi bi-download"></i> <?= formatDownloads($integration->downloads) ?></p>
+                                    <p class="col-auto mb-3"><i class="bi bi-star"></i> <?= $integration->stars ?></p>
+                                </div>
+                                <p class="card-text"><?= $integration->description ?></p>
+                            </div>
                         </div>
-                    <?php endif; ?>
-
-                    <div class="container">
-                        <div class="row justify-content-between">
-                            <?php if ($integration->repository) : ?>
-                                <p class="col-auto mb-2">
-                                    <i class="bi-github"></i>
-                                    <a href="<?= $integration->repository ?>" target="_blank">Source</a>
+                        <div class="card-footer">
+                            <?php if ($integration->website !== '') : ?>
+                                <p class="card-homepage details-item">
+                                    <small>
+                                        <i class="bi bi-house"></i>
+                                        <a href="<?= $integration->website ?>" target="_blank">
+                                            Homepage
+                                        </a>
+                                    </small>
                                 </p>
                             <?php endif; ?>
-                            <p class="col-auto mb-3"><i class="bi bi-download"></i> <?= formatDownloads($integration->downloads) ?></p>
-                            <p class="col-auto mb-3"><i class="bi bi-star"></i> <?= $integration->stars ?></p>
+                            <p class="card-updated details-item fst-italic mt-auto">
+                                <small>
+                                    <i class="bi bi-clock"></i> <?= $integration->updated->format('Y-m-d H:i') ?>
+                                </small>
+                            </p>
                         </div>
-                        <p class="card-text"><?= $integration->description ?></p>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <?php if ($integration->website !== '') : ?>
-                        <p class="card-homepage details-item">
-                            <small>
-                                <i class="bi bi-house"></i>
-                                <a href="<?= $integration->website ?>" target="_blank">
-                                    Homepage
-                                </a>
-                            </small>
-                        </p>
-                    <?php endif; ?>
-                    <p class="card-updated details-item fst-italic mt-auto">
-                        <small>
-                            <i class="bi bi-clock"></i> <?= $integration->updated->format('Y-m-d H:i') ?>
-                        </small>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <?php endforeach ?>
+            <?php endforeach ?>
+        <?php endif;?>
     </div>
     <div id="integration-pagination">
         <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>

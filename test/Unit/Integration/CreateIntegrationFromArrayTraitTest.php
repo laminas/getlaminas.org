@@ -7,7 +7,6 @@ namespace LaminasTest\Unit\Integration;
 use DateTimeImmutable;
 use Exception;
 use GetLaminas\Integration\CreateIntegrationFromArrayTrait;
-use GetLaminas\Integration\Enums\IntegrationCategoryEnum;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 use GetLaminas\Integration\Integration;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -20,16 +19,9 @@ class CreateIntegrationFromArrayTraitTest extends TestCase
     public static function failingPackageDataProvider(): array
     {
         return [
-            'invalidCategoryArray' => [
+            'invalidTypeArray' => [
                 [
-                    'category' => 'invalid category',
-                    'type'     => IntegrationTypeEnum::Library->value,
-                ],
-            ],
-            'invalidTypeArray'     => [
-                [
-                    'category' => IntegrationCategoryEnum::Integration->value,
-                    'type'     => 'invalid type',
+                    'type' => 'invalid type',
                 ],
             ],
         ];
@@ -58,7 +50,6 @@ class CreateIntegrationFromArrayTraitTest extends TestCase
             'description'  => "",
             'created'      => 1736408707,
             'updated'      => 1736408707,
-            'category'     => "tool",
             'stars'        => 10,
             'issues'       => 1,
             'downloads'    => 100,
@@ -70,7 +61,6 @@ class CreateIntegrationFromArrayTraitTest extends TestCase
         ]);
 
         $this->assertInstanceOf(Integration::class, $package);
-        $this->assertInstanceOf(IntegrationCategoryEnum::class, $package->category);
         $this->assertInstanceOf(IntegrationTypeEnum::class, $package->type);
     }
 

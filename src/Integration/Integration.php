@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace GetLaminas\Integration;
 
 use DateTimeInterface;
-use GetLaminas\Integration\Enums\IntegrationCategoryEnum;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
 class Integration
@@ -23,7 +22,6 @@ class Integration
         public string $description,
         public DateTimeInterface $created,
         public DateTimeInterface $updated,
-        public IntegrationCategoryEnum $category,
         public array $keywords,
         public string $website,
         public int $downloads,

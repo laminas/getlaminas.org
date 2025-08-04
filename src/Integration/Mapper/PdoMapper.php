@@ -10,7 +10,6 @@ use GetLaminas\Integration\Integration;
 use Laminas\Paginator\Paginator;
 use PDO;
 
-use function property_exists;
 use function sprintf;
 
 class PdoMapper implements MapperInterface
@@ -28,36 +27,40 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count);
     }
 
-    public function fetchAllByFilters(array $filters, string $search = ''): Paginator
+    /**
+     * @param  array<int, string> $keywords
+     * @return Paginator<int, Integration>
+     */
+    public function fetchAllByFilters(array $keywords, ?string $type = null, ?string $search = null): Paginator
     {
         $select = 'SELECT * FROM packages';
         $count  = 'SELECT COUNT(id) FROM packages';
-
         $values = [];
 
-        /**
-         * @var string $filterType
-         * @var array<string>|null $filterValues
-         */
-        foreach ($filters as $filterType => $filterValues) {
-            if ($filterValues === null) {
-                continue;
-            }
+        foreach ($keywords as $i => $keyword) {
+            $where   = (empty($values) ? ' WHERE (' : ' AND ') . ' keywords LIKE :keyword' . $i;
+            $select .= $where;
+            $count  .= $where;
 
-            if (property_exists(Integration::class, $filterType)) {
-                foreach ($filterValues as $filterValue) {
-                    $where   = (empty($values) ? ' WHERE ' : ' AND ') . $filterType . ' LIKE :' . $filterType;
-                    $select .= $where;
-                    $count  .= $where;
-
-                    $values[':' . $filterType] = '%' . $filterValue . '%';
-                }
-            }
+            $values[':keyword' . $i] = '%' . $keyword . '%';
         }
 
-        if ($search !== '') {
-            $select           .= (empty($values) ? ' WHERE ' : ' AND ') . 'name LIKE :search';
-            $count            .= (empty($values) ? ' WHERE ' : ' AND ') . 'name LIKE :search';
+        $select .= $values !== [] ? ')' : '';
+        $count  .= $values !== [] ? ')' : '';
+
+        if ($type !== null) {
+            $where   = (empty($values) ? ' WHERE ' : ' AND ') . ' type LIKE :type';
+            $select .= $where;
+            $count  .= $where;
+
+            $values[':type'] = '%' . $type . '%';
+        }
+
+        if ($search !== null) {
+            $where             = (empty($values) ? ' WHERE (' : ' AND (')
+                . 'name LIKE :search OR description LIKE :search)';
+            $select           .= $where;
+            $count            .= $where;
             $values[':search'] = '%' . $search . '%';
         }
 

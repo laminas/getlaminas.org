@@ -22,8 +22,7 @@ The optional "--force-rebuild" flag will regenerate the database completely, not
 {
   "packagistUrl": "",
   "keywords": [],
-  "homepage": "",
-  "category": ""
+  "homepage": ""
 }
 ```
 
@@ -37,6 +36,3 @@ The optional "--force-rebuild" flag will regenerate the database completely, not
 
 - `homepage`
   **string** - optional URL to package homepage, will overwrite "homepage" field from Packagist Api data
-
-- `category`
-  **string** - must be one of "skeleton", "integration", "tool"

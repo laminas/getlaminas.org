@@ -61,8 +61,8 @@ class SeedIntegrationDatabase extends Command
     protected function configure(): void
     {
         $this->setName('integration:seed-db');
-        $this->setDescription('Generate and seed the "integration packages" database.');
-        $this->setHelp('Re-create the integration packages database from the package entities.');
+        $this->setDescription('Refresh the "integration packages" database.');
+        $this->setHelp('Refresh the integration packages database from the package entities.');
 
         $this->addOption(
             'db-path',

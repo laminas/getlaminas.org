@@ -7,7 +7,6 @@ namespace GetLaminas\Integration;
 use DateTimeImmutable;
 use DateTimeZone;
 use Exception;
-use GetLaminas\Integration\Enums\IntegrationCategoryEnum;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
 use function explode;
@@ -28,7 +27,6 @@ trait CreateIntegrationFromArrayTrait
      *     description: string,
      *     created: int,
      *     updated: int,
-     *     category: string,
      *     stars: int,
      *     issues: int,
      *     downloads: int,
@@ -42,10 +40,9 @@ trait CreateIntegrationFromArrayTrait
      */
     protected function createIntegrationFromArray(array $packageData): ?Integration
     {
-        $category = IntegrationCategoryEnum::tryFrom(trim($packageData['category']));
-        $type     = IntegrationTypeEnum::tryFrom(trim($packageData['type']));
+        $type = IntegrationTypeEnum::tryFrom(trim($packageData['type']));
 
-        if ($category === null || $type === null) {
+        if ($type === null) {
             return null;
         }
 
@@ -64,7 +61,6 @@ trait CreateIntegrationFromArrayTrait
             $packageData['description'],
             $created,
             $updated,
-            $category,
             is_array($packageData['keywords'])
                 ? $packageData['keywords']
                 : explode('|', trim($packageData['keywords'], '|')),
