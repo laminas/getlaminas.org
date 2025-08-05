@@ -142,7 +142,13 @@ body {
 }
 
 #support-button {
+    color: white;
+    font-weight: bold;
     background: linear-gradient(to right top, #21D4FD, #0A2432);
+    &:hover {
+        opacity: 0.9;
+    }
+
     i {
         padding: .2em;
         border-radius: 50%;
@@ -557,6 +563,7 @@ $filter-color: #678799;
 
         .package-image {
             width: 4em;
+            max-height: 4em;
             aspect-ratio: 1;
             border-radius: 5%;
 

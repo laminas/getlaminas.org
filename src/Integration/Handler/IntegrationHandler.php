@@ -55,7 +55,7 @@ class IntegrationHandler implements RequestHandlerInterface
         $path = $request->getAttribute('originalRequest', $request)->getUri()->getPath();
         assert(is_string($path));
         $page = $this->getPageFromRequest($request);
-        $packages->setItemCountPerPage(9);
+        $packages->setItemCountPerPage(24);
 
         // If the requested page is later than the last, redirect to the last
         // keep set keyword and search queries
