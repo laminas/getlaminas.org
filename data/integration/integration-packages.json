@@ -168,5 +168,10 @@
     "packagistUrl": "https://packagist.org/packages/mimmi20/mezzio-setlocale-middleware",
     "keywords": ["mezzio", "middleware", "language"],
     "homepage": ""
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/ecodev/graphql-upload",
+    "keywords": ["graphql", "upload", "middleware", "PSR-15"],
+    "homepage": ""
   }
 ]
