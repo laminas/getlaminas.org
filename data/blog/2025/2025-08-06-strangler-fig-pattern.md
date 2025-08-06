@@ -1,7 +1,7 @@
 ---
-id: 2025-08-06-strangle-strategy
+id: 2025-08-06-strangler-fig-pattern
 author: bidi
-title: 'The Strangle Strategy: A Viable Approach for Migrating MVC to Middleware'
+title: 'The Strangler Fig Pattern: A Viable Approach for Migrating MVC to Middleware'
 draft: false
 public: true
 created: '2025-08-06T11:00:00-01:00'
@@ -10,11 +10,11 @@ tags:
   - migration
   - MVC
   - middleware
-openGraphImage: '2025-08-06-strangle-strategy.png'
-openGraphDescription: 'The Strangle Strategy: A Viable Approach for Migrating MVC to Middleware'
+openGraphImage: '2025-08-06-strangler-fig-pattern.png'
+openGraphDescription: 'The Strangler Fig Pattern: A Viable Approach for Migrating MVC to Middleware'
 ---
 
-The Strangle Strategy is a gradual migration technique that allows you to progressively replace components from an existing legacy system with a new, modern platform.
+The Strangler Fig Pattern is a gradual migration technique that allows you to progressively replace components from an existing legacy system with a new, modern platform.
 This is done while both old and new code coexist and operate in parallel during the transition.
 
 <!--- EXTENDED -->
@@ -23,7 +23,7 @@ In a nutshell, the old platform is put behind an intermediary interface.
 During development, as the new services are coded, they replace old components behind the scenes.
 As the execution is redirected through the new code, the old code can be removed completely until the whole system is migrated to the new architecture.
 
-## When to Use the Strangle Strategy?
+## When to Use the Strangler Fig Pattern?
 
 **Rewriting the codebase** is always an option, but **is often avoided** in favor of the progressive approach as we will discuss later in this article.
 The recent sunsetting of [**Laminas MVC**](https://docs.laminas.dev/mvc/) provides the perfect example for when to consider migration.
@@ -38,7 +38,7 @@ If you used Laminas MVC in your platform, the natural progression is toward the 
 Migrating between Laminas MVC and Mezzio is like methodically replacing bricks in a wall.
 The wall remains upright, even when a couple of crumbling bricks are being replaced with shiny, new bricks.
 Bricks made of gold (OK, that was a bit much).
-A well-implemented Strangle Strategy will have that wall provide the same functionality throughout its rebuilding process.
+A well-implemented Strangler Fig Pattern will have that wall provide the same functionality throughout its rebuilding process.
 At the end of the migration, the whole wall will contain all-new bricks, built better than before, anxiously awaiting new features.
 
 ## Why Not Rewrite the Old Platform Instead?
@@ -56,9 +56,9 @@ One of the options for companies that need to improve their workflow is a **comp
 - Likely to fail, especially because of learning curves and hiring challenges for developers of the new architecture.
 - It's often rejected by stakeholders because of no perceived benefits or short-term value.
 
-## What Are the advantages of the Strangle Strategy?
+## What Are the advantages of the Strangler Fig Pattern?
 
-The **Strangle Strategy** offers a **safer, controlled way** to:
+The **Strangler Fig Pattern** offers a **safer, controlled way** to:
 
 - **Incremental modernization** based on a detailed plan.
 - **Faster delivery of features** with short coding sprints, aimed at replacing isolated components.
@@ -66,7 +66,7 @@ The **Strangle Strategy** offers a **safer, controlled way** to:
 - **Flexible development pacing** where you set your goals in terms of development schedule (the process is long and can be interrupted more easily) and allocated resources (the developers who actually work on the migration).
 - **Mitigate risks** by avoiding a full rewrite in favor of small, manageable changes.
 
-## How Strangle Strategy Works: Step-by-Step
+## How Strangler Fig Pattern Works: Step-by-Step
 
 ### Step 1: Understand and Isolate Functionality
 
@@ -113,7 +113,7 @@ It has several functional modules:
 
 You want to migrate to a middleware-based architecture using Mezzio microframewok with Laminas components.
 
-Let's follow the Strangle Strategy in action:
+Let's follow the Strangler Fig Pattern in action:
 
 - **Install the Mezzio microframework skeleton**: This is where the new code will be written as microservices.
 - **Select a feature**: Start with `/product/list`, a non-critical module that is easy to isolate.
@@ -125,5 +125,9 @@ Let's follow the Strangle Strategy in action:
 
 ## Conclusion
 
-The Strangle Strategy is not a silver bullet, but it's one of the most pragmatic, low-risk approaches to modernizing legacy systems.
+The Strangler Fig Pattern is not a silver bullet, but it's one of the most pragmatic, low-risk approaches to modernizing legacy systems.
 It’s particularly useful in enterprise software, where rewriting from scratch could take years and millions of dollars.
+
+## Additional Resources
+
+[Strangler Fig](https://martinfowler.com/bliki/StranglerFigApplication.html)
