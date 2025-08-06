@@ -141,7 +141,7 @@ Conversely, **middleware is reusable** across currently active frameworks with l
 - **Decoupling of handlers** which means they **can be used by API, CLI, worker processes, or unit tests** without modification.
 The middleware handles web-only concerns (authentication, CORS), while the request handler handles business logic, since the latter is pure PHP with no knowledge of HTTP.
 - **View rendering is optional or external**, since middleware cares about HTTP requests and responses, not about how they are rendered.
-- The **middleware pipeline**, like the ones provided in [Laminas Diactoros](https://docs.laminas.dev/laminas-diactoros/) or Slim Framework, **improves flexibility, customizability, and testability** for execution flows.
+- The **middleware pipeline**, like the ones provided in [Laminas Stratigility](https://docs.laminas.dev/laminas-stratigility/) or Slim Framework, **improves flexibility, customizability, and testability** for execution flows.
 - **Easier unit testing** without bootstrapping the framework thanks to middleware being small, self-contained, and decoupled from the full framework environment.
 
 ## Implementing migrations
