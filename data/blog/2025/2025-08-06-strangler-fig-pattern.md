@@ -23,6 +23,11 @@ In a nutshell, the old platform is put behind an intermediary interface.
 During development, as the new services are coded, they replace old components behind the scenes.
 As the execution is redirected through the new code, the old code can be removed completely until the whole system is migrated to the new architecture.
 
+Below is an image of the Strangle Fig plant which envelops the host tree.
+In some cases it can live alongside the host, while in others, it may cause the host to die.
+
+![strangler-fig](/images/blog/strangler-fig/strangler-fig.jpg "strangler fig")
+
 ## When to Use the Strangler Fig Pattern?
 
 **Rewriting the codebase** is always an option, but **is often avoided** in favor of the progressive approach as we will discuss later in this article.
@@ -130,4 +135,5 @@ It’s particularly useful in enterprise software, where rewriting from scratch 
 
 ## Additional Resources
 
-[Strangler Fig](https://martinfowler.com/bliki/StranglerFigApplication.html)
+- [Strangler Fig Pattern](https://martinfowler.com/bliki/StranglerFigApplication.html)
+- [Strangler Fig Plant](https://en.wikipedia.org/wiki/Strangler_fig)
