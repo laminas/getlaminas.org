@@ -32,7 +32,7 @@
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/frontend",
     "keywords": ["frontend-application"],
-    "homepage": "www.dotkernel.com"
+    "homepage": "https://www.dotkernel.com"
   },
   {
     "packagistUrl": "https://packagist.org/packages/ramsey/uuid",
