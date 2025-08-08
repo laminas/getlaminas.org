@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/laminas/getlaminas.org/blob/master/data/integration/integration-packages-schema.json",
+  "title": "Integration packages schema.",
+  "description": "Validate contents of integration packages JSON file.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "packagistUrl": {
+        "description": "The Packagist URL of the integration.",
+        "type": "string",
+        "format": "uri"
+      },
+      "keywords": {
+        "description": "User defined keywords, used for filtering results.",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "homepage": {
+        "description": "Custom homepage URL. Will overwrite any homepage set in composer.json.",
+        "anyOf": [
+          {
+            "type": ["string"],
+            "format": "uri"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": ["packagistUrl"]
+  }
+}

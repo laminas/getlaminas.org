@@ -35,8 +35,9 @@
     },
     "require": {
         "php": "~8.3.0",
-        "ext-pdo": "*",
         "ext-curl": "*",
+        "ext-pdo": "*",
+        "ext-sqlite3": "*",
         "dflydev/fig-cookies": "^3.1.0",
         "laminas/laminas-cli": "^1.11.0",
         "laminas/laminas-component-installer": "^3.5.0",
@@ -76,12 +77,14 @@
         "psr-4": {
             "App\\": "src/App/",
             "GetLaminas\\Blog\\": "src/Blog/",
+            "GetLaminas\\Integration\\": "src/Integration/",
             "GetLaminas\\ReleaseFeed\\": "src/ReleaseFeed/",
             "GetLaminas\\Security\\": "src/Security/"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "LaminasTest\\Unit\\": "test/Unit"
         }
     },
     "scripts": {

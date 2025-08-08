@@ -51,6 +51,10 @@ $isRouteSubpath = function (string $routeName) use ($currentUrl): bool {
                     <a class="nav-link" href="https://docs.laminas.dev" target="_blank" >Docs</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link<?= $isCurrentRoute('app.integrations') ? ' active' : '' ?>"
+                       href="<?= $this->url('app.integrations') ?>">Integrations</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link<?= $isRouteSubpath('community.participate') ? ' active' : '' ?>"
                        href="<?= $this->url('community.participate') ?>">Community</a>
                 </li>
