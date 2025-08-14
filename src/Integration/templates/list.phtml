@@ -92,27 +92,24 @@ function formatDownloads(int $downloads): string {
             <?php foreach($integrations as $integration): ?>
                 <div class="card-group col-sm-12 col-md-6 col-xl-4">
                     <div class="card gradient-background rounded-4">
+                        <div class="card-header">
+                            <h5 class="card-title col-md-9">
+                                <a href="https://packagist.org/packages/<?= $integration->packagistUrl ?>" target="_blank">
+                                    <p class="details-item"><?= $integration->name ?></p>
+                                </a>
+                            </h5>
+                            <?php if (! empty($integration->image)) :?>
+                                <img src="<?="/images/packages/" . $integration->image ?>" class="col-md-3 package-image" alt="...">
+                            <?php else : ?>
+                                <i class="col-md-3 default-package-image bi bi-stack"></i>
+                            <?php endif ?>
+                        </div>
                         <div class="card-body">
                             <?php if ($integration->abandoned) : ?>
                                 <p class="card-text details-item abandoned-package rounded-top fw-bold">
                                     <i class="bi bi-exclamation-triangle"></i> This package has been abandoned
                                 </p>
                             <?php endif?>
-                            <div class="card-header">
-                                <h5 class="card-title col-md-9">
-                                    <a href="https://packagist.org/packages/<?= $integration->packagistUrl ?>" target="_blank">
-                                        <p class="details-item"><?= $integration->name ?></p>
-                                    </a>
-                                </h5>
-                                <?php if (! empty($integration->image)) :?>
-                                    <img src="<?="/images/packages/" . $integration->image ?>" class="col-md-3 package-image" alt="...">
-                                <?php else : ?>
-                                    <i class="col-md-3 default-package-image bi bi-stack"></i>
-                                <?php endif ?>
-                            </div>
-                            <div class="row g-0 justify-content-between">
-                                <p class="col-auto card-text fw-bold">Type: <?= $integration->type->value ?></p>
-                            </div>
 
                             <?php if (! empty($integration->keywords)) :?>
                                 <div class="package-keywords-container">
@@ -126,19 +123,19 @@ function formatDownloads(int $downloads): string {
                                 </div>
                             <?php endif; ?>
 
-                            <div class="container">
-                                <div class="row justify-content-between">
-                                    <?php if ($integration->repository) : ?>
-                                        <p class="col-auto mb-2">
-                                            <i class="bi-github"></i>
-                                            <a href="<?= $integration->repository ?>" target="_blank">Source</a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <p class="col-auto mb-3"><i class="bi bi-download"></i> <?= formatDownloads($integration->downloads) ?></p>
-                                    <p class="col-auto mb-3"><i class="bi bi-star"></i> <?= $integration->stars ?></p>
-                                </div>
-                                <p class="card-text"><?= $integration->description ?></p>
+                            <p class="card-text"><small>Type: <strong><?= $integration->type->value ?></strong></small></p>
+
+                            <div class="row justify-content-between">
+                                <?php if ($integration->repository) : ?>
+                                    <p class="col-auto">
+                                        <i class="bi-github"></i>
+                                        <a href="<?= $integration->repository ?>" target="_blank">Source</a>
+                                    </p>
+                                <?php endif; ?>
+                                <p class="col-auto"><i class="bi bi-download"></i> <?= formatDownloads($integration->downloads) ?></p>
+                                <p class="col-auto"><i class="bi bi-star"></i> <?= $integration->stars ?></p>
                             </div>
+                            <p class="card-text"><?= $integration->description ?></p>
                         </div>
                         <div class="card-footer">
                             <?php if ($integration->website !== '') : ?>
