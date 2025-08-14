@@ -2,11 +2,18 @@
 
 declare(strict_types=1);
 
+use GetLaminas\Integration\Console\CreateIntegrationDatabase;
+
 return [
     'release-feed' => [
         'verification_token' => getenv('RELEASE_FEED_TOKEN'),
     ],
     'blog'         => [
         'db' => 'sqlite:' . realpath(getcwd()) . '/var/blog/posts.db',
+    ],
+    'packages'     => [
+        'db' => 'sqlite:' . realpath(
+            getcwd()
+        ) . sprintf('/%s/%s', CreateIntegrationDatabase::PACKAGES_DB_PATH, CreateIntegrationDatabase::PACKAGES_DB_FILE),
     ],
 ];

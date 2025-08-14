@@ -1,0 +1,20 @@
+name: Validate integration packages JSON file
+
+on:
+  pull_request:
+  push:
+    branches:
+    tags:
+
+jobs:
+  validate-packages:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: schema-validation-action
+          uses: cardinalby/schema-validator-action@3.1.1
+          with:
+              file: "data/integration/integration-packages.json"
+              schema: "data/integration/integration-packages-schema.json"

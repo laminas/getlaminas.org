@@ -9,5 +9,6 @@ phpunit.xml
 public/css/*
 public/js/*
 public/share/*
+public/images/packages/*
 var/
 vendor/

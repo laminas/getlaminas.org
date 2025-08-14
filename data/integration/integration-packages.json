@@ -1,0 +1,177 @@
+[
+  {
+    "packagistUrl": "https://packagist.org/packages/akrabat/ip-address-middleware",
+    "keywords": ["ip", "address", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/netglue/laminas-messenger",
+    "keywords": ["laminas", "messenger"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
+    "keywords": ["error-handling"],
+    "homepage": "https://dotkernel.com"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
+    "keywords": ["container", "doctrine"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/asgrim/mini-mezzio",
+    "keywords": ["mezzio"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/api",
+    "keywords": ["rest", "api"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/frontend",
+    "keywords": ["frontend-application"],
+    "homepage": "https://www.dotkernel.com"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/ramsey/uuid",
+    "keywords": ["uuid", "guid"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/filp/whoops",
+    "keywords": ["error-handling"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/dotkernel/light",
+    "keywords": ["middleware", "skeleton"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/cherif/inertia-psr15",
+    "keywords": ["inertiajs", "adapter"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/reinfi/zf-dependency-injection",
+    "keywords": ["dependency", "injection"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/trinet/mezzio-test",
+    "keywords": ["testing", "helper"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/neilime/twbs-helper-module",
+    "keywords": ["module", "bootstrap"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mikemix/tactician-module",
+    "keywords": ["command-bus"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/samsonasik/error-hero-module",
+    "keywords": ["log", "error-handling"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/samsonasik/force-https-module",
+    "keywords": ["https", "middleware", "redirect"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/articus/path-handler",
+    "keywords": ["routing", "middleware", "api"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mostafasy/mezzio-debugbar",
+    "keywords": ["debugbar", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/shlinkio/shlink",
+    "keywords": ["url", "rest", "api"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/kynx/mezzio-openapi",
+    "keywords": ["openapi", "api", "mezzio"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/league/openapi-psr7-validator",
+    "keywords": ["http", "openapi", "validation"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/http-authentication",
+    "keywords": ["http", "authentication", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/client-ip",
+    "keywords": ["http", "ip", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/negotiation",
+    "keywords": ["content", "encoding", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/whoops",
+    "keywords": ["error-handling", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/middlewares/fast-route",
+    "keywords": ["router", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/settermjd/mezzio-simple-user-manager",
+    "keywords": ["mezzio", "user", "authentication"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/settermjd/mezzio-eventmanager-integration",
+    "keywords": ["mezzio", "PSR-15", "PSR-7"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/settermjd/laminas-twilio-phone-number-validator",
+    "keywords": ["validator", "twilio", "laminas"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mimmi20/mezzio-navigation",
+    "keywords": ["mezzio", "navigation"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mimmi20/laminasviewrenderer-vite-url",
+    "keywords": ["laminas-view", "vite", "url"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mimmi20/laminasviewrenderer-js-log",
+    "keywords": ["laminas-view", "js", "logger"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/mimmi20/mezzio-setlocale-middleware",
+    "keywords": ["mezzio", "middleware", "language"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/ecodev/graphql-upload",
+    "keywords": ["graphql", "upload", "middleware", "PSR-15"],
+    "homepage": null
+  }
+]
