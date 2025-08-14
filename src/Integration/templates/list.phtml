@@ -13,7 +13,11 @@ declare(strict_types=1);
 
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
-$this->layout('layout::default', ['title' => 'Integrations']);
+$this->layout('layout::default', [
+        'title' => 'Integrations',
+        'opengraphImage'       => \GetLaminas\Integration\Integration::OPENGRAPH_IMAGE,
+        'opengraphDescription' => \GetLaminas\Integration\Integration::OPENGRAPH_DESCRIPTION,
+]);
 
 function formatDownloads(int $downloads): string {
     if ($downloads >= 1_000_000_000) {

@@ -9,6 +9,10 @@ use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
 class Integration
 {
+    public const string OPENGRAPH_IMAGE       = '/images/integrations/laminas-integrations-opengraph.png';
+    public const string OPENGRAPH_DESCRIPTION =
+        'Laminas Project Integrations - Third party packages which provide explicit support for Laminas packages';
+
     /**
      * @param array<array-key, string> $keywords
      */
