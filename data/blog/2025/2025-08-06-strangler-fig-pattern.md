@@ -14,7 +14,7 @@ openGraphImage: '2025-08-06-strangler-fig-pattern.png'
 openGraphDescription: 'The Strangler Fig Pattern: A Viable Approach for Migrating MVC to Middleware'
 ---
 
-The Strangler Fig Pattern is a gradual migration technique that allows you to progressively replace components from an existing legacy system with a new, modern platform.
+The Strangler Fig Pattern is a gradual migration technique that allows you to progressively replace components from an existing legacy system with a new platform.
 This is done while both old and new code coexist and operate in parallel during the transition.
 
 <!--- EXTENDED -->
@@ -23,7 +23,7 @@ In a nutshell, the old platform is put behind an intermediary interface.
 During development, as the new services are coded, they replace old components behind the scenes.
 As the execution is redirected through the new code, the old code can be removed completely until the whole system is migrated to the new architecture.
 
-Below is an image of the Strangle Fig plant which envelops the host tree.
+Below is an image of the Strangler Fig plant which envelops the host tree.
 In some cases it can live alongside the host, while in others, it may cause the host to die.
 
 ![strangler-fig](/images/blog/strangler-fig/strangler-fig.jpg "strangler fig")
@@ -33,16 +33,15 @@ In some cases it can live alongside the host, while in others, it may cause the 
 **Rewriting the codebase** is always an option, but **is often avoided** in favor of the progressive approach as we will discuss later in this article.
 The recent sunsetting of [**Laminas MVC**](https://docs.laminas.dev/mvc/) provides the perfect example for when to consider migration.
 
-So you have a legacy system like Laminas MVC built with older architecture.
-It was good a decade ago, but has now reached a point where **maintaining it is a chore** that even skilled, well-paid developers shy away from.
-Implementing a new feature is a difficult undertaking which may even be impossible because of the system's limitations when trying to interface with modern dependencies.
+Perhaps you have a web application written using an MVC architecture.
+While this has served you well for some time, you're finding it harder to find and hire developers familiar with the specific MVC you're using, which is now making it harder to both maintain the existing featureset, as well as to add new features to it.
+There may be specific features which are easier to implement if you can extract them and apply them as middleware, allowing greater re-use within the application.
 
-The **solution** is obvious when you consider that modern packages work fine with modern platforms and are more easily integrated into them, so this is the moment when the CTO must decide how to proceed.
+At this time, the CTO needs to determine how to proceed: continue with the existing platform and accept its constraints, or migrate to a different platform that better solves the business and engineering problems.
 If you used Laminas MVC in your platform, the natural progression is toward the Laminas alterative: the [**Mezzio microframework**](https://docs.mezzio.dev/) and its more opinionated implementation, the [**Dotkernel Headless Platform**](https://www.dotkernel.com/).
 
 Migrating between Laminas MVC and Mezzio is like methodically replacing bricks in a wall.
 The wall remains upright, even when a couple of crumbling bricks are being replaced with shiny, new bricks.
-Bricks made of gold (OK, that was a bit much).
 A well-implemented Strangler Fig Pattern will have that wall provide the same functionality throughout its rebuilding process.
 At the end of the migration, the whole wall will contain all-new bricks, built better than before, anxiously awaiting new features.
 
@@ -52,14 +51,14 @@ Many organizations are weighed down with legacy applications that:
 
 - Are a vital business component that can't be put on pause during additional development.
 - Are difficult to change or scale because of platform limitations or sheer complexity.
-- Use outdated or discontinued technology stacks.
+- Use outdated or discontinued technology stacks - which could be outdated libraries, old framework or application versions, or even end-of-life PHP versions or the technologies to which PHP connects.
 
 One of the options for companies that need to improve their workflow is a **complete rewrite**, but it carries several **disadvantages**:
 
 - There is a risk of not migrating important domain logic and business logic that is not well documented.
 - It's expensive and time-consuming to rewrite code that has been under constant improvement over many years.
 - Likely to fail, especially because of learning curves and hiring challenges for developers of the new architecture.
-- It's often rejected by stakeholders because of no perceived benefits or short-term value.
+- It's often rejected by stakeholders because of no perceived benefits or short-term value. This is a problem because stakeholders see either no progress (since it's all or nothing), or get concerned that development of new features has halted while the migration happens, which risks other business.
 
 ## What Are the advantages of the Strangler Fig Pattern?
 
@@ -76,12 +75,15 @@ The **Strangler Fig Pattern** offers a **safer, controlled way** to:
 ### Step 1: Understand and Isolate Functionality
 
 Analyze the legacy system to identify well-defined boundaries or modules.
-Select a coherent part of the functionality that can be isolated and replaced independently (e.g. user authentication, payment processing).
+Select a coherent part of the functionality that can be isolated and replaced independently (e.g. contact us, payment processing).
 It's a good idea to work with the original developers for this step, if they are still available.
+
+> Certain modules like authentication/authorization may have deeper ties within the application, making it harder to 'route' that sort of functionality.
+> Working with them will likely require bigger, system-wide changes.
 
 ### Step 2: Build the Replacement Code
 
-Implement the isolated functionality in the new platform using modern architectures (e.g. microservices, middleware).
+Implement the isolated functionality in the new platform using the new architectures (e.g. microservices, middleware).
 Ensure that the new service meets all the functional and non-functional requirements (performance, security etc.).
 
 ### Step 3: Intercept Calls Via the Routing Layer
@@ -126,7 +128,7 @@ Let's follow the Strangler Fig Pattern in action:
 - **Intercept requests**: Use an API gateway to route `/product/list` calls to the new microservice.
 - **Test and monitor**: Gradually shift traffic from the monolith to the microservice.
 - **Continue migrating**: Repeat the process for each feature like `/product/list`, `/cart` etc., one at a time.
-- **Turn off the monolith**: Once all features are replaced, shut down the legacy application.
+- **Retire the legacy application**: Once all features are replaced, shut down the legacy application.
 
 ## Conclusion
 
