@@ -173,5 +173,10 @@
     "packagistUrl": "https://packagist.org/packages/ecodev/graphql-upload",
     "keywords": ["graphql", "upload", "middleware", "PSR-15"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/samsonasik/naming",
+    "keywords": ["filter", "validator", "naming"],
+    "homepage": null
   }
 ]
