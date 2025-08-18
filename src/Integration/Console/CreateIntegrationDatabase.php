@@ -336,16 +336,18 @@ class CreateIntegrationDatabase extends Command
             return null;
         }
 
+        $website = '';
+
         if (! isset($userData['homepage']) || ! filter_var($userData['homepage'], FILTER_VALIDATE_URL)) {
             $lastVersion = array_key_first($packageData['versions']);
-            if ($lastVersion === null) {
-                $website = '';
-            } else {
+            if ($lastVersion !== null) {
                 $lastVersionData = $packageData['versions'][$lastVersion];
                 /** @var array<array-key, string> $lastVersionData */
-                $website = $lastVersionData['homepage'] ?? '';
+                $website = isset($lastVersionData['homepage'])
+                && $lastVersionData['homepage'] !== $packageData['repository']
+                    ? $lastVersionData['homepage'] : '';
             }
-        } else {
+        } elseif ($userData['homepage'] !== $packageData['repository']) {
             $website = $userData['homepage'];
         }
 
