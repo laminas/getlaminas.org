@@ -178,5 +178,25 @@
     "packagistUrl": "https://packagist.org/packages/samsonasik/naming",
     "keywords": ["filter", "validator", "naming"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/cmsig/seal-mezzio-module",
+    "keywords": ["search", "seal"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/settermjd/laminas-openstreetmap",
+    "keywords": ["openstreetmap"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/arueckauer/mezzio-sentry-delegator",
+    "keywords": ["sentry", "error-handling"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/arueckauer/laminas-diagnostics-factories",
+    "keywords": ["diagnostics", "factory", "health-check"],
+    "homepage": null
   }
 ]
