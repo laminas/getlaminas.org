@@ -163,7 +163,13 @@ function formatDownloads(int $downloads): string {
         <?php $this->insert('partials::pagination', ['pagination' => $pagination]) ?>
     </div>
 
-    <a class="gradient-background rounded-4 text-primary text-decoration-none p-2" target="_blank" href="https://github.com/laminas/getlaminas.org/blob/master/ADD_INTEGRATION.md">
-        Add a package
-    </a>
+    <div class="alert alert-light d-flex justify-content-center" role="alert">
+        <div class="text-center">
+            <h3 class="alert-heading text-primary">Add an Integration</h3>
+            <p class="text-primary">Anyone can add a package to Laminas.</p>
+            <a class="text-decoration-none" target="_blank" href="https://github.com/laminas/getlaminas.org/blob/master/ADD_INTEGRATION.md">
+                <button type="button" class="btn btn-secondary fw-bold text-white">Adding your package</button>
+            </a>
+        </div>
+    </div>
 </section>
