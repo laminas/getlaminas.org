@@ -182,7 +182,7 @@
   {
     "packagistUrl": "https://packagist.org/packages/cmsig/seal-mezzio-module",
     "keywords": ["search", "seal"],
-    "homepage": null
+    "homepage": "https://php-cmsig.github.io/search/"
   },
   {
     "packagistUrl": "https://packagist.org/packages/settermjd/laminas-openstreetmap",
