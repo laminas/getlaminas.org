@@ -12,7 +12,7 @@
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/dot-errorhandler",
     "keywords": ["error-handling"],
-    "homepage": "https://dotkernel.com"
+    "homepage": "https://www.dotkernel.com"
   },
   {
     "packagistUrl": "https://packagist.org/packages/roave/psr-container-doctrine",
@@ -47,7 +47,7 @@
   {
     "packagistUrl": "https://packagist.org/packages/dotkernel/light",
     "keywords": ["middleware", "skeleton"],
-    "homepage": null
+    "homepage": "https://light.dotkernel.net/"
   },
   {
     "packagistUrl": "https://packagist.org/packages/cherif/inertia-psr15",
