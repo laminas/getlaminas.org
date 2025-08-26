@@ -1,19 +1,19 @@
 ---
-id: 2025-08-06-code-lifecycle
+id: 2025-08-27-managing-the-end-of-the-code-lifecycle-in-the-laminas-project
 author: bidi
-title: 'Code Lifecycle'
+title: 'Managing the End of the Code Lifecycle in the Laminas Project'
 draft: false
 public: true
-created: '2025-08-06T11:00:00-01:00'
-updated: '2025-08-06T11:00:00-01:00'
+created: '2025-08-27T11:00:00-01:00'
+updated: '2025-08-27T11:00:00-01:00'
 tags:
   - software lifecycle
   - open source
   - maintainability
   - abandoning code
   - middleware
-openGraphImage: '2025-08-06-code-lifecycle.png'
-openGraphDescription: 'Code Lifecycle'
+openGraphImage: '2025-08-27-managing-the-end-of-the-code-lifecycle-in-the-laminas-project.png'
+openGraphDescription: 'Managing the End of the Code Lifecycle in the Laminas Project'
 ---
 
 The world of open source coding is an ever-changing one.
@@ -89,7 +89,7 @@ Obtaining a more reliable source of donations from the private or government sec
 
 ## How Laminas handles the code lifecycle
 
-In recent months, the Laminas Technical Steering Committee has been **reviewing** their long list of **packages** in order to decide what to abandon and what to keep active.
+Over the past year, the Laminas Technical Steering Committee has been **reviewing** their long list of **packages** in order to decide what to abandon and what to keep active.
 During the [TSC meeting on 2024-11-04](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2024-11-04-TSC-Minutes.md), several packages in security-mode were discussed and the ultimate decision was to mark most of them discontinued.
 
 A similar decision was made for [Laminas MVC](https://github.com/laminas/laminas-mvc), though the decision is much more impactful.
