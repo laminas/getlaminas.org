@@ -1,22 +1,22 @@
 name: getlaminas_org
 
-type: php:8.3
+type: "composable:25.05"
+
+stack:
+  - "php@8.3":
+      extensions:
+        - curl
+        - pdo_sqlite
+        - sqlite3
+  - "php83Packages.composer"
+  - "nodejs@24"
+  - "nodePackages.gulp-cli"
+  - "platformsh"
+  - "jq"
 
 size: S
 
 disk: 256
-
-build:
-  flavor: none
-
-variables:
-  env:
-    NVM_VERSION: v0.40.1
-    NODE_VERSION: v22.8.0
-
-dependencies:
-  nodejs:
-    gulp-cli: '~3.0.0'
 
 mounts:
   'data/cache':
@@ -35,13 +35,6 @@ mounts:
 hooks:
   build: |
     set -e
-    echo "Setting up Node"
-    unset NPM_CONFIG_PREFIX
-    export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    echo "Installing platform.sh CLI"
-    curl -sS https://platform.sh/cli/installer | php
     echo "- Installing asset dependencies"
     (cd bootstrap ; npm install)
     echo "- Building assets"
@@ -80,7 +73,7 @@ crons:
   generatedata:
     # Refresh repository data every night at 2 am (UTC).
     spec: '0 2 * * *'
-    commands :
+    commands:
       start: |
         if [ "$PLATFORM_BRANCH" = master ]; then
            ./vendor/bin/laminas repository:generate-data "$PLATFORM_VARIABLES" | base64 --decorede | jq '."REPO_TOKEN"'
