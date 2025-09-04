@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24e35ba5f09a9028ff74ed38ca75c646",
+    "content-hash": "19934c96590be58a75d790629e41ca3d",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1496,16 +1496,16 @@
         },
         {
             "name": "mezzio/mezzio-helpers",
-            "version": "5.18.0",
+            "version": "5.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-helpers.git",
-                "reference": "8d76502e4d71aff178f2084eadd71d12fe737d3c"
+                "reference": "9adec72d8437e2c5058d28f69ce569b7a666b958"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/8d76502e4d71aff178f2084eadd71d12fe737d3c",
-                "reference": "8d76502e4d71aff178f2084eadd71d12fe737d3c",
+                "url": "https://api.github.com/repos/mezzio/mezzio-helpers/zipball/9adec72d8437e2c5058d28f69ce569b7a666b958",
+                "reference": "9adec72d8437e2c5058d28f69ce569b7a666b958",
                 "shasum": ""
             },
             "require": {
@@ -1523,7 +1523,7 @@
             },
             "require-dev": {
                 "ext-json": "*",
-                "laminas/laminas-coding-standard": "~3.0.1",
+                "laminas/laminas-coding-standard": "~3.1.0",
                 "laminas/laminas-diactoros": "^3.5",
                 "phpunit/phpunit": "^10.5.45",
                 "psalm/plugin-phpunit": "^0.19.5",
@@ -1571,7 +1571,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2025-04-27T08:59:18+00:00"
+            "time": "2025-09-04T11:08:16+00:00"
         },
         {
             "name": "mezzio/mezzio-platesrenderer",
