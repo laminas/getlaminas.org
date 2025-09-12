@@ -198,5 +198,15 @@
     "packagistUrl": "https://packagist.org/packages/arueckauer/laminas-diagnostics-factories",
     "keywords": ["diagnostics", "factory", "health-check"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/cycle-orm-factory",
+    "keywords": ["container", "cycle-orm"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/mezzio-radixrouter",
+    "keywords": ["router", "middleware", "radix"],
+    "homepage": null
   }
 ]
