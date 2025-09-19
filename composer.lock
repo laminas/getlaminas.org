@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19934c96590be58a75d790629e41ca3d",
+    "content-hash": "f0155bf92017b2fc000074f1062ee982",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1312,23 +1312,23 @@
         },
         {
             "name": "mezzio/mezzio",
-            "version": "3.21.0",
+            "version": "3.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio.git",
-                "reference": "1ec7e77a0532984c30d18e7278d9bbc596c6293a"
+                "reference": "e20d5dfe34f9687fca3b02fe67bb255baa571b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/1ec7e77a0532984c30d18e7278d9bbc596c6293a",
-                "reference": "1ec7e77a0532984c30d18e7278d9bbc596c6293a",
+                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/e20d5dfe34f9687fca3b02fe67bb255baa571b2f",
+                "reference": "e20d5dfe34f9687fca3b02fe67bb255baa571b2f",
                 "shasum": ""
             },
             "require": {
                 "fig/http-message-util": "^1.1.5",
                 "laminas/laminas-httphandlerrunner": "^2.1",
                 "laminas/laminas-stratigility": "^3.5",
-                "mezzio/mezzio-router": "^3.7",
+                "mezzio/mezzio-router": "^3.15.0",
                 "mezzio/mezzio-template": "^2.2",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "psr/container": "^1.0||^2.0",
@@ -1414,7 +1414,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2025-04-27T12:45:58+00:00"
+            "time": "2025-09-19T08:33:03+00:00"
         },
         {
             "name": "mezzio/mezzio-fastroute",
