@@ -16,7 +16,7 @@ use function basename;
 use function file_exists;
 use function sprintf;
 
-class AdvisoryHandler implements RequestHandlerInterface
+final class AdvisoryHandler implements RequestHandlerInterface
 {
     public function __construct(
         private readonly Advisory $advisory,

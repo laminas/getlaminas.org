@@ -21,10 +21,11 @@ use function realpath;
 use function sprintf;
 
 use const JSON_PRETTY_PRINT;
+use const JSON_THROW_ON_ERROR;
 use const JSON_UNESCAPED_SLASHES;
 use const JSON_UNESCAPED_UNICODE;
 
-class GenerateSearchData extends Command
+final class GenerateSearchData extends Command
 {
     use CreateBlogPostFromDataArray;
 
@@ -68,7 +69,10 @@ class GenerateSearchData extends Command
 
         file_put_contents(
             realpath($basePath) . '/public/js/search_terms.json',
-            json_encode(['docs' => $documents], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+            json_encode(
+                ['docs' => $documents],
+                JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR
+            )
         );
 
         $io->success('Generated search metadata');

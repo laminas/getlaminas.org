@@ -17,7 +17,7 @@ use function usort;
 /**
  * @template-implements IteratorAggregate<mixed, Release>
  */
-class Releases implements IteratorAggregate
+final class Releases implements IteratorAggregate
 {
     /** @psalm-var list<Release> */
     private array $releases = [];

@@ -6,7 +6,7 @@ namespace GetLaminas\Security;
 
 use App\ContentParser\Parser;
 
-class AdvisoryFactory
+final class AdvisoryFactory
 {
     public function __invoke(): Advisory
     {

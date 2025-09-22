@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 use function assert;
 use function is_array;
 
-class MapperFactory
+final class MapperFactory
 {
     public function __invoke(ContainerInterface $container): PdoMapper
     {

@@ -7,9 +7,11 @@ namespace App;
 use App\ContentParser\ParserInterface;
 use RuntimeException;
 
+use function assert;
 use function file_exists;
 use function file_put_contents;
 use function glob;
+use function is_array;
 use function uasort;
 use function var_export;
 
@@ -18,16 +20,16 @@ use const LOCK_EX;
 abstract class AbstractCollection
 {
     /** @var string */
-    protected const FOLDER_COLLECTION = '';
+    protected const string FOLDER_COLLECTION = '';
 
     /** @var string */
-    protected const CACHE_FILE = '';
+    protected const string CACHE_FILE = '';
 
     protected array $collection = [];
 
     public function __construct(protected ParserInterface $contentParser)
     {
-        if (empty(static::CACHE_FILE)) {
+        if (static::CACHE_FILE === '') {
             throw new RuntimeException('The cache file path is not defined!');
         }
 
@@ -36,7 +38,9 @@ abstract class AbstractCollection
             return;
         }
 
-        $this->collection = require static::CACHE_FILE;
+        $cached = require static::CACHE_FILE;
+        assert(is_array($cached));
+        $this->collection = $cached;
     }
 
     public function getAll(): array
@@ -67,7 +71,7 @@ abstract class AbstractCollection
             $this->collection[$file] = $fields;
         }
 
-        uasort($this->collection, [$this, 'order']);
+        uasort($this->collection, $this->order(...));
         file_put_contents(static::CACHE_FILE, '<?php return ' . var_export($this->collection, true) . ';', LOCK_EX);
     }
 

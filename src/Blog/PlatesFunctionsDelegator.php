@@ -13,7 +13,7 @@ use Psr\Container\ContainerInterface;
 
 use function sprintf;
 
-class PlatesFunctionsDelegator implements ExtensionInterface
+final class PlatesFunctionsDelegator implements ExtensionInterface
 {
     public ?Template $template = null;
 

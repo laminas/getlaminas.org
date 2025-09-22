@@ -15,7 +15,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use ReflectionException;
 use ReflectionProperty;
 
-class CreateIntegrationDatabaseDelegatorTest extends TestCase
+final class CreateIntegrationDatabaseDelegatorTest extends TestCase
 {
     /**
      * @throws Exception

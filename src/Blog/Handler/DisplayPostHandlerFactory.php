@@ -11,7 +11,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 
 use function assert;
 
-class DisplayPostHandlerFactory
+final class DisplayPostHandlerFactory
 {
     public function __invoke(ContainerInterface $container): DisplayPostHandler
     {

@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class SeedIntegrationDatabaseDelegator
+final class SeedIntegrationDatabaseDelegator
 {
     public function __invoke(
         ContainerInterface $container,

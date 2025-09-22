@@ -12,7 +12,7 @@ use GetLaminas\Integration\Integration;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class CreateIntegrationFromArrayTraitTest extends TestCase
+final class CreateIntegrationFromArrayTraitTest extends TestCase
 {
     use CreateIntegrationFromArrayTrait;
 

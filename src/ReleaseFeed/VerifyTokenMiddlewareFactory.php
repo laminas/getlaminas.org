@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 use function assert;
 use function is_string;
 
-class VerifyTokenMiddlewareFactory
+final class VerifyTokenMiddlewareFactory
 {
     public function __invoke(ContainerInterface $container): VerifyTokenMiddleware
     {

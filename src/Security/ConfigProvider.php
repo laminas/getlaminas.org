@@ -7,7 +7,7 @@ namespace GetLaminas\Security;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Mezzio\Application;
 
-class ConfigProvider
+final class ConfigProvider
 {
     public function __invoke(): array
     {

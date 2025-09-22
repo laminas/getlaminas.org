@@ -6,7 +6,7 @@ namespace GetLaminas\Blog;
 
 use DateTimeInterface;
 
-class BlogPost
+final class BlogPost
 {
     /**
      * @param string[] $tags

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace GetLaminas\Blog\Mapper;
 
-use Closure;
 use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\CreateBlogPostFromDataArray;
 use Laminas\Paginator\Adapter\AdapterInterface;
@@ -17,12 +16,12 @@ use function array_map;
 use function array_merge;
 
 /** @template-implements AdapterInterface<int, BlogPost> */
-class PdoPaginator implements AdapterInterface
+final class PdoPaginator implements AdapterInterface
 {
     use CreateBlogPostFromDataArray;
 
     /** @var array<string, mixed> */
-    protected $params;
+    protected array $params;
 
     /** @param array<string, mixed> $params */
     public function __construct(
@@ -49,7 +48,7 @@ class PdoPaginator implements AdapterInterface
         }
 
         return array_map(
-            Closure::fromCallable([$this, 'createBlogPostFromDataArray']),
+            $this->createBlogPostFromDataArray(...),
             $this->select->fetchAll(PDO::FETCH_ASSOC)
         );
     }

@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CommercialVendorsHandler implements RequestHandlerInterface
+final class CommercialVendorsHandler implements RequestHandlerInterface
 {
     public function __construct(private readonly array $vendors, private readonly TemplateRendererInterface $renderer)
     {

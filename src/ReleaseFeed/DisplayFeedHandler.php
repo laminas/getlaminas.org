@@ -11,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class DisplayFeedHandler implements RequestHandlerInterface
+final class DisplayFeedHandler implements RequestHandlerInterface
 {
     public function __construct(
         private readonly StreamFactoryInterface $streamFactory,

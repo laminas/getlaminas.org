@@ -12,7 +12,7 @@ use PDO;
 
 use function sprintf;
 
-class PdoMapper implements MapperInterface
+final class PdoMapper implements MapperInterface
 {
     use CreateBlogPostFromDataArray;
 

@@ -16,7 +16,7 @@ use function fopen;
 use function sprintf;
 use function str_replace;
 
-class FeedHandler implements RequestHandlerInterface
+final class FeedHandler implements RequestHandlerInterface
 {
     public function __construct(
         private readonly RequestHandlerInterface $notFoundHandler,

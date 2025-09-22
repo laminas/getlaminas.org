@@ -13,7 +13,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function preg_match;
 
-class VerifyTokenMiddleware implements MiddlewareInterface
+final class VerifyTokenMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private readonly string $token,

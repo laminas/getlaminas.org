@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class SecurityHandlerFactory
+final class SecurityHandlerFactory
 {
     public function __invoke(ContainerInterface $container): SecurityHandler
     {

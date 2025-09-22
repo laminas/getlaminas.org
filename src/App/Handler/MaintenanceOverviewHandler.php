@@ -17,7 +17,7 @@ use function is_array;
 use function is_string;
 use function str_contains;
 
-class MaintenanceOverviewHandler implements RequestHandlerInterface
+final class MaintenanceOverviewHandler implements RequestHandlerInterface
 {
     public const string CUSTOM_PROPERTIES_FILE      = 'maintenance-status.json';
     public const string CUSTOM_PROPERTIES_DIRECTORY = '/public/share';

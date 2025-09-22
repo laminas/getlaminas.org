@@ -15,7 +15,7 @@ use GetLaminas\Integration\Mapper\PdoMapper;
 use Mezzio\Application;
 use Phly\ConfigFactory\ConfigFactory;
 
-class ConfigProvider
+final class ConfigProvider
 {
     public function __invoke(): array
     {

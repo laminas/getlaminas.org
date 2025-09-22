@@ -13,7 +13,7 @@ use Psr\Container\ContainerInterface;
 use ReflectionException;
 use ReflectionProperty;
 
-class SeedIntegrationsDatabaseDelegatorTest extends TestCase
+final class SeedIntegrationsDatabaseDelegatorTest extends TestCase
 {
     /**
      * @throws Exception

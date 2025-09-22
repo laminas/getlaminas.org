@@ -7,7 +7,7 @@ namespace GetLaminas\Integration;
 use DateTimeInterface;
 use GetLaminas\Integration\Enums\IntegrationTypeEnum;
 
-class Integration
+final class Integration
 {
     public const string OPENGRAPH_IMAGE       = '/images/integrations/laminas-integrations-opengraph.png';
     public const string OPENGRAPH_DESCRIPTION =

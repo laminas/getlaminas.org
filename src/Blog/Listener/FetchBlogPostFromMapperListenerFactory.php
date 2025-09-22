@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class FetchBlogPostFromMapperListenerFactory
+final class FetchBlogPostFromMapperListenerFactory
 {
     public function __invoke(ContainerInterface $container): FetchBlogPostFromMapperListener
     {

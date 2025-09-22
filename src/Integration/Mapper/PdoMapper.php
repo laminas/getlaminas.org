@@ -8,6 +8,7 @@ use DateTimeImmutable;
 use GetLaminas\Integration\CreateIntegrationFromArrayTrait;
 use GetLaminas\Integration\Integration;
 use Laminas\Paginator\Paginator;
+use Override;
 use PDO;
 
 use function sprintf;
@@ -20,6 +21,7 @@ class PdoMapper implements MapperInterface
     {
     }
 
+    #[Override]
     public function fetchAll(): Paginator
     {
         $select = 'SELECT * FROM packages ORDER BY downloads DESC LIMIT :offset, :limit';
@@ -31,6 +33,7 @@ class PdoMapper implements MapperInterface
      * @param  array<int, string> $keywords
      * @return Paginator<int, Integration>
      */
+    #[Override]
     public function fetchAllByFilters(array $keywords, ?string $type = null, ?string $search = null): Paginator
     {
         $select = 'SELECT * FROM packages';
@@ -73,6 +76,7 @@ class PdoMapper implements MapperInterface
         );
     }
 
+    #[Override]
     public function fetchAllByKeyword(string $keyword): Paginator
     {
         $select = 'SELECT * FROM packages '
@@ -83,6 +87,7 @@ class PdoMapper implements MapperInterface
         return $this->preparePaginator($select, $count, [':tag' => sprintf('%%|%s|%%', $keyword)]);
     }
 
+    #[Override]
     public function getPackagesTitles(): array
     {
         $select = $this->pdo->prepare('SELECT name from packages;');
@@ -93,6 +98,7 @@ class PdoMapper implements MapperInterface
         return $select->fetchAll(PDO::FETCH_COLUMN);
     }
 
+    #[Override]
     public function deletePackageByName(string $package): bool
     {
         $select = $this->pdo->prepare('DELETE from packages WHERE name = :name;');
@@ -118,6 +124,7 @@ class PdoMapper implements MapperInterface
         ));
     }
 
+    #[Override]
     public function fetchPackagesDueUpdates(DateTimeImmutable $updated): ?array
     {
         $select = $this->pdo->prepare('SELECT id, name, updated FROM packages WHERE updated <= :updated ');

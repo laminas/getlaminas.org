@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class AdvisoryHandlerFactory
+final class AdvisoryHandlerFactory
 {
     public function __invoke(ContainerInterface $container): AdvisoryHandler
     {

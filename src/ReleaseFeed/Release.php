@@ -6,7 +6,7 @@ namespace GetLaminas\ReleaseFeed;
 
 use DateTimeInterface;
 
-class Release
+final class Release
 {
     public function __construct(
         public readonly string $package,

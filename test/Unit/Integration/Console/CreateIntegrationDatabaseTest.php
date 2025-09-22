@@ -6,15 +6,17 @@ namespace LaminasTest\Unit\Integration\Console;
 
 use GetLaminas\Integration\Console\CreateIntegrationDatabase;
 use LaminasTest\Unit\Integration\CommonTestCase;
+use Override;
 use PDO;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 
 #[CoversClass(CreateIntegrationDatabase::class)]
-class CreateIntegrationDatabaseTest extends CommonTestCase
+final class CreateIntegrationDatabaseTest extends CommonTestCase
 {
-    private CreateIntegrationDatabase|MockObject $subject;
+    private CreateIntegrationDatabase&MockObject $subject;
 
+    #[Override]
     public function setUp(): void
     {
         parent::setUp();

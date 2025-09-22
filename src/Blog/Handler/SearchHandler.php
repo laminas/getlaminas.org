@@ -15,7 +15,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_map;
 use function is_string;
 
-class SearchHandler implements RequestHandlerInterface
+final class SearchHandler implements RequestHandlerInterface
 {
     public function __construct(
         private readonly MapperInterface $mapper,

@@ -12,7 +12,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use function assert;
 use function is_array;
 
-class MapperFactory
+final class MapperFactory
 {
     /**
      * @throws ContainerExceptionInterface

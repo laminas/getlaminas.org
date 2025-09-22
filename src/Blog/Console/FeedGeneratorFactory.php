@@ -14,7 +14,7 @@ use function assert;
 use function getcwd;
 use function realpath;
 
-class FeedGeneratorFactory
+final class FeedGeneratorFactory
 {
     public function __invoke(ContainerInterface $container): FeedGenerator
     {

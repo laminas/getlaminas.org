@@ -11,7 +11,7 @@ use Psr\Container\NotFoundExceptionInterface;
 
 use function assert;
 
-class CreateIntegrationDatabaseDelegator
+final class CreateIntegrationDatabaseDelegator
 {
     /**
      * @throws ContainerExceptionInterface

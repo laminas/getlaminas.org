@@ -16,7 +16,7 @@ use function array_map;
 use function array_merge;
 
 /** @template-implements AdapterInterface<int, Integration> */
-class PdoPaginator implements AdapterInterface
+final class PdoPaginator implements AdapterInterface
 {
     use CreateIntegrationFromArrayTrait;
 

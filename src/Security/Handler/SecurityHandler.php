@@ -26,7 +26,7 @@ use function is_string;
 use function preg_match;
 use function sprintf;
 
-class SecurityHandler implements RequestHandlerInterface
+final class SecurityHandler implements RequestHandlerInterface
 {
     private const ADVISORY_PER_PAGE = 10;
     private const ADVISORY_PER_FEED = 15;

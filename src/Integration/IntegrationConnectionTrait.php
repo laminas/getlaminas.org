@@ -28,13 +28,14 @@ use const CURLOPT_POST;
 use const CURLOPT_POSTFIELDS;
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
+use const JSON_THROW_ON_ERROR;
 
 trait IntegrationConnectionTrait
 {
     private function initCurl(): void
     {
         if ($this->ghToken === null || $this->ghToken === '') {
-            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
+            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true, 512, JSON_THROW_ON_ERROR);
             assert(is_array($variables));
             assert(isset($variables['REPO_TOKEN']));
 
@@ -83,7 +84,7 @@ trait IntegrationConnectionTrait
         assert(is_string($rawResult));
 
         /** @var array{data: array{repository: array{owner: array{avatarUrl: string}}}}|null $githubResult */
-        $githubResult = json_decode($rawResult, true);
+        $githubResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         $image        = '';
 
         if ($githubResult === null) {
@@ -100,6 +101,7 @@ trait IntegrationConnectionTrait
     {
         try {
             $ch = curl_init($avatarUrl);
+            assert($ch !== false);
             $fp = fopen('public/images/packages/' . $file, 'wb');
             curl_setopt($ch, CURLOPT_FILE, $fp);
             curl_setopt($ch, CURLOPT_HEADER, 0);

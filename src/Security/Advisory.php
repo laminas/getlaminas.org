@@ -7,10 +7,12 @@ namespace GetLaminas\Security;
 use App\AbstractCollection;
 use Override;
 
-class Advisory extends AbstractCollection
+final class Advisory extends AbstractCollection
 {
-    protected const FOLDER_COLLECTION = 'data/advisories';
-    protected const CACHE_FILE        = 'var/advisories.php';
+    /** @var string */
+    protected const string FOLDER_COLLECTION = 'data/advisories';
+    /** @var string */
+    protected const string CACHE_FILE = 'var/advisories.php';
 
     #[Override]
     protected function order(array $a, array $b): int

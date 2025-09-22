@@ -12,6 +12,7 @@ use GetLaminas\Integration\Handler\IntegrationHandler;
 use GetLaminas\Integration\Integration;
 use GetLaminas\Integration\IntegrationConnectionTrait;
 use GetLaminas\Integration\Mapper\PdoMapper;
+use Override;
 use PDO;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -43,6 +44,7 @@ use function unlink;
 
 use const CURLOPT_URL;
 use const FILTER_VALIDATE_URL;
+use const JSON_THROW_ON_ERROR;
 
 class CreateIntegrationDatabase extends Command
 {
@@ -125,6 +127,7 @@ class CreateIntegrationDatabase extends Command
         $this->mapper = $mapper;
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setName('integration:seed-db');
@@ -182,6 +185,7 @@ class CreateIntegrationDatabase extends Command
     /**
      * @throws Exception
      */
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io       = new SymfonyStyle($input, $output);
@@ -208,7 +212,7 @@ class CreateIntegrationDatabase extends Command
         $userData = file_get_contents($path);
         assert(is_string($userData));
 
-        $userDataArray = json_decode($userData, true);
+        $userDataArray = json_decode($userData, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($userDataArray));
 
         $pdo = $this->createDatabase($dbFile);
@@ -307,7 +311,7 @@ class CreateIntegrationDatabase extends Command
         $rawResult = curl_exec($this->curl);
         assert(is_string($rawResult));
 
-        $packagistResult = json_decode($rawResult, true);
+        $packagistResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($packagistResult));
         /**
          * @var array{

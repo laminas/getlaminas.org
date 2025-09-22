@@ -9,7 +9,7 @@ use Mezzio\Application;
 use Phly\ConfigFactory\ConfigFactory;
 use Phly\EventDispatcher\ListenerProvider\AttachableListenerProvider;
 
-class ConfigProvider
+final class ConfigProvider
 {
     public function __invoke(): array
     {

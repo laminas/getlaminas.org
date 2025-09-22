@@ -25,9 +25,9 @@ There is a short demonstration of this project on YouTube: [https://www.youtube.
 
 ## Getting started
 
-2. Clone this repo
-3. Run `npm install`
-4. Run `gulp watch`
+1. Clone this repo
+2. Run `npm install`
+3. Run `gulp watch`
 4. Look at `index.html` (ideally with a [local development webserver](https://askubuntu.com/questions/377389/how-to-easily-start-a-webserver-in-any-folder))
 5. Add any Bootstrap Sass variables into `scss/_custom-variables.scss`
 6. Add any custom styles into `scss/_custom-styles.scss`. You can use Bootstrap's mixins here.

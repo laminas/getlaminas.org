@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class SearchHandlerFactory
+final class SearchHandlerFactory
 {
     public function __invoke(ContainerInterface $container): SearchHandler
     {

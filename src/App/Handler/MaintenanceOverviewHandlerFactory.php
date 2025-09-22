@@ -17,7 +17,9 @@ use function is_string;
 use function json_decode;
 use function sprintf;
 
-class MaintenanceOverviewHandlerFactory
+use const JSON_THROW_ON_ERROR;
+
+final class MaintenanceOverviewHandlerFactory
 {
     /**
      * @throws ContainerExceptionInterface
@@ -33,7 +35,7 @@ class MaintenanceOverviewHandlerFactory
             )
         );
 
-        $repositoryData = json_decode($rawData, true);
+        $repositoryData = json_decode($rawData, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($repositoryData));
 
         $renderer = $container->get(TemplateRendererInterface::class);

@@ -25,7 +25,7 @@ use function method_exists;
 use function sprintf;
 use function str_replace;
 
-class FeedGenerator extends Command
+final class FeedGenerator extends Command
 {
     use RoutesTrait;
 

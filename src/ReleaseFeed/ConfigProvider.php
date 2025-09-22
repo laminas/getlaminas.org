@@ -9,7 +9,7 @@ use Mezzio\Helper\BodyParams\BodyParamsMiddleware;
 
 use function getcwd;
 
-class ConfigProvider
+final class ConfigProvider
 {
     public function __invoke(): array
     {

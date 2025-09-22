@@ -15,7 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function file_exists;
 use function unlink;
 
-class BuildCommand extends Command
+final class BuildCommand extends Command
 {
     #[Override]
     protected function configure(): void
