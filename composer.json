@@ -65,7 +65,7 @@
         "laminas/laminas-coding-standard": "^2.4.0",
         "laminas/laminas-development-mode": "^3.10.0",
         "mezzio/mezzio-tooling": "^2.6",
-        "phpunit/phpunit": "^10.1.0",
+        "phpunit/phpunit": "^12.0.0",
         "psalm/plugin-phpunit": "^0.19.5",
         "roave/security-advisories": "dev-master",
         "vimeo/psalm": "^6.13"
