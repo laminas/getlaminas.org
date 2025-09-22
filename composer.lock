@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0155bf92017b2fc000074f1062ee982",
+    "content-hash": "a4c25d0312ef7c8e0c14e8f9218d8e4a",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1312,16 +1312,16 @@
         },
         {
             "name": "mezzio/mezzio",
-            "version": "3.22.0",
+            "version": "3.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio.git",
-                "reference": "e20d5dfe34f9687fca3b02fe67bb255baa571b2f"
+                "reference": "43587052003a4fc047c3ab7969cdec53bc25b6af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/e20d5dfe34f9687fca3b02fe67bb255baa571b2f",
-                "reference": "e20d5dfe34f9687fca3b02fe67bb255baa571b2f",
+                "url": "https://api.github.com/repos/mezzio/mezzio/zipball/43587052003a4fc047c3ab7969cdec53bc25b6af",
+                "reference": "43587052003a4fc047c3ab7969cdec53bc25b6af",
                 "shasum": ""
             },
             "require": {
@@ -1414,7 +1414,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2025-09-19T08:33:03+00:00"
+            "time": "2025-09-22T10:12:28+00:00"
         },
         {
             "name": "mezzio/mezzio-fastroute",
