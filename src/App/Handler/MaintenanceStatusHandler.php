@@ -12,7 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use const JSON_PRETTY_PRINT;
 
-class MaintenanceStatusHandler implements RequestHandlerInterface
+final class MaintenanceStatusHandler implements RequestHandlerInterface
 {
     public function __construct(private readonly array $repositoryData)
     {

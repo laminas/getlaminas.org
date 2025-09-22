@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class StaticPageHandlerFactory
+final class StaticPageHandlerFactory
 {
     public function __invoke(ContainerInterface $container): StaticPageHandler
     {

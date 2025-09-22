@@ -24,7 +24,7 @@ use function sprintf;
  *
  * @template-extends FilterIterator<mixed, string, Traversable<mixed, string>>
  */
-class MarkdownFileFilter extends FilterIterator
+final class MarkdownFileFilter extends FilterIterator
 {
     public function __construct(string $dir = '.')
     {

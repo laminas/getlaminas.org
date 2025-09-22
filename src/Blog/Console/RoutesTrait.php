@@ -6,6 +6,7 @@ namespace GetLaminas\Blog\Console;
 
 use Mezzio\Router\Route;
 use Mezzio\Router\RouterInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -31,6 +32,7 @@ trait RoutesTrait
     private function seedRoutes(RouterInterface $router): void
     {
         $middleware = new class implements MiddlewareInterface {
+            #[Override]
             public function process(
                 ServerRequestInterface $request,
                 RequestHandlerInterface $handler

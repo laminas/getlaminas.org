@@ -26,7 +26,7 @@ use function sprintf;
 use const LOCK_EX;
 use const PHP_URL_PATH;
 
-class ReceiveFeedItemHandler implements RequestHandlerInterface
+final class ReceiveFeedItemHandler implements RequestHandlerInterface
 {
     public function __construct(
         private readonly string $feedFile,
@@ -102,6 +102,7 @@ class ReceiveFeedItemHandler implements RequestHandlerInterface
         $releases = new Releases();
 
         foreach ($feed as $entry) {
+            assert($entry !== null);
             $title               = $entry->getTitle();
             [$package, $version] = explode(' ', $title, 2);
 

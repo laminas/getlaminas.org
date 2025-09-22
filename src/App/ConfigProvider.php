@@ -20,7 +20,7 @@ use function rtrim;
  *
  * @see https://docs.laminas.dev/laminas-component-installer/
  */
-class ConfigProvider
+final class ConfigProvider
 {
     /**
      * Returns the configuration array

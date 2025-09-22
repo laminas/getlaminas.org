@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+<files psalm-version="6.13.1@1e3b7f0a8ab32b23197b91107adc0a7ed8a05b51">
   <file src="bin/clear-config-cache.php">
     <MixedArgument>
       <code><![CDATA[$config['config_cache_path']]]></code>
@@ -8,6 +8,32 @@
       <code><![CDATA[$config['config_cache_path']]]></code>
       <code><![CDATA[$config['config_cache_path']]]></code>
     </MixedArgument>
+  </file>
+  <file src="config/autoload/assets.global.php">
+    <PossiblyFalseArgument>
+      <code><![CDATA[file_get_contents($assetRevisionsFile)]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseOperand>
+  </file>
+  <file src="config/autoload/global.php">
+    <PossiblyFalseArgument>
+      <code><![CDATA[getcwd()]]></code>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[realpath(
+            getcwd()
+        )]]></code>
+      <code><![CDATA[realpath(getcwd())]]></code>
+    </PossiblyFalseOperand>
+  </file>
+  <file src="config/config.php">
+    <PossiblyFalseOperand>
+      <code><![CDATA[realpath(__DIR__)]]></code>
+      <code><![CDATA[realpath(__DIR__)]]></code>
+    </PossiblyFalseOperand>
   </file>
   <file src="config/container.php">
     <MixedArgument>
@@ -36,21 +62,26 @@
     </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/App/AbstractCollection.php">
-    <MissingClassConstType>
-      <code><![CDATA[CACHE_FILE = '']]></code>
-      <code><![CDATA[FOLDER_COLLECTION = '']]></code>
-    </MissingClassConstType>
+    <MixedArgument>
+      <code><![CDATA[$file]]></code>
+    </MixedArgument>
     <MixedArgumentTypeCoercion>
-      <code><![CDATA[uasort($this->collection, [$this, 'order'])]]></code>
+      <code><![CDATA[uasort($this->collection, $this->order(...))]]></code>
     </MixedArgumentTypeCoercion>
     <MixedAssignment>
-      <code><![CDATA[$this->collection]]></code>
+      <code><![CDATA[$file]]></code>
     </MixedAssignment>
+    <PossiblyFalseIterator>
+      <code><![CDATA[glob(static::FOLDER_COLLECTION . '/*.md')]]></code>
+    </PossiblyFalseIterator>
   </file>
   <file src="src/App/Console/WriteRepositoryData.php">
     <MixedAssignment>
       <code><![CDATA[$token]]></code>
     </MixedAssignment>
+    <PossiblyFalseOperand>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseOperand>
   </file>
   <file src="src/App/ContentParser/Document.php">
     <MixedReturnTypeCoercion>
@@ -58,25 +89,46 @@
       <code><![CDATA[array]]></code>
     </MixedReturnTypeCoercion>
   </file>
+  <file src="src/App/ContentParser/Parser.php">
+    <PossiblyFalseArgument>
+      <code><![CDATA[$markdown]]></code>
+      <code><![CDATA[$markdown]]></code>
+    </PossiblyFalseArgument>
+  </file>
   <file src="src/App/Handler/MaintenanceOverviewHandlerFactory.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$repositoryData]]></code>
     </MixedArgumentTypeCoercion>
+    <PossiblyFalseArgument>
+      <code><![CDATA[$rawData]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseOperand>
+  </file>
+  <file src="src/App/Handler/MaintenanceStatusHandlerFactory.php">
+    <PossiblyFalseArgument>
+      <code><![CDATA[$rawData]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseOperand>
   </file>
   <file src="src/App/Handler/StaticPageHandler.php">
     <PossiblyFalseArgument>
       <code><![CDATA[$routeResult->getMatchedRouteName()]]></code>
     </PossiblyFalseArgument>
   </file>
-  <file src="src/App/LoggingErrorListener.php">
-    <MissingClassConstType>
-      <code><![CDATA[LOG_STRING = '{status} [{method}] {uri}: {error}']]></code>
-    </MissingClassConstType>
-  </file>
   <file src="src/App/Template/InjectAssetRevisionsDelegator.php">
     <MixedAssignment>
       <code><![CDATA[$revisions]]></code>
     </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[file_get_contents($assetRevisionsFile)]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseOperand>
   </file>
   <file src="src/Blog/Console/FeedGenerator.php">
     <ArgumentTypeCoercion>
@@ -94,6 +146,14 @@
       <code><![CDATA[$outputDir]]></code>
     </MixedOperand>
   </file>
+  <file src="src/Blog/Console/FeedGeneratorFactory.php">
+    <PossiblyFalseArgument>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[realpath(getcwd())]]></code>
+    </PossiblyFalseOperand>
+  </file>
   <file src="src/Blog/Console/GenerateSearchData.php">
     <MixedArgument>
       <code><![CDATA[$basePath]]></code>
@@ -101,6 +161,18 @@
     <MixedAssignment>
       <code><![CDATA[$basePath]]></code>
     </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[realpath($basePath)]]></code>
+      <code><![CDATA[realpath($basePath)]]></code>
+    </PossiblyFalseOperand>
+  </file>
+  <file src="src/Blog/Console/MarkdownFileFilter.php">
+    <PossiblyNullReference>
+      <code><![CDATA[current]]></code>
+    </PossiblyNullReference>
   </file>
   <file src="src/Blog/Console/RoutesTrait.php">
     <ArgumentTypeCoercion>
@@ -108,6 +180,9 @@
     </ArgumentTypeCoercion>
   </file>
   <file src="src/Blog/Console/SeedBlogDatabase.php">
+    <InvalidArrayAccess>
+      <code><![CDATA[$path[0]]]></code>
+    </InvalidArrayAccess>
     <MixedArgument>
       <code><![CDATA[$basePath]]></code>
       <code><![CDATA[$dbPath]]></code>
@@ -119,6 +194,18 @@
       <code><![CDATA[$postsPath]]></code>
       <code><![CDATA[$this->authorDataRootPath]]></code>
     </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[$path]]></code>
+      <code><![CDATA[getcwd()]]></code>
+      <code><![CDATA[getcwd()]]></code>
+      <code><![CDATA[realpath($basePath)]]></code>
+      <code><![CDATA[realpath($basePath)]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[$path]]></code>
+      <code><![CDATA[$path]]></code>
+      <code><![CDATA[realpath(getcwd())]]></code>
+    </PossiblyFalseOperand>
   </file>
   <file src="src/Blog/CreateBlogPostFromDataArray.php">
     <ArgumentTypeCoercion>
@@ -170,6 +257,9 @@
       <code><![CDATA[$tag]]></code>
       <code><![CDATA[$type]]></code>
     </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[fopen($path, 'r')]]></code>
+    </PossiblyFalseArgument>
   </file>
   <file src="src/Blog/Handler/ListPostsHandler.php">
     <MixedArgument>
@@ -212,20 +302,30 @@
     </MixedAssignment>
   </file>
   <file src="src/Blog/PlatesFunctionsDelegator.php">
-    <MixedInferredReturnType>
-      <code><![CDATA[string]]></code>
-    </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$this->template->url('blog.post', ['id' => $post->id])]]></code>
     </MixedReturnStatement>
+    <UndefinedMagicMethod>
+      <code><![CDATA[url]]></code>
+    </UndefinedMagicMethod>
   </file>
   <file src="src/Integration/Console/CreateIntegrationDatabase.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CreateIntegrationDatabase]]></code>
+    </ClassMustBeFinal>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$curlResult]]></code>
     </MixedArgumentTypeCoercion>
     <MixedAssignment>
       <code><![CDATA[$this->ghToken]]></code>
     </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[getcwd()]]></code>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalseOperand>
+      <code><![CDATA[realpath(getcwd())]]></code>
+    </PossiblyFalseOperand>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$curl]]></code>
       <code><![CDATA[$githubCurl]]></code>
@@ -245,11 +345,6 @@
       <code><![CDATA[$mapper]]></code>
     </PropertyNotSetInConstructor>
   </file>
-  <file src="src/Integration/IntegrationConnectionTrait.php">
-    <MixedAssignment>
-      <code><![CDATA[$this->ghToken]]></code>
-    </MixedAssignment>
-  </file>
   <file src="src/Integration/Handler/IntegrationHandler.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$keywords]]></code>
@@ -262,15 +357,52 @@
       <code><![CDATA[getUri]]></code>
     </MixedMethodCall>
   </file>
+  <file src="src/Integration/IntegrationConnectionTrait.php">
+    <MixedAssignment>
+      <code><![CDATA[$this->ghToken]]></code>
+    </MixedAssignment>
+    <PossiblyFalseArgument>
+      <code><![CDATA[$fp]]></code>
+      <code><![CDATA[$this->curl]]></code>
+      <code><![CDATA[$this->curl]]></code>
+      <code><![CDATA[$this->curl]]></code>
+      <code><![CDATA[$this->githubCurl]]></code>
+      <code><![CDATA[$this->githubCurl]]></code>
+      <code><![CDATA[$this->githubCurl]]></code>
+    </PossiblyFalseArgument>
+    <PossiblyFalsePropertyAssignmentValue>
+      <code><![CDATA[curl_init()]]></code>
+      <code><![CDATA[curl_init()]]></code>
+    </PossiblyFalsePropertyAssignmentValue>
+  </file>
   <file src="src/Integration/Mapper/MapperFactory.php">
     <MixedArgument>
       <code><![CDATA[$config['db'] ?? '']]></code>
     </MixedArgument>
   </file>
+  <file src="src/Integration/Mapper/PdoMapper.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[PdoMapper]]></code>
+    </ClassMustBeFinal>
+  </file>
   <file src="src/Integration/Mapper/PdoPaginator.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->createIntegrationFromArray(...)]]></code>
     </ArgumentTypeCoercion>
+    <InvalidReturnStatement>
+      <code><![CDATA[array_map(
+            $this->createIntegrationFromArray(...),
+            $this->select->fetchAll(PDO::FETCH_ASSOC)
+        )]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[array]]></code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/ReleaseFeed/ConfigProvider.php">
+    <PossiblyFalseOperand>
+      <code><![CDATA[getcwd()]]></code>
+    </PossiblyFalseOperand>
   </file>
   <file src="src/ReleaseFeed/ReceiveFeedItemHandler.php">
     <ArgumentTypeCoercion>
@@ -292,6 +424,7 @@
     </MixedAssignment>
     <PossiblyFalseArgument>
       <code><![CDATA[$data['author_url']]]></code>
+      <code><![CDATA[$xml]]></code>
     </PossiblyFalseArgument>
     <PossiblyInvalidArgument>
       <code><![CDATA[$data]]></code>
@@ -310,12 +443,6 @@
       <code><![CDATA[$version]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
-  <file src="src/Security/Advisory.php">
-    <MissingClassConstType>
-      <code><![CDATA[CACHE_FILE        = 'var/advisories.php']]></code>
-      <code><![CDATA[FOLDER_COLLECTION = 'data/advisories']]></code>
-    </MissingClassConstType>
-  </file>
   <file src="src/Security/Handler/AdvisoryHandler.php">
     <MixedArgument>
       <code><![CDATA[$advisory]]></code>
@@ -326,10 +453,6 @@
     </MixedAssignment>
   </file>
   <file src="src/Security/Handler/SecurityHandler.php">
-    <MissingClassConstType>
-      <code><![CDATA[ADVISORY_PER_FEED = 15]]></code>
-      <code><![CDATA[ADVISORY_PER_PAGE = 10]]></code>
-    </MissingClassConstType>
     <MixedArgument>
       <code><![CDATA[$action]]></code>
       <code><![CDATA[$content['body'] ?? '']]></code>
@@ -368,15 +491,13 @@
       <code><![CDATA[$this->config['templates']['paths']['integration'][0]]]></code>
     </MixedArrayAccess>
   </file>
-  <file src="test/Unit/Integration/Console/CreateIntegrationDatabaseTest.php">
-    <PossiblyUndefinedMethod>
-      <code><![CDATA[createDatabase]]></code>
-    </PossiblyUndefinedMethod>
-  </file>
   <file src="test/Unit/Integration/CreateIntegrationFromArrayTraitTest.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$data]]></code>
     </MixedArgumentTypeCoercion>
+    <MixedReturnStatement>
+      <code><![CDATA[array]]></code>
+    </MixedReturnStatement>
   </file>
   <file src="vendor/symfony/console/Command/Command.php">
     <DeprecatedMethod>

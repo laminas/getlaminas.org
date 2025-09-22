@@ -8,12 +8,11 @@ use JsonSerializable;
 use Override;
 use Psr\EventDispatcher\StoppableEventInterface;
 
-class FetchBlogPostEvent implements
+final class FetchBlogPostEvent implements
     JsonSerializable,
     StoppableEventInterface
 {
-    /** @var null|BlogPost */
-    private $post;
+    private ?BlogPost $post = null;
 
     public function __construct(private readonly string $id)
     {

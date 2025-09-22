@@ -37,7 +37,7 @@ $this->layout('layout::default', ['title' => 'Security Advisories']);
             <div class="hline"></div>
 
             <?php if ($tot > 1) : ?>
-            <nav arial-label="Security advisory page navigation">
+            <nav aria-label="Security advisory page navigation">
                 <ul class="pagination mt-4 justify-content-center">
                     <li class="page-item previous<?= $prev ? '' : ' disabled' ?>">
                         <a class="page-link" href="<?= $prev ? '?page=' . $prev : '#' ?>">

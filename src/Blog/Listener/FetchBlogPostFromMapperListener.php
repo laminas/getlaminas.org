@@ -8,7 +8,7 @@ use GetLaminas\Blog\BlogPost;
 use GetLaminas\Blog\FetchBlogPostEvent;
 use GetLaminas\Blog\Mapper\MapperInterface;
 
-class FetchBlogPostFromMapperListener
+final class FetchBlogPostFromMapperListener
 {
     public function __construct(private readonly MapperInterface $mapper)
     {

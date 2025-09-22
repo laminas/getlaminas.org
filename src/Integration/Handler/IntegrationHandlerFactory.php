@@ -13,7 +13,7 @@ use Psr\Container\NotFoundExceptionInterface;
 
 use function assert;
 
-class IntegrationHandlerFactory
+final class IntegrationHandlerFactory
 {
     /**
      * @throws ContainerExceptionInterface

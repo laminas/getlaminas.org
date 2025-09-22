@@ -11,7 +11,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class ListPostsHandlerFactory
+final class ListPostsHandlerFactory
 {
     public function __invoke(ContainerInterface $container): ListPostsHandler
     {

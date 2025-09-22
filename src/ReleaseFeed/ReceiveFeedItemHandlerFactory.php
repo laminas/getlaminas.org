@@ -17,7 +17,7 @@ use RuntimeException;
 use function assert;
 use function is_string;
 
-class ReceiveFeedItemHandlerFactory
+final class ReceiveFeedItemHandlerFactory
 {
     public function __invoke(ContainerInterface $container): ReceiveFeedItemHandler
     {

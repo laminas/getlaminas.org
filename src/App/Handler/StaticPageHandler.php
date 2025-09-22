@@ -14,7 +14,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function str_replace;
 
-class StaticPageHandler implements RequestHandlerInterface
+final class StaticPageHandler implements RequestHandlerInterface
 {
     public function __construct(private readonly TemplateRendererInterface $renderer)
     {

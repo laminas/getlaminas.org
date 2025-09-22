@@ -11,6 +11,7 @@ use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Laminas\Stdlib\ArrayUtils;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -25,7 +26,7 @@ use function max;
 use function sprintf;
 use function strtolower;
 
-class IntegrationHandler implements RequestHandlerInterface
+final class IntegrationHandler implements RequestHandlerInterface
 {
     public const string INTEGRATION_DIRECTORY = '/data/integration';
     public const string INTEGRATION_FILE      = 'integration-packages.json';
@@ -36,6 +37,7 @@ class IntegrationHandler implements RequestHandlerInterface
     ) {
     }
 
+    #[Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getQueryParams();

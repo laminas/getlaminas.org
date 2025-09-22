@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class FeedHandlerFactory
+final class FeedHandlerFactory
 {
     public function __invoke(ContainerInterface $container): FeedHandler
     {

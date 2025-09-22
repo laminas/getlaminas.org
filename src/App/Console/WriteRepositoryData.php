@@ -38,8 +38,9 @@ use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_URL;
 use const FILE_USE_INCLUDE_PATH;
 use const JSON_PRETTY_PRINT;
+use const JSON_THROW_ON_ERROR;
 
-class WriteRepositoryData extends Command
+final class WriteRepositoryData extends Command
 {
     private const string ARGUMENT_USER_AGENT = 'userAgent';
     private const string ARGUMENT_TOKEN      = 'token';
@@ -78,7 +79,7 @@ class WriteRepositoryData extends Command
 
         $token = $input->getArgument(self::ARGUMENT_TOKEN);
         if (! $token) {
-            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true);
+            $variables = json_decode(base64_decode($_ENV['PLATFORM_VARIABLES']), true, 512, JSON_THROW_ON_ERROR);
             assert(is_array($variables));
             assert(isset($variables['REPO_TOKEN']));
 
@@ -101,6 +102,7 @@ class WriteRepositoryData extends Command
         ];
 
         $curl = curl_init();
+        assert($curl !== false);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -122,7 +124,7 @@ class WriteRepositoryData extends Command
                 $curlResult = curl_exec($curl);
                 assert(is_string($curlResult));
 
-                $decodedRes = json_decode($curlResult, true);
+                $decodedRes = json_decode($curlResult, true, 512, JSON_THROW_ON_ERROR);
                 assert(is_array($decodedRes));
 
                 /**
@@ -183,7 +185,7 @@ class WriteRepositoryData extends Command
                 getcwd() . MaintenanceOverviewHandler::CUSTOM_PROPERTIES_DIRECTORY,
                 MaintenanceOverviewHandler::CUSTOM_PROPERTIES_FILE
             ),
-            json_encode($singleResult, JSON_PRETTY_PRINT),
+            json_encode($singleResult, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR),
             FILE_USE_INCLUDE_PATH
         );
     }

@@ -13,7 +13,9 @@ use function is_array;
 use function json_decode;
 use function sprintf;
 
-class MaintenanceStatusHandlerFactory
+use const JSON_THROW_ON_ERROR;
+
+final class MaintenanceStatusHandlerFactory
 {
     public function __invoke(ContainerInterface $container): MaintenanceStatusHandler
     {
@@ -25,7 +27,7 @@ class MaintenanceStatusHandlerFactory
             )
         );
 
-        $repositoryData = json_decode($rawData, true);
+        $repositoryData = json_decode($rawData, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($repositoryData));
 
         return new MaintenanceStatusHandler($repositoryData);

@@ -7,7 +7,7 @@ if (! file_exists($assetRevisionsFile)) {
     return [];
 }
 
-$revisions = json_decode(file_get_contents($assetRevisionsFile), true);
+$revisions = json_decode(file_get_contents($assetRevisionsFile), true, 512, JSON_THROW_ON_ERROR);
 
 if (! is_array($revisions)) {
     return [];

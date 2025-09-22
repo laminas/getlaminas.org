@@ -8,6 +8,7 @@ use CurlHandle;
 use DateTimeImmutable;
 use GetLaminas\Integration\IntegrationConnectionTrait;
 use GetLaminas\Integration\Mapper\PdoMapper;
+use Override;
 use PDO;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,8 +27,9 @@ use function sprintf;
 use function str_replace;
 
 use const CURLOPT_URL;
+use const JSON_THROW_ON_ERROR;
 
-class SeedIntegrationDatabase extends Command
+final class SeedIntegrationDatabase extends Command
 {
     use IntegrationConnectionTrait;
 
@@ -58,6 +60,7 @@ class SeedIntegrationDatabase extends Command
         $this->mapper = $mapper;
     }
 
+    #[Override]
     protected function configure(): void
     {
         $this->setName('integration:seed-db');
@@ -80,6 +83,7 @@ class SeedIntegrationDatabase extends Command
         );
     }
 
+    #[Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io     = new SymfonyStyle($input, $output);
@@ -158,7 +162,7 @@ class SeedIntegrationDatabase extends Command
         curl_setopt($this->curl, CURLOPT_URL, $packagistUrl);
         $rawResult = curl_exec($this->curl);
         assert(is_string($rawResult));
-        $packagistResult = json_decode($rawResult, true);
+        $packagistResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($packagistResult));
 
         /**

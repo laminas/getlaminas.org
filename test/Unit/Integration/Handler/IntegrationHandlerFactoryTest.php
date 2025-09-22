@@ -14,7 +14,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-class IntegrationHandlerFactoryTest extends TestCase
+final class IntegrationHandlerFactoryTest extends TestCase
 {
     /**
      * @throws NotFoundExceptionInterface

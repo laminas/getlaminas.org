@@ -11,7 +11,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use function assert;
 use function is_string;
 
-class DisplayFeedHandlerFactory
+final class DisplayFeedHandlerFactory
 {
     public function __invoke(ContainerInterface $container): DisplayFeedHandler
     {

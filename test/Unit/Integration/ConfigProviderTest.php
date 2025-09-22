@@ -9,13 +9,15 @@ use GetLaminas\Integration\Console\CreateIntegrationDatabase;
 use GetLaminas\Integration\Console\SeedIntegrationDatabase;
 use GetLaminas\Integration\Handler\IntegrationHandler;
 use GetLaminas\Integration\Mapper\PdoMapper;
+use Override;
 use PHPUnit\Framework\TestCase;
 
-class ConfigProviderTest extends TestCase
+final class ConfigProviderTest extends TestCase
 {
     protected array $config = [];
 
-    protected function setup(): void
+    #[Override]
+    protected function setUp(): void
     {
         parent::setUp();
 

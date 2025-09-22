@@ -20,7 +20,7 @@ use function count;
 use function sprintf;
 use function str_replace;
 
-class ListPostsHandler implements RequestHandlerInterface
+final class ListPostsHandler implements RequestHandlerInterface
 {
     public function __construct(
         private readonly MapperInterface $mapper,

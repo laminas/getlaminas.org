@@ -10,7 +10,7 @@ use Monolog\Logger;
 use Monolog\Processor\PsrLogMessageProcessor;
 use Psr\Log\LoggerInterface;
 
-class AccessLoggerFactory
+final class AccessLoggerFactory
 {
     public function __invoke(): LoggerInterface
     {

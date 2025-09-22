@@ -25,7 +25,7 @@ use function strlen;
 use function substr;
 use function unlink;
 
-class SeedBlogDatabase extends Command
+final class SeedBlogDatabase extends Command
 {
     use CreateBlogPostFromDataArray;
 

@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 use function assert;
 
-class FetchBlogPostEventListenersDelegator
+final class FetchBlogPostEventListenersDelegator
 {
     public function __invoke(
         ContainerInterface $container,

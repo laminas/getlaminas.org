@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 use function assert;
 use function is_array;
 
-class CommercialVendorsHandlerFactory
+final class CommercialVendorsHandlerFactory
 {
     public function __invoke(ContainerInterface $container): CommercialVendorsHandler
     {

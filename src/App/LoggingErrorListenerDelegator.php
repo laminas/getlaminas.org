@@ -10,7 +10,7 @@ use Psr\Log\LoggerInterface;
 
 use function assert;
 
-class LoggingErrorListenerDelegator
+final class LoggingErrorListenerDelegator
 {
     public function __invoke(
         ContainerInterface $container,
