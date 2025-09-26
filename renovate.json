@@ -6,32 +6,7 @@
   "packageRules": [
     {
       "matchDepTypes": ["require"],
-      "rangeStrategy": "bump"
-    },
-    {
-      "matchPackageNames": ["php"],
-      "rangeStrategy": "replace",
-      "groupName": "PHP"
-    },
-    {
-      "matchFiles": [".platform.app.yaml"],
-      "matchPackageNames": ["php/php-src"],
-      "extends": [":automergeDisabled", ":automergePr", ":label(Awaiting Maintainer Response)"],
-      "groupName": "PHP",
-      "commitMessageTopic": "platform.sh PHP",
-      "prBodyNotes": [
-        ":warning: PHP version might not be available at platform.sh. See https://docs.platform.sh/languages/php.html#supported-versions"
-      ]
-    }
-  ],
-  "regexManagers": [
-    {
-      "fileMatch": ["^.platform.app.yaml$"],
-      "matchStrings": ["\\ntype: php:(?<currentValue>.*)\\n"],
-      "depNameTemplate": "php/php-src",
-      "datasourceTemplate": "github-tags",
-      "extractVersionTemplate": "^php-(?<version>\\d+\\.\\d+)\\.\\d+$",
-      "versioningTemplate": "semver-coerced"
+      "rangeStrategy": "replace"
     }
   ]
 }
