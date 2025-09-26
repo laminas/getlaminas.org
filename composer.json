@@ -34,7 +34,7 @@
         "forum": "https://discourse.laminas.dev"
     },
     "require": {
-        "php": "~8.4.12",
+        "php": "~8.4.13",
         "ext-curl": "*",
         "ext-pdo": "*",
         "ext-sqlite3": "*",
