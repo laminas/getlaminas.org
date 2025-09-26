@@ -208,5 +208,10 @@
     "packagistUrl": "https://packagist.org/packages/sirix/mezzio-radixrouter",
     "keywords": ["router", "middleware", "radix"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://github.com/settermjd/mezzio-twilio-integration",
+    "keywords": ["twilio", "middleware", "PSR-15", "validator"],
+    "homepage": "https://settermjd.gitlab.io/mezzio-twilio-integration"
   }
 ]
