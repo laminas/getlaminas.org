@@ -9,8 +9,8 @@ declare(strict_types=1);
  * @var string|null                     $opengraphDescription
  */
 
-$opengraphImage       =  $opengraphImage ?? "/images/opengraph/default.png";
-$opengraphDescription =  $opengraphDescription ?? "Laminas Project, the enterprise-ready PHP Framework and components, a community-supported, open source continuation of Zend Framework.";
+$opengraphImage       = $opengraphImage ?? "/images/opengraph/default.png";
+$opengraphDescription = $opengraphDescription ?? "Laminas & Mezzio: enterprise-ready, open-source PHP components and middleware microframework. A community-supported, open-source continuation of Zend Framework.";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ $opengraphDescription =  $opengraphDescription ?? "Laminas Project, the enterpri
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->insert('partials::favicon') ?>
 
-    <title><?= $this->e($title) ?> - Laminas Project - Enterprise PHP Framework</title>
+    <title><?= $this->e($title) ?> - Laminas Project - Enterprise PHP Components and Middleware Microframework</title>
 
     <!-- OpenGraph card -->
     <meta property="og:title" content="Laminas Project - <?= $this->e($title) ?>"/>
