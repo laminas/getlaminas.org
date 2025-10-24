@@ -105,6 +105,7 @@ $this->end();
 
     <div class="repository-container">
         <?php foreach($repositoryData as $organization => $orgData): ?>
+            <?php $githubOrg = $organization !== 'laminas-mvc' ? $organization : 'laminas' ?>
             <div class="repository-organization <?= $organization ?> rounded-4">
                 <h1><?= MaintenanceOverviewHandler::GITHUB_ORGANIZATIONS[$organization] ?? $organization ?></h1>
                 <div class="repository-card-container">
@@ -119,13 +120,21 @@ $this->end();
                                        href="<?= sprintf(
                                            '%s%s/%s',
                                            GITHUB_URL,
-                                           $organization !== 'laminas-mvc' ? $organization : 'laminas',
+                                           $githubOrg,
                                            $data['name']
                                        )
                                        ?>">
                                         <?= $data['name'] ?>
                                     </a>
                                 </h5>
+
+                                <img class="mb-2" src="
+                                <?= sprintf(
+                                        'https://img.shields.io/packagist/dependency-v/%s/%s/php?style=social',
+                                        $githubOrg,
+                                        $data['name']
+                                ) ?>" alt="supported-php-versions">
+
                                 <?php
                                 $badgeLabel  = null;
                                 $badgeValue  = null;
@@ -147,9 +156,10 @@ $this->end();
                                         $minutesFile = $property['value'];
                                         $minutesUrl  = sprintf(
                                             'https://github.com/%s/technical-steering-committee/blob/main/meetings/minutes/%s',
-                                            $organization !== 'laminas-mvc' ? $organization : 'laminas',
+                                                $githubOrg,
                                             $minutesFile
-                                        );                                    }
+                                        );
+                                    }
                                 }
                                 ?>
 
