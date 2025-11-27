@@ -160,11 +160,6 @@
     "homepage": null
   },
   {
-    "packagistUrl": "https://packagist.org/packages/mimmi20/laminasviewrenderer-js-log",
-    "keywords": ["laminas-view", "js", "logger"],
-    "homepage": null
-  },
-  {
     "packagistUrl": "https://packagist.org/packages/mimmi20/mezzio-setlocale-middleware",
     "keywords": ["mezzio", "middleware", "language"],
     "homepage": null
