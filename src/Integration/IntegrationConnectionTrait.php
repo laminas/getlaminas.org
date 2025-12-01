@@ -87,7 +87,7 @@ trait IntegrationConnectionTrait
         $githubResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         $image        = '';
 
-        if ($githubResult === null) {
+        if ($githubResult === null || isset($githubResult['errors'])) {
             return $image;
         }
 
