@@ -358,9 +358,6 @@
     </MixedMethodCall>
   </file>
   <file src="src/Integration/IntegrationConnectionTrait.php">
-    <InvalidArrayOffset>
-      <code><![CDATA[$githubResult['errors']]]></code>
-    </InvalidArrayOffset>
     <MixedAssignment>
       <code><![CDATA[$this->ghToken]]></code>
     </MixedAssignment>

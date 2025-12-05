@@ -83,13 +83,17 @@ trait IntegrationConnectionTrait
         $rawResult = curl_exec($this->githubCurl);
         assert(is_string($rawResult));
 
-        /** @var array{data: array{repository: array{owner: array{avatarUrl: string}}}}|null $githubResult */
+        /**
+         * @var array{data: array{repository: array{owner: array{avatarUrl: string}}}}|array{errors: array{mixed}}|null
+         *     $githubResult
+         */
         $githubResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         $image        = '';
 
         if ($githubResult === null || isset($githubResult['errors'])) {
             return $image;
         }
+        assert(isset($githubResult['data']['repository']['owner']['avatarUrl']));
 
         return $this->cachePackageOwnerAvatar(
             $githubResult['data']['repository']['owner']['avatarUrl'],
