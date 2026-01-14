@@ -24,7 +24,7 @@ If you want to help us and the PHP community move forward, develop new skills an
 
 # Table of contents
 
-[Why contribute?](#why-contribute?)
+[Why you should contribute](#why-you-should-contribute)
 
 - [Personal Skill Development](#personal-skill-development)
 - [Career and Résumé Benefits](#career-and-résumé-benefits)
@@ -38,7 +38,7 @@ If you want to help us and the PHP community move forward, develop new skills an
 
 [Additional Resources](#additional-resources)
 
-# Why contribute?
+# Why you should contribute
 
 ## Personal Skill Development
 
