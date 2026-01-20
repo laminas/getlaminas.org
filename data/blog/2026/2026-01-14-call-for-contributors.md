@@ -32,7 +32,11 @@ If you want to help us and the PHP community move forward, develop new skills an
 - [Improved Software Quality](#improved-software-quality)
 - [You Influence Development](#you-influence-development)
 - [Deeper Understanding of Software](#deeper-understanding-of-software)
-- [Low Barrier for Entry](#low-barrier-for-entry)
+- [More than just code](#more-than-just-code)
+
+[How can I contribute](#how-can-i-contribute)
+
+[Other Stuff](#other-stuff)
 
 [Conclusion](#conclusion)
 
