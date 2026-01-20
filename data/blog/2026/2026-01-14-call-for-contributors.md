@@ -97,16 +97,16 @@ We welcome developers of all experience levels, and you will find us to be a fri
 # How can I contribute
 
 - Documentation Improvements and Fixes
-  - The technical part of our [documentation](https://github.com/laminas/documentation) can help get you started.
+    - The technical part of our [documentation](https://github.com/laminas/documentation) can help get you started.
 - Fixing stuck builds
-  - Renovate maintenance where CI is failing normally points to a new dependency conflict.
+    - Renovate maintenance where CI is failing normally points to a new dependency conflict.
 - QA Improvements
-  - Reducing psalm baselines with better doc blocks and inline assertions.
+    - Reducing psalm baselines with better doc blocks and inline assertions.
 - Code Improvements
-  - Applying strict types, typed properties, params, returns.
-  - Updates for PHP 8.5 compatibility.
-  - General work on outdated dependencies.
-  - Reviewing PRs.
+    - Applying strict types, typed properties, params, returns.
+    - Updates for PHP 8.5 compatibility.
+    - General work on outdated dependencies.
+    - Reviewing PRs.
 
 ## Other Stuff
 
