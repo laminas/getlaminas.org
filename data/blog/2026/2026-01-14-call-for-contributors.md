@@ -22,7 +22,7 @@ If you want to help us and the PHP community move forward, develop new skills an
 
 <!--- EXTENDED -->
 
-## Why you should contribute
+## Why You Should Contribute
 
 ### Personal Skill Development
 
@@ -68,13 +68,13 @@ Contributing to Laminas and Mezzio is a good way to put yourself on the map.
 Then you can **include the experience in your résumé** or even brag on programming forums that you wrote a section of code.
 It's definitive proof that you have initiative, teamwork, and problem-solving skills which are highly valued by employers in the industry.
 
-### More than just code
+### More Than Just Code
 
 It might seem intimidating to join a community of experienced developers who are already working with PHP, Laminas, and Mezzio for years, but documentation contributions are equally important as code.
 As a user of Laminas or Mezzio, you are in a unique position to offer insight on where docs don't provide enough guidance or assume too much knowledge, for example.
 We welcome developers of all experience levels, and you will find us to be a friendly and inclusive community.
 
-## How can I contribute
+## How Can I Contribute
 
 - Documentation Improvements and Fixes
     - The technical part of our [documentation](https://github.com/laminas/documentation) can help get you started.
