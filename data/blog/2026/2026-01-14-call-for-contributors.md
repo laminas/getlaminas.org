@@ -95,7 +95,6 @@ Below you have the current lists of issues and pull requests tagged with `Help W
 - [Mezzio Issues](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=issues)
 - [Mezzio PRs](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=pullrequests)
 
-
 ### Other Stuff
 
 Check out the issues page on our [repositories](https://github.com/orgs/laminas/repositories) for any other open items you can contribute to.
