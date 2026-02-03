@@ -88,6 +88,14 @@ We welcome developers of all experience levels, and you will find us to be a fri
     - General work on outdated dependencies.
     - Reviewing Pull Requests (PRs).
 
+Below you have the current lists of issues and pull requests tagged with `Help Wanted` that can benefit from your input right now:
+
+- [Laminas Issues](https://github.com/search?q=org%3Alaminas+label%3A%22help+wanted%22&type=issues)
+- [Laminas PRs](https://github.com/search?q=org%3Alaminas+label%3A%22help+wanted%22&type=pullrequests)
+- [Mezzio Issues](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=issues)
+- [Mezzio PRs](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=pullrequests)
+
+
 ### Other Stuff
 
 Check out the issues page on our [repositories](https://github.com/orgs/laminas/repositories) for any other open items you can contribute to.
@@ -98,7 +106,7 @@ You help us even when contributing less-impactful changes like these:
 - Comment clean up.
 - Bug fixes that change default return values or error codes stored in constants.
 - Adding or changing exception messages.
-- Changes to 'metadata' files like `.gitignore`, `composer.json`, etc.
+- Changes to 'metadata' files like `composer.json`.
 - Moving source files from one directory to another.
 
 ## Conclusion
