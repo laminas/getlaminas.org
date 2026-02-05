@@ -108,6 +108,17 @@ You help us even when contributing less-impactful changes like these:
 - Changes to 'metadata' files like `composer.json`.
 - Moving source files from one directory to another.
 
+## First Steps
+
+If you're a first-time contributor, we have several channels that allow you to contact us for guidance:
+
+- Create a discussion on [Laminas Discourse](https://discourse.laminas.dev/) which is actively monitored and may already have an answer for your issue.
+- Join [Laminas Slack](https://laminas.slack.com/) by [getting an invite](https://join.slack.com/t/laminas/shared_invite/enQtNTkyMzExNzAxMzMwLWU3MjI2MGNlM2EyNWQzZDg4NTMzNDM2NzQ1ZDU2ZDJiNDVhZDQyZDczOThjNGIwOWNiODQ0YzE1NTA3NGU2YTA).
+  It has a [general chat](https://laminas.slack.com/archives/C4QBQUEG5) channel for miscellaneous technical discussions and the monthly [Technical Steering Committee (TSC)](https://laminas.slack.com/archives/C011F9W87E1) where members discuss and vote on technical oversight for everything related to Laminas and Mezzio.
+- Join the [PHP community on Mastodon](https://phpc.social) where you may find other contributors.
+
+Make sure to check the [Laminas contributing guidelines](https://github.com/laminas/.github/blob/main/CONTRIBUTING.md) for the technical steps to submit your contribution.
+
 ## Conclusion
 
 Contributing to open source develops your skill, builds credibility, connects with others just like you, and makes a meaningful impact in the software community.
@@ -123,3 +134,7 @@ Join us know!
 - [Laminas Code of Conduct](https://github.com/laminas/.github/blob/main/CODE_OF_CONDUCT.md)
 - [Security policy](https://github.com/laminas/.github/blob/main/SECURITY.md)
 - [Laminas documentation setup](https://github.com/laminas/documentation)
+- [Laminas discussions](https://github.com/orgs/laminas/discussions/1)
+- [Laminas Slack](https://laminas.slack.com/)
+- [Invite for Laminas Slack](https://join.slack.com/t/laminas/shared_invite/enQtNTkyMzExNzAxMzMwLWU3MjI2MGNlM2EyNWQzZDg4NTMzNDM2NzQ1ZDU2ZDJiNDVhZDQyZDczOThjNGIwOWNiODQ0YzE1NTA3NGU2YTA)
+- [Laminas Technical Steering Committee charter](https://github.com/laminas/technical-steering-committee/blob/main/CHARTER.md)
