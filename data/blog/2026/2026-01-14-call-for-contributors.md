@@ -90,10 +90,10 @@ We welcome developers of all experience levels, and you will find us to be a fri
 
 Below you have the current lists of issues and pull requests tagged with `Help Wanted` that can benefit from your input right now:
 
-- [Laminas Issues](https://github.com/search?q=org%3Alaminas+label%3A%22help+wanted%22&type=issues)
-- [Laminas PRs](https://github.com/search?q=org%3Alaminas+label%3A%22help+wanted%22&type=pullrequests)
-- [Mezzio Issues](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=issues)
-- [Mezzio PRs](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=pullrequests)
+- [Laminas Issues](https://github.com/search?q=org%3Alaminas+label%3A%22help+wanted%22&type=issues&state=open)
+- [Laminas PRs](https://github.com/search?q=org%3Alaminas+label%3A%22help+wanted%22&type=pullrequests&state=open)
+- [Mezzio Issues](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=issues&state=open)
+- [Mezzio PRs](https://github.com/search?q=org%3Amezzio+label%3A%22help+wanted%22&type=pullrequests&state=open)
 
 ### Other Stuff
 
