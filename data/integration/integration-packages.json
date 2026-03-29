@@ -213,5 +213,10 @@
     "packagistUrl": "https://packagist.org/packages/blazon/psr11-flysystem",
     "keywords": ["factory", "flysystem"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/webware/traccio",
+    "keywords": ["tracy-debugger", "middleware"],
+    "homepage": null
   }
 ]
