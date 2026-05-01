@@ -218,5 +218,20 @@
     "packagistUrl": "https://packagist.org/packages/webware/traccio",
     "keywords": ["tracy-debugger", "middleware"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-authentication",
+    "keywords": ["authentication"],
+    "homepage": "https://lm-commons.github.io/lmc-authentication/"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-rbac",
+    "keywords": ["permissions", "role-based access control"],
+    "homepage": "https://lm-commons.github.io/LmcRbac/"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-rbac-mezzio",
+    "keywords": ["mezzio", "rbac", "middleware"],
+    "homepage": "https://lm-commons.github.io/lmc-rbac-mezzio/"
   }
 ]
