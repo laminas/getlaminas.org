@@ -47,6 +47,14 @@ $ mkdir -p public/js
 $ composer build
 ```
 
+Fifth, build the integrations database
+
+```bash
+$ mkdir -p data/integration/database
+$ mkdir -p public/images/integrations
+$ ./vendor/bin/laminas integration:create-db --github-token=<github_token> [--force-rebuild]
+```
+
 Finally, use the provided [docker-compose configuration](docker-compose.yml):
 
 ```bash
