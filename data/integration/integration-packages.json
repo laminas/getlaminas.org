@@ -253,5 +253,15 @@
     "packagistUrl": "https://packagist.org/packages/sirix/mezzio-routing-attributes",
     "keywords": ["routing", "attributes"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/psr7-sessions/storageless",
+    "keywords": ["session", "middleware"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/mezzio-valinor-request-mapper",
+    "keywords": ["valinor", "request-mapper"],
+    "homepage": null
   }
 ]
