@@ -11,7 +11,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
-          uses: actions/checkout@v5
+          uses: actions/checkout@v6
 
         - name: schema-validation-action
           uses: cardinalby/schema-validator-action@3.1.1
