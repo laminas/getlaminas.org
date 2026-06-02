@@ -50,7 +50,7 @@
     "homepage": "https://light.dotkernel.net/"
   },
   {
-    "packagistUrl": "https://packagist.org/packages/cherif/inertia-psr15",
+    "packagistUrl": "https://packagist.org/packages/sirix/inertia-psr15",
     "keywords": ["inertiajs", "adapter"],
     "homepage": null
   },
