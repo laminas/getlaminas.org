@@ -233,5 +233,25 @@
     "packagistUrl": "https://packagist.org/packages/lm-commons/lmc-rbac-mezzio",
     "keywords": ["mezzio", "rbac", "middleware"],
     "homepage": "https://lm-commons.github.io/lmc-rbac-mezzio/"
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/sirix-monolog",
+    "keywords": ["monolog", "log"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/mezzio-authentication",
+    "keywords": ["authentication"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/mezzio-rbac",
+    "keywords": ["authorization", "rbac"],
+    "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/mezzio-routing-attributes",
+    "keywords": ["routing", "attributes"],
+    "homepage": null
   }
 ]
