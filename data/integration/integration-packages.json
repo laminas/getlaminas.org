@@ -263,5 +263,10 @@
     "packagistUrl": "https://packagist.org/packages/sirix/mezzio-valinor-request-mapper",
     "keywords": ["valinor", "request-mapper"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/advancedideasmechanics/mezzio-canonical-url",
+    "keywords": ["canonical-url", "middleware"],
+    "homepage": "https://advanced.im/product/mezzio-canonical-url"
   }
 ]
