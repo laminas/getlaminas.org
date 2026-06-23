@@ -313,6 +313,11 @@ class CreateIntegrationDatabase extends Command
 
         $packagistResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($packagistResult));
+
+        if (! isset($packagistResult['package'])) {
+            return null;
+        }
+
         /**
          * @var array{
          *     name: string,

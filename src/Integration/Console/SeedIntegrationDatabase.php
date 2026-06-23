@@ -135,7 +135,10 @@ final class SeedIntegrationDatabase extends Command
              *    } $packageData
              */
             $packageData = $this->getPackageData($package);
-            $this->updatePackage($packageData, $pdo);
+
+            if (! empty($packageData)) {
+                $this->updatePackage($packageData, $pdo);
+            }
         }
 
         $pdo->commit();
@@ -164,6 +167,10 @@ final class SeedIntegrationDatabase extends Command
         assert(is_string($rawResult));
         $packagistResult = json_decode($rawResult, true, 512, JSON_THROW_ON_ERROR);
         assert(is_array($packagistResult));
+
+        if (empty($packagistResult['package'])) {
+            return [];
+        }
 
         /**
          * @var array{
