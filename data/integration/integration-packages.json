@@ -235,7 +235,7 @@
     "homepage": "https://lm-commons.github.io/lmc-rbac-mezzio/"
   },
   {
-    "packagistUrl": "https://packagist.org/packages/sirix/sirix-monolog",
+    "packagistUrl": "https://packagist.org/packages/sirix/monolog",
     "keywords": ["monolog", "log"],
     "homepage": null
   },
