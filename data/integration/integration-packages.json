@@ -268,5 +268,10 @@
     "packagistUrl": "https://packagist.org/packages/nikolaposa/monolog-factory",
     "keywords": ["monolog", "log"],
     "homepage": null
+  },
+  {
+    "packagistUrl": "https://packagist.org/packages/sirix/container-resolver",
+    "keywords": ["container", "configuration"],
+    "homepage": null
   }
 ]
