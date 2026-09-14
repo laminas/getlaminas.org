@@ -155,16 +155,6 @@
     "homepage": null
   },
   {
-    "packagistUrl": "https://packagist.org/packages/mimmi20/laminasviewrenderer-vite-url",
-    "keywords": ["laminas-view", "vite", "url"],
-    "homepage": null
-  },
-  {
-    "packagistUrl": "https://packagist.org/packages/mimmi20/mezzio-setlocale-middleware",
-    "keywords": ["mezzio", "middleware", "language"],
-    "homepage": null
-  },
-  {
     "packagistUrl": "https://packagist.org/packages/ecodev/graphql-upload",
     "keywords": ["graphql", "upload", "middleware", "PSR-15"],
     "homepage": null
