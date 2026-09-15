@@ -79,7 +79,7 @@ long-term support that guarantees it will be kept up-to-date on the latest trend
 The Dotkernel organization monitors the code regularly to check for bugs and apply improvements to create a stable,
 fast, reliable solution for any project, from entry-level to enterprise.
 
-- Website: [Dotkernel](https://www.dotkernel.com/api/).
+- Website: [Dotkernel API](https://www.dotkernel.com/api/).
 - Documentation for the API and all components and libraries: [docs.dotkernel.org](https://docs.dotkernel.org/).
 
 [You can find the minutes in the TSC repository.](https://github.com/laminas/technical-steering-committee/blob/main/meetings/minutes/2024-05-06-TSC-Minutes.md)
