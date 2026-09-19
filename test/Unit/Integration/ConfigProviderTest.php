@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Integration;
+namespace LaminasTest\Unit\Integration;
 
 use GetLaminas\Integration\ConfigProvider;
 use GetLaminas\Integration\Console\CreateIntegrationDatabase;

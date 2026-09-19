@@ -37,7 +37,7 @@ final class CreateIntegrationDatabaseDelegatorTest extends TestCase
         $command = (new CreateIntegrationDatabaseDelegator())(
             $container,
             '',
-            function () use ($instance) {
+            static function () use ($instance) {
                 return $instance;
             }
         );

@@ -174,7 +174,7 @@ final class WriteRepositoryData extends Command
         curl_close($curl);
 
         foreach ($singleResult as $key => $value) {
-            usort($singleResult[$key], fn(array $a, array $b) => $a['name'] <=> $b['name']);
+            usort($singleResult[$key], static fn(array $a, array $b) => $a['name'] <=> $b['name']);
         }
 
         $singleResult['last_updated'] = date('Y-m-d H:i:s');

@@ -41,7 +41,7 @@ final class Releases implements IteratorAggregate
      */
     private function sort(array $releases): array
     {
-        usort($releases, fn(Release $a, Release $b): int => $a->date <=> $b->date);
+        usort($releases, static fn(Release $a, Release $b): int => $a->date <=> $b->date);
         return array_reverse($releases);
     }
 

@@ -31,14 +31,14 @@ final class InjectAssetRevisionsDelegator
 
         isset($config['debug'])
             ? $this->injectAssets($engine, $this->getAssetMap(...))
-            : $this->injectAssets($engine, fn(): array => $revisions);
+            : $this->injectAssets($engine, static fn(): array => $revisions);
 
         return $engine;
     }
 
     private function injectAssets(PlatesEngine $engine, callable $getAssetMap): void
     {
-        $engine->registerFunction('assets', function (string $asset) use ($getAssetMap) {
+        $engine->registerFunction('assets', static function (string $asset) use ($getAssetMap) {
             $assetMap = $getAssetMap();
             assert(is_array($assetMap));
 

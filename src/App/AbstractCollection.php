@@ -48,6 +48,7 @@ abstract class AbstractCollection
         return $this->collection;
     }
 
+    /** @return array<non-empty-string, mixed> */
     public function getFromFile(string $file): array
     {
         $result = [];

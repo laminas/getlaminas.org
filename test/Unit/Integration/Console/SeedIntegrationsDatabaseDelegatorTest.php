@@ -33,7 +33,7 @@ final class SeedIntegrationsDatabaseDelegatorTest extends TestCase
         $command = (new SeedIntegrationDatabaseDelegator())(
             $container,
             '',
-            function () use ($instance) {
+            static function () use ($instance) {
                 return $instance;
             }
         );

@@ -61,6 +61,7 @@
         "symfony/yaml": "^7.3.3"
     },
     "require-dev": {
+        "boundwize/structarmed": "^0.17.10",
         "filp/whoops": "^2.14.5",
         "laminas/laminas-coding-standard": "^2.4.0",
         "laminas/laminas-development-mode": "^3.10.0",
