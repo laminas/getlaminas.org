@@ -51,7 +51,7 @@ final class IntegrationHandler implements RequestHandlerInterface
         assert(is_string($search) || $search === null);
 
         /** @var array<int, string> $data */
-        $data     = array_map(fn (string $keyword) => strtolower($keyword), $keywords);
+        $data     = array_map(static fn (string $keyword) => strtolower($keyword), $keywords);
         $packages = $this->integrationMapper->fetchAllByFilters($data, $type, $search);
 
         $path = $request->getAttribute('originalRequest', $request)->getUri()->getPath();
