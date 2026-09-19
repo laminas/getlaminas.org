@@ -131,7 +131,7 @@ final class IntegrationHandler implements RequestHandlerInterface
 
     /**
      * @param iterable<int, Integration> $entries
-     * @psalm-return array<string, mixed>
+     * @psalm-return array<non-empty-string, mixed>
      */
     private function prepareView(
         iterable $entries,

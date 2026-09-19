@@ -84,7 +84,7 @@ final class ListPostsHandler implements RequestHandlerInterface
 
     /**
      * @param iterable<int, BlogPost> $entries
-     * @psalm-return array<string, mixed>
+     * @psalm-return array<non-empty-string, mixed>
      */
     private function prepareView(string $tag, iterable $entries, object $pagination): array
     {

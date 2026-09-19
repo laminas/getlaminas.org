@@ -114,11 +114,6 @@
       <code><![CDATA[getcwd()]]></code>
     </PossiblyFalseOperand>
   </file>
-  <file src="src/App/Handler/StaticPageHandler.php">
-    <PossiblyFalseArgument>
-      <code><![CDATA[$routeResult->getMatchedRouteName()]]></code>
-    </PossiblyFalseArgument>
-  </file>
   <file src="src/App/Template/InjectAssetRevisionsDelegator.php">
     <MixedAssignment>
       <code><![CDATA[$revisions]]></code>
@@ -510,18 +505,12 @@
     <InvalidPropertyAssignment>
       <code><![CDATA[$this]]></code>
     </InvalidPropertyAssignment>
-    <MixedArgument>
-      <code><![CDATA[$name]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code><![CDATA[$name]]></code>
-    </MixedAssignment>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$aliases]]></code>
+    </MixedArgumentTypeCoercion>
     <NoValue>
       <code><![CDATA[$this]]></code>
       <code><![CDATA[$this]]></code>
     </NoValue>
-    <PossiblyUndefinedVariable>
-      <code><![CDATA[$defaultName]]></code>
-    </PossiblyUndefinedVariable>
   </file>
 </files>

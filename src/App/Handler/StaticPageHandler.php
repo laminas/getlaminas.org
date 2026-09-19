@@ -12,6 +12,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
+use function is_string;
 use function str_replace;
 
 final class StaticPageHandler implements RequestHandlerInterface
@@ -26,14 +28,24 @@ final class StaticPageHandler implements RequestHandlerInterface
         /** @var RouteResult $routeResult */
         $routeResult = $request->getAttribute(RouteResult::class);
 
+        $routeName = $routeResult->getMatchedRouteName();
+        assert(is_string($routeName));
+
+        /** @var array<non-empty-string, mixed> $attributes */
+        $attributes = $request->getAttributes();
+
         return new HtmlResponse($this->renderer->render(
-            $this->normalize($routeResult->getMatchedRouteName()),
-            $request->getAttributes()
+            $this->normalize($routeName),
+            $attributes
         ));
     }
 
+    /** @return non-empty-string */
     private function normalize(string $routeName): string
     {
-        return str_replace('.', '::', $routeName);
+        $template = str_replace('.', '::', $routeName);
+        assert($template !== '');
+
+        return $template;
     }
 }
