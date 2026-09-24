@@ -34,7 +34,7 @@
         "forum": "https://discourse.laminas.dev"
     },
     "require": {
-        "php": "~8.4.0",
+        "php": "~8.5.0",
         "ext-curl": "*",
         "ext-pdo": "*",
         "ext-sqlite3": "*",
@@ -61,13 +61,13 @@
         "symfony/yaml": "^7.3.3"
     },
     "require-dev": {
-        "boundwize/structarmed": "^0.17.10",
+        "boundwize/structarmed": "^0.18.0",
         "filp/whoops": "^2.14.5",
         "laminas/laminas-coding-standard": "^2.4.0",
         "laminas/laminas-development-mode": "^3.10.0",
         "mezzio/mezzio-tooling": "^2.6",
         "phpunit/phpunit": "^12.5.8",
-        "psalm/plugin-phpunit": "^0.19.5",
+        "psalm/plugin-phpunit": "^0.20.0",
         "roave/security-advisories": "dev-master",
         "vimeo/psalm": "^6.13"
     },
