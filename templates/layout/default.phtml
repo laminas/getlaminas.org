@@ -14,7 +14,7 @@ $opengraphDescription = $opengraphDescription ?? "Laminas & Mezzio: enterprise-r
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" data-bs-theme="light" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,12 @@ $opengraphDescription = $opengraphDescription ?? "Laminas & Mezzio: enterprise-r
     <meta property="og:url" content="<?= $this->serverurl() ?>">
     <meta property="og:image" content="<?= $opengraphImage ?>"/>
     <meta property="og:description" content="<?= $opengraphDescription ?>"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="/<?= $this->assets('css/laminas.css') ?>">
     <?= $this->section('stylesheets') ?>
