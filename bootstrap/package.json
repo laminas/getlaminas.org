@@ -19,7 +19,7 @@
     "gulp-rev-all": "^4.0.0",
     "gulp-rev-dist-clean": "^3.2.3",
     "gulp-terser": "^2.1.0",
-    "jquery": "^3.6.4",
+    "jquery": "^4.0.0",
     "prismjs": "^1.29.0"
   }
 }
