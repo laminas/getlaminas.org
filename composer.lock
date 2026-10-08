@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed903a61e6d6d4339cb06b15f87b43f3",
+    "content-hash": "6d91dfe3ec2bed6a696917f5d4368b44",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1058,16 +1058,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.10.1",
+            "version": "2.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "9d489ab67a02960fd8ffe624d93f751daf95439e"
+                "reference": "692e90b901877bdfd727e51270ce4394633c6e74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9d489ab67a02960fd8ffe624d93f751daf95439e",
-                "reference": "9d489ab67a02960fd8ffe624d93f751daf95439e",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/692e90b901877bdfd727e51270ce4394633c6e74",
+                "reference": "692e90b901877bdfd727e51270ce4394633c6e74",
                 "shasum": ""
             },
             "require": {
@@ -1161,7 +1161,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-07T13:44:26+00:00"
+            "time": "2026-09-21T12:28:44+00:00"
         },
         {
             "name": "league/config",
