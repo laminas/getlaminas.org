@@ -12,7 +12,7 @@ build:
 variables:
   env:
     NVM_VERSION: v0.40.1
-    NODE_VERSION: v22.8.0
+    NODE_VERSION: v22.23.3
 
 mounts:
   'data/cache':
