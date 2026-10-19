@@ -6,6 +6,7 @@ composer.phar
 clover.xml
 coveralls-upload.json
 phpunit.xml
+bootstrap/build/
 public/css/*
 public/js/*
 public/share/*
