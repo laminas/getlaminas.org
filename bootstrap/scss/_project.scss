@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #{mix($brand-primary, #fff, 40%)};
+    --primary-color: #{mix($primary, $white, 40%)};
 }
 
 .components {

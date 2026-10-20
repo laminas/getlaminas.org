@@ -24,7 +24,7 @@ $this->layout('layout::default', ['title' => 'Security Advisories']);
             <?php if ($tot > 0) : ?>
                 <?php foreach ($advisories as $key => $advisory) : ?>
                     <a class="list-group-item" href="<?= $this->url('security.advisory', ['advisory' => basename($key, '.md')]) ?>">
-                        <h4 class="list-group-item-heading"><?= $advisory['title'] ?></h4>
+                        <h4><?= $advisory['title'] ?></h4>
                         <p class="list-group-item-text">Published <?= (new DateTimeImmutable($advisory['date']))->format('Y-m-d') ?></p>
                     </a>
                 <?php endforeach ?>

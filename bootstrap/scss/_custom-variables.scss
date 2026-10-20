@@ -12,17 +12,6 @@ $laminas-colors: (
   "essentials": #DEAA3F,
 );
 
-// Colors
-$header-footer-font-color: #fff;
-$footer-bg-color: hsl(201, 98%, 6%);
-$separater-color: #efefef;
-$text-color-secondary: rgb(119, 119, 119);
-$text-color-reduced: rgb(150, 152, 154);
-$overiew-body-bg: #f9fafb;
-$code-sample-bg-color: rgb(60, 65, 70);
-$donation-color: rgb(14, 109, 212);
-$card-bg: #fff;
-
 // Changing the theme colors
 $primary:       map-get($laminas-colors, laminas);
 $secondary:     #009ee3;
@@ -36,36 +25,33 @@ $custom-theme-colors: (
   "components":  map-get($laminas-colors, components),
   "mvc":         map-get($laminas-colors, mvc),
   "mezzio":      map-get($laminas-colors, mezzio),
-  "api-tools":  map-get($laminas-colors, api-tools),
+  "api-tools":   map-get($laminas-colors, api-tools),
   "essentials":  map-get($laminas-colors, essentials),
 );
 
+$font-family-sans-serif: "Quicksand", sans-serif;
+$line-height-base: 1.8;
+// Keep form controls and buttons on Bootstrap's default line height.
+// 1.8 makes them 42.8px; the live site is 38px (1.5 * 1rem + padding + border).
+$input-btn-line-height: 1.5;
+$headings-color: $primary;
+$link-color: $success;
+$link-hover-color: $success;
+$link-hover-decoration: none;
+
 // Enabling responsive font
 $enable-responsive-font-sizes: true;
-
-// Colors
-$brand-primary: rgb(1, 55, 85);
-$link-color: $brand-primary;
-
-$primary: $brand-primary;
 
 // Changing the body background and text
 $body-bg: #f9fafb;
 $body-color: #000000;
 
-// Changing the border radius of buttons
-//$border-radius: 15px;
-
-$support-color: rgb(14, 109, 212);
-
-// Changing heading color
-$headings-color: $primary;
-
-// Container
+// Keep the widest container at the xl width. Omitting xxl avoids Bootstrap's
+// ascending-map check, which rejects a value equal to the previous key.
+// Screens at the xxl breakpoint still use the xl max-width.
 $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px,
-  xxl: 1140px
+  xl: 1140px
 );

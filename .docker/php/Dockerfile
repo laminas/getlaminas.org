@@ -3,11 +3,10 @@
 # Build UI assets
 FROM node:22-alpine as assets
 RUN apk add git
-RUN npm install --location=global gulp-cli
 RUN mkdir -p /work
 COPY bootstrap /work/
 WORKDIR /work
-RUN npm install && gulp deploy
+RUN npm ci && npm run build
 # Created assets need to be in an unmapped folder to persist
 RUN mkdir -p /assets && mv /work/build/* /assets
 
@@ -41,6 +40,7 @@ COPY .docker/php/php-entrypoint /usr/local/bin/php-entrypoint
 COPY --from=assets /assets/assets.json /assets/assets.json
 COPY --from=assets /assets/css /assets/css/
 COPY --from=assets /assets/js /assets/js/
+COPY --from=assets /assets/assets /assets/assets/
 
 # Build project
 WORKDIR /var/www
