@@ -256,34 +256,19 @@ body {
     margin-top: $spacer;
 }
 
-// Headings that previously used fw-bolder together with mb-5 or my-5.
-// Other headings keep Bootstrap's weight and margin-bottom of .5rem.
-.title-container > h1,
-.title-container > h2,
-.homepage-card-info > h1,
-.homepage-card-info > h5,
-.homepage-listing > h4,
-.blog.container > .row > h1,
-.container > .row.mt-5 > .col > h1,
-.container-lg > .row.mt-5 > .col > h1,
-.container.mt-5 > .row > .col > h1,
-.container > .mt-5 > h1,
-#commercial-vendor-section > h2,
-#commercial-vendor-section > .row > .col-12 > h2,
-.col-md-8:not(:has(> .list-group)) > h2:not(.card-title),
-.col-md-8:not(:has(> .list-group)) > h3 {
+.page-heading {
     margin-top: 0;
     margin-bottom: $spacer * 3;
     font-weight: $font-weight-bolder;
 }
 
-#integration-section .my-5 > h1 {
-    font-weight: $font-weight-bolder;
+.page-heading--offset {
+    margin-top: $spacer * 3;
 }
 
-.col-md-8:not(:has(> .list-group)) > p:has(a.btn) + h2,
-#commercial-vendor-section > h2:first-of-type {
-    margin-top: $spacer * 3;
+// The integrations title sits in a wrapper that already supplies the vertical space.
+.page-heading--title {
+    margin-bottom: $headings-margin-bottom;
 }
 
 #main-navbar {

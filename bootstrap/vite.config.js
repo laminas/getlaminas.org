@@ -7,11 +7,14 @@ const rootDir = dirname(fileURLToPath(import.meta.url));
 const buildDir = resolve(rootDir, 'build');
 
 function cleanBuildOutput() {
-    for (const entry of ['css', 'js', 'assets.json']) {
+    for (const entry of ['css', 'js', 'assets', 'assets.json']) {
         rmSync(resolve(buildDir, entry), { recursive: true, force: true });
     }
 }
 
+// Publish the build into the app tree. Local builds and the Platform.sh
+// hook run from the repository, so public/ and data/ are present.
+// The Docker asset image only contains bootstrap/, so this copy is skipped there.
 function copyBuiltAssets() {
     const publicDir = resolve(rootDir, '../public');
     const dataDir = resolve(rootDir, '../data');
@@ -20,11 +23,25 @@ function copyBuiltAssets() {
         return;
     }
 
-    mkdirSync(resolve(publicDir, 'css'), { recursive: true });
-    mkdirSync(resolve(publicDir, 'js'), { recursive: true });
-    cpSync(resolve(buildDir, 'css'), resolve(publicDir, 'css'), { recursive: true });
-    cpSync(resolve(buildDir, 'js'), resolve(publicDir, 'js'), { recursive: true });
+    const cssDir = resolve(publicDir, 'css');
+    const jsDir = resolve(publicDir, 'js');
+
+    rmSync(cssDir, { recursive: true, force: true });
+    rmSync(jsDir, { recursive: true, force: true });
+    mkdirSync(cssDir, { recursive: true });
+    mkdirSync(jsDir, { recursive: true });
+    cpSync(resolve(buildDir, 'css'), cssDir, { recursive: true });
+    cpSync(resolve(buildDir, 'js'), jsDir, { recursive: true });
     cpSync(resolve(buildDir, 'assets.json'), resolve(dataDir, 'assets.json'));
+
+    const fontDir = resolve(buildDir, 'assets');
+    const publicFontDir = resolve(publicDir, 'assets');
+
+    if (existsSync(fontDir)) {
+        rmSync(publicFontDir, { recursive: true, force: true });
+        mkdirSync(publicFontDir, { recursive: true });
+        cpSync(fontDir, publicFontDir, { recursive: true });
+    }
 }
 
 // Prism language files and plugins reference a global Prism binding.
@@ -102,7 +119,11 @@ export default defineConfig({
         sourcemap: false,
         cssCodeSplit: false,
         modulePreload: false,
-        assetsInlineLimit: Number.MAX_SAFE_INTEGER,
+        // Keep small assets inside the CSS. Font files stay separate so the
+        // stylesheet can reference them from public/assets.
+        assetsInlineLimit(filePath) {
+            return ! /\.(?:woff2?|ttf|otf|eot)$/i.test(filePath);
+        },
         rollupOptions: {
             input: resolve(rootDir, 'js/laminas.js'),
             // Hero images are root-relative files in public/, served by PHP.

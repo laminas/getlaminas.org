@@ -35,6 +35,8 @@ import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
 import 'prismjs/plugins/line-highlight/prism-line-highlight';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/plugins/treeview/prism-treeview';
+import '@fontsource/quicksand/latin-400.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import * as bootstrap from 'bootstrap';
 import '../scss/laminas.scss';
 import './base.js';

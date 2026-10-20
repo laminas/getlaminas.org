@@ -9,6 +9,7 @@ phpunit.xml
 bootstrap/build/
 public/css/*
 public/js/*
+public/assets/*
 public/share/*
 public/images/packages/*
 var/
