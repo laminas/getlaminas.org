@@ -31,9 +31,12 @@ $custom-theme-colors: (
 
 $font-family-sans-serif: "Quicksand", sans-serif;
 $line-height-base: 1.8;
-$headings-font-weight: bolder;
-$headings-margin-bottom: 3rem;
+// Keep form controls and buttons on Bootstrap's default line height.
+// 1.8 makes them 42.8px; the live site is 38px (1.5 * 1rem + padding + border).
+$input-btn-line-height: 1.5;
 $headings-color: $primary;
+$link-color: $success;
+$link-hover-color: $success;
 $link-hover-decoration: none;
 
 // Enabling responsive font

@@ -256,15 +256,34 @@ body {
     margin-top: $spacer;
 }
 
-main h2:not(:first-child) {
-    margin-top: $spacer * 3;
+// Headings that previously used fw-bolder together with mb-5 or my-5.
+// Other headings keep Bootstrap's weight and margin-bottom of .5rem.
+.title-container > h1,
+.title-container > h2,
+.homepage-card-info > h1,
+.homepage-card-info > h5,
+.homepage-listing > h4,
+.blog.container > .row > h1,
+.container > .row.mt-5 > .col > h1,
+.container-lg > .row.mt-5 > .col > h1,
+.container.mt-5 > .row > .col > h1,
+.container > .mt-5 > h1,
+#commercial-vendor-section > h2,
+#commercial-vendor-section > .row > .col-12 > h2,
+.col-md-8:not(:has(> .list-group)) > h2:not(.card-title),
+.col-md-8:not(:has(> .list-group)) > h3 {
+    margin-top: 0;
+    margin-bottom: $spacer * 3;
+    font-weight: $font-weight-bolder;
 }
 
-main h1 + h2:not(:first-child),
-article h2:not(:first-child),
-.hero-box h2:not(:first-child),
-.footer h2:not(:first-child) {
-    margin-top: 0;
+#integration-section .my-5 > h1 {
+    font-weight: $font-weight-bolder;
+}
+
+.col-md-8:not(:has(> .list-group)) > p:has(a.btn) + h2,
+#commercial-vendor-section > h2:first-of-type {
+    margin-top: $spacer * 3;
 }
 
 #main-navbar {
@@ -277,22 +296,6 @@ article h2:not(:first-child),
     font-style: italic;
     font-size: 0.8em;
     color: #cccccc;
-}
-
-.card-header {
-    margin-bottom: 0;
-}
-
-article,
-.blog-post-content,
-.e-content,
-.footer,
-.hero-box,
-.list-group,
-aside {
-    h1, h2, h3, h4, h5, h6 {
-        margin-bottom: $spacer * .5;
-    }
 }
 
 pre[class*=language-] {

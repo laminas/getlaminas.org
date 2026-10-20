@@ -42,9 +42,10 @@ hooks:
     (cd bootstrap ; npm ci)
     echo "- Building assets"
     (cd bootstrap ; npm run build)
-    mv bootstrap/build/assets.json data/
-    mv bootstrap/build/css public/
-    mv bootstrap/build/js public/
+    mkdir -p public/css public/js
+    cp -a bootstrap/build/css/. public/css/
+    cp -a bootstrap/build/js/. public/js/
+    cp bootstrap/build/assets.json data/assets.json
     echo "- Setting up configuration"
     rm -f config/development.config.php config/autoload/*.local.php
     mv config/autoload/local.php.dist config/autoload/local.php

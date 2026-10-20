@@ -82,9 +82,7 @@ function phpAssetManifest() {
             });
         },
         closeBundle() {
-            if (process.argv.includes('--watch')) {
-                copyBuiltAssets();
-            }
+            copyBuiltAssets();
         },
     };
 }

@@ -7,10 +7,9 @@
 
     h5 {
         color: $white;
-        margin-bottom: map-get($spacers, 3);
     }
 
-    .mt-5 h5 {
+    &__headline {
         border-bottom: 1px solid shade-color($white, 50%);
         padding-bottom: map-get($spacers, 3);
     }
