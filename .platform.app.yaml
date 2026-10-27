@@ -12,11 +12,7 @@ build:
 variables:
   env:
     NVM_VERSION: v0.40.1
-    NODE_VERSION: v22.8.0
-
-dependencies:
-  nodejs:
-    gulp-cli: '~3.0.0'
+    NODE_VERSION: v22.23.3
 
 mounts:
   'data/cache':
@@ -43,12 +39,9 @@ hooks:
     echo "Installing platform.sh CLI"
     curl -sS https://platform.sh/cli/installer | php
     echo "- Installing asset dependencies"
-    (cd bootstrap ; npm install)
+    (cd bootstrap ; npm ci)
     echo "- Building assets"
-    (cd bootstrap ; gulp deploy)
-    mv bootstrap/build/assets.json data/
-    mv bootstrap/build/css public/
-    mv bootstrap/build/js public/
+    (cd bootstrap ; npm run build)
     echo "- Setting up configuration"
     rm -f config/development.config.php config/autoload/*.local.php
     mv config/autoload/local.php.dist config/autoload/local.php

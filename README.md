@@ -66,19 +66,19 @@ $ docker-compose up
 ## Testing CSS
 
 The above commands will launch the application. If you want to work on CSS
-during that time, you will need to have node, npm, and gulp installed on your
-host machine. Once they are:
+or JavaScript during that time, you will need to have node and npm installed
+on your host machine. Once they are:
 
 ```bash
 # Because files are copied from the container, we need to make them writable:
-$ sudo chmod a+rw data/assets.json public/css/*.css
+$ sudo chmod a+rw data/assets.json public/css/*.css public/js/*.js
 # Now we can install dependencies and start watching for changes:
 $ cd bootstrap
 $ npm i
-$ gulp
+$ npm run dev
 ```
 
-From there, any changes to CSS will be propagated to the application, and
+From there, any changes to CSS or JavaScript will be propagated to the application, and
 reloading the page in the browser will show the changes.
 
 Alternately, you can use the following command to rebuild the base docker
