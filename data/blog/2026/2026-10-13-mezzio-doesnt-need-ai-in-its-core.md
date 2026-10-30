@@ -272,7 +272,7 @@ Fewer unused packages mean fewer irrelevant files, fewer misleading examples, an
 Configuration and convention explain how AI finds its way around a Mezzio application.
 The engineering principles behind Mezzio and the Laminas components explain why what it finds is worth copying.
 
--  **Dependency injection.**
+- **Dependency injection.**
 Every dependency is declared in a constructor and supplied by a factory registered in the container.
 Nothing is pulled from a global or created out of sight, so an assistant never has to guess where an object comes from, and it learns to write new classes the same way.
 
