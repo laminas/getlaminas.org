@@ -289,7 +289,7 @@ That gives AI-generated code the same quality gate as code written by hand: if i
 **Tests as examples.**
 Mezzio and the Laminas components are backed by extensive test suites, and the skeleton includes PHPUnit from the start.
 For an assistant, tests do two jobs.
-They are examples of how each kind of class is meant to be exercised, and they are the mechanism that verifies whatever it produces (more on this in [Component Tests Guide AI, Too](#component-tests-guide-ai-too)).
+They are examples of how each kind of class is meant to be exercised, and they are the mechanism that verifies whatever it produces (more on this in [Component Tests Also Guide AI](#component-tests-also-guide-ai)).
 
 **Safe defaults.**
 The skeleton also includes a security-advisories package that blocks dependencies with known vulnerabilities, configuration caching enabled by default, and a development mode (`composer development-enable` and `composer development-disable`) that keeps development-only modules out of production.
