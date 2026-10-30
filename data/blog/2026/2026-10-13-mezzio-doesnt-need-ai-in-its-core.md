@@ -254,16 +254,16 @@ Note that the installer's "flat" option describes the whole application, with al
 
 ### Why AI Needs Both
 
-**Configuration helps AI read.**
+- **Configuration helps AI read.**
 To understand a Mezzio application, an assistant doesn't need to know undocumented framework internals.
 It can open `config/pipeline.php`, `config/routes.php`, and `config/config.php`, then follow class names to their handlers and factories, including any route providers listed in a module's `ConfigProvider`.
 Every step of the request lifecycle is a file it can see, which leaves little room for guesswork or invented behavior.
 
-**Convention helps AI write.**
+- **Convention helps AI write.**
 When asked to add a feature, an assistant has clear examples to imitate: a handler that implements `RequestHandlerInterface`, a factory beside it, a registration in the module's `ConfigProvider`, and a route in `config/routes.php` (or in the module's route provider).
 The result fits the existing file structure, architecture, and standards instead of introducing a new style with every prompt.
 
-**Leanness helps AI focus.**
+- **Leanness helps AI focus.**
 A small codebase fits more easily into an assistant's context.
 Fewer unused packages mean fewer irrelevant files, fewer misleading examples, and less room for mistakes.
 
@@ -272,26 +272,26 @@ Fewer unused packages mean fewer irrelevant files, fewer misleading examples, an
 Configuration and convention explain how AI finds its way around a Mezzio application.
 The engineering principles behind Mezzio and the Laminas components explain why what it finds is worth copying.
 
-**Dependency injection.**
+-  **Dependency injection.**
 Every dependency is declared in a constructor and supplied by a factory registered in the container.
 Nothing is pulled from a global or created out of sight, so an assistant never has to guess where an object comes from, and it learns to write new classes the same way.
 
-**Single responsibility.**
+- **Single responsibility.**
 A handler handles one route.
 A middleware does one job in the pipeline.
 A factory builds one service.
 Small, focused units are easy for an assistant to understand in isolation, easy to imitate, and easy to replace without side effects.
 
-**Strict coding standards.**
+- **Strict coding standards.**
 The skeleton ships with PHP_CodeSniffer configured for the Laminas coding standard, run alongside the test suite with `composer check`.
 That gives AI-generated code the same quality gate as code written by hand: if it doesn't meet the standard, it doesn't pass.
 
-**Tests as examples.**
+- **Tests as examples.**
 Mezzio and the Laminas components are backed by extensive test suites, and the skeleton includes PHPUnit from the start.
 For an assistant, tests do two jobs.
 They are examples of how each kind of class is meant to be exercised, and they are the mechanism that verifies whatever it produces (more on this in [Component Tests Also Guide AI](#component-tests-also-guide-ai)).
 
-**Safe defaults.**
+- **Safe defaults.**
 The skeleton also includes a security-advisories package that blocks dependencies with known vulnerabilities, configuration caching enabled by default, and a development mode (`composer development-enable` and `composer development-disable`) that keeps development-only modules out of production.
 
 In effect, an AI assistant working in a Mezzio project is learning from the project itself.
@@ -426,17 +426,17 @@ The code already documents itself, and the instructions file only has to say "fo
 Source code is not the only thing an assistant learns from.
 Mezzio and the Laminas components ship with extensive unit test suites, and those tests show how each kind of class is meant to be built and exercised.
 
-**Tests show how to structure code.**
+- **Tests show how to structure code.**
 An agent that opens a component's tests sees which collaborators a class needs, how they are injected, which interfaces are mocked, and what the expected inputs and outputs look like.
 It can infer the intended design from the tests and apply it to the code it writes, instead of guessing at a structure.
 A handler test, a middleware test, and a factory test each demonstrate the shape of their subject, and the agent follows that shape.
 
-**Tests become the application's test suite.**
+- **Tests become the application's test suite.**
 The agent doesn't stop at imitating the structure of the code.
 It reuses the testing patterns it found in the components to build a reasonable test suite for the application itself: handlers tested through `handle()`, middleware through `process()`, factories against a container, and dependencies replaced with mocks of their interfaces.
 Because the application follows the same conventions as the components, the same testing approach carries over without special instructions.
 
-**Tests help humans validate the approach.**
+- **Tests help humans validate the approach.**
 A generated test suite is also a readable summary of what the agent understood and intended.
 A developer reviewing AI-written code can read the tests first, check that they describe the behavior they asked for, and then run them to confirm the code delivers it.
 If the tests encode a wrong assumption, the mistake is visible in a few lines of assertions rather than buried in an implementation.
