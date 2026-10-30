@@ -49,7 +49,7 @@ It gives each approach the job it does best:
 |-----------------------|----------------------------------------------------|-------------------------------------------------------------|
 | **Question answered** | *What* is in the application?                      | *How* is the code shaped?                                   |
 | **Examples**          | Middleware pipeline, routes, registered components | PSR interfaces, `ConfigProvider` classes, factories, layout |
-| **Lives in**          | Plain PHP files under `config/`                    | PHP-FIG standards and Mezzio's project structure            |
+| **Lives in**          | Plain PHP files under `config/` and module config  | PHP-FIG standards and Mezzio's project structure            |
 | **Benefit for devs**  | Nothing runs unless you add it                     | Every feature looks like every other feature                |
 | **Benefit for AI**    | Behavior is traceable, not inferred                | New code follows an obvious pattern                         |
 
@@ -91,9 +91,67 @@ $aggregator = new ConfigAggregator([
 ```
 
 If middleware runs, it is in the pipeline.
-If a path responds, it is in the routes.
+If a path responds, it is in `config/routes.php` or in a registered route provider.
 If a component is active, its `ConfigProvider` is in the aggregator.
 There is no hidden kernel, no auto-discovery to remember, and no feature that is active simply because it was bundled.
+
+### Registering Routes with a Route Provider
+
+`config/routes.php` is not the only place routes can be declared.
+A class implementing `RouteProviderInterface` can register routes too, which is useful when routes must exist outside an HTTP request, such as in command-line tooling, or when a module should ship its own routes:
+
+```php
+// src/App/Routing/AppRouteProvider.php
+namespace App\Routing;
+
+use App\Handler\HelloHandler;
+use Mezzio\MiddlewareFactoryInterface;
+use Mezzio\Router\RouteCollectorInterface;
+use Mezzio\Router\RouteProviderInterface;
+
+final class AppRouteProvider implements RouteProviderInterface
+{
+    public function registerRoutes(
+        RouteCollectorInterface $routeCollector,
+        MiddlewareFactoryInterface $middlewareFactory,
+    ): void {
+        $routeCollector->get('/hello', HelloHandler::class, 'hello');
+    }
+}
+```
+
+The provider is registered as a service and listed under the `router` key in the module's `ConfigProvider`:
+
+```php
+// src/App/ConfigProvider.php
+namespace App;
+
+use Laminas\ServiceManager\Factory\InvokableFactory;
+
+final class ConfigProvider
+{
+    public function __invoke(): array
+    {
+        return [
+            'dependencies' => [
+                'factories' => [
+                    Routing\AppRouteProvider::class => InvokableFactory::class,
+                ],
+            ],
+            'router'       => [
+                'route-providers' => [
+                    Routing\AppRouteProvider::class,
+                ],
+            ],
+        ];
+    }
+}
+```
+
+A provider is an alternative to the `config/routes.php` entry, not an addition to it: register a given route in one place only, because route names and paths must be unique.
+This is still explicit configuration: the route is traceable through the `route-providers` entry, and `HelloHandler` is unchanged.
+A provider registers routes only, so pipeline middleware still belongs in `config/pipeline.php`.
+For more on both approaches, see the [Mezzio cookbook on autowiring routes and pipelines](https://docs.mezzio.dev/mezzio/v3/cookbook/autowiring-routes-and-pipelines/).
 
 ### Convention Keeps Mezzio Predictable
 
@@ -105,7 +163,7 @@ Mezzio is built on PHP-FIG standards: **PSR-7** for HTTP messages, **PSR-11** fo
 Every handler implements `RequestHandlerInterface` with a single `handle()` method:
 
 ```php
-// src/App/src/Handler/HelloHandler.php
+// src/App/Handler/HelloHandler.php
 namespace App\Handler;
 
 use Laminas\Diactoros\Response\JsonResponse;
@@ -159,10 +217,8 @@ In the modular layout, each feature is a self-contained directory with its own c
 ```text
 src/
 ├── App/
-│   ├── src/
-│   │   ├── ConfigProvider.php
-│   │   └── Handler/
-│   └── templates/
+│   ├── ConfigProvider.php
+│   └── Handler/
 └── Orders/
     ├── src/
     │   ├── ConfigProvider.php
@@ -171,17 +227,40 @@ src/
     └── templates/
 ```
 
+> The skeleton's own `App` module keeps its code directly in the module directory, while modules created with `mezzio:module:create`, like `Orders`, get an inner `src/` directory.
+> The rest of this article follows this layout.
+
 The same conventions apply to your code and to every component you install, so the application never mixes competing styles.
+
+Some teams prefer every module without the inner `src/` directory, like `App`, keeping code and templates side by side:
+
+```text
+src/
+├── App/
+│   ├── ConfigProvider.php
+│   └── Handler/
+└── Orders/
+    ├── ConfigProvider.php
+    ├── Handler/
+    ├── Middleware/
+    └── templates/
+```
+
+The conventions are identical, but the tooling won't produce this layout for you.
+You would point each module's PSR-4 autoload rule at `src/Orders` instead of `src/Orders/src`, and the `ConfigProvider` would reference its templates with `__DIR__ . '/templates/'` instead of `__DIR__ . '/../templates/'`.
+
+The installer's minimal, flat, and modular choices are described in the [Mezzio quick start](https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/#create-a-new-project).
+Note that the installer's "flat" option describes the whole application, with all code under `src/`, and is unrelated to whether a module has an inner `src/` directory.
 
 ### Why AI Needs Both
 
 **Configuration helps AI read.**
 To understand a Mezzio application, an assistant doesn't need to know undocumented framework internals.
-It can open `config/pipeline.php`, `config/routes.php`, and `config/config.php`, then follow class names to their handlers and factories.
+It can open `config/pipeline.php`, `config/routes.php`, and `config/config.php`, then follow class names to their handlers and factories, including any route providers listed in a module's `ConfigProvider`.
 Every step of the request lifecycle is a file it can see, which leaves little room for guesswork or invented behavior.
 
 **Convention helps AI write.**
-When asked to add a feature, an assistant has clear examples to imitate: a handler that implements `RequestHandlerInterface`, a factory beside it, a registration in the module's `ConfigProvider`, and a route in `config/routes.php`.
+When asked to add a feature, an assistant has clear examples to imitate: a handler that implements `RequestHandlerInterface`, a factory beside it, a registration in the module's `ConfigProvider`, and a route in `config/routes.php` (or in the module's route provider).
 The result fits the existing file structure, architecture, and standards instead of introducing a new style with every prompt.
 
 **Leanness helps AI focus.**
@@ -210,7 +289,7 @@ That gives AI-generated code the same quality gate as code written by hand: if i
 **Tests as examples.**
 Mezzio and the Laminas components are backed by extensive test suites, and the skeleton includes PHPUnit from the start.
 For an assistant, tests do two jobs.
-They are examples of how each kind of class is meant to be exercised, and they are the mechanism that verifies whatever it produces.
+They are examples of how each kind of class is meant to be exercised, and they are the mechanism that verifies whatever it produces (more on this in [Component Tests Guide AI, Too](#component-tests-guide-ai-too)).
 
 **Safe defaults.**
 The skeleton also includes a security-advisories package that blocks dependencies with known vulnerabilities, configuration caching enabled by default, and a development mode (`composer development-enable` and `composer development-disable`) that keeps development-only modules out of production.
@@ -256,7 +335,7 @@ Here is what that looks like in practice.
 Suppose you ask an assistant to *add an endpoint that lists orders*.
 
 **1. Read the configuration.**
-The assistant opens `config/routes.php` and `config/config.php` to see which routes and modules already exist, then opens an existing handler and its test to learn the project's patterns.
+The assistant opens `config/routes.php` and `config/config.php` to see which routes and modules already exist, checking for `route-providers` entries in the module configuration as well, then opens an existing handler and its test to learn the project's patterns.
 
 **2. Scaffold with mezzio-tooling.**
 Rather than wiring classes by hand, it uses **mezzio-tooling**, included in the skeleton:
@@ -272,7 +351,7 @@ Related commands cover the rest: `mezzio:middleware:create`, `mezzio:factory:cre
 
 **3. Write the logic by mirroring existing code.**
 With correct scaffolding in place, the assistant only fills in the application logic.
-Following the project's lead, it injects the repository through the constructor, updates the factory to supply it, and maps the route:
+Following the project's lead, it injects the repository through the constructor, updates the factory to supply it, and maps the route in `config/routes.php`, the project's primary routing file:
 
 ```php
 // src/Orders/src/Handler/ListOrdersHandler.php
@@ -329,7 +408,8 @@ In a Mezzio project, that file can stay remarkably short, because it mostly poin
 # AGENTS.md
 
 - This is a Mezzio application. Read config/pipeline.php, config/routes.php,
-  and config/config.php before making changes.
+  and config/config.php before making changes. Routes may also be registered
+  by route providers listed under `router` -> `route-providers`.
 - Scaffold modules, handlers, middleware, and factories with mezzio-tooling
   (`composer mezzio mezzio:<command>`).
 - Inject dependencies through constructors and register services in the
@@ -340,6 +420,27 @@ In a Mezzio project, that file can stay remarkably short, because it mostly poin
 
 There is no need to explain a custom architecture or list exceptions to the rules.
 The code already documents itself, and the instructions file only has to say "follow it."
+
+## Component Tests Also Guide AI
+
+Source code is not the only thing an assistant learns from.
+Mezzio and the Laminas components ship with extensive unit test suites, and those tests show how each kind of class is meant to be built and exercised.
+
+**Tests show how to structure code.**
+An agent that opens a component's tests sees which collaborators a class needs, how they are injected, which interfaces are mocked, and what the expected inputs and outputs look like.
+It can infer the intended design from the tests and apply it to the code it writes, instead of guessing at a structure.
+A handler test, a middleware test, and a factory test each demonstrate the shape of their subject, and the agent follows that shape.
+
+**Tests become the application's test suite.**
+The agent doesn't stop at imitating the structure of the code.
+It reuses the testing patterns it found in the components to build a reasonable test suite for the application itself: handlers tested through `handle()`, middleware through `process()`, factories against a container, and dependencies replaced with mocks of their interfaces.
+Because the application follows the same conventions as the components, the same testing approach carries over without special instructions.
+
+**Tests help humans validate the approach.**
+A generated test suite is also a readable summary of what the agent understood and intended.
+A developer reviewing AI-written code can read the tests first, check that they describe the behavior they asked for, and then run them to confirm the code delivers it.
+If the tests encode a wrong assumption, the mistake is visible in a few lines of assertions rather than buried in an implementation.
+Together with `composer check`, they let humans validate the agent's approach without re-deriving it, and keep them in charge of the result.
 
 ## Reviewing AI Output
 
@@ -369,7 +470,7 @@ Its core is the example AI follows.
 
 **Configuration** keeps Mezzio lean: every capability is a deliberate choice, recorded in plain PHP that anyone can read.
 **Convention** keeps it predictable: PSR standards, `ConfigProvider` classes, factories, and a consistent project structure give every feature the same shape.
-**Principles** keep it trustworthy: dependency injection, single responsibility, strict coding standards, and extensive tests give an assistant code worth imitating and a way to verify its work.
+**Principles** keep it trustworthy: dependency injection, single responsibility, and strict coding standards give an assistant code worth imitating, while extensive tests show it how to structure the application's own code and give humans a way to verify its work.
 
 With the Laminas components available on demand and mezzio-tooling handling the wiring, Mezzio gives developers and their AI assistants the same thing: a codebase that is clear enough to read, consistent enough to extend, and strict enough to trust.
 
@@ -378,4 +479,6 @@ With the Laminas components available on demand and mezzio-tooling handling the 
 - [Laminas MVC Is Retiring](https://getlaminas.org/blog/2025-06-06-laminas-mvc-is-retiring.html)
 - [Mezzio101: Using the Mezzio Skeleton Installer](https://getlaminas.org/blog/2025-01-30-mezzio101-using-mezzio-skeleton-installer.html)
 - [Mezzio101: What Defines a Middleware Architecture?](https://getlaminas.org/blog/2025-04-08-mezzio101-what-defines-a-middleware-architecture.html)
+- [Mezzio Quick Start: Create a New Project](https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/#create-a-new-project)
+- [Mezzio Cookbook: Autowiring Routes and Pipelines](https://docs.mezzio.dev/mezzio/v3/cookbook/autowiring-routes-and-pipelines/)
 - [Laminas Documentation](https://docs.laminas.dev/)
