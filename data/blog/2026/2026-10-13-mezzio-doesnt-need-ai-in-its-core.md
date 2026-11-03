@@ -151,6 +151,9 @@ final class ConfigProvider
 A provider is an alternative to the `config/routes.php` entry, not an addition to it: register a given route in one place only, because route names and paths must be unique.
 This is still explicit configuration: the route is traceable through the `route-providers` entry, and `HelloHandler` is unchanged.
 A provider registers routes only, so pipeline middleware still belongs in `config/pipeline.php`.
+
+Because providers follow a recognizable pattern, an AI assistant can identify a module's `ConfigProvider` and the classes it registers, including implementations of provider interfaces such as `RouteProviderInterface`, and use them to build a "mental map" of the application's structure.
+
 For more on both approaches, see the [Mezzio cookbook on autowiring routes and pipelines](https://docs.mezzio.dev/mezzio/v3/cookbook/autowiring-routes-and-pipelines/).
 
 ### Convention Keeps Mezzio Predictable
@@ -232,7 +235,14 @@ src/
 
 The same conventions apply to your code and to every component you install, so the application never mixes competing styles.
 
-Some teams prefer every module without the inner `src/` directory, like `App`, keeping code and templates side by side:
+If you prefer every module without the inner `src/` directory, like `App`, pass the `--flat` option (short form `-f`).
+With the Composer script, add `--` before the command so Composer passes the option through:
+
+```bash
+composer mezzio -- mezzio:module:create Orders --flat
+```
+
+The module then contains its code directly, and the PSR-4 autoload rule points at `src/Orders/`:
 
 ```text
 src/
@@ -241,16 +251,14 @@ src/
 │   └── Handler/
 └── Orders/
     ├── ConfigProvider.php
-    ├── Handler/
-    ├── Middleware/
-    └── templates/
+    └── Handler/
 ```
 
-The conventions are identical, but the tooling won't produce this layout for you.
-You would point each module's PSR-4 autoload rule at `src/Orders` instead of `src/Orders/src`, and the `ConfigProvider` would reference its templates with `__DIR__ . '/templates/'` instead of `__DIR__ . '/../templates/'`.
+A flat module has no `src/` or `templates/` directories, and its generated `ConfigProvider` has no templates configuration.
+If the module needs templates, add a templates directory and a `getTemplates()` section yourself.
 
 The installer's minimal, flat, and modular choices are described in the [Mezzio quick start](https://docs.mezzio.dev/mezzio/v3/getting-started/quick-start/#create-a-new-project).
-Note that the installer's "flat" option describes the whole application, with all code under `src/`, and is unrelated to whether a module has an inner `src/` directory.
+Note that the installer's "flat" option describes the whole application, with all code under `src/`, and is separate from the `--flat` option of `mezzio:module:create`, which only controls whether a single module has an inner `src/` directory.
 
 ### Why AI Needs Both
 
@@ -347,6 +355,7 @@ composer mezzio mezzio:handler:create "Orders\Handler\ListOrdersHandler"
 
 The first command creates the module, its `ConfigProvider`, and its autoloading rule, and registers the module.
 The second creates the handler and its factory and registers both in the container.
+Add `--flat` to create the module without the inner `src/` and `templates/` directories.
 Related commands cover the rest: `mezzio:middleware:create`, `mezzio:factory:create`, and `mezzio:module:register` and `mezzio:module:deregister`.
 
 **3. Write the logic by mirroring existing code.**
