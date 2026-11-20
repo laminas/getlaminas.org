@@ -14,7 +14,7 @@ jobs:
           uses: actions/checkout@v5
 
         - name: schema-validation-action
-          uses: cardinalby/schema-validator-action@3.1.1
+          uses: cardinalby/schema-validator-action@95ce895b6846cc7d931785fcaa46c84816753612 # 3.1.2
           with:
               file: "data/integration/integration-packages.json"
               schema: "data/integration/integration-packages-schema.json"
