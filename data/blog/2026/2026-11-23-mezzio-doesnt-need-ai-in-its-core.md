@@ -1,11 +1,11 @@
 ---
-id: 2026-10-13-mezzio-doesnt-need-ai-in-its-core
+id: 2026-11-13-mezzio-doesnt-need-ai-in-its-core
 author: bidi
-title: "Mezzio Doesn't Need AI in Its Core. AI Follows Its Lead"
+title: "Mezzio Does Not Need AI in Its Core. AI Follows Its Lead"
 draft: false
 public: true
-created: '2026-10-13T11:00:00-01:00'
-updated: '2026-10-13T11:00:00-01:00'
+created: '2026-11-23T11:00:00-01:00'
+updated: '2026-11-23T11:00:00-01:00'
 tags:
   - mezzio
   - ai-coding
@@ -15,7 +15,7 @@ tags:
   - dependency-injection
   - coding-standards
   - modular-architecture
-openGraphImage: '2026-10-13-mezzio-doesnt-need-ai-in-its-core.png'
+openGraphImage: '2026-11-23-mezzio-doesnt-need-ai-in-its-core.png'
 openGraphDescription: "Mezzio doesn't need AI in its core. AI reads Mezzio's code and follows its lead."
 ---
 
