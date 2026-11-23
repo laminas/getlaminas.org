@@ -19,15 +19,13 @@ openGraphImage: '2026-10-13-mezzio-doesnt-need-ai-in-its-core.png'
 openGraphDescription: "Mezzio doesn't need AI in its core. AI reads Mezzio's code and follows its lead."
 ---
 
-# Mezzio Doesn't Need AI in Its Core. AI Follows Its Lead
-
-## Introduction
-
 AI coding assistants have become part of everyday PHP development.
 In response, many tools are adding core features to create the context and structure needed for AI to generate better code.
 
 **Mezzio**, the PSR-15 middleware microframework from the Laminas Project, takes a different position.
 It doesn't need AI in its core, because **AI reads Mezzio's code and follows its lead**.
+
+<!--- EXTENDED -->
 
 An assistant is only as good as the examples it learns from.
 In a Mezzio application, those examples are built on explicit configuration, shared conventions, and solid engineering principles: dependency injection, single responsibility, strict coding standards, and extensive tests.
