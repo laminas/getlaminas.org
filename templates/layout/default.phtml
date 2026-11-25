@@ -27,7 +27,7 @@ $opengraphDescription = $opengraphDescription ?? "Laminas & Mezzio: enterprise-r
     <meta property="og:title" content="Laminas Project - <?= $this->e($title) ?>"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="<?= $this->serverurl() ?>">
-    <meta property="og:image" content="<?= $opengraphImage ?>"/>
+    <meta property="og:image" content="<?= $this->serverurl($opengraphImage) ?>"/>
     <meta property="og:description" content="<?= $opengraphDescription ?>"/>
 
     <link rel="stylesheet" href="/<?= $this->assets('css/laminas.css') ?>">
